@@ -7,7 +7,7 @@ local fnutils = require 'mjolnir.fnutils'
 -- Size Left Half
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'L', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x
   f.w = sc.w / 2
@@ -19,9 +19,9 @@ end)
 -- Size Right Half
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'R', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
-  f.x = sc.w / 2
+  f.x = sc.x + sc.w / 2
   f.w = sc.w / 2
   f.y = sc.y
   f.h = sc.h
@@ -31,7 +31,7 @@ end)
 -- Size Full
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'F', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x
   f.w = sc.w
@@ -43,7 +43,7 @@ end)
 -- Size Center
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'C', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x + (sc.w * 0.15)
   f.w = sc.w * 0.7
@@ -55,7 +55,7 @@ end)
 -- Size Left 7/10
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'N', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x
   f.w = sc.w * 0.7
@@ -67,7 +67,7 @@ end)
 -- Size Right 3/10
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'M', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x + (sc.w * 0.7)
   f.w = sc.w * 0.3
@@ -79,7 +79,7 @@ end)
 -- Size Right Top 3/10
 hotkey.bind({'cmd', 'alt', 'ctrl'}, ',', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x + (sc.w * 0.7)
   f.w = sc.w * 0.3
@@ -91,7 +91,7 @@ end)
 -- Size Right Bottom 3/10
 hotkey.bind({'cmd', 'alt', 'ctrl'}, '.', function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x + (sc.w * 0.7)
   f.w = sc.w * 0.3
@@ -103,7 +103,7 @@ end)
 -- Move Left Edge
 hotkey.bind({'cmd', 'alt', 'ctrl'}, ";", function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
   f.x = sc.x
   win:setframe(f)
@@ -112,8 +112,8 @@ end)
 -- Move Right Edge
 hotkey.bind({'cmd', 'alt', 'ctrl'}, "'", function()
   local win = window.focusedwindow()
-  local sc = screen.mainscreen():fullframe()
+  local sc = win:screen():fullframe()
   local f = win:frame()
-  f.x = sc.w - f.w
+  f.x = sc.x + sc.w - f.w
   win:setframe(f)
 end)
