@@ -84,7 +84,7 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, ',', function()
   f.x = sc.x + (sc.w * 0.7)
   f.w = sc.w * 0.3
   f.y = sc.y
-  f.h = sc.h * 0.6
+  f.h = sc.h * 0.55
   win:setframe(f)
 end)
 
@@ -96,7 +96,7 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, '.', function()
   f.x = sc.x + (sc.w * 0.7)
   f.w = sc.w * 0.3
   f.y = sc.y + (sc.h * 0.6)
-  f.h = sc.h * 0.4
+  f.h = sc.h * 0.45
   win:setframe(f)
 end)
 
