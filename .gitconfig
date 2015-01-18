@@ -1,0 +1,25 @@
+[user]
+  name = Robert Sefer
+  email = rsefer@gmail.com
+[core]
+  excludesfile = /Users/rsefer/.gitignore_global
+[difftool "sourcetree"]
+  cmd = opendiff \"$LOCAL\" \"$REMOTE\"
+  path =
+[filter "media"]
+  required = true
+  clean = git media clean %f
+  smudge = git media smudge %f
+[push]
+  default = simple
+[alias]
+  st = status
+  ci = commit
+  br = branch
+  co = checkout
+  df = diff
+  dc = diff --cached
+  lg = log -p
+  lol = log --graph --decorate --pretty=oneline --abbrev-commit
+  lola = log --graph --decorate --pretty=oneline --abbrev-commit --all
+  ls = ls-files
