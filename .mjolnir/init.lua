@@ -129,10 +129,8 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, "B", function()
   local win = window.focusedwindow()
   local sc = win:screen():frame()
   local f = win:frame()
-  f.y = sc.h / 2
-  f.h = sc.h / 2
-  print(sc.y / 2)
-  print(sc.h)
+  f.y = sc.h * 0.52
+  f.h = sc.h * 0.50
   win:setframe(f)
 end)
 
