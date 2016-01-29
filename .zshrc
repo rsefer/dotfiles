@@ -13,6 +13,9 @@ export PATH="$PATH:/Users/rsefer/.rvm/gems/ruby-2.1.5/bin:/Users/rsefer/.rvm/gem
 
 export PATH=$PATH:/usr/local/bin
 
+export GOPATH=~/go
+export PATH=$PATH:$GOPATH/bin
+
 eval "$(hub alias -s)"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
