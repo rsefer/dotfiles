@@ -54,13 +54,25 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, 'C', function()
   win:setframe(f)
 end)
 
--- Size Left 7/10
+-- Size Left 7.75/10
 hotkey.bind({'cmd', 'alt', 'ctrl'}, 'N', function()
   local win = window.focusedwindow()
   local sc = win:screen():frame()
   local f = win:frame()
   f.x = sc.x
-  f.w = sc.w * 0.7
+  f.w = sc.w * 0.775
+  f.y = sc.y
+  f.h = sc.h
+  win:setframe(f)
+end)
+
+-- Size Left 7.75/10 (offset 2.25)
+hotkey.bind({'cmd', 'alt', 'ctrl'}, 'X', function()
+  local win = window.focusedwindow()
+  local sc = win:screen():frame()
+  local f = win:frame()
+  f.x = sc.x + (sc.w * 0.225)
+  f.w = sc.w * 0.550
   f.y = sc.y
   f.h = sc.h
   win:setframe(f)
@@ -71,8 +83,8 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, 'M', function()
   local win = window.focusedwindow()
   local sc = win:screen():frame()
   local f = win:frame()
-  f.x = sc.x + (sc.w * 0.7)
-  f.w = sc.w * 0.3
+  f.x = sc.x + (sc.w * 0.775)
+  f.w = sc.w * 0.225
   f.y = sc.y
   f.h = sc.h
   win:setframe(f)
@@ -83,8 +95,8 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, ',', function()
   local win = window.focusedwindow()
   local sc = win:screen():frame()
   local f = win:frame()
-  f.x = sc.x + (sc.w * 0.7)
-  f.w = sc.w * 0.3
+  f.x = sc.x + (sc.w * 0.775)
+  f.w = sc.w * 0.225
   f.y = sc.y
   f.h = sc.h * 0.55
   win:setframe(f)
@@ -95,10 +107,32 @@ hotkey.bind({'cmd', 'alt', 'ctrl'}, '.', function()
   local win = window.focusedwindow()
   local sc = win:screen():frame()
   local f = win:frame()
-  f.x = sc.x + (sc.w * 0.7)
-  f.w = sc.w * 0.3
+  f.x = sc.x + (sc.w * 0.775)
+  f.w = sc.w * 0.225
   f.y = sc.y + (sc.h * 0.6)
-  f.h = sc.h * 0.45
+  f.h = sc.h * 0.4
+  win:setframe(f)
+end)
+
+-- Size Top Half
+hotkey.bind({'cmd', 'alt', 'ctrl'}, "T", function()
+  local win = window.focusedwindow()
+  local sc = win:screen():frame()
+  local f = win:frame()
+  f.y = 0
+  f.h = sc.h / 2
+  win:setframe(f)
+end)
+
+-- Size Bottom Half
+hotkey.bind({'cmd', 'alt', 'ctrl'}, "B", function()
+  local win = window.focusedwindow()
+  local sc = win:screen():frame()
+  local f = win:frame()
+  f.y = sc.h / 2
+  f.h = sc.h / 2
+  print(sc.y / 2)
+  print(sc.h)
   win:setframe(f)
 end)
 
