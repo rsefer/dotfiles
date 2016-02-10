@@ -10,7 +10,7 @@ function setSpotifyMenu()
   local newMenuTitle = ''
   if hs.spotify.isRunning() then
     local playStatusLabel = ''
-    if hs.spotify.getPlaybackState() == "'kPSP'" then
+    if hs.spotify.isPlaying() then
       playStatusLabel = '▶'
     else
       playStatusLabel = '❚❚'
@@ -26,16 +26,13 @@ function setSpotifyMenu()
 end
 
 function spotifyMenuTopClicked()
-  if hs.spotify.isRunning() then
-    if hs.spotify.isPlaying() then
-      hs.spotify.pause()
-    else
-      hs.spotify.play()
-    end
+  local spotifyApp = hs.application.get('Spotify')
+  if spotifyApp then
+    hs.spotify.hs.spotify.playpause()
+    setSpotifyMenu()
   else
     hs.application.open('Spotify')
   end
-  setSpotifyMenu()
 end
 
 if spotifyMenu then
