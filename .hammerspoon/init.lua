@@ -1,4 +1,47 @@
 hs.window.animationDuration = 0
+hs.window.setFrameCorrectness = true
+
+-- Spotify Menu
+
+local spotifyMenu = hs.menubar.new()
+
+function setSpotifyMenu()
+  local newMenuTitle = ''
+  if hs.spotify.isRunning() then
+    local playStatusLabel = ''
+    if hs.spotify.getPlaybackState() == "'kPSP'" then
+      playStatusLabel = '▶'
+    else
+      playStatusLabel = '❚❚'
+    end
+    local artist = hs.spotify.getCurrentArtist()
+    local album = hs.spotify.getCurrentAlbum()
+    local track = hs.spotify.getCurrentTrack()
+    newMenuTitle = string.format("%s %s - %s - %s", playStatusLabel, track, album, artist)
+  else
+    newMenuTitle = '🎶'
+  end
+  spotifyMenu:setTitle(newMenuTitle)
+end
+
+function spotifyMenuTopClicked()
+  if hs.spotify.isRunning() then
+    if hs.spotify.isPlaying() then
+      hs.spotify.pause()
+    else
+      hs.spotify.play()
+    end
+  else
+    hs.application.open('Spotify')
+  end
+  setSpotifyMenu()
+end
+
+if spotifyMenu then
+  spotifyMenu:setClickCallback(spotifyMenuTopClicked)
+  setSpotifyMenu()
+  local spotifyTimer = hs.timer.doEvery(3, setSpotifyMenu):start()
+end
 
 -- Size Left Half
 hs.hotkey.bind({'cmd', 'alt', 'ctrl'}, 'L', function()
