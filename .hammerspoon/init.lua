@@ -1,8 +1,9 @@
+-- To find Hammerspoon preferences 1) Run Hammerspoon from Spotlight or run `open -a Hammerspoon` in the Terminal 2) Press Command + Comma
+
 hs.window.animationDuration = 0
 hs.window.setFrameCorrectness = true
 
 -- Spotify Menu
-
 local spotifyMenu = hs.menubar.new()
 
 function setSpotifyMenu()
