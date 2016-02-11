@@ -26,9 +26,8 @@ function setSpotifyMenu()
 end
 
 function spotifyMenuTopClicked()
-  local spotifyApp = hs.application.get('Spotify')
-  if spotifyApp then
-    hs.spotify.hs.spotify.playpause()
+  if hs.application.get('Spotify') then
+    hs.spotify.playpause()
     setSpotifyMenu()
   else
     hs.application.open('Spotify')
