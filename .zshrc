@@ -21,3 +21,4 @@ eval "$(hub alias -s)"
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
+export PATH="/usr/local/sbin:$PATH"
