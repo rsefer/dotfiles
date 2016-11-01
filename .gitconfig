@@ -1,17 +1,17 @@
 [user]
-        name = Robert Sefer
-        email = rsefer@gmail.com
+  name = Robert Sefer
+  email = rsefer@gmail.com
 [credential]
-        helper = osxkeychain
-[filter "hawser"]
-        clean = git hawser clean %f
-        smudge = git hawser smudge %f
-        required = true
+  helper = osxkeychain
 [color]
-        ui = true
-[filter "lfs"]
-        clean = git lfs clean %f
-        smudge = git lfs smudge %f
-        required = true
+  ui = true
 [core]
-        excludesfile = /Users/rsefer/.gitignore_global
+  excludesfile = /Users/rsefer/.gitignore_global
+[filter "hawser"]
+  clean = git hawser clean %f
+  smudge = git hawser smudge %f
+  required = true
+[filter "lfs"]
+  clean = git lfs clean %f
+  smudge = git lfs smudge %f
+  required = true
