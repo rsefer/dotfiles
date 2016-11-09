@@ -20,5 +20,7 @@ eval "$(hub alias -s)"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 
+alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed" # Flush DNS on Sierra
+
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
 export PATH="/usr/local/sbin:$PATH"
