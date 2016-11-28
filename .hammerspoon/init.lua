@@ -6,15 +6,15 @@ hs.audiodevice.defaultOutputDevice()
 
 function audioSwitcherSet(default)
   local newAudioDevice = hs.audiodevice.findOutputByName("Built-in Output")
-  local menuTitle = "🖥 Computer"
+  local menuTitle = "🔈🖥"
   if newAudioDevice:jackConnected() then
-    menuTitle = "🎧 Headphones"
+    menuTitle = "🔈🎧"
   end
   local airportName = "AirPort Express"
   -- Currently the detection of the APEx. does not work on macOS 10.12 Sierra
   if default == false and hs.audiodevice.findOutputByUID(airportName) then
     newAudioDevice = hs.audiodevice.findOutputByName(airportName)
-    menuTitle = "📻 AirPort Ex."
+    menuTitle = "🔈📻"
   end
   newAudioDevice:setDefaultOutputDevice()
   audioSwitcherDisplay:setTitle(menuTitle)
