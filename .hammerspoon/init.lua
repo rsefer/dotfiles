@@ -1,5 +1,32 @@
 -- To find Hammerspoon preferences 1) Run Hammerspoon from Spotlight or run `open -a Hammerspoon` in the Terminal 2) Press Command + Comma
 
+-- Audio Switcher
+local audioSwitcherDisplay = hs.menubar.new()
+hs.audiodevice.defaultOutputDevice()
+
+function audioSwitcherSet(default)
+  local newAudioDevice = hs.audiodevice.findOutputByName("Built-in Output")
+  local menuTitle = "🖥 Computer"
+  if newAudioDevice:jackConnected() then
+    menuTitle = "🎧 Headphones"
+  end
+  local airportName = "AirPort Express"
+  -- Currently the detection of the APEx. does not work on macOS 10.12 Sierra
+  if default == false and hs.audiodevice.findOutputByUID(airportName) then
+    newAudioDevice = hs.audiodevice.findOutputByName(airportName)
+    menuTitle = "📻 AirPort Ex."
+  end
+  newAudioDevice:setDefaultOutputDevice()
+  audioSwitcherDisplay:setTitle(menuTitle)
+end
+
+if audioSwitcherDisplay then
+  audioSwitcherDisplay:setClickCallback(audioSwitcherSet)
+  audioSwitcherSet(true)
+end
+
+-- Window Management
+
 hs.window.animationDuration = 0
 hs.window.setFrameCorrectness = true
 
