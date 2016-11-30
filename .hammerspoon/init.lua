@@ -4,3 +4,4 @@
 
 dofile('windows.lua')
 dofile('audio.lua')
+dofile('spotify.lua')
