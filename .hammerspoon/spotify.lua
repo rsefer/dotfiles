@@ -48,12 +48,10 @@ hs.application.watcher.new(function(name, event, app)
     if event == hs.application.watcher.terminated then
       spotifyTimer = nil
       if spotifyControlMenu then
-        spotifyControlMenu:removeFromMenuBar()
-        spotifyControlMenu:delete()
+        spotifyControlMenu:removeFromMenuBar():delete()
       end
       if spotifyTitleMenu then
-        spotifyTitleMenu:removeFromMenuBar()
-        spotifyTitleMenu:delete()
+        spotifyTitleMenu:removeFromMenuBar():delete()
       end
     elseif event == hs.application.watcher.launched then
       loadSpotifyMenus()
