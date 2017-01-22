@@ -5,7 +5,7 @@ local spotifyTimer = nil
 
 function spotifyTimerSet()
   spotifyTimer = hs.timer.doEvery(2, function()
-    if hs.spotify.isRunning() then
+    if hs.spotify:isRunning() then
       setSpotifyMenusText()
     end
   end)
@@ -13,7 +13,7 @@ end
 
 function setSpotifyMenusText()
   if spotifyControlMenu then
-    if hs.spotify.isPlaying() then
+    if hs.spotify:isPlaying() then
       spotifyControlMenu:setTitle("❚❚")
     else
       spotifyControlMenu:setTitle("▶")
