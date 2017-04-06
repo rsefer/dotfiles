@@ -3,8 +3,6 @@
   email = rsefer@gmail.com
 [alias]
   log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cn%Creset %Cblue(%cr)%Creset' --abbrev-commit --date=relative
-[commit]
-  gpgSign = true
 [push]
   default = simple
   followTags = true
