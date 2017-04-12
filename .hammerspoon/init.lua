@@ -4,4 +4,5 @@
 
 dofile('windows.lua')
 dofile('audio.lua')
+dofile('cryptocurrencies.lua')
 --dofile('spotify.lua')
