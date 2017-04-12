@@ -1,6 +1,6 @@
 -- Cryptocurrencies
 local browserBundle = 'com.google.Chrome' -- change for Safari, Firefox, etc.
-local updateTime = 60
+local updateTime = 60 -- seconds
 
 local menuBTC = nil
 local menuETH = nil
