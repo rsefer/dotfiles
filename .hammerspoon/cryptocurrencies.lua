@@ -1,6 +1,11 @@
 -- Cryptocurrencies
-local browserBundle = 'com.google.Chrome' -- change for Safari, Firefox, etc.
-local updateTime = 60 -- seconds
+
+local browserBundle = 'com.google.Chrome'
+-- Chrome: com.google.Chrome
+-- Safari: com.apple.Safari
+-- Firefox: org.mozilla.firefox
+
+local updateTime = 5 -- seconds
 
 local menuBTC = nil
 local menuETH = nil
@@ -13,23 +18,14 @@ function cryptoTimerSet()
 end
 
 function updateCrypto(currency, menu_item)
-  hs.http.asyncGet(
-    'https://api.coinbase.com/v2/exchange-rates?currency=' .. currency,
-    {},
-    function(http_code, response)
-      if http_code == 200 then
-        for k,v in pairs(hs.json.decode(response)) do
-          if k == 'data' and v and v.rates then
-            for a,b in pairs(v.rates) do
-              if a == 'USD' then
-                menu_item:setTitle(v.currency .. ' ' .. b)
-              end
-            end
-          end
-        end
+  status, data, headers = hs.http.get('https://api.coinbase.com/v2/exchange-rates?currency=' .. currency, {})
+  if status == 200 then
+    for k,v in pairs(hs.json.decode(data)) do
+      if k == 'data' and v and v.rates and v.rates.USD then
+        menu_item:setTitle(v.currency .. ' ' .. v.rates.USD)
       end
     end
-  )
+  end
 end
 
 function updateAllCrypto()
