@@ -1,18 +1,28 @@
 -- Cryptocurrencies
 
-local browserBundle = 'com.google.Chrome'
+-- Browser
 -- Chrome: com.google.Chrome
 -- Safari: com.apple.Safari
 -- Firefox: org.mozilla.firefox
+local browserBundle = 'com.google.Chrome'
 
-local updateTime = 60 -- seconds
+-- Cryptocurrencies to display (likely in reverse order)
+-- Bitcoin: BTC
+-- Ethereum: ETH
+-- Litecoin: LTC
+local cryptocurrencies = {'BTC', 'ETH'}
+local localcurrency = 'USD'
 
+-- Update interval (in seconds)
+local updateInterval = 60 * 5
+
+local menus = {}
 local menuBTC = nil
 local menuETH = nil
 local cryptoTimer = nil
 
 function cryptoTimerSet()
-  cryptoTimer = hs.timer.doEvery(updateTime, function()
+  cryptoTimer = hs.timer.doEvery(updateInterval, function()
     updateAllCrypto()
   end)
 end
@@ -29,23 +39,25 @@ function updateCrypto(currency, menu_item)
 end
 
 function updateAllCrypto()
-  updateCrypto('BTC', menuBTC)
-  updateCrypto('ETH', menuETH)
+  for i, currency in ipairs(cryptocurrencies) do
+    updateCrypto(currency, menus[i])
+  end
 end
 
-function openBTC()
-  hs.urlevent.openURLWithBundle('https://www.gdax.com/trade/BTC-USD', browserBundle)
+function setCurrencyMenuClick(currency)
+  hs.urlevent.openURLWithBundle('https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency, browserBundle)
 end
 
-function openETH()
-  hs.urlevent.openURLWithBundle('https://www.gdax.com/trade/ETH-USD', browserBundle)
+function buildCryptoMenus()
+  for i, currency in ipairs(cryptocurrencies) do
+    menus[i] = hs.menubar.new()
+    local setMenu = function()
+      hs.urlevent.openURLWithBundle('https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency, browserBundle)
+    end
+    menus[i]:setClickCallback(setMenu)
+  end
 end
 
-function loadCryptoMenus()
-  menuBTC = hs.menubar.new():setClickCallback(openBTC)
-  menuETH = hs.menubar.new():setClickCallback(openETH)
-end
-
-loadCryptoMenus()
+buildCryptoMenus()
 cryptoTimerSet()
 updateAllCrypto()
