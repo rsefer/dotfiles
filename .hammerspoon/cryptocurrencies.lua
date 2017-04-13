@@ -1,5 +1,7 @@
 -- Cryptocurrencies
 
+--- Start Configuration ---
+
 -- Browser
 -- Chrome: com.google.Chrome
 -- Safari: com.apple.Safari
@@ -16,6 +18,14 @@ local localcurrency = 'USD'
 -- Update interval (in seconds)
 local updateInterval = 60 * 5
 
+-- Aesthetics
+local useColors = true
+local useIcons = true
+local fontSize = 14.0
+
+--- End Configuration ---
+
+local lastValues = {}
 local menus = {}
 local menuBTC = nil
 local menuETH = nil
@@ -32,7 +42,38 @@ function updateCrypto(currency, menu_item)
   if status == 200 then
     for k,v in pairs(hs.json.decode(data)) do
       if k == 'data' and v and v.rates and v.rates.USD then
-        menu_item:setTitle(v.currency .. ' ' .. v.rates.USD)
+        workingColor = {}
+        if useColors then
+          if lastValues[v.currency] and v.rates.USD > lastValues[v.currency] then
+            workingColor = {
+              green = 1
+            }
+          elseif lastValues[v.currency] and v.rates.USD < lastValues[v.currency] then
+            workingColor = {
+              red = 1
+            }
+          end
+        end
+        menuTitle = ' ' .. v.rates.USD
+        if useIcons then
+          iconPath = 'images/bitcoin.pdf'
+          if currency == 'BTC' then
+            iconPath = 'images/bitcoin.pdf'
+          elseif currency == 'ETH' then
+            iconPath = 'images/ethereum.pdf'
+          elseif currency == 'LTC' then
+            iconPath = 'images/litecoin.pdf'
+          end
+          icon = hs.image.imageFromPath(iconPath)
+          menu_item:setIcon(icon:setSize({ w = fontSize, h = fontSize }))
+        else
+          menuTitle = v.currency .. menuTitle
+        end
+        menu_item:setTitle(hs.styledtext.new(menuTitle, {
+          font = { size = fontSize },
+          color = workingColor
+        }))
+        lastValues[v.currency] = v.rates.USD
       end
     end
   end
