@@ -45,28 +45,13 @@ function updateCrypto(currency, menu_item)
         workingColor = nil
         if useColors then
           if lastValues[v.currency] and v.rates.USD > lastValues[v.currency] then
-            workingColor = {
-              green = 1
-            }
+            workingColor = { green = 1 }
           elseif lastValues[v.currency] and v.rates.USD < lastValues[v.currency] then
-            workingColor = {
-              red = 1
-            }
+            workingColor = { red = 1 }
           end
         end
         menuTitle = ' ' .. v.rates.USD
-        if useIcons then
-          iconPath = 'images/bitcoin.pdf'
-          if currency == 'BTC' then
-            iconPath = 'images/bitcoin.pdf'
-          elseif currency == 'ETH' then
-            iconPath = 'images/ethereum.pdf'
-          elseif currency == 'LTC' then
-            iconPath = 'images/litecoin.pdf'
-          end
-          icon = hs.image.imageFromPath(iconPath)
-          menu_item:setIcon(icon:setSize({ w = fontSize, h = fontSize }))
-        else
+        if useIcons == false then
           menuTitle = v.currency .. menuTitle
         end
         menu_item:setTitle(hs.styledtext.new(menuTitle, {
@@ -96,6 +81,18 @@ function buildCryptoMenus()
       hs.urlevent.openURLWithBundle('https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency, browserBundle)
     end
     menus[i]:setClickCallback(setMenu)
+    if useIcons then
+      iconPath = 'images/bitcoin.pdf'
+      if currency == 'BTC' then
+        iconPath = 'images/bitcoin.pdf'
+      elseif currency == 'ETH' then
+        iconPath = 'images/ethereum.pdf'
+      elseif currency == 'LTC' then
+        iconPath = 'images/litecoin.pdf'
+      end
+      icon = hs.image.imageFromPath(iconPath)
+      menus[i]:setIcon(icon:setSize({ w = fontSize, h = fontSize }))
+    end
   end
 end
 
