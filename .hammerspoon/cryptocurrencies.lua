@@ -75,10 +75,6 @@ function updateAllCrypto()
   end
 end
 
-function setCurrencyMenuClick(currency)
-  hs.urlevent.openURLWithBundle('https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency, browserBundle)
-end
-
 function buildCryptoMenus()
   for i, currency in ipairs(cryptocurrencies) do
     menus[i] = hs.menubar.new()
