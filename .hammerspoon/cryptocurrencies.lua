@@ -47,14 +47,15 @@ function updateCrypto(currency, menu_item)
     for k,v in pairs(hs.json.decode(data)) do
       if k == 'data' and v and v.rates and v.rates.USD then
         workingColor = nil
+        currentValue = tonumber(v.rates.USD)
         if useColors then
-          if lastValues[v.currency] and v.rates.USD > lastValues[v.currency] then
+          if lastValues[v.currency] and currentValue > lastValues[v.currency] then
             workingColor = { green = 1 }
-          elseif lastValues[v.currency] and v.rates.USD < lastValues[v.currency] then
+          elseif lastValues[v.currency] and currentValue < lastValues[v.currency] then
             workingColor = { red = 1 }
           end
         end
-        menuTitle = ' ' .. v.rates.USD
+        menuTitle = ' ' .. currentValue
         if useIcons == false then
           menuTitle = v.currency .. menuTitle
         end
@@ -62,7 +63,7 @@ function updateCrypto(currency, menu_item)
           font = { size = fontSize },
           color = workingColor
         }))
-        lastValues[v.currency] = v.rates.USD
+        lastValues[v.currency] = currentValue
       end
     end
   end
