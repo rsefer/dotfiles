@@ -7,3 +7,8 @@ dofile('audio.lua')
 dofile('weather.lua')
 dofile('cryptocurrencies.lua')
 --dofile('spotify.lua')
+
+hs.hotkey.bind({'cmd', 'alt', 'ctrl'}, '/', function()
+  hs.reload()
+end)
+hs.alert.show('Configuration reloaded.')
