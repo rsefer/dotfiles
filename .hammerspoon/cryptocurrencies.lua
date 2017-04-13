@@ -42,7 +42,7 @@ function updateCrypto(currency, menu_item)
   if status == 200 then
     for k,v in pairs(hs.json.decode(data)) do
       if k == 'data' and v and v.rates and v.rates.USD then
-        workingColor = {}
+        workingColor = nil
         if useColors then
           if lastValues[v.currency] and v.rates.USD > lastValues[v.currency] then
             workingColor = {
