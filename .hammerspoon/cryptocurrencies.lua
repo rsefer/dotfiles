@@ -21,7 +21,7 @@ local localcurrency = 'USD'
 local updateInterval = 60 * 5
 
 -- Aesthetics
-local useColors = true
+local useColors = false
 local useIcons = true
 local fontSize = 14.0
 
