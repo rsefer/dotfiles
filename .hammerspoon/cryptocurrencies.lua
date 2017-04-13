@@ -1,6 +1,8 @@
 -- Cryptocurrencies
 
+---------------------------
 --- Start Configuration ---
+---------------------------
 
 -- Browser
 -- Chrome: com.google.Chrome
@@ -23,7 +25,9 @@ local useColors = true
 local useIcons = true
 local fontSize = 14.0
 
+-------------------------
 --- End Configuration ---
+-------------------------
 
 local lastValues = {}
 local menus = {}
