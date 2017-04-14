@@ -35,7 +35,7 @@ if file_exists('darksky_api_key.lua') then
       iconLabel = '☁️'
       icon = json.currently.icon
       if icon == 'partly-cloudy-day' or icon == 'partly-cloudy-night' then
-        iconLabel = '🌥'
+        iconLabel = '⛅️'
       elseif icon == 'snow' then
         iconLabel = '❄️'
       elseif icon == 'clear-day' then
@@ -43,11 +43,11 @@ if file_exists('darksky_api_key.lua') then
       elseif icon == 'clear-night' then
         iconLabel = '🌙'
       elseif icon == 'rain' or icon == 'sleet' then
-        iconLabel = '🌧️'
+        iconLabel = '🌧'
       elseif icon == 'fog' then
-        iconLabel = '🌫️'
+        iconLabel = '🌫'
       elseif icon == 'wind' then
-        iconLabel = '🌬️'
+        iconLabel = '💨'
       end
       menuWeather:setTitle(iconLabel .. ' ' .. temperature .. '°')
     end
