@@ -25,9 +25,15 @@ local useColors = false
 local useIcons = true
 local fontSize = 14.0
 
+-- Coinbase
+local cbAPIVersion = '2017-04-08'
+local showPercentageChange = true
+
 -------------------------
 --- End Configuration ---
 -------------------------
+
+require 'functions'
 
 local lastValues = {}
 local menus = {}
@@ -55,7 +61,26 @@ function updateCrypto(currency, menu_item)
             workingColor = { red = 1 }
           end
         end
-        menuTitle = ' ' .. currentValue
+        menuTitleString = currentValue
+
+        if showPercentageChange then
+          yesterday = os.date("%Y-%m-%d", os.time() - 24 * 60 * 60)
+          cstatus, cdata, cheaders = hs.http.get('https://api.coinbase.com/v2/prices/' .. currency .. '-USD/spot?date=' .. yesterday, { ['CB-VERSION'] = cbAPIVersion })
+          if cstatus == 200 then
+            for ck,cv in pairs(hs.json.decode(cdata)) do
+              if ck == 'data' and cv and cv.amount then
+                difference = tonumber(cv.amount) / tonumber(currentValue)
+                percentage = math.floor((difference - 1) * 10000) / 100
+                if percentage >= 0 then
+                  percentage = '+' .. percentage
+                end
+                menuTitleString = menuTitleString .. ' ' .. '(' .. percentage .. '%)'
+              end
+            end
+          end
+        end
+
+        menuTitle = ' ' .. menuTitleString
         if useIcons == false then
           menuTitle = v.currency .. menuTitle
         end
