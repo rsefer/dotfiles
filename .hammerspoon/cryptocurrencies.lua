@@ -27,7 +27,7 @@ local fontSize = 14.0
 
 -- Coinbase
 local cbAPIVersion = '2017-04-08'
-local showPercentageChange = true
+local showPercentageChange = false
 
 -------------------------
 --- End Configuration ---
