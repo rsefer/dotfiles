@@ -1,4 +1,4 @@
--- Cryptocurrencies
+-- Finance
 
 ---------------------------
 --- Start Configuration ---
@@ -9,6 +9,9 @@
 -- Safari: com.apple.Safari
 -- Firefox: org.mozilla.firefox
 local browserBundle = 'com.google.Chrome'
+
+-- Equities to display (likely in reverse order)
+local equities = {'VTI'}
 
 -- Cryptocurrencies to display (likely in reverse order)
 -- Bitcoin: BTC
@@ -37,15 +40,33 @@ local showPercentageChange = false
 require 'functions'
 
 local lastValues = {}
-local menus = {}
-local menuBTC = nil
-local menuETH = nil
-local cryptoTimer = nil
+local menusEquity = {}
+local menusCrypto = {}
+local updateTimer = nil
 
-function cryptoTimerSet()
-  cryptoTimer = hs.timer.doEvery(updateInterval, function()
+function updateTimerSet()
+  updateTimer = hs.timer.doEvery(updateInterval, function()
+    updateAllEquities()
     updateAllCrypto()
   end)
+end
+
+function updateEquity(symbol, menu_item)
+  status, data, headers = hs.http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" .. symbol .. "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", {})
+  if status == 200 then
+    print('success')
+    for k, v in pairs(hs.json.decode(data)) do
+      if k == 'query' and v and v.results and v.results.quote then
+        menuTitleString = v.results.quote.ChangeinPercent
+        break
+      end
+    end
+    menuTitle = symbol .. ' ' .. menuTitleString
+    menu_item:setTitle(hs.styledtext.new(menuTitle, {
+      font = { size = fontSize },
+      color = workingColor
+    }))
+  end
 end
 
 function updateCrypto(currency, menu_item)
@@ -111,31 +132,49 @@ function updateCrypto(currency, menu_item)
             color = workingColor
           }))
           lastValues[v.currency] = currentValue
+          break
         end
       end
     end
   end
 end
 
+function updateAllEquities()
+  for i, symbol in ipairs(equities) do
+    updateEquity(symbol, menusEquity[i])
+  end
+end
+
 function updateAllCrypto()
   for i, currency in ipairs(cryptocurrencies) do
-    updateCrypto(currency, menus[i])
+    updateCrypto(currency, menusCrypto[i])
+  end
+end
+
+function buildEquityMenus()
+  for i, symbol in ipairs(equities) do
+    menusEquity[i] = hs.menubar.new()
+    local setMenu = function()
+      urlString = 'https://invest.ameritrade.com/grid/p/site#r=jPage/https://research.ameritrade.com/grid/wwws/research/stocks/summary?symbol=' .. symbol
+      hs.urlevent.openURLWithBundle(urlString, browserBundle)
+    end
+    menusEquity[i]:setClickCallback(setMenu)
   end
 end
 
 function buildCryptoMenus()
   for i, currency in ipairs(cryptocurrencies) do
-    menus[i] = hs.menubar.new()
+    menusCrypto[i] = hs.menubar.new()
     local setMenu = function()
       urlString = ''
       if currency == 'GNT' then
         urlString = 'https://coinmarketcap.com/assets/golem-network-tokens/'
       else
-      urlString = 'https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency
+        urlString = 'https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency
       end
       hs.urlevent.openURLWithBundle(urlString, browserBundle)
     end
-    menus[i]:setClickCallback(setMenu)
+    menusCrypto[i]:setClickCallback(setMenu)
     if useIcons then
       iconPath = 'images/bitcoin.pdf'
       if currency == 'BTC' then
@@ -148,11 +187,13 @@ function buildCryptoMenus()
         iconPath = 'images/litecoin.pdf'
       end
       icon = hs.image.imageFromPath(iconPath)
-      menus[i]:setIcon(icon:setSize({ w = fontSize, h = fontSize }))
+      menusCrypto[i]:setIcon(icon:setSize({ w = fontSize, h = fontSize }))
     end
   end
 end
 
+buildEquityMenus()
 buildCryptoMenus()
-cryptoTimerSet()
+updateTimerSet()
+updateAllEquities()
 updateAllCrypto()
