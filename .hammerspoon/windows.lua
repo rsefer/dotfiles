@@ -6,16 +6,7 @@ hs.grid.MARGINY = 0
 hs.grid.GRIDWIDTH = 100
 hs.grid.GRIDHEIGHT = 100
 
-local gridset = function(x, y, w, h)
-  return function()
-    local win = hs.window.focusedWindow()
-    hs.grid.set(
-      win,
-      { x = x, y = y, w = w, h = h },
-      win:screen()
-    )
-  end
-end
+require 'common'
 
 local windowGridKeyCombo = {'cmd', 'alt', 'ctrl'}
 
@@ -38,42 +29,10 @@ hs.hotkey.bind(windowGridKeyCombo, ',', gridset(75, 0, 25, 55))
 -- Size Right 1/4th Bottom 1/2-ish
 hs.hotkey.bind(windowGridKeyCombo, '.', gridset(75, 60, 25, 40))
 -- Size Half Height, Top Edge
-hs.hotkey.bind(windowGridKeyCombo, 'T', function()
-  local win = hs.window.focusedWindow()
-  local currentRect = hs.grid.get(win)
-  hs.grid.set(
-    win,
-    { x = currentRect.x, y = 0, w = currentRect.w, h = 50 },
-    win:screen()
-  )
-end)
+hs.hotkey.bind(windowGridKeyCombo, 'T', gridset('current', 0, 'current', 50))
 -- Size Half Height, Bottom Edge
-hs.hotkey.bind(windowGridKeyCombo, 'B', function()
-  local win = hs.window.focusedWindow()
-  local currentRect = hs.grid.get(win)
-  hs.grid.set(
-    win,
-    { x = currentRect.x, y = 50, w = currentRect.w, h = 50 },
-    win:screen()
-  )
-end)
+hs.hotkey.bind(windowGridKeyCombo, 'B', gridset('current', 50, 'current', 50))
 -- Move to Left Edge
-hs.hotkey.bind(windowGridKeyCombo, ';', function()
-  local win = hs.window.focusedWindow()
-  local currentRect = hs.grid.get(win)
-  hs.grid.set(
-    win,
-    { x = 0, y = currentRect.y, w = currentRect.w, h = currentRect.h },
-    win:screen()
-  )
-end)
+hs.hotkey.bind(windowGridKeyCombo, ';', gridset(0, 'current', 'current', 'current'))
 -- Move to Right Edge
-hs.hotkey.bind(windowGridKeyCombo, "'", function()
-  local win = hs.window.focusedWindow()
-  local currentRect = hs.grid.get(win)
-  hs.grid.set(
-    win,
-    { x = (100 - currentRect.w), y = currentRect.y, w = currentRect.w, h = currentRect.h },
-    win:screen()
-  )
-end)
+hs.hotkey.bind(windowGridKeyCombo, "'", gridset('opp', 'current', 'current', 'current'))

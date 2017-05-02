@@ -37,7 +37,7 @@ local showPercentageChange = false
 --- End Configuration ---
 -------------------------
 
-require 'functions'
+require 'common'
 
 local lastValues = {}
 local menusEquity = {}
@@ -54,7 +54,6 @@ end
 function updateEquity(symbol, menu_item)
   status, data, headers = hs.http.get("https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20yahoo.finance.quotes%20where%20symbol%20in%20(%22" .. symbol .. "%22)&format=json&env=store%3A%2F%2Fdatatables.org%2Falltableswithkeys", {})
   if status == 200 then
-    print('success')
     for k, v in pairs(hs.json.decode(data)) do
       if k == 'query' and v and v.results and v.results.quote then
         menuTitleString = v.results.quote.ChangeinPercent

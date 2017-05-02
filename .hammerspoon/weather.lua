@@ -1,6 +1,6 @@
 -- Weather
 
-require 'functions'
+require 'common'
 
 if file_exists('darksky_api_key.lua') then
 
