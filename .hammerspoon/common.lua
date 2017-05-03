@@ -10,8 +10,9 @@ end
 
 function gridset(x, y, w, h)
   return function()
+    local currentwin = hs.window.focusedWindow()
+    local currentRect = hs.grid.get(currentwin)
     local win = hs.window.focusedWindow()
-    local currentRect = hs.grid.get(win)
     if x == 'current' then
       x = currentRect.x
     elseif x == 'opp' then
