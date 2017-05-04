@@ -61,7 +61,7 @@ function updateEquity(symbol, menu_item)
         break
       end
     end
-    if menuTitleString == '' or string.len(menuTitleString) == 0 then
+    if menuTitleString == '' or menuTitleString == nil then
       menuTitleString = '?'
     end
     menuTitle = symbol .. ' ' .. menuTitleString
