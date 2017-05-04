@@ -60,6 +60,9 @@ function updateEquity(symbol, menu_item)
         break
       end
     end
+    if string.len(menuTitleString) == 0 then
+      menuTitleString = '?'
+    end
     menuTitle = symbol .. ' ' .. menuTitleString
     menu_item:setTitle(hs.styledtext.new(menuTitle, {
       font = { size = fontSize },
