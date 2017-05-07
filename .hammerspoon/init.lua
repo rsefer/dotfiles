@@ -5,7 +5,7 @@
 dofile('windows.lua')
 dofile('audio.lua')
 dofile('weather.lua')
-dofile('finance.lua')
+--dofile('finance.lua')
 --dofile('spotify.lua')
 
 hs.hotkey.bind({'cmd', 'alt', 'ctrl'}, '/', function()
