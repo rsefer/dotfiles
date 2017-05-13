@@ -28,10 +28,7 @@ local updateInterval = 60 * 5
 local useColors = false
 local useIcons = true
 local fontSize = 14.0
-
--- Coinbase
-local cbAPIVersion = '2017-04-08'
-local showPercentageChange = false
+local user_agent = 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_5) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3095.5 Safari/537.36'
 
 -------------------------
 --- End Configuration ---
@@ -94,50 +91,29 @@ function updateCrypto(currency, menu_item)
       lastValues[currency] = currentValue
     end
   else
-    status, data, headers = hs.http.get('https://api.coinbase.com/v2/exchange-rates?currency=' .. currency, {})
+    status, data, headers = hs.http.get('https://api.gdax.com/products/' .. currency .. '-USD/stats', { ['User-Agent'] = user_agent })
     if status == 200 then
-      for k,v in pairs(hs.json.decode(data)) do
-        if k == 'data' and v and v.rates and v.rates.USD then
-          workingColor = nil
-          currentValue = tonumber(v.rates.USD)
-          if useColors then
-            if lastValues[v.currency] and currentValue > lastValues[v.currency] then
-              workingColor = { green = 1 }
-            elseif lastValues[v.currency] and currentValue < lastValues[v.currency] then
-              workingColor = { red = 1 }
-            end
-          end
-          menuTitleString = currentValue
-
-          if showPercentageChange then
-            yesterday = os.date("%Y-%m-%d", os.time() - 24 * 60 * 60)
-            cstatus, cdata, cheaders = hs.http.get('https://api.coinbase.com/v2/prices/' .. currency .. '-USD/spot?date=' .. yesterday, { ['CB-VERSION'] = cbAPIVersion })
-            if cstatus == 200 then
-              for ck,cv in pairs(hs.json.decode(cdata)) do
-                if ck == 'data' and cv and cv.amount then
-                  difference = tonumber(cv.amount) / tonumber(currentValue)
-                  percentage = math.floor((difference - 1) * 10000) / 100
-                  if percentage >= 0 then
-                    percentage = '+' .. percentage
-                  end
-                  menuTitleString = menuTitleString .. ' ' .. '(' .. percentage .. '%)'
-                end
-              end
-            end
-          end
-
-          menuTitle = ' ' .. menuTitleString
-          if useIcons == false then
-            menuTitle = v.currency .. menuTitle
-          end
-          menu_item:setTitle(hs.styledtext.new(menuTitle, {
-            font = { size = fontSize },
-            color = workingColor
-          }))
-          lastValues[v.currency] = currentValue
-          break
+      json = hs.json.decode(data)
+      workingColor = nil
+      currentValue = tonumber(json['last'])
+      if useColors then
+        if lastValues[currency] and currentValue > lastValues[currency] then
+          workingColor = { green = 1 }
+        elseif lastValues[currency] and currentValue < lastValues[currency] then
+          workingColor = { red = 1 }
         end
       end
+      menuTitleString = currentValue
+
+      menuTitle = ' ' .. menuTitleString
+      if useIcons == false then
+        menuTitle = currency .. menuTitle
+      end
+      menu_item:setTitle(hs.styledtext.new(menuTitle, {
+        font = { size = fontSize },
+        color = workingColor
+      }))
+      lastValues[currency] = currentValue
     end
   end
 end
