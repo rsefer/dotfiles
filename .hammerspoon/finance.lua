@@ -11,7 +11,7 @@
 local browserBundle = 'com.google.Chrome'
 
 -- Equities to display (likely in reverse order)
-local equities = {'VTI'}
+local equities = {}--{'VTI'}
 
 -- Cryptocurrencies to display (likely in reverse order)
 -- Bitcoin: BTC
