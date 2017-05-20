@@ -12,6 +12,7 @@ source $ZSH/oh-my-zsh.sh
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed" # Flush DNS on Sierra
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\"" # IDK symbol
 alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
+alias pwdcp="pwd|pbcopy"
 
 export PATH="$PATH:/Users/rsefer/.rvm/gems/ruby-2.1.5/bin:/Users/rsefer/.rvm/gems/ruby-2.0.0-p353/bin:/Users/rsefer/.rvm/gems/ruby-2.0.0-p353@global/bin:/Users/rsefer/.rvm/rubies/ruby-2.0.0-p353/bin:/Users/rsefer/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/sm/bin:/opt/sm/pkg/active/bin:/opt/sm/pkg/active/sbin"
 
