@@ -3,6 +3,7 @@
 -- 2) Press Command + Comma
 
 dofile('windows.lua')
+dofile('workspace.lua')
 dofile('audio.lua')
 dofile('weather.lua')
 dofile('finance.lua')
