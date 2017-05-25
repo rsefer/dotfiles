@@ -4,12 +4,6 @@
 --- Start Configuration ---
 ---------------------------
 
--- Browser
--- Chrome: com.google.Chrome
--- Safari: com.apple.Safari
--- Firefox: org.mozilla.firefox
-local browserBundle = 'com.google.Chrome'
-
 -- Equities to display (likely in reverse order)
 local equities = {}--{'VTI'}
 
@@ -135,7 +129,7 @@ function buildEquityMenus()
     menusEquity[i] = hs.menubar.new()
     local setMenu = function()
       urlString = 'https://invest.ameritrade.com/grid/p/site#r=jPage/https://research.ameritrade.com/grid/wwws/research/stocks/summary?symbol=' .. symbol
-      hs.urlevent.openURLWithBundle(urlString, browserBundle)
+      hs.urlevent.openURLWithBundle(urlString, hs.urlevent.getDefaultHandler('http'))
     end
     menusEquity[i]:setClickCallback(setMenu)
   end
@@ -151,7 +145,7 @@ function buildCryptoMenus()
       else
         urlString = 'https://www.gdax.com/trade/' .. currency .. '-' .. localcurrency
       end
-      hs.urlevent.openURLWithBundle(urlString, browserBundle)
+      hs.urlevent.openURLWithBundle(urlString, hs.urlevent.getDefaultHandler('http'))
     end
     menusCrypto[i]:setClickCallback(setMenu)
     if useIcons then

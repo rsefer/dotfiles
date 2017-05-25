@@ -46,7 +46,7 @@ if file_exists('darksky_api_key.lua') then
   end
 
   local setMenu = function()
-    hs.urlevent.openURLWithBundle('https://darksky.net/forecast/' .. latitude .. ',' .. longitude .. '/us12/en', 'com.google.Chrome')
+    hs.urlevent.openURLWithBundle('https://darksky.net/forecast/' .. latitude .. ',' .. longitude .. '/us12/en', hs.urlevent.getDefaultHandler('http'))
   end
 
   menuWeather:setClickCallback(setMenu)
