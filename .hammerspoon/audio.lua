@@ -1,24 +1,30 @@
 -- Audio Switcher
 local audioSwitcherDisplay = hs.menubar.new()
+local activeAudioSlug = 'built-in'
 hs.audiodevice.defaultOutputDevice()
 
-function audioSwitcherSet(default)
-  local newAudioDevice = hs.audiodevice.findOutputByName("Built-in Output")
-  local menuTitle = "🔈🖥"
-  if newAudioDevice:jackConnected() then
-    menuTitle = "🔈🎧"
+function audioSwitcherSet()
+
+  if (hs.audiodevice.findOutputByName('USB Audio Device')) then
+    if activeAudioSlug == 'headphones' then
+      activeAudioSlug = 'built-in'
+      activeAudioName = 'Built-in Output'
+      menuTitle = '🖥'
+    else
+      activeAudioSlug = 'headphones'
+      activeAudioName = 'USB Audio Device'
+      menuTitle = '🎧'
+    end
+  else
+    activeAudioSlug = 'built-in'
+    activeAudioName = 'Built-in Output'
+    menuTitle = '🖥'
   end
-  local airportName = "AirPort Express"
-  -- Currently the detection of the APEx. does not work on macOS 10.12 Sierra
-  if default == false and hs.audiodevice.findOutputByUID(airportName) then
-    newAudioDevice = hs.audiodevice.findOutputByName(airportName)
-    menuTitle = "🔈📻"
-  end
-  newAudioDevice:setDefaultOutputDevice()
-  audioSwitcherDisplay:setTitle(menuTitle)
+  hs.audiodevice.findOutputByName(activeAudioName):setDefaultOutputDevice()
+  audioSwitcherDisplay:setTitle('🔈' .. menuTitle)
 end
 
 if audioSwitcherDisplay then
   audioSwitcherDisplay:setClickCallback(audioSwitcherSet)
-  audioSwitcherSet(true)
+  audioSwitcherSet()
 end
