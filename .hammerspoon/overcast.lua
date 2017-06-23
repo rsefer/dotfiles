@@ -21,9 +21,6 @@ overcastMenu:setClickCallback(toggleWebview)
 overcastMenu:setIcon(iconBlack, true)
 local overcastMenuFrame = overcastMenu:frame()
 
-local screen = hs.window.focusedWindow():screen()
-local max = screen:frame()
-local margin = 100
 local viewWidth = 350
 local viewHeight = 400
 local rect = hs.geometry.rect((overcastMenuFrame.x + overcastMenuFrame.w / 2) - (viewWidth / 2), overcastMenuFrame.y, viewWidth, viewHeight)
