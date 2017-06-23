@@ -18,7 +18,7 @@ end
 
 local overcastMenu = hs.menubar.new()
 overcastMenu:setClickCallback(toggleWebview)
-overcastMenu:setIcon(iconBlack, false)
+overcastMenu:setIcon(iconBlack, true)
 local overcastMenuFrame = overcastMenu:frame()
 
 local screen = hs.window.focusedWindow():screen()
@@ -29,12 +29,12 @@ local viewHeight = 400
 local rect = hs.geometry.rect((overcastMenuFrame.x + overcastMenuFrame.w / 2) - (viewWidth / 2), overcastMenuFrame.y, viewWidth, viewHeight)
 local name = 'id' .. hs.host.uuid():gsub('-', '')
 local js = hs.webview.usercontent.new(name)
-localjsScript = "$('.navlink:eq(1), .fullart_container, #speedcontrols').css('display', 'none'); $('h2.ocseparatorbar:first()').css('margin-top', '0px');" .. "setInterval(function() { webkit.messageHandlers." .. name .. ".postMessage({ isPlaying: !$('audio').prop('paused') }); }, 3000);"
+localjsScript = "$('.navlink:eq(1), .fullart_container, #speedcontrols').css('display', 'none'); $('h2.ocseparatorbar:first()').css('margin-top', '0px');" .. "setInterval(function() { var isAudioPlaying = false; if ($('#audioplayer').length != 0 && !$('#audioplayer').prop('paused')) { isAudioPlaying = true; } webkit.messageHandlers." .. name .. ".postMessage({ isPlaying: isAudioPlaying }); }, 3000);"
 js:injectScript({ source = localjsScript, mainFrame = true, injectionTime = 'documentEnd' }):setCallback(function(message)
   if message.body.isPlaying then
     overcastMenu:setIcon(iconOrange, false)
   else
-    overcastMenu:setIcon(iconBlack, false)
+    overcastMenu:setIcon(iconBlack, true)
   end
 end)
 
