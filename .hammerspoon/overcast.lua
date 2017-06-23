@@ -23,10 +23,10 @@ local screen = hs.window.focusedWindow():screen()
 local max = screen:frame()
 local margin = 100
 local viewWidth = 350
-local viewHeight = 500
+local viewHeight = 400
 local rect = hs.geometry.rect((overcastMenuFrame.x + overcastMenuFrame.w / 2) - (viewWidth / 2), overcastMenuFrame.y, viewWidth, viewHeight)
 local js = hs.webview.usercontent.new(hs.host.uuid())
-localjsScript = "$('.navlink:eq(1)').remove(); $('h2.ocseparatorbar:first()').css('margin-top', '0px');"
+localjsScript = "$('.navlink:eq(1), .fullart_container, #speedcontrols').css('display', 'none'); $('h2.ocseparatorbar:first()').css('margin-top', '0px');"
 js:injectScript({ source = localjsScript, mainFrame = true, injectionTime = 'documentEnd' })
 
 overcastWebview = hs.webview.new(rect, { developerExtrasEnabled = true }, js)
