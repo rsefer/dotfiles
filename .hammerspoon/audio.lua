@@ -1,6 +1,6 @@
 -- Audio Switcher
 local audioSwitcherDisplay = hs.menubar.new()
-local activeAudioSlug = 'built-in'
+local activeAudioSlug = 'headphones'
 hs.audiodevice.defaultOutputDevice()
 
 function audioSwitcherSet()
