@@ -22,9 +22,15 @@ function audioSwitcherSet()
   end
   hs.audiodevice.findOutputByName(activeAudioName):setDefaultOutputDevice()
   audioSwitcherDisplay:setTitle('🔈' .. menuTitle)
+  hs.alert.closeAll()
+  hs.alert.show(menuTitle .. ' ' .. activeAudioName)
 end
 
 if audioSwitcherDisplay then
   audioSwitcherDisplay:setClickCallback(audioSwitcherSet)
   audioSwitcherSet()
 end
+
+hs.hotkey.bind({'cmd', 'alt', 'ctrl'}, 'A', function()
+  audioSwitcherSet()
+end)
