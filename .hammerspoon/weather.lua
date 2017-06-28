@@ -60,8 +60,14 @@ if file_exists('darksky_api_key.lua') then
         }
       }
       for i = 1, 8 do
+        hour = json.hourly.data[i]
+        hourNumber = tonumber(os.date("%I", hour.time))
+        hourLabel = hourNumber .. '' .. os.date("%p", hour.time):lower()
+        if hourNumber < 10 then
+          hourLabel = hourLabel .. ' '
+        end
         table.insert(menuTable, {
-          title = os.date("%I%p", json.hourly.data[i].time):lower() .. "\t" .. getWeatherIcon(json.hourly.data[i].icon) .. "\t" .. math.floor(json.hourly.data[i].apparentTemperature) .. '°',
+          title = hourLabel .. "\t" .. getWeatherIcon(hour.icon) .. "\t" .. math.floor(hour.apparentTemperature) .. '°',
           fn = function() openDarkSky() end
         })
       end
