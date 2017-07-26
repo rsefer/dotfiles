@@ -9,6 +9,12 @@ if file_exists('darksky_api_key.lua') then
   local longitude = '-87.6283080'
   local updateInterval = 60 * 15
 
+  if hs.location.get() ~= nil then
+    loc = hs.location.get()
+    latitude = loc.latitude
+    longitude = loc.longitude
+  end
+
   local menuWeather = hs.menubar.new()
 
   local weatherTimer = nil
