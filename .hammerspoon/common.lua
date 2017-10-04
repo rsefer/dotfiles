@@ -8,28 +8,36 @@ function file_exists(name)
   end
 end
 
-function gridset(x, y, w, h)
+function gridset(x1, y1, w1, h1)
   return function()
     local currentwin = hs.window.focusedWindow()
     local currentRect = hs.grid.get(currentwin)
     local win = hs.window.focusedWindow()
-    if x == 'current' then
-      x = currentRect.x
-    elseif x == 'opp' then
-      x = 100 - currentRect.w
+    if x1 == 'current' then
+      x2 = currentRect.x
+    elseif x1 == 'opp' then
+      x2 = 100 - currentRect.w
+    else
+      x2 = x1
     end
-    if y == 'current' then
-      y = currentRect.y
+    if y1 == 'current' then
+      y2 = currentRect.y
+    else
+      y2 = y1
     end
-    if w == 'current' then
-      w = currentRect.w
+    if w1 == 'current' then
+      w2 = currentRect.w
+    else
+      w2 = w1
     end
-    if h == 'current' then
-      h = currentRect.h
+    if h1 == 'current' then
+      h2 = currentRect.h
+    else
+      h2 = h1
     end
     hs.grid.set(
       win,
-      { x = x, y = y, w = w, h = h },
+      { x = x2, y = y2, w = w2, h = h2 },
       win:screen()
     )
   end
