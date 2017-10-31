@@ -26,7 +26,7 @@ if file_exists('darksky_api_key.lua') then
   end
 
   function openDarkSky()
-    hs.urlevent.openURLWithBundle('https://darksky.net/forecast/' .. latitude .. ',' .. longitude .. '/us12/en', hs.urlevent.getDefaultHandler('http'))
+    hs.urlevent.openURL('https://darksky.net/forecast/' .. latitude .. ',' .. longitude .. '/us12/en')
   end
 
   function getWeatherIcon(icon)
