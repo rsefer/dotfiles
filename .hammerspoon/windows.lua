@@ -19,11 +19,11 @@ hs.hotkey.bind(windowGridKeyCombo, 'F', gridset(0, 0, 100, 100))
 -- Size Centered
 hs.hotkey.bind(windowGridKeyCombo, 'C', gridset(12.5, 12.5, 75, 75))
 -- Size Left 3/4ths
-hs.hotkey.bind(windowGridKeyCombo, 'N', gridset(0, 0, 75, 100))
+hs.hotkey.bind(windowGridKeyCombo, 'N', gridset(0, 0, 75, 100, 'three-quarters'))
 -- Size 3/4ths Centered
 hs.hotkey.bind(windowGridKeyCombo, 'X', gridset(12.5, 0, 75, 100))
 -- Size Right 1/4th
-hs.hotkey.bind(windowGridKeyCombo, 'M', gridset(75, 0, 25, 100))
+hs.hotkey.bind(windowGridKeyCombo, 'M', gridset(75, 0, 25, 100, 'one-quarter'))
 -- Size Right 1/4th Top 1/2-ish
 hs.hotkey.bind(windowGridKeyCombo, ',', gridset(75, 0, 25, 55))
 -- Size Right 1/4th Bottom 1/2-ish

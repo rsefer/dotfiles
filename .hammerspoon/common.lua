@@ -8,11 +8,19 @@ function file_exists(name)
   end
 end
 
-function gridset(x1, y1, w1, h1)
+function gridset(x1, y1, w1, h1, nickname)
   return function()
     local currentwin = hs.window.focusedWindow()
     local currentRect = hs.grid.get(currentwin)
     local win = hs.window.focusedWindow()
+    local monitorName = win:screen():name()
+    if nickname ~= nil and monitorName == 'DELL P2415Q' then
+      if nickname == 'three-quarters' then
+        x1 = 25
+      elseif nickname == 'one-quarter' then
+        x1 = 0
+      end
+    end
     if x1 == 'current' then
       x2 = currentRect.x
     elseif x1 == 'opp' then
