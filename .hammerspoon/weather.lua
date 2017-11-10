@@ -53,7 +53,7 @@ if file_exists('darksky_api_key.lua') then
     status, data, headers = hs.http.get('https://api.darksky.net/forecast/' .. apiKey .. '/' .. latitude .. ',' .. longitude, {})
     if status == 200 then
       json = hs.json.decode(data)
-      temperature = math.floor(json.currently.apparentTemperature)
+      temperature = math.floor(json.currently.temperature)
       icon = json.currently.icon
       menuIconLabel = getWeatherIcon(icon)
       menuTable = {
