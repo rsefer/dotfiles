@@ -73,7 +73,7 @@ if file_exists('darksky_api_key.lua') then
           hourLabel = hourLabel .. ' '
         end
         table.insert(menuTable, {
-          title = hourLabel .. "\t" .. getWeatherIcon(hour.icon) .. "\t" .. math.floor(hour.apparentTemperature) .. '°',
+          title = hourLabel .. "\t" .. getWeatherIcon(hour.icon) .. "\t" .. math.floor(hour.temperature) .. '°',
           fn = function() openDarkSky() end
         })
       end

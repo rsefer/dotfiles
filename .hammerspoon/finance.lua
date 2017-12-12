@@ -12,7 +12,7 @@ local equities = {}--{'VTI'}
 -- Ethereum: ETH
 -- Litecoin: LTC
 -- Golem: GNT
-local cryptocurrencies = {'GNT', 'ETH'}
+local cryptocurrencies = {'BTC', 'ETH'}
 local localcurrency = 'USD'
 
 -- Update interval (in seconds)
