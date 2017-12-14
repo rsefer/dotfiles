@@ -2,6 +2,7 @@
 -- 1) Run Hammerspoon from Spotlight or run `open -a Hammerspoon` in the Terminal
 -- 2) Press Command + Comma
 
+dofile('config.lua') -- keys
 dofile('windows.lua')
 --dofile('workspace.lua')
 dofile('audio.lua')

@@ -2,9 +2,9 @@
 
 require 'common'
 
-if file_exists('darksky_api_key.lua') then
+if keys.darksky_api_key then
 
-  local apiKey = require 'darksky_api_key'
+  local apiKey = keys.darksky_api_key
   local latitude = '41.9045500'
   local longitude = '-87.6283080'
   local updateInterval = 60 * 15
