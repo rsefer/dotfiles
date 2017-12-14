@@ -97,7 +97,7 @@ function updateCrypto(currency, menu_item)
           workingColor = { red = 1 }
         end
       end
-      menuTitleString = currentValue
+      menuTitleString = numWithCommas(currentValue)
 
       menuTitle = ' ' .. menuTitleString
       if useIcons == false then

@@ -50,3 +50,8 @@ function gridset(x1, y1, w1, h1, nickname)
     )
   end
 end
+
+-- https://stackoverflow.com/a/10992898
+function numWithCommas(n)
+  return tostring(math.floor(n)):reverse():gsub('(%d%d%d)','%1,'):gsub(',(%-?)$','%1'):reverse()
+end
