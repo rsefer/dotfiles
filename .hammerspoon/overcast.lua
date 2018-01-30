@@ -1,5 +1,6 @@
 -- Overcast
 local overcastWebview = nil
+local overcastWebviewHome = 'https://overcast.fm/podcasts'
 local isShown = false
 local iconSize = 14.0
 local updateStatusTimer = nil
@@ -34,10 +35,19 @@ js:injectScript({ source = localjsScript, mainFrame = true, injectionTime = 'doc
   end
 end)
 
-overcastWebview = hs.webview.new(rect, { developerExtrasEnabled = true }, js)
-  :url('https://overcast.fm/podcasts')
+overcastToolbar = hs.webview.toolbar.new("myConsole", {
+  { id = "resetBrowser", label = 'Home', fn = function(t, w, i)
+    overcastWebview:url(overcastWebviewHome)
+  end }
+})
+  :sizeMode('small')
+  :displayMode('label')
+
+overcastWebview = hs.webview.newBrowser(rect, { developerExtrasEnabled = true }, js)
+  :url(overcastWebviewHome)
   :allowTextEntry(true)
   :shadow(true)
+  :attachedToolbar(overcastToolbar)
 
 if overcastMenu then
   overcastMenu:setClickCallback(toggleWebview)
