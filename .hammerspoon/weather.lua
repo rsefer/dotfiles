@@ -5,8 +5,8 @@ require 'common'
 if keys.darksky_api_key then
 
   local apiKey = keys.darksky_api_key
-  local latitude = '41.9045500'
-  local longitude = '-87.6283080'
+  local latitude = keys.latitude
+  local longitude = keys.longitude
   local updateInterval = 60 * 15
 
   if hs.location.get() ~= nil then
