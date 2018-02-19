@@ -120,7 +120,13 @@ install_utils () {
   declare -a repos=(
     "git@gitlab.com:rsefer/server-scripts.git"
   )
-  cd "$HOME" && mkdir utils && cd utils
+  cd "$HOME"
+  UTILS_DIR="utils"
+
+	if [ ! -d "$UTILS_DIR" ]; then
+		mkdir "$UTILS_DIR"
+	fi
+  cd "$UTILS_DIR"
   for repo in "${repos[@]}"
   do
     git clone "$repo"
