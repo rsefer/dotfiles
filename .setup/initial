@@ -116,6 +116,19 @@ install_dotfiles () {
 
 install_dotfiles
 
+install_utils () {
+  declare -a repos=(
+    "git@gitlab.com:rsefer/server-scripts.git"
+  )
+  cd "$HOME" && mkdir utils && cd utils
+  for repo in "${repos[@]}"
+  do
+    git clone "$repo"
+  done
+}
+
+install_utils
+
 # Homebrew
 if test ! $(which brew)
 then
@@ -125,7 +138,7 @@ fi
 
 if test $(which brew)
 then
-	cd .setup
+	cd "$DOTFILES_ROOT/.setup"
 	echo "Installing brew bundle from Brewfile..."
 	brew bundle
 fi
