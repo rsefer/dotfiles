@@ -7,7 +7,13 @@ DOTFILES_ROOT=$(pwd -P)
 
 set -e
 
-echo ''
+plus () {
+  printf "\r  [ \033[0;33m++\033[0m ] $1\n"
+}
+
+minus () {
+  printf "\r  [ \033[0;31m--\033[0m ] $1\n"
+}
 
 info () {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
@@ -18,11 +24,11 @@ user () {
 }
 
 success () {
-  printf "\r\033[2K  [ \033[00;32mOK\033[0m ] $1\n"
+  printf "\r  [ \033[0;32mOK\033[0m ] $1\n"
 }
 
 fail () {
-  printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
+  printf "\r  [ \033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
 }
@@ -114,9 +120,9 @@ install_dotfiles () {
   done
 }
 
-install_dotfiles
-
 install_utils () {
+  info 'installing utility repos'
+
   declare -a repos=(
     "git@gitlab.com:rsefer/server-scripts.git"
   )
@@ -129,30 +135,50 @@ install_utils () {
   cd "$UTILS_DIR"
   for repo in "${repos[@]}"
   do
-    git clone "$repo"
+    basename=$(basename "$repo")
+    filename=${basename%.*}
+    if [ ! -d "$filename" ]; then
+  		git clone "$repo"
+      success "cloned util $repo"
+    else
+      success "skipped cloning $repo"
+  	fi
   done
 }
 
+install_homebrew () {
+  if test ! $(which brew)
+  then
+    info 'installing Homebrew'
+    ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
+  fi
+
+  if test $(which brew)
+  then
+    info 'installing brew bundle from Brewfile'
+  	cd "$DOTFILES_ROOT/.setup"
+  	brew bundle
+  fi
+}
+
+install_omzsh () {
+  info 'installing Oh My ZSH'
+  chsh -s $(which zsh)
+  sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
+}
+
+echo ''
+plus 'Initial Setup'
+echo ''
+install_dotfiles
+echo ''
 install_utils
-
-# Homebrew
-if test ! $(which brew)
-then
-  echo "Installing Homebrew..."
-  ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
-fi
-
-if test $(which brew)
-then
-	cd "$DOTFILES_ROOT/.setup"
-	echo "Installing brew bundle from Brewfile..."
-	brew bundle
-fi
-
-chsh -s $(which zsh)
-
-# Install Oh My ZSH
-sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
-
+echo ''
+install_homebrew
+echo ''
+install_omzsh
+echo ''
+minus 'Setup Finished'
+echo ''
 
 exit 0
