@@ -1,0 +1,7 @@
+'.source.js':
+  'jQuery document ready':
+    'prefix': 'jdr'
+    'body': 'jQuery(document).ready(function($) {\n\t$1\n});'
+  'function':
+    'prefix': 'func'
+    'body': 'function ${1:functionName}($2) {\n\t$3\n}'
