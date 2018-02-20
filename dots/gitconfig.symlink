@@ -7,13 +7,13 @@
   default = simple
   followTags = true
 [status]
-  showUntrackedFules = all
+  showUntrackedFiles = all
 [credential]
   helper = osxkeychain
 [color]
   ui = true
 [core]
-  excludesfile = /Users/rsefer/.gitignore_global
+  excludesfile = ~/.gitignore_global
 [filter "hawser"]
   clean = git hawser clean %f
   smudge = git hawser smudge %f
