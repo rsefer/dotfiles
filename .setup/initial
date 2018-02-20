@@ -152,33 +152,68 @@ install_homebrew () {
     info 'installing Homebrew'
     ruby -e "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install)"
   fi
+}
 
+install_brews_casks () {
   if test $(which brew)
   then
-    info 'installing brew bundle from Brewfile'
+    info 'installing Homebrew brews and casks from Brewfile'
   	cd "$DOTFILES_ROOT/.setup"
   	brew bundle
   fi
 }
 
 install_omzsh () {
-  info 'installing Oh My ZSH'
-  chsh -s $(which zsh)
+  info 'installing Oh My Zsh'
+  # chsh -s $(which zsh) # changes shell automatically
   sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/tools/install.sh -O -)"
 }
 
 echo ''
-plus 'Initial Setup'
+plus 'initial setup'
 echo ''
 install_dotfiles
 echo ''
 install_utils
 echo ''
-install_homebrew
+
+user "install Homebrew? Y/n"
+read -n 1 action
+case "$action" in
+  y )
+    install=true;;
+  n )
+    install=false;;
+  * )
+    install=true;;
+esac
+if [ "$install" == "true" ]
+then
+  install_homebrew
+  user "install Homebrew brews and casks? Y/n"
+  read -n 1 action
+  case "$action" in
+    y )
+      install=true;;
+    n )
+      install=false;;
+    * )
+      install=true;;
+  esac
+  if [ "$install" == "true" ]
+  then
+    install_brews_casks
+  else
+    success 'skipped Homebrew brews and casks install'
+  fi
+else
+  success 'skipped Homebrew install'
+fi
+
 echo ''
 install_omzsh
 echo ''
-minus 'Setup Finished'
+minus 'setup finished'
 echo ''
 
 exit 0
