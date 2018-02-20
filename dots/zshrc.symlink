@@ -1,5 +1,8 @@
 # Path to your oh-my-zsh installation.
+export DOTFILES_ROOT=$HOME/dotfiles
+export UTILS_ROOT=$HOME/utils
 export ZSH=$HOME/.oh-my-zsh
+export PATH="$DOTFILES_ROOT/bin:$PATH"
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 
@@ -11,10 +14,9 @@ source $ZSH/oh-my-zsh.sh
 
 # User configuration
 
-alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed" # Flush DNS on Sierra
-alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\"" # IDK symbol
-alias chrome="/Applications/Google\ Chrome.app/Contents/MacOS/Google\ Chrome"
-alias pwdcp="pwd|pbcopy"
+if [ -r $HOME/.aliases ]; then
+  source $HOME/.aliases
+fi
 
 export PATH="$PATH:/Users/rsefer/.rvm/gems/ruby-2.1.5/bin:/Users/rsefer/.rvm/gems/ruby-2.0.0-p353/bin:/Users/rsefer/.rvm/gems/ruby-2.0.0-p353@global/bin:/Users/rsefer/.rvm/rubies/ruby-2.0.0-p353/bin:/Users/rsefer/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/sm/bin:/opt/sm/pkg/active/bin:/opt/sm/pkg/active/sbin"
 

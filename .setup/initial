@@ -126,13 +126,13 @@ install_utils () {
   declare -a repos=(
     "git@gitlab.com:rsefer/server-scripts.git"
   )
-  cd "$HOME"
-  UTILS_DIR="utils"
 
-	if [ ! -d "$UTILS_DIR" ]; then
-		mkdir "$UTILS_DIR"
+  UTILS_ROOT="$HOME/utils"
+
+	if [ ! -d "$UTILS_ROOT" ]; then
+		mkdir "$UTILS_ROOT"
 	fi
-  cd "$UTILS_DIR"
+  cd "$UTILS_ROOT"
   for repo in "${repos[@]}"
   do
     basename=$(basename "$repo")

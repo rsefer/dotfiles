@@ -1,0 +1,13 @@
+#!/bin/sh
+#
+# SDC script launcher
+
+set -e
+
+cd "$UTILS_ROOT/$1"
+echo ''
+echo "Running $1/$2.rb"
+echo ''
+ruby "$2.rb"
+
+exit 0
