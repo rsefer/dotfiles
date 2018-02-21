@@ -13,6 +13,7 @@ brew 'zsh'
 brew 'zsh-completions'
 
 cask '1password'
+cask '1password-cli'
 cask 'adobe-creative-cloud'
 cask 'atom'
 cask 'dropbox'
