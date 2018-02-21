@@ -7,6 +7,7 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 Run `.script/initial`.
 
 ## Config Files
+
 `hammerspoon.symlink/config.lua`:
 ```
 keys = {
@@ -15,3 +16,7 @@ keys = {
 	longitude = ''
 }
 ```
+
+and individual config files in all `util` repositories:
+- `git@gitlab.com:rsefer/server-scripts.git`
+- `git@gitlab.com:rsefer/data.git`
