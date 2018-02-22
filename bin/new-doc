@@ -1,0 +1,30 @@
+#!/bin/sh
+#
+# New text document with prefills
+
+set -e
+
+if [ ! -z "$1" ]; then
+  namebase=$(basename "$1")
+else
+  echo "Filename:"
+  read input
+  namebase=$(basename "$input")
+fi
+
+namepre="${namebase%.*}"
+docsPath="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+filePath="$docsPath/$namepre.txt"
+
+if [ ! -f "$filePath" ]; then
+  dateD=$(date +'%-m/%-d')
+  dateT=$(date +'%-I:%M%p')
+  echo "$namebase\r\n\r\n$dateD\t0.00hrs\t$(date +'%-I:%M%p')" >> $filePath
+  echo "Created $docsPath/$namepre.txt."
+else
+  echo "File already exists."
+fi
+
+open "$docsPath/$namepre.txt"
+
+exit 0
