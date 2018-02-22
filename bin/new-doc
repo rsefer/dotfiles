@@ -13,7 +13,7 @@ else
 fi
 
 namepre="${namebase%.*}"
-docsPath="$HOME/Library/Mobile Documents/com~apple~CloudDocs"
+docsPath="$HOME/Library/Mobile Documents/com~apple~CloudDocs" # iCloud
 filePath="$docsPath/$namepre.txt"
 
 if [ ! -f "$filePath" ]; then
