@@ -8,5 +8,3 @@ alias pwdcp="pwd|pbcopy"
 
 # Copy ¯\_(ツ)_/¯ to clipboard
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
-
-#alias sdc!="printf \"Sefer Design Co\""
