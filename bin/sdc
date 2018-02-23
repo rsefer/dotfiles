@@ -28,7 +28,7 @@ if [ -n "$1" ]; then
         echo ""
         echo "Running $1/$2.$workingextension"
         echo ""
-        ruby "$workingfile"
+        ruby "$workingfile" "${@:3}"
       else
         echo "Script '${workingfile}' not found."
         list_scripts
