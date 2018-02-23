@@ -14,5 +14,9 @@
     softWrap: true
   "exception-reporting":
     userId: "19050232-a4d3-4c46-b0e1-4ee29a24b70e"
+  "tree-view":
+    focusOnReveal: false
+    hideIgnoredNames: true
+    squashDirectoryNames: true
   welcome:
     showOnStartup: false
