@@ -4,7 +4,7 @@ alias reload!=". $HOME/.zshrc"
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
 # Copy working directory to clipboard
-alias pwdcp="pwd|pbcopy"
+alias pwdcp="pwd | pbcopy && echo \"$(pwd) copied to clipboard\""
 
 # Copy ¯\_(ツ)_/¯ to clipboard
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
