@@ -9,7 +9,7 @@
     telemetryConsent: "limited"
     uriHandlerRegistration: "always"
   editor:
-    fontSize: 12
+    fontSize: 13
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
