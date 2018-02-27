@@ -1,9 +1,17 @@
 "*":
+  _dart:
+    _firstRun: true
+    _version: "1.0.1"
+  "autocomplete-plus":
+    autoActivationDelay: 500
   core:
     closeDeletedFileTabs: true
     disabledPackages: [
       "welcome"
+      "dart"
+      "atom-toolbar"
     ]
+    followSymlinks: false
     projectHome: "/Users/rsefer/sites/clients"
     reopenProjectMenuCount: 5
     telemetryConsent: "limited"
