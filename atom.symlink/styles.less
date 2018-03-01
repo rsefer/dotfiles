@@ -2,10 +2,20 @@ html {
   font-size: 10px;
 }
 
-.list-tree.has-collapsable-children .list-nested-item > .list-tree > li, .list-tree.has-collapsable-children .list-nested-item > .list-group > li {
-  padding-left: 10px;
+.list-tree.has-collapsable-children {
+
+  .list-nested-item {
+
+    & > .list-tree li,
+    & > .list-group > li {
+      padding-left: 8px;
+    }
+
+  }
+
 }
 
-atom-workspace {
-  font-family: "San Francisco Display";
+atom-workspace,
+atom-text-editor {
+  font-family: "SF Mono"; // "San Francisco Display"
 }

@@ -1,7 +1,26 @@
 '.source.js':
-  'jQuery document ready':
+  'jQuery(document).ready':
     'prefix': 'jdr'
-    'body': 'jQuery(document).ready(function($) {\n\t$1\n});'
+    'body': """
+      jQuery(document).ready(function($) {
+        $1
+      });
+    """
   'function':
     'prefix': 'func'
-    'body': 'function ${1:functionName}($2) {\n\t$3\n}'
+    'body': """
+      function ${1:functionName}($2) {
+        $3
+      }
+    """
+
+'.text.html, .text.php, .text.erb':
+  'Bootstrap Row':
+    'prefix': 'boot-r'
+    'body': """
+      <div class="row">
+        <div class="col-md-$1">
+          $2
+        </div>
+      </div>
+    """
