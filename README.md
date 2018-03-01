@@ -4,11 +4,10 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 
 ## My Initial Setup
 
-1. Install [Dropbox](https://www.dropbox.com/install)
-2. Install [1Password](https://1password.com/downloads/)
-3. Authenticate locally with [GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/) and [GitLab](https://docs.gitlab.com/ce/ssh/README.html)
-4. Run `.script/initial`
-5. Add necessary config files
+1. Install [1Password](https://1password.com/downloads/)
+2. Authenticate locally with [GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/) and [GitLab](https://docs.gitlab.com/ce/ssh/README.html)
+3. Run `.script/initial`
+4. Add necessary config files
 
 ## Config Files
 
