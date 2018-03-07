@@ -126,6 +126,7 @@ install_utils () {
   declare -a repos=(
     "git@gitlab.com:rsefer/server-scripts.git"
     "git@gitlab.com:rsefer/data.git"
+    "git@gitlab.com:rsefer/git-scripts.git"
   )
 
   UTILS_ROOT="$HOME/utils"

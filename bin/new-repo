@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# New git repository
+
+set -e
+
+workingPath=$PWD
+if [ -n "$1" ]; then
+  workingPath=$1
+fi
+
+cd "$UTILS_ROOT/git-scripts"
+ruby new-repo.rb --path=$workingPath
+
+exit 0
