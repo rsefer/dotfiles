@@ -2,8 +2,15 @@
   _dart:
     _firstRun: true
     _version: "1.0.1"
+  "atom-beautify":
+    general:
+      _analyticsUserId: "0ee07048-a8c6-42a3-abbf-65046570ca18"
   "autocomplete-plus":
     autoActivationDelay: 500
+  "color-picker":
+    automaticReplace: true
+    preferredFormat: "HEX"
+    randomColor: false
   core:
     closeDeletedFileTabs: true
     disabledPackages: [

@@ -12,6 +12,7 @@ brew 'postgresql'
 brew 'rbenv'
 brew 'ruby-build'
 brew 'wget'
+brew 'wp-cli'
 brew 'zsh'
 brew 'zsh-completions'
 
