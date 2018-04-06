@@ -29,8 +29,7 @@
     softWrap: true
   "exception-reporting":
     userId: "19050232-a4d3-4c46-b0e1-4ee29a24b70e"
-  "linter-ui-default":
-    panelHeight: 69
+  "linter-ui-default": {}
   "tree-view":
     focusOnReveal: false
     hideIgnoredNames: true
