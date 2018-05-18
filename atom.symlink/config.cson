@@ -17,6 +17,7 @@
       "welcome"
       "dart"
       "atom-toolbar"
+      "language-twig"
     ]
     followSymlinks: false
     projectHome: "/Users/rsefer/sites/clients"
