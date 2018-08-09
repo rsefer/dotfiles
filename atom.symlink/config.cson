@@ -25,7 +25,7 @@
     telemetryConsent: "limited"
     uriHandlerRegistration: "always"
   editor:
-    fontSize: 13
+    fontSize: 12
     showIndentGuide: true
     softWrap: true
   "exception-reporting":
@@ -42,3 +42,4 @@
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
+  whitespace: {}
