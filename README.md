@@ -24,3 +24,4 @@ and individual config files in all `util` repositories:
 - `git@gitlab.com:rsefer/server-scripts.git`
 - `git@gitlab.com:rsefer/data.git`
 - `git@gitlab.com:rsefer/git-scripts.git`
+- `git@gitlab.com:rsefer/mac-scripts.git`
