@@ -17,7 +17,12 @@ keys = {
 	darksky_api_key = '',
 	latitude = '',
 	longitude = '',
-	phoneNumbers = { [contacts] }
+	phoneNumbers = {
+		{
+			text = '[name]',
+			number = '1234567890'
+	  }
+	}
 }
 ```
 
