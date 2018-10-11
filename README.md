@@ -16,7 +16,8 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 keys = {
 	darksky_api_key = '',
 	latitude = '',
-	longitude = ''
+	longitude = '',
+	phoneNumbers = { [contacts] }
 }
 ```
 
