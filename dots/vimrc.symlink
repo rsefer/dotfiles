@@ -1,5 +1,7 @@
 syntax on
 
+set confirm
+
 set ruler
 set number
 set showcmd
