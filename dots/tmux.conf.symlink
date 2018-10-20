@@ -16,3 +16,5 @@ set -g set-titles-string '#T'
 set -g automatic-rename on
 set -g automatic-rename-format "#T"
 set-option -g pane-border-format '#{pane_index} "#{pane_title}"'
+
+set -g default-terminal "screen-256color"
