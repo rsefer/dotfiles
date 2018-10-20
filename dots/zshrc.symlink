@@ -6,6 +6,8 @@ export PATH="$DOTFILES_ROOT/bin:$PATH"
 ZSH_THEME="rsefer"
 
 source $ZSH/oh-my-zsh.sh
+source $DOTFILES_ROOT/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
+source $DOTFILES_ROOT/zsh/plugins/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 fpath=(/usr/local/share/zsh-completions $fpath)
 plugins=(git heroku)
