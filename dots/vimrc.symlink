@@ -1,4 +1,22 @@
 syntax on
+
 set ruler
 set number
+set showcmd
+set cursorline
 
+set tabstop=2
+set softtabstop=4
+
+filetype indent on
+
+set wildmenu
+set lazyredraw
+set showmatch
+
+set incsearch
+set hlsearch
+
+set foldenable
+set foldlevelstart=10
+set foldmethod=indent
