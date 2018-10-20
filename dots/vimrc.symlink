@@ -6,6 +6,7 @@ set ruler
 set number
 set showcmd
 set cursorline
+set mouse=a
 
 set tabstop=2
 set softtabstop=0 noexpandtab
