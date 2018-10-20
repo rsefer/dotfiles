@@ -7,6 +7,13 @@ setopt PROMPT_SUBST
 set_prompt() {
 
 	PS1="%{$fg[white]%}[%{$reset_color%}"
+
+	if [[ "$OSTYPE" == darwin* ]]; then
+		# do nothing for macOS
+	else
+		PS1+="%{$fg_bold[white]%}%n@%M%{$fg_bold[red]%}:"
+	fi
+
 	PS1+="%{$fg_bold[cyan]%}${PWD/#$HOME/~}%{$reset_color%}"
 	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
 
@@ -32,11 +39,15 @@ set_prompt() {
 	fi
 
 	# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
-	CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
-	if [ ${CAN_I_RUN_SUDO} -gt 0 ]
-	then
-		PS1+=', '
-		PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
+	if [[ "$OSTYPE" == darwin* ]]; then
+		# do nothing for macOS
+	else
+		CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+		if [ ${CAN_I_RUN_SUDO} -gt 0 ]
+		then
+			PS1+=', '
+			PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
+		fi
 	fi
 
 	PS1+="%{$fg[white]%}]: %{$reset_color%}% "
