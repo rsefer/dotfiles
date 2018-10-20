@@ -1,0 +1,18 @@
+bind h split-window -h
+bind v split-window -v
+unbind '"'
+unbind %
+
+bind -n M-Left select-pane -L
+bind -n M-Right select-pane -R
+bind -n M-Up select-pane -U
+bind -n M-Down select-pane -D
+set -g mouse on
+
+set -g pane-border-status top
+
+set -g set-titles on
+set -g set-titles-string '#T'
+set -g automatic-rename on
+set -g automatic-rename-format "#T"
+set-option -g pane-border-format '#{pane_index} "#{pane_title}"'
