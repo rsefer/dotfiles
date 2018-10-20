@@ -25,7 +25,7 @@ export PATH=$PATH:/usr/local/bin
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
 
-eval "$(hub alias -s)"
+eval "$(alias -s)"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/sbin:$PATH"
