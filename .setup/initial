@@ -190,7 +190,24 @@ install_custom_omz_theme
 echo ''
 install_dotfiles
 echo ''
-install_utils
+
+user "install custom utilities? Y/n"
+read -n 1 action
+case "$action" in
+  y )
+    install=true;;
+  n )
+    install=false;;
+  * )
+    install=true;;
+esac
+if [ "$install" == "true" ]
+then
+	install_utils
+else
+	success 'skipped custom utilities install'
+fi
+
 echo ''
 
 user "install Homebrew? Y/n"
