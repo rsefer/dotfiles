@@ -14,7 +14,7 @@ set_prompt() {
 		PS1+="%{$fg_bold[white]%}%n@%M%{$fg_bold[red]%}:"
 	fi
 
-	PS1+="%{$fg_bold[cyan]%}${PWD/#$HOME/~}%{$reset_color%}"
+	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 120 ))<...<%~%<<%}%{$reset_color%}"
 	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
 
 	# Git
