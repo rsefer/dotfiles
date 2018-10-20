@@ -10,8 +10,8 @@ alias pwdcp="pwd | pbcopy && echo \"$(pwd) copied to clipboard\""
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
 
 # always list when changing directories
-cdls() {
-	cd $1;
-	ls;
-}
+# cdls() {
+# 	cd $1;
+# 	ls;
+# }
 # alias cd="cdls"
