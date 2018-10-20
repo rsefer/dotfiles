@@ -6,7 +6,7 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 
 1. Install [1Password](https://1password.com/downloads/)
 2. Authenticate locally with [GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/) and [GitLab](https://docs.gitlab.com/ce/ssh/README.html)
-3. Run `.script/initial`
+3. Run `.setup/initial`
 4. Add necessary config files
 
 ## Config Files

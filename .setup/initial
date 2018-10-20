@@ -120,6 +120,15 @@ install_dotfiles () {
   done
 }
 
+install_custom_omz_theme () {
+  info 'installing custom oh my zsh theme'
+
+  local overwrite_all=false backup_all=false skip_all=false
+  src="$DOTFILES_ROOT/oh-my-zsh/rsefer.zsh-theme"
+  dst="$HOME/.oh-my-zsh/custom/themes"
+  link_file "$src" "$dst"
+}
+
 install_utils () {
   info 'installing utility repos'
 
@@ -175,6 +184,10 @@ install_omzsh () {
 echo ''
 plus 'initial setup'
 echo ''
+install_omzsh
+echo ''
+install_custom_omz_theme
+echo ''
 install_dotfiles
 echo ''
 install_utils
@@ -213,8 +226,6 @@ else
   success 'skipped Homebrew install'
 fi
 
-echo ''
-install_omzsh
 echo ''
 minus 'setup finished'
 echo ''
