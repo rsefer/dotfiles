@@ -7,8 +7,8 @@ set number
 set showcmd
 set cursorline
 
-set tabstop=1
-set softtabstop=1
+set tabstop=2
+set softtabstop=2
 
 filetype indent on
 
