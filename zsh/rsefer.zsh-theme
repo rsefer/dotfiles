@@ -50,7 +50,9 @@ set_prompt() {
 		fi
 	fi
 
-	PS1+="%{$fg[white]%}]: %{$reset_color%}% "
+	PS1+="%{$fg[white]%}]"
+	PS1+=$'\n'
+	PS1+="❯ %{$reset_color%}% "
 
 }
 
