@@ -24,3 +24,7 @@ set hlsearch
 set foldenable
 set foldlevelstart=10
 set foldmethod=indent
+
+set backupdir=/tmp//
+set directory=/tmp//
+set undodir=/tmp//
