@@ -1,5 +1,7 @@
 syntax on
 
+set path+=**
+
 set confirm
 
 set ruler
@@ -28,3 +30,26 @@ set foldmethod=indent
 set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
+
+set statusline=%!MyStatusLine()
+
+function! MyStatusLine()
+    let statusline = ""
+    " Filename (F -> full, f -> relative)
+    let statusline .= "%f"
+    " Buffer flags
+    let statusline .= "%( %h%1*%m%*%r%w%) "
+    " File format and type
+    let statusline .= "(%{&ff}%(\/%Y%))"
+    " Left/right separator
+    let statusline .= "%="
+    " Line & column
+    let statusline .= "(%l,%c%V) "
+    " Character under cursor (decimal)
+    let statusline .= "%03.3b "
+    " Character under cursor (hexadecimal)
+    let statusline .= "0x%02.2B "
+    " File progress
+    let statusline .= "| %P/%L"
+    return statusline
+endfunction
