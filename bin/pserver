@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# Python server
+
+set -e
+
+if [ ! -z "$1" ]; then
+  port="$1"
+else
+  port=3000
+fi
+
+echo "Starting Python SimpleHTTPServer on port $port"
+
+python -m SimpleHTTPServer $port
