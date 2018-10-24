@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# browser-sync server
+
+set -e
+
+echo "Starting browser-sync session"
+
+browser-sync -s -w --no-open
