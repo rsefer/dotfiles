@@ -275,7 +275,7 @@ then
 	    success 'skipped Homebrew casks install'
 	  fi
 	else
-		success 'skipped Homebrew brews install because this is not macOS'
+		success 'skipped Homebrew casks install because this is not macOS'
 	fi
 else
   success 'skipped Homebrew install'
