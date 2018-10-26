@@ -4,7 +4,7 @@ set path+=**
 
 set confirm
 
-set spell spelllang=en_us
+autocmd FileType markdown setlocal spell
 
 set ruler
 set number
