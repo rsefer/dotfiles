@@ -4,6 +4,8 @@ set path+=**
 
 set confirm
 
+set spell spelllang=en_us
+
 set ruler
 set number
 set showcmd
