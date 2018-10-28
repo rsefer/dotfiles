@@ -8,11 +8,12 @@ set_prompt() {
 
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
-	if [[ "$OSTYPE" == darwin* ]]; then
+	# add user@machine on non macs (commented out because this is covered by RPROMPT now)
+	#if [[ "$OSTYPE" == darwin* ]]; then
 		# do nothing for macOS
-	else
-		PS1+="%{$fg_bold[white]%}%n@%M%{$fg_bold[red]%}:"
-	fi
+	#else
+		#PS1+="%{$fg_bold[white]%}%n@%M%{$fg_bold[red]%}:"
+	#fi
 
 	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
 	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
