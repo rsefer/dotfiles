@@ -58,6 +58,8 @@ set_prompt() {
 
 precmd_functions+=set_prompt
 
+RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"
+
 preexec () {
 	(( ${#_elapsed[@]} > 1000 )) && _elapsed=(${_elapsed[@]: -1000})
 	_start=$SECONDS
