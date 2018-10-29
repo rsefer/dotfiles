@@ -1,3 +1,4 @@
+filetype plugin on
 syntax on
 
 set path+=**
@@ -6,9 +7,10 @@ set confirm
 
 autocmd FileType markdown setlocal spell
 
-set ruler
+set noruler
 set number
 set showcmd
+set noshowmode
 set cursorline
 set mouse=a
 
@@ -36,25 +38,44 @@ set undodir=/tmp//
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("printf '\033]2;%s\033\\' '" . expand("%") ."'")
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
 
-set statusline=%!MyStatusLine()
+let g:currentmode={
+    \ 'n'      : '',
+    \ 'no'     : 'N·Operator Pending',
+    \ 'v'      : 'VISUAL',
+    \ 'V'      : 'V·Line',
+    \ '\<C-V>' : 'V·Block',
+    \ 's'      : 'Select',
+    \ 'S'      : 'S·Line',
+    \ '\<C-S>' : 'S·Block',
+    \ 'i'      : 'INSERT',
+    \ 'R'      : 'R',
+    \ 'Rv'     : 'V·Replace',
+    \ 'c'      : 'Command',
+    \ 'cv'     : 'Vim Ex',
+    \ 'ce'     : 'Ex',
+    \ 'r'      : 'Prompt',
+    \ 'rm'     : 'More',
+    \ 'r?'     : 'Confirm',
+    \ '!'      : 'Shell',
+    \ 't'      : 'Terminal'
+    \}
 
-function! MyStatusLine()
-    let statusline = ""
-    " Filename (F -> full, f -> relative)
-    let statusline .= "%f"
-    " Buffer flags
-    let statusline .= "%( %h%1*%m%*%r%w%) "
-    " File format and type
-    let statusline .= "(%{&ff}%(\/%Y%))"
-    " Left/right separator
-    let statusline .= "%="
-    " Line & column
-    let statusline .= "(%l,%c%V) "
-    " Character under cursor (decimal)
-    let statusline .= "%03.3b "
-    " Character under cursor (hexadecimal)
-    let statusline .= "0x%02.2B "
-    " File progress
-    let statusline .= "| %P/%L"
-    return statusline
-endfunction
+set laststatus=2
+set statusline=
+" mode
+set statusline+=%1*\ [%{toupper(g:currentmode[mode()])}]
+" left/right divider
+set statusline+=%1*\ %=
+" modified flag
+set statusline+=%2*%m%*
+" path (f for relative, F for full)
+set statusline+=%1*\ %<%f%*
+" current line #
+set statusline+=%1*%5l%*
+" total lines
+set statusline+=%1*/%L%*
+" (virtual) column #
+set statusline+=%1*%4v\ %*
+
+hi User1 ctermfg=white ctermbg=8
+hi User2 ctermfg=white ctermbg=green
