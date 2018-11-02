@@ -118,6 +118,9 @@ install_dotfiles () {
     dst="$HOME/.$(basename "${src%.*}")"
     link_file "$src" "$dst"
   done
+
+	info 'installing Vim plugins'
+	vim +PluginInstall +qall
 }
 
 install_custom_omz_theme () {
