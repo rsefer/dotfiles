@@ -5,6 +5,8 @@
   "atom-beautify":
     general:
       _analyticsUserId: "0ee07048-a8c6-42a3-abbf-65046570ca18"
+    scss:
+      convert_quotes: "single"
   "autocomplete-plus":
     autoActivationDelay: 500
   "color-picker":
