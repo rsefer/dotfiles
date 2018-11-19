@@ -2,6 +2,7 @@ tap 'homebrew/bundle'
 
 brew 'awscli'
 brew 'awsebcli'
+brew 'composer'
 brew 'imagemagick'
 brew 'mysql'
 brew 'node'
