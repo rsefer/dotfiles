@@ -42,6 +42,7 @@
   "tree-view":
     focusOnReveal: false
     hideIgnoredNames: true
+    hideVcsIgnoredFiles: true
     squashDirectoryNames: true
   welcome:
     showOnStartup: false
