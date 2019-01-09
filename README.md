@@ -14,6 +14,9 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 `hammerspoon.symlink/config.lua`:
 ```lua
 keys = {
+	homeassistant_api_endpoint = '',
+	homeassistant_api_key = '',
+	dashHomeURL = '',
 	darksky_api_key = '',
 	latitude = '',
 	longitude = '',
