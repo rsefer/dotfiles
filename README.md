@@ -27,7 +27,7 @@ keys = {
 ```
 
 and individual config files in all `util` repositories:
-- `git@gitlab.com:rsefer/server-scripts.git`
-- `git@gitlab.com:rsefer/data.git`
-- `git@gitlab.com:rsefer/git-scripts.git`
-- `git@gitlab.com:rsefer/mac-scripts.git`
+- `git@github.com:rsefer/server-scripts.git`
+- `git@github.com:rsefer/data.git`
+- `git@github.com:rsefer/git-scripts.git`
+- `git@github.com:rsefer/mac-scripts.git`
