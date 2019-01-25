@@ -284,6 +284,13 @@ else
   success 'skipped Homebrew install'
 fi
 
+if test "$(uname)" = "Darwin"
+then
+	echo ''
+	echo 'setting macOS defaults'
+	$DOTFILES_ROOT/.setup/macos-defaults.sh
+fi
+
 echo ''
 echo 'updating configuration'
 cd $DOTFILES_ROOT && git pull && git submodule update --init --recursive
