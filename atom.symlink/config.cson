@@ -21,6 +21,7 @@
       "atom-toolbar"
       "language-twig"
       "php-twig"
+      "emmet"
     ]
     followSymlinks: false
     projectHome: "/Users/rsefer/sites/clients"
