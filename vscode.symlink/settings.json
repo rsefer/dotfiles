@@ -1,0 +1,11 @@
+{
+    "workbench.startupEditor": "newUntitledFile",
+    "editor.tabSize": 2,
+    "editor.wordWrap": "on",
+    "editor.wordWrapColumn": 120,
+    "workbench.colorTheme": "One Dark Pro",
+    "window.closeWhenEmpty": true,
+    "window.nativeTabs": true,
+    "git.enableSmartCommit": true,
+    "editor.fontSize": 13
+}

@@ -1,0 +1,11 @@
+// Place your key bindings in this file to override the defaultsauto[]
+[
+  {
+    "key": "cmd+k down",
+    "command": "workbench.action.splitEditorDown"
+  },
+  {
+    "key": "cmd+k right",
+    "command": "workbench.action.splitEditorRight"
+	}
+]
