@@ -7,5 +7,9 @@
     "window.closeWhenEmpty": true,
     "window.nativeTabs": true,
     "git.enableSmartCommit": true,
-    "editor.fontSize": 13
+    "editor.fontSize": 13,
+    "workbench.sideBar.location": "right",
+    "window.titleBarStyle": "native",
+    "breadcrumbs.symbolSortOrder": "type",
+    "breadcrumbs.enabled": false
 }
