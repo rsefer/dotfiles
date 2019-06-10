@@ -11,5 +11,8 @@
     "workbench.sideBar.location": "right",
     "window.titleBarStyle": "native",
     "breadcrumbs.symbolSortOrder": "type",
-    "breadcrumbs.enabled": false
+    "breadcrumbs.enabled": false,
+    "git.confirmSync": false,
+    "git.autofetch": true,
+    "search.location": "sidebar"
 }
