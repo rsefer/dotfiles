@@ -22,7 +22,7 @@
 		"body": [
 			"jQuery(document).ready(function($) {",
 			"\t$0",
-			"}"
+			"});"
 		],
 		"description": "jQuery(document).ready"
 	},
