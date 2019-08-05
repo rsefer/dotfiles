@@ -14,5 +14,7 @@
     "breadcrumbs.enabled": false,
     "git.confirmSync": false,
     "git.autofetch": true,
-    "search.location": "sidebar"
+    "search.location": "sidebar",
+    "files.hotExit": "onExitAndWindowClose",
+    "files.insertFinalNewline": true
 }
