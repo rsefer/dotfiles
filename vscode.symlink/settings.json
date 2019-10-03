@@ -16,5 +16,6 @@
     "git.autofetch": true,
     "search.location": "sidebar",
     "files.hotExit": "onExitAndWindowClose",
-    "files.insertFinalNewline": true
+    "files.insertFinalNewline": true,
+    "javascript.updateImportsOnFileMove.enabled": "always"
 }
