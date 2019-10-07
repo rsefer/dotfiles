@@ -295,6 +295,13 @@ echo ''
 echo 'updating configuration'
 cd $DOTFILES_ROOT && git pull && git submodule update --init --recursive
 
+if test "$(uname)" = "Darwin"
+then
+	echo ''
+	echo 'opening Hammerspoon'
+	open -a Hammerspoon
+fi
+
 echo ''
 minus 'setup finished'
 echo ''
