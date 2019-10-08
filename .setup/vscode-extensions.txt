@@ -1,0 +1,9 @@
+anseki.vscode-color
+CoenraadS.bracket-pair-colorizer-2
+EditorConfig.EditorConfig
+formulahendry.auto-close-tag
+formulahendry.auto-rename-tag
+henoc.svgeditor
+HookyQR.beautify
+Tyriar.lorem-ipsum
+zhuangtongfa.Material-theme

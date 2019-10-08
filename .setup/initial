@@ -295,6 +295,13 @@ echo ''
 echo 'updating configuration'
 cd $DOTFILES_ROOT && git pull && git submodule update --init --recursive
 
+# list current extensions by calling:
+# code --list-extensions
+while read EXTENSION
+do
+	code --install-extension $EXTENSION
+done < $DOTFILES_ROOT/.setup/vscode-extensions.txt
+
 if test "$(uname)" = "Darwin"
 then
 	echo ''
