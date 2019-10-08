@@ -1,11 +1,19 @@
 // Place your key bindings in this file to override the defaultsauto[]
 [
-  {
-    "key": "cmd+k down",
-    "command": "workbench.action.splitEditorDown"
+	{
+		"key": "ctrl+alt+down",
+		"command": "workbench.action.splitEditorDown"
   },
-  {
-    "key": "cmd+k right",
-    "command": "workbench.action.splitEditorRight"
+	{
+		"key": "ctrl+alt+right",
+		"command": "workbench.action.splitEditorRight"
+  },
+	{
+		"key": "ctrl+alt+b ctrl+alt+b",
+		"command": "HookyQR.beautifyFile"
+	},
+	{
+		"key": "ctrl+alt+b ctrl+alt+s",
+		"command": "HookyQR.beautify"
 	}
 ]
