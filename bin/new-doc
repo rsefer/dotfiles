@@ -20,7 +20,8 @@ if [ ! -f "$filePath" ]; then
   dateD=$(date +'%-m/%-d')
   dateT=$(date +'%-I:%M%p')
   echo "$namebase\r\n\r\n$dateD\t0.00hrs\t$(date +'%-I:%M%p')" >> $filePath
-  echo "Created $docsPath/$namepre.txt."
+  echo "Created $filePath"
+	open -a TextEdit "$filePath"
 else
   echo "File already exists."
 fi
