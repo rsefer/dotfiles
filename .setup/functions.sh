@@ -1,26 +1,31 @@
 plus () {
+	echo ''
   printf "\r  [ \033[0;33m++\033[0m ] $1\n"
 }
 
 minus () {
+	echo ''
   printf "\r  [ \033[0;31m--\033[0m ] $1\n"
 }
 
 info () {
+	echo ''
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
 }
 
 user () {
+	echo ''
   printf "\r  [ \033[0;33m??\033[0m ] $1\n"
 }
 
 success () {
+	echo ''
   printf "\r  [ \033[0;32mOK\033[0m ] $1\n"
 }
 
 fail () {
+	echo ''
   printf "\r  [ \033[0;31mFAIL\033[0m] $1\n"
-  echo ''
   exit
 }
 

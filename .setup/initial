@@ -1,32 +1,20 @@
 #!/usr/bin/env bash
 
-# set -e
-
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 find $DOTFILES_ROOT/.setup/ -type f -iname "*.sh" -exec chmod +x {} \;
 source $DOTFILES_ROOT/.setup/functions.sh
 
-echo ''
 plus 'initial setup'
-echo ''
 
 .setup/installs/macos-defaults.sh
-echo ''
 .setup/installs/omzsh.sh
-echo ''
 .setup/installs/dotfiles.sh
-echo ''
 .setup/installs/utilities/install.sh
-echo ''
 .setup/installs/homebrew/install.sh
-echo ''
 .setup/installs/hammerspoon.sh
-echo ''
 .setup/installs/vscode/install.sh
-echo ''
 
-echo ''
 info 'updating configuration'
 cd $DOTFILES_ROOT && git pull && git submodule update --init --recursive
 
@@ -36,8 +24,6 @@ then
 	open -a Hammerspoon
 fi
 
-echo ''
 minus 'setup finished'
-echo ''
 
 exit 0
