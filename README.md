@@ -11,30 +11,7 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
 5. Add necessary config files
 
 ## Config Files
-
-`hammerspoon.symlink/config.lua`:
-```lua
-keys = {
-	homeassistant_api_endpoint = '',
-	homeassistant_api_key = '',
-	dashHomeURL = '',
-	darksky_api_key = '',
-	latitude = '',
-	longitude = '',
-	phoneNumbers = {
-		{
-			text = '[name]',
-			number = '1234567890'
-	  }
-	},
-	discogs = {
-		key = '',
-		secret = ''
-	}
-}
-```
-
-and individual config files in all `util` repositories:
+Individual config files in all `util` repositories:
 - `git@github.com:rsefer/server-scripts.git`
 - `git@github.com:rsefer/data.git`
 - `git@github.com:rsefer/git-scripts.git`
