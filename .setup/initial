@@ -21,7 +21,10 @@ echo ''
 echo ''
 .setup/installs/homebrew/install.sh
 echo ''
+.setup/installs/hammerspoon.sh
+echo ''
 .setup/installs/vscode/install.sh
+echo ''
 
 echo ''
 info 'updating configuration'
