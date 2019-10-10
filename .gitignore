@@ -1,5 +1,3 @@
-hammerspoon.symlink/config.lua
-hammerspoon.symlink/Spoons/*/docs.json
 atom.symlink/.apm
 atom.symlink/.node-gyp
 atom.symlink/.storage
