@@ -1,9 +1,9 @@
+[submodule "hammerspoon.symlink"]
+	path = hammerspoon.symlink
+	url = https://github.com/rsefer/hammerspoon-config.git
 [submodule "zsh/plugins/zsh-syntax-highlighting"]
 	path = zsh/plugins/zsh-syntax-highlighting
 	url = https://github.com/zsh-users/zsh-syntax-highlighting.git
 [submodule "zsh/plugins/zsh-autosuggestions"]
 	path = zsh/plugins/zsh-autosuggestions
 	url = https://github.com/zsh-users/zsh-autosuggestions.git
-[submodule "hammerspoon.symlink"]
-	path = hammerspoon.symlink
-	url = https://github.com/rsefer/hammerspoon-config.git
