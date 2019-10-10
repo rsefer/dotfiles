@@ -17,4 +17,4 @@ alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to c
 # alias cd="cdls"
 
 # Forces VS Code to reuse window
-alias code="code -r"
+alias code="open -a Visual\ Studio\ Code && code -r"
