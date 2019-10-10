@@ -1,8 +1,8 @@
 # Dotfiles
 
-Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles).
+Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles). Hammerspoon config was originally included but is now in a [seperate repository](https://github.com/rsefer/hammerspoon-config).
 
-## My Initial Setup
+## Initial Setup
 
 1. Install [1Password](https://1password.com/downloads/)
 2. Authenticate locally with [GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/) and [GitLab](https://docs.gitlab.com/ce/ssh/README.html)
