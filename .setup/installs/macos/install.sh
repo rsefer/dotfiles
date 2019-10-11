@@ -6,25 +6,25 @@ then
 
 info 'setting macOS defaults'
 
-# osascript -e 'tell application "System Preferences" to quit'
+osascript -e 'tell application "System Preferences" to quit'
 sudo -v
 
-# # Dock
-# defaults write com.apple.dock tilesize -int 48 # icon size
-# defaults write com.apple.dock orientation -string left # position
-# defaults write com.apple.dock autohide-time-modifier -float 0 # no hide/show delay
-# defaults write com.apple.dock autohide-delay -float 0 # no hide delay
-# killall Dock
+# Dock
+defaults write com.apple.dock tilesize -int 48 # icon size
+defaults write com.apple.dock orientation -string left # position
+defaults write com.apple.dock autohide-time-modifier -float 0 # no hide/show delay
+defaults write com.apple.dock autohide-delay -float 0 # no hide delay
+killall Dock
 
-# # Finder
-# defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" # list view in Finder
-# killall Finder
+# Finder
+defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" # list view in Finder
+killall Finder
 
-# # Misc.
-# defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # disable quarantine dialog
-# defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool FALSE # disable smart dashes
-# defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
-# defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
+# Misc.
+defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # disable quarantine dialog
+defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool FALSE # disable smart dashes
+defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
+defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
 
 # # Install SF Mono font
 # cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
@@ -40,7 +40,7 @@ tell application "Terminal"
 	local windowID
 	set themeName to "Tomorrow Night RSefer"
 	set initialOpenedWindows to id of every window
-	do shell script "open '$HOME/dotfiles/.setup/installs/macos/" & themeName & ".terminal'"
+	do shell script "open '$DOTFILES_ROOT/.setup/installs/macos/" & themeName & ".terminal'"
 	delay 1
 	set default settings to settings set themeName
 	set allOpenedWindows to id of every window
