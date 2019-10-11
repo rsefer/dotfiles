@@ -18,6 +18,7 @@ killall Dock
 
 # Finder
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" # list view in Finder
+defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool TRUE # prevent Photos from opening automatically when devices are plugged in
 killall Finder
 
 # Misc.
@@ -31,6 +32,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
 
 # Terminal
 defaults write com.apple.terminal StringEncodings -array 4
+defaults write com.apple.terminal ShowLineMarks -int 0
 
 # set theme - adapted from https://github.com/mathiasbynens/dotfiles/blob/299b7dc6db8715a8b306267c14f62673286a19f3/.macos#L626
 osascript <<EOD
