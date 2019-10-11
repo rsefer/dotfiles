@@ -7,3 +7,4 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles). H
 1. Authenticate locally with [GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/)
 2. `cd ~/ && git clone https://github.com/rsefer/dotfiles.git && source dotfiles/.setup/initial`
 3. Add necessary config files in all `util` repositories
+
