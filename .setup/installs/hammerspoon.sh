@@ -14,7 +14,7 @@ esac
 if [ "$install" == "true" ]
 then
 	cd "$DOTFILES_ROOT"
-	git clone git@github.com:rsefer/hammerspoon-config.git hammerspoon.symlink
+	git clone https://github.com/rsefer/hammerspoon-config.git hammerspoon.symlink
 	cd hammerspoon.symlink
 	cp config.sample.lua config.lua
 	success "cloned hammerspoon config repository into $DOTFILES_ROOT"
