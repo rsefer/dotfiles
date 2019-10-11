@@ -46,45 +46,60 @@ esac
 if [ "$install" == "true" ]
 then
   install_homebrew
+else
+  success 'skipped Homebrew install'
+fi
 
-  user "install Homebrew brews? Y/n"
-  read -n 1 action
-  case "$action" in
-    y )
-      install=true;;
-    n )
-      install=false;;
-    * )
-      install=true;;
-  esac
-  if [ "$install" == "true" ]
-  then
-    install_brews
-  else
-    success 'skipped Homebrew brews install'
-  fi
+if test $(which brew)
+then
+
+	user "install Homebrew brews? Y/n"
+	read -n 1 action
+	case "$action" in
+		y )
+			install=true;;
+		n )
+			install=false;;
+		* )
+			install=true;;
+	esac
+	if [ "$install" == "true" ]
+	then
+		if install_brews
+		then
+			success 'succesfully installed brews'
+		else
+			fail 'brew installation had errors'
+		fi
+	else
+		success 'skipped Homebrew brews install'
+	fi
 
 	if test "$(uname)" = "Darwin"
 	then
-		user "install Homebrew casks? Y/n"
-	  read -n 1 action
-	  case "$action" in
-	    y )
-	      install=true;;
-	    n )
-	      install=false;;
-	    * )
-	      install=true;;
-	  esac
-	  if [ "$install" == "true" ]
-	  then
-	    install_casks
-	  else
-	    success 'skipped Homebrew casks install'
-	  fi
+		user "install Homebrew casks and apps from the Appstore? Y/n"
+		read -n 1 action
+		case "$action" in
+			y )
+				install=true;;
+			n )
+				install=false;;
+			* )
+				install=true;;
+		esac
+		if [ "$install" == "true" ]
+		then
+			if install_casks
+			then
+				success 'succesfully installed casks and apps'
+			else
+				fail 'cask installation had errors'
+			fi
+		else
+			success 'skipped Homebrew casks and apps install'
+		fi
 	else
-		success 'skipped Homebrew casks install because this is not macOS'
+		success 'skipped Homebrew casks and apps install because this is not macOS'
 	fi
-else
-  success 'skipped Homebrew install'
+
 fi

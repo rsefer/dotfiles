@@ -25,8 +25,7 @@ success () {
 
 fail () {
 	echo ''
-  printf "\r  [ \033[0;31mFAIL\033[0m] $1\n"
-  exit
+  printf "\r  [ \033[0;31mXX\033[0m ] $1\n"
 }
 
 link_file () {

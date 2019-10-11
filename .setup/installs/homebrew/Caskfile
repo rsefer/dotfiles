@@ -11,7 +11,6 @@ cask 'bartender'
 cask 'chrome-remote-desktop-host'
 cask 'coda'
 cask 'cyberduck'
-cask 'dropbox'
 cask 'duet'
 cask 'firefox'
 cask 'github'
@@ -30,3 +29,9 @@ cask 'vagrant'
 cask 'virtualbox'
 cask 'visual-studio-code'
 cask 'xquartz'
+
+# get list of installed apps from the appstore: mas list
+mas '1Password 7', id: 1333542190
+mas 'GIPHY Capture', id: 668208984
+mas 'Slack', id: 803453959
+mas 'Tweetbot', id: 1384080005
