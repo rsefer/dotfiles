@@ -10,10 +10,10 @@ plus 'initial setup'
 .setup/installs/macos-defaults.sh
 .setup/installs/omzsh.sh
 .setup/installs/dotfiles.sh
-.setup/installs/utilities/install.sh
 .setup/installs/homebrew/install.sh
 .setup/installs/hammerspoon.sh
 .setup/installs/vscode/install.sh
+.setup/installs/utilities/install.sh
 
 info 'updating configuration'
 cd $DOTFILES_ROOT && git pull && git submodule update --init --recursive

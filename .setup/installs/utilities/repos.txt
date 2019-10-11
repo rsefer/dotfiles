@@ -1,4 +1,4 @@
-git@gitlab.com:rsefer/server-scripts.git
-git@gitlab.com:rsefer/data.git
-git@gitlab.com:rsefer/git-scripts.git
-git@gitlab.com:rsefer/mac-scripts.git
+https://github.com/rsefer/server-scripts.git
+https://github.com/rsefer/data.git
+https://github.com/rsefer/git-scripts.git
+https://github.com/rsefer/mac-scripts.git
