@@ -7,8 +7,8 @@ source $DOTFILES_ROOT/.setup/functions.sh
 
 plus 'initial setup'
 
-.setup/installs/macos-defaults.sh
 .setup/installs/omzsh.sh
+.setup/installs/macos/install.sh
 .setup/installs/dotfiles.sh
 .setup/installs/homebrew/install.sh
 .setup/installs/hammerspoon.sh
