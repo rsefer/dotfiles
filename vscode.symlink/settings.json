@@ -22,5 +22,6 @@
 	"beautify.config": "~/.jsbeautifyrc",
 	"editor.minimap.maxColumn": 60,
 	"editor.minimap.renderCharacters": false,
-	"editor.minimap.showSlider": "always"
+	"editor.minimap.showSlider": "always",
+	"terminal.integrated.shell.osx": "/bin/zsh"
 }
