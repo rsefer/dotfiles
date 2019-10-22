@@ -5,5 +5,7 @@ formulahendry.auto-close-tag
 formulahendry.auto-rename-tag
 henoc.svgeditor
 HookyQR.beautify
+Janne252.fontawesome-autocomplete
+ms-python.python
 Tyriar.lorem-ipsum
 zhuangtongfa.Material-theme
