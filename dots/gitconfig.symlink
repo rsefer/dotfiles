@@ -1,6 +1,7 @@
 [user]
   name = Robert Sefer
   email = rsefer@gmail.com
+	signingkey = CEE7B822209FC1F1
 [alias]
   log = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen%cn%Creset %Cblue(%cr)%Creset' --abbrev-commit --date=relative
 [push]
