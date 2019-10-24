@@ -7,5 +7,5 @@ henoc.svgeditor
 HookyQR.beautify
 Janne252.fontawesome-autocomplete
 ms-python.python
+ms-vscode.Theme-TomorrowKit
 Tyriar.lorem-ipsum
-zhuangtongfa.Material-theme

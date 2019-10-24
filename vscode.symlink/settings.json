@@ -1,34 +1,33 @@
 {
-	"git.autofetch": false,
-	"workbench.startupEditor": "newUntitledFile",
-	"editor.tabSize": 2,
-	"editor.wordWrap": "on",
-	"editor.wordWrapColumn": 120,
-	"workbench.colorTheme": "One Dark Pro",
-	"window.closeWhenEmpty": true,
-	"window.nativeTabs": true,
-	"git.enableSmartCommit": true,
-	"editor.fontSize": 13,
-	"workbench.sideBar.location": "right",
-	"window.titleBarStyle": "native",
-	"breadcrumbs.symbolSortOrder": "type",
-	"breadcrumbs.enabled": false,
-	"git.confirmSync": false,
-	"git.autofetch": true,
-	"search.location": "sidebar",
-	"files.hotExit": "onExitAndWindowClose",
-	"files.insertFinalNewline": true,
-	"javascript.updateImportsOnFileMove.enabled": "always",
 	"beautify.config": "~/.jsbeautifyrc",
+	"breadcrumbs.enabled": false,
+	"breadcrumbs.symbolSortOrder": "type",
+	"editor.fontSize": 13,
 	"editor.minimap.maxColumn": 60,
 	"editor.minimap.renderCharacters": false,
 	"editor.minimap.showSlider": "always",
-	"terminal.integrated.shell.osx": "/bin/zsh",
-	"fontAwesomeAutocomplete.patterns": [
-		"**/*"
-	],
+	"editor.tabCompletion": "on",
+	"editor.tabSize": 2,
+	"editor.wordWrap": "on",
+	"editor.wordWrapColumn": 120,
+	"files.hotExit": "onExitAndWindowClose",
+	"files.insertFinalNewline": true,
 	"fontAwesomeAutocomplete.disableTriggerWordAutoClearPatterns": [
 		"**/*"
 	],
-	"editor.tabCompletion": "on"
+	"fontAwesomeAutocomplete.patterns": [
+		"**/*"
+	],
+	"git.autofetch": true,
+	"git.confirmSync": false,
+	"git.enableSmartCommit": true,
+	"javascript.updateImportsOnFileMove.enabled": "always",
+	"search.location": "sidebar",
+	"terminal.integrated.shell.osx": "/bin/zsh",
+	"window.closeWhenEmpty": true,
+	"window.nativeTabs": true,
+	"window.titleBarStyle": "native",
+	"workbench.colorTheme": "Tomorrow Night",
+	"workbench.sideBar.location": "right",
+	"workbench.startupEditor": "newUntitledFile"
 }
