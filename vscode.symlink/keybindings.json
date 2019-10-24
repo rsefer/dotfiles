@@ -15,5 +15,9 @@
 	{
 		"key": "ctrl+alt+b ctrl+alt+s",
 		"command": "HookyQR.beautify"
+	},
+	{
+		"key": "shift+cmd+g",
+		"command": "git.push"
 	}
 ]
