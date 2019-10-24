@@ -22,6 +22,7 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool TRUE # p
 killall Finder
 
 # Misc.
+defaults write com.apple.finder CreateDesktop false # hide all desktop icons
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # disable quarantine dialog
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool FALSE # disable smart dashes
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
