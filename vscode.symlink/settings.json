@@ -51,5 +51,6 @@
 	},
 	"workbench.colorTheme": "Tomorrow Night",
 	"workbench.sideBar.location": "right",
-	"workbench.startupEditor": "newUntitledFile"
+	"workbench.startupEditor": "newUntitledFile",
+	"workbench.statusBar.visible": true
 }
