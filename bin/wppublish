@@ -1,0 +1,19 @@
+#!/bin/sh
+#
+# Prepare wordpress theme folder
+
+set -e
+
+folderName=$(basename "$PWD")
+
+if git rev-parse --git-dir > /dev/null 2>&1; then
+	# echo $folderName
+	git archive --worktree-attributes -o ~/Downloads/$folderName.zip HEAD
+	cd ~/Downloads && unzip $folderName.zip -d $folderName && rm $folderName.zip
+	# TODO: add sftp publish option
+else
+	echo "Not a git repository"
+	exit 1
+fi
+
+exit 0
