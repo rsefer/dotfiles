@@ -4,6 +4,7 @@
 #
 # _config/wppublish.json file should contain:
 # {
+# 	"url": "https://example.com", // if present, site will open upon completion
 # 	"host": "sftp.flywheelsites.com",
 # 	"port": "22",
 # 	"username": "",
@@ -39,6 +40,12 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
 
 		wpsftpput $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
 		echo "\r\r"
+
+		URL=$(cat $WPPUBLISHFILE | jq -r '.url')
+
+		if [ ! -z "$URL" ]; then
+			open $URL
+		fi
 
 	else
 		echo "_config/wppublish.json not found."
