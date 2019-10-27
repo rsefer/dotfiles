@@ -1,0 +1,24 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+
+set HOST [lindex $argv 0]
+set PORT [lindex $argv 1]
+set USERNAME [lindex $argv 2]
+set PASSWORD [lindex $argv 3]
+set LOCALUPLOADNAME [lindex $argv 4]
+set MOUNTNAME [lindex $argv 5]
+set LOCALUPLOADDIR [lindex $argv 6]
+set REMOTETHEMESPATH [lindex $argv 7]
+
+set UNHOST "$USERNAME@$HOST"
+
+send_user "\nMounting SFTP volume:\n$USERNAME@$HOST:$REMOTETHEMESPATH\nto $LOCALUPLOADDIR/$MOUNTNAME\n\n"
+
+spawn -ignore HUP sshfs -o volname=$MOUNTNAME $UNHOST:$REMOTETHEMESPATH $LOCALUPLOADDIR/$MOUNTNAME
+expect {
+	"$UNHOST's password: " { send -- "$PASSWORD\r" }
+	"password: " { send -- "$PASSWORD\r" }
+}
+
+expect eof

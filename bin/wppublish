@@ -1,16 +1,51 @@
 #!/bin/sh
 #
-# Prepare wordpress theme folder
+# Publish wordpress theme folder
+#
+# _config/wppublish.json file should contain:
+# {
+# 	"host": "sftp.flywheelsites.com",
+# 	"port": "22",
+# 	"username": "",
+# 	"password": "",
+# 	"remotethemespath": "/path/to/wp-content/themes"
+# }
 
 set -e
 
-folderName=$(basename "$PWD")
+FOLDERNAME=$(basename "$PWD")
+WPPUBLISHFILE=$PWD/_config/wppublish.json
+LOCALUPLOADDIR=~/Downloads
 
 if git rev-parse --git-dir > /dev/null 2>&1; then
-	# echo $folderName
-	git archive --worktree-attributes -o ~/Downloads/$folderName.zip HEAD
-	cd ~/Downloads && unzip $folderName.zip -d $folderName && rm $folderName.zip
-	# TODO: add sftp publish option
+	git archive --worktree-attributes -o ~/Downloads/$FOLDERNAME.zip HEAD
+	cd ~/Downloads && unzip $FOLDERNAME.zip -d $FOLDERNAME && rm $FOLDERNAME.zip
+
+	if test -f "$WPPUBLISHFILE"; then
+		HOST=$(cat $WPPUBLISHFILE | jq -r '.host')
+		PORT=$(cat $WPPUBLISHFILE | jq -r '.port')
+		USERNAME=$(cat $WPPUBLISHFILE | jq -r '.username')
+		PASSWORD=$(cat $WPPUBLISHFILE | jq -r '.password')
+		REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
+		MOUNTNAME=sftp-mount
+
+		wpsftprm $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
+		echo "\r\r"
+		sleep 3
+		cd $LOCALUPLOADDIR/$MOUNTNAME && rm -rf $FOLDERNAME
+		sleep 3
+		diskutil umount force $LOCALUPLOADDIR/$MOUNTNAME
+		cd $LOCALUPLOADDIR && rm -r $MOUNTNAME
+
+		wpsftpput $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
+		echo "\r\r"
+
+	else
+		echo "_config/wppublish.json not found."
+	fi
+
+	cd $LOCALUPLOADDIR && rm -r $FOLDERNAME
+
 else
 	echo "Not a git repository"
 	exit 1
