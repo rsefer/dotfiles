@@ -36,7 +36,7 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
 	git archive --worktree-attributes -o ~/Downloads/$FOLDERNAME.zip HEAD
 	cd ~/Downloads && unzip $FOLDERNAME.zip -d $FOLDERNAME && rm $FOLDERNAME.zip
 
-	wpsftprm $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
+	wppublish-sftp "mount-and-rm" $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
 	echo "\r\r"
 	sleep 3
 	cd $LOCALUPLOADDIR/$MOUNTNAME && rm -rf $FOLDERNAME
@@ -44,7 +44,7 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
 	diskutil umount force $LOCALUPLOADDIR/$MOUNTNAME
 	cd $LOCALUPLOADDIR && rm -r $MOUNTNAME
 
-	wpsftpput $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
+	wppublish-sftp "put" $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
 	echo "\r\r"
 
 	cd $LOCALUPLOADDIR && rm -r $FOLDERNAME
@@ -53,6 +53,7 @@ if git rev-parse --git-dir > /dev/null 2>&1; then
 
 	if [ ! -z "$URL" ]; then
 		echo "Opening $URL..."
+		sleep 2
 		open $URL
 	fi
 
