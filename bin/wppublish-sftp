@@ -15,19 +15,12 @@ set REMOTETHEMESPATH [lindex $argv 8]
 set UNHOST "$USERNAME@$HOST"
 
 if { $ACTION == "mount-and-rm" } {
-	send_user "\nMounting SFTP volume:\n$USERNAME@$HOST:$REMOTETHEMESPATH\nto $LOCALUPLOADDIR/$MOUNTNAME\n\n"
-
 	spawn -ignore HUP sshfs -o volname=$MOUNTNAME $UNHOST:$REMOTETHEMESPATH $LOCALUPLOADDIR/$MOUNTNAME
 	expect {
 		"$UNHOST's password: " { send -- "$PASSWORD\r" }
 		"password: " { send -- "$PASSWORD\r" }
 	}
-
-	send_user "\nFinished mounting SFTP...\n\n"
-
 } elseif { $ACTION == "put" } {
-	send_user "\nUploading to SFTP...\n\n"
-
 	spawn sftp -oPort=$PORT $UNHOST:$REMOTETHEMESPATH
 	expect {
 		"$UNHOST's password: " { send -- "$PASSWORD\r" }
@@ -48,8 +41,6 @@ if { $ACTION == "mount-and-rm" } {
 	expect "sftp>"
 
 	send "exit\r"
-
-	send_user "\rClosed SFTP..."
 }
 
 expect eof

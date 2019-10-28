@@ -18,6 +18,12 @@ user () {
   printf "\r  [ \033[0;33m??\033[0m ] $1\n"
 }
 
+readyn () {
+	echo ''
+  read -p "$(printf "\r  [ \033[0;33m??\033[0m ]") $1" -n 1 -r
+	echo ''
+}
+
 success () {
 	echo ''
   printf "\r  [ \033[0;32mOK\033[0m ] $1\n"

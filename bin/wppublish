@@ -12,9 +12,11 @@
 # 	"remotethemespath": "/path/to/wp-content/themes"
 # }
 
+source $DOTFILES_ROOT/.setup/functions.sh
+
 set -e
 
-echo "STARTING wppublish"
+plus "STARTING wppublish"
 
 FOLDERNAME=$(basename "$PWD")
 WPPUBLISHFILE=$PWD/_config/wppublish.json
@@ -28,39 +30,53 @@ if test -f "$WPPUBLISHFILE"; then
 	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
 	MOUNTNAME=sftp-mount
 else
-	echo "ABORTING: _config/wppublish.json not found"
+	fail "ABORTING: _config/wppublish.json not found"
+	exit 1
+fi
+
+info "Script will update: $HOST:$REMOTETHEMESPATH/$FOLDERNAME"
+readyn "Would you like to continue (y/n)? "
+if [[ ! $REPLY =~ ^[Yy]$ ]]
+then
+	minus "ABORTING"
 	exit 1
 fi
 
 if git rev-parse --git-dir > /dev/null 2>&1; then
-	git archive --worktree-attributes -o ~/Downloads/$FOLDERNAME.zip HEAD
-	cd ~/Downloads && unzip $FOLDERNAME.zip -d $FOLDERNAME && rm $FOLDERNAME.zip
 
+	info "Generating git archive and unzipping"
+	git archive --worktree-attributes -o $LOCALUPLOADDIR/$FOLDERNAME.zip HEAD
+	cd $LOCALUPLOADDIR && unzip $FOLDERNAME.zip -d $FOLDERNAME &> /dev/null && rm $FOLDERNAME.zip
+
+	info "Mounting SFTP volume:\n$USERNAME@$HOST:$REMOTETHEMESPATH\nto $LOCALUPLOADDIR/$MOUNTNAME"
 	wppublish-sftp "mount-and-rm" $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
 	echo "\r\r"
 	sleep 3
 	cd $LOCALUPLOADDIR/$MOUNTNAME && rm -rf $FOLDERNAME
 	sleep 3
+
+	info "Unmounting."
 	diskutil umount force $LOCALUPLOADDIR/$MOUNTNAME
 	cd $LOCALUPLOADDIR && rm -r $MOUNTNAME
 
+	info "Uploading to SFTP"
 	wppublish-sftp "put" $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
-	echo "\r\r"
+	info "Closed SFTP"
 
 	cd $LOCALUPLOADDIR && rm -r $FOLDERNAME
 
 	URL=$(cat $WPPUBLISHFILE | jq -r '.url')
 
 	if [ ! -z "$URL" ]; then
-		echo "Opening $URL..."
+		info "Opening $URL..."
 		sleep 2
 		open $URL
 	fi
 
-	echo "FINISHED wppublish"
+	success "FINISHED wppublish"
 
 else
-	echo "ABORTING: Not a git repository"
+	fail "ABORTING: Not a git repository"
 	exit 1
 fi
 
