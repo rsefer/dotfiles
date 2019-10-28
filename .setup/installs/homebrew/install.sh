@@ -33,17 +33,8 @@ install_casks () {
   fi
 }
 
-user "install Homebrew? Y/n"
-read -n 1 action
-case "$action" in
-  y )
-    install=true;;
-  n )
-    install=false;;
-  * )
-    install=true;;
-esac
-if [ "$install" == "true" ]
+readyn "install Homebrew (y/n)? "
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
   install_homebrew
 else
@@ -53,17 +44,8 @@ fi
 if test $(which brew)
 then
 
-	user "install Homebrew brews? Y/n"
-	read -n 1 action
-	case "$action" in
-		y )
-			install=true;;
-		n )
-			install=false;;
-		* )
-			install=true;;
-	esac
-	if [ "$install" == "true" ]
+	readyn "install Homebrew brews (y/n)? "
+	if [[ $REPLY =~ ^[Yy]$ ]]
 	then
 		if install_brews
 		then
@@ -77,17 +59,8 @@ then
 
 	if test "$(uname)" = "Darwin"
 	then
-		user "install Homebrew casks and apps from the Appstore? Y/n"
-		read -n 1 action
-		case "$action" in
-			y )
-				install=true;;
-			n )
-				install=false;;
-			* )
-				install=true;;
-		esac
-		if [ "$install" == "true" ]
+		readyn "install Homebrew casks and apps from the Appstore (y/n)? "
+		if [[ $REPLY =~ ^[Yy]$ ]]
 		then
 			if install_casks
 			then

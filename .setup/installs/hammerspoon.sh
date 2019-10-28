@@ -1,17 +1,8 @@
 #!/usr/bin/env bash
 source $DOTFILES_ROOT/.setup/functions.sh
 
-user "install hammerspoon config? Y/n"
-read -n 1 action
-case "$action" in
-  y )
-    install=true;;
-  n )
-    install=false;;
-  * )
-    install=true;;
-esac
-if [ "$install" == "true" ]
+readyn "install hammerspoon config (y/n)? "
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	cd "$DOTFILES_ROOT"
 	git clone https://github.com/rsefer/hammerspoon-config.git hammerspoon.symlink

@@ -26,17 +26,8 @@ install_utils () {
 	done < $SCRIPTPATH/repos.txt
 }
 
-user "install custom utilities? Y/n"
-read -n 1 action
-case "$action" in
-  y )
-    install=true;;
-  n )
-    install=false;;
-  * )
-    install=true;;
-esac
-if [ "$install" == "true" ]
+readyn "install custom utilities (y/n)? "
+if [[ $REPLY =~ ^[Yy]$ ]]
 then
 	install_utils
 else
