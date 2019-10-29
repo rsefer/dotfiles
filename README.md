@@ -1,6 +1,6 @@
 # Dotfiles
 
-Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles). Hammerspoon config was originally included but is now in a [seperate repository](https://github.com/rsefer/hammerspoon-config).
+Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles). Hammerspoon config was originally included but is now in a [separate repository](https://github.com/rsefer/hammerspoon-config).
 
 ## Initial Setup
 
