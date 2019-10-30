@@ -26,12 +26,12 @@ fi
 
 export GOPATH=~/go
 export PATH=$PATH:$GOPATH/bin
+PATH="/usr/local/opt/curl/bin:$PATH"
 
 eval "$(alias -s)"
 
 export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/sbin:$PATH"
-export PATH="/Applications/flutter/bin:$PATH"
 
 export PATH=$PATH:/usr/local/bin
 
