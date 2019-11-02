@@ -30,7 +30,7 @@
 	"workbench.colorCustomizations": {
 		"terminal.ansiBlack": "#2C2F33",
 		"terminal.ansiBlue": "#405F74",
-		"terminal.ansiBrightBlack": "#232629",
+		"terminal.ansiBrightBlack": "#efefef",
 		"terminal.ansiBrightBlue": "#405F74",
 		"terminal.ansiBrightCyan": "#4E7D78",
 		"terminal.ansiBrightGreen": "#8F9547",
