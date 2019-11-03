@@ -15,7 +15,6 @@ else
 	git init
 fi
 
-cd "$UTILS_ROOT/git-scripts"
-ruby new-repo.rb --path=$workingPath
+hub create -p
 
 exit 0
