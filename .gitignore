@@ -1,5 +1,5 @@
-vscode.symlink/globalStorage
-vscode.symlink/workspaceStorage
-vscode.symlink/extensions
-hammerspoon.symlink
+dots/vscode.symlink/globalStorage
+dots/vscode.symlink/workspaceStorage
+dots/vscode.symlink/extensions
+dots/hammerspoon.symlink
 mac-scripts/ipaddress.txt
