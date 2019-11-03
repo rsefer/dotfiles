@@ -1,9 +1,0 @@
-#!/bin/sh
-#
-# Git pull dotfiles on Macbook Air
-
-set -e
-
-ssh rsefer@macbookair "echo \"Computer Name:\" && hostname && cd ~/dotfiles && git pull"
-
-exit 0
