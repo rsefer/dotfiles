@@ -9,6 +9,11 @@ sh -c "$(wget https://raw.githubusercontent.com/robbyrussell/oh-my-zsh/master/to
 info 'installing custom oh my zsh theme'
 
 overwrite_all=false backup_all=false skip_all=false
-src="$DOTFILES_ROOT/zsh/rsefer.zsh-theme"
-dst="$HOME/.oh-my-zsh/custom/themes/rsefer.zsh-theme"
-link_file "$src" "$dst"
+
+link_file "$DOTFILES_ROOT/zsh/rsefer.zsh-theme" "$HOME/.oh-my-zsh/themes/rsefer.zsh-theme"
+
+info 'installing oh my zsh plugins'
+
+cd ${$ZSH_CUSTOM:~/.oh-my-zsh}/custom/plugins/
+git clone https://github.com/zsh-users/zsh-autosuggestions
+git clone https://github.com/zsh-users/zsh-syntax-highlighting.git
