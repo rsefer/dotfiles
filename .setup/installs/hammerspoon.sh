@@ -4,7 +4,7 @@ source $DOTFILES_ROOT/.setup/functions.sh
 readyn "install hammerspoon config (y/n)? "
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	cd "$DOTFILES_ROOT"
+	cd "$DOTFILES_ROOT/dots"
 	git clone https://github.com/rsefer/hammerspoon-config.git hammerspoon.symlink
 	cd hammerspoon.symlink
 	cp config.sample.lua config.lua
