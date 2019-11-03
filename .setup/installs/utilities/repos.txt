@@ -1,2 +1,1 @@
 https://github.com/rsefer/server-scripts.git
-https://github.com/rsefer/mac-scripts.git
