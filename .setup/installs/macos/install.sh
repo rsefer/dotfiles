@@ -69,19 +69,15 @@ EOD
 
 info 'creating localhost ssl'
 
-cd $HOME
-mkdir .localhost-ssl
-cd .localhost-ssl
+LOCALHOSTSSLDIR=$HOME/.localhost-ssl
+mkdir $LOCALHOSTSSLDIR
+cd $LOCALHOSTSSLDIR
 
 openssl genrsa -out ca.key 2048
 openssl req -new -x509 -days 3650 -key ca.key -subj "/C=US/ST=IL/O=Sefer Design Company LLC/CN=Sefer Design Company LLC Root CA" -out ca.crt
 openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=US/ST=IL/O=Sefer Design Company LLC/CN=localhost" -out server.csr
 openssl x509 -req -extfile <(printf "subjectAltName=DNS:localhost") -days 3650 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
 
-sudo security add-trusted-cert -d -r trustRoot -k /Library/Keychains/System.keychain ~/.localhost-ssl/server.crt
-
-open -a "Keychain Access"
-
-info "open Keychain Access, search for 'localhost', and set as 'Always Trust'"
+sudo security add-trusted-cert -d -r trustAsRoot -k /Library/Keychains/System.keychain $LOCALHOSTSSLDIR/server.crt
 
 fi
