@@ -19,9 +19,6 @@ fi
 
 .setup/installs/dotfiles.sh
 
-info 'updating configuration'
-cd $DOTFILES_ROOT && git pull && git submodule update --init --recursive
-
 if test "$(uname)" = "Darwin"
 then
 	info 'launching Hammerspoon'
