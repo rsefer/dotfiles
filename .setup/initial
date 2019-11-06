@@ -19,6 +19,8 @@ fi
 
 .setup/installs/dotfiles.sh
 
+. $HOME/.zshrc
+
 if test "$(uname)" = "Darwin"
 then
 	info 'launching Hammerspoon'
