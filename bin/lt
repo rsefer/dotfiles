@@ -17,7 +17,7 @@ if [ $# == 2 ] || [ $# == 3 ]; then
 		MINUTES=$2
 	fi
 	plus "Logging time:"
-	echo $CLIENTID,$CLIENTNAME,$MINUTES,$(date +"%T") >> ~/Google\ Drive/Work/hours.csv
+	echo $CLIENTID,$CLIENTNAME,$MINUTES,$(date +"%T"),$(date +"%F") >> ~/Google\ Drive/Work/hours.csv
 else
 	fail 'Wrong arguments'
 	exit 1

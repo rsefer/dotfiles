@@ -1,0 +1,9 @@
+#!/bin/sh
+#
+# Summarizes time
+
+source $DOTFILES_ROOT/.setup/functions.sh
+
+sed 's/,,/, ,/g;s/,,/, ,/g' ~/Google\ Drive/Work/hours.csv | column -s, -t
+
+exit 0
