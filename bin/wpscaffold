@@ -1,6 +1,6 @@
 #!/bin/sh
 #
-# Publish wordpress theme folder
+# Create wordpress theme folder with scaffolding
 
 source $DOTFILES_ROOT/.setup/functions.sh
 
