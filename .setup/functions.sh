@@ -2,39 +2,42 @@ BRACKETSTART="\r\n[ "
 BRACKETEND=" ] "
 LINEEND="\n"
 COLOREND=$'\e[0m'
-COLORRED=$'\e[1;31m'
-COLORGREEN=$'\e[1;32m'
-COLORYELLOW=$'\e[1;33m'
-COLORBLUE=$'\e[1;34m'
+COLORRED=$'\e[31m'
+COLORGREEN=$'\e[32m'
+COLORYELLOW=$'\e[33m'
+COLORBLUE=$'\e[34m'
+
+message () {
+	printf "${BRACKETSTART}$3$2${COLOREND}${BRACKETEND}$1${LINEEND}"
+}
 
 plus () {
-  printf "${BRACKETSTART}${COLORGREEN}++${COLOREND}${BRACKETEND}$1${LINEEND}"
+  message "$1" "++" $COLORGREEN
 }
 
 success () {
-  printf "${BRACKETSTART}${COLORGREEN}OK${COLOREND}${BRACKETEND}$1${LINEEND}"
+	message "$1" "OK" $COLORGREEN
 }
 
 minus () {
-  printf "${BRACKETSTART}${COLORRED}--${COLOREND}${BRACKETEND}$1${LINEEND}"
+  message "$1" "--" $COLORRED
 }
 
 fail () {
-  printf "${BRACKETSTART}${COLORRED}XX${COLOREND}${BRACKETEND}$1${LINEEND}"
+	message "$1" "XX" $COLORRED
 }
 
 info () {
-  printf "${BRACKETSTART}${COLORBLUE}..${COLOREND}${BRACKETEND}$1${LINEEND}"
+  message "$1" ".." $COLORBLUE
 }
 
 user () {
-  printf "${BRACKETSTART}${COLORYELLOW}??${COLOREND}${BRACKETEND}$1${LINEEND}"
+  message "$1" "??" $COLORYELLOW
 }
 
 readyn () {
-  read -p "$(printf "${BRACKETSTART}${COLORYELLOW}??${COLOREND}${BRACKETEND}") $1" -n 1 -r
+  read -p "$(printf "${BRACKETSTART}${COLORYELLOW}??${COLOREND}${BRACKETEND}")$1" -n 1 -r
 }
-
 
 link_file () {
   local src=$1 dst=$2
