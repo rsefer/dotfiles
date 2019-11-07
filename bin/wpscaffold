@@ -8,20 +8,29 @@ set -e
 
 plus "STARTING wpscaffold"
 
-user "Friendly Theme Name?"
-read THEMENAMEFRIENDLY
-
-user "Slug Theme Name ('name' in package.json)?"
-read THEMENAMESLUG
-
-user "Local development domain name (https://example.local)?"
-read LOCALDOMAIN
-
 git clone --depth=1 --branch=master git@github.com:rsefer/wp-theme-scaffold.git .
 rm -rf .git
 
-sed -i '' "s/\"name\": \"example\"/\"name\": \"$THEMENAMESLUG\"/g" package.json
-sed -i '' "s/example.local/$LOCALDOMAIN.local/g" _config/webpack.config.js
-sed -i '' "s/Theme Name: example/Theme Name: $THEMENAMEFRIENDLY/g" style.css
+user "Friendly Theme Name?"
+read -r
+sed -i '' "s/Theme Name: example/Theme Name: $REPLY/g" style.css
+
+user "Slug Theme Name ('name' in package.json)?"
+read -r
+sed -i '' "s/\"name\": \"example\"/\"name\": \"$REPLY\"/g" package.json
+
+user "Local development domain name (https://example.local)?"
+read -r
+sed -i '' "s/example.local/$REPLY.local/g" _config/webpack.config.js
+
+readyn "Run npm install (y/n)? "
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	npm install
+else
+	info "Skipping npm install"
+fi
+
+success "FINISHED wpscaffold"
 
 exit 0
