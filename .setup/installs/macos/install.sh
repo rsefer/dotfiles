@@ -73,9 +73,13 @@ LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 mkdir $LOCALHOSTSSLDIR
 cd $LOCALHOSTSSLDIR
 
+COMPANYNAME="Sefer Design Company LLC"
+COMPANYCOUNTRY="US"
+COMPANYSTATE="IL"
+
 openssl genrsa -out ca.key 2048
-openssl req -new -x509 -days 3650 -key ca.key -subj "/C=US/ST=IL/O=Sefer Design Company LLC/CN=Sefer Design Company LLC Root CA" -out ca.crt
-openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=US/ST=IL/O=Sefer Design Company LLC/CN=localhost" -out server.csr
+openssl req -new -x509 -days 3650 -key ca.key -subj "/C=$COMPANYCOUNTRY/ST=$COMPANYSTATE/O=$COMPANYNAME/CN=$COMPANYNAME Root CA" -out ca.crt
+openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=$COMPANYCOUNTRY/ST=$COMPANYSTATE/O=$COMPANYNAME/CN=localhost" -out server.csr
 openssl x509 -req -extfile <(printf "subjectAltName=DNS:localhost") -days 3650 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
 
 sudo security add-trusted-cert -d -r trustAsRoot -k /Library/Keychains/System.keychain $LOCALHOSTSSLDIR/server.crt
