@@ -3,6 +3,7 @@
 cd "$(dirname "$0")/.."
 DOTFILES_ROOT=$(pwd -P)
 find $DOTFILES_ROOT/.setup/ -type f -iname "*.sh" -exec chmod +x {} \;
+find $DOTFILES_ROOT/bin/ -type f -iname "*" -exec chmod +x {} \;
 source $DOTFILES_ROOT/.setup/functions.sh
 
 plus 'initial setup'
@@ -18,6 +19,8 @@ then
 fi
 
 .setup/installs/dotfiles.sh
+
+. $HOME/.zshrc
 
 if test "$(uname)" = "Darwin"
 then
