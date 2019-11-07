@@ -36,7 +36,9 @@ user () {
 }
 
 readyn () {
-  read -p "$(printf "${BRACKETSTART}${COLORYELLOW}??${COLOREND}${BRACKETEND}")$1" -n 1 -r
+	user "$1"
+  read -n 1 -r
+	echo "\n"
 }
 
 link_file () {
