@@ -1,0 +1,27 @@
+#!/bin/sh
+#
+# Publish wordpress theme folder
+
+source $DOTFILES_ROOT/.setup/functions.sh
+
+set -e
+
+plus "STARTING wpscaffold"
+
+user "Friendly Theme Name?"
+read THEMENAMEFRIENDLY
+
+user "Slug Theme Name ('name' in package.json)?"
+read THEMENAMESLUG
+
+user "Local development domain name (https://example.local)?"
+read LOCALDOMAIN
+
+git clone --depth=1 --branch=master git@github.com:rsefer/wp-theme-scaffold.git .
+rm -rf .git
+
+sed -i '' "s/\"name\": \"example\"/\"name\": \"$THEMENAMESLUG\"/g" package.json
+sed -i '' "s/example.local/$LOCALDOMAIN.local/g" _config/webpack.config.js
+sed -i '' "s/Theme Name: example/Theme Name: $THEMENAMEFRIENDLY/g" style.css
+
+exit 0
