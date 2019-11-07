@@ -1,38 +1,40 @@
+BRACKETSTART="\r\n[ "
+BRACKETEND=" ] "
+LINEEND="\n"
+COLOREND=$'\e[0m'
+COLORRED=$'\e[1;31m'
+COLORGREEN=$'\e[1;32m'
+COLORYELLOW=$'\e[1;33m'
+COLORBLUE=$'\e[1;34m'
+
 plus () {
-	echo ''
-  printf "\r  [ \033[0;33m++\033[0m ] $1\n"
-}
-
-minus () {
-	echo ''
-  printf "\r  [ \033[0;31m--\033[0m ] $1\n"
-}
-
-info () {
-	echo ''
-  printf "\r  [ \033[00;34m..\033[0m ] $1\n"
-}
-
-user () {
-	echo ''
-  printf "\r  [ \033[0;33m??\033[0m ] $1\n"
-}
-
-readyn () {
-	echo ''
-  read -p "$(printf "\r  [ \033[0;33m??\033[0m ]") $1" -n 1 -r
-	echo ''
+  printf "${BRACKETSTART}${COLORGREEN}++${COLOREND}${BRACKETEND}$1${LINEEND}"
 }
 
 success () {
-	echo ''
-  printf "\r  [ \033[0;32mOK\033[0m ] $1\n"
+  printf "${BRACKETSTART}${COLORGREEN}OK${COLOREND}${BRACKETEND}$1${LINEEND}"
+}
+
+minus () {
+  printf "${BRACKETSTART}${COLORRED}--${COLOREND}${BRACKETEND}$1${LINEEND}"
 }
 
 fail () {
-	echo ''
-  printf "\r  [ \033[0;31mXX\033[0m ] $1\n"
+  printf "${BRACKETSTART}${COLORRED}XX${COLOREND}${BRACKETEND}$1${LINEEND}"
 }
+
+info () {
+  printf "${BRACKETSTART}${COLORBLUE}..${COLOREND}${BRACKETEND}$1${LINEEND}"
+}
+
+user () {
+  printf "${BRACKETSTART}${COLORYELLOW}??${COLOREND}${BRACKETEND}$1${LINEEND}"
+}
+
+readyn () {
+  read -p "$(printf "${BRACKETSTART}${COLORYELLOW}??${COLOREND}${BRACKETEND}") $1" -n 1 -r
+}
+
 
 link_file () {
   local src=$1 dst=$2
