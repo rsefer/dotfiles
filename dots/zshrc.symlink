@@ -7,8 +7,6 @@ export EDITOR="code -w"
 ZSH_THEME="rsefer"
 
 source $ZSH/oh-my-zsh.sh
-source $ZSH_CUSTOM/plugins/zsh-autosuggestions
-source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 source $DOTFILES_ROOT/zsh/keybindings.sh
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
@@ -20,12 +18,6 @@ if [ -r $HOME/.aliases ]; then
   source $HOME/.aliases
 fi
 
-#export PATH="$PATH:/Users/rsefer/.rvm/gems/ruby-2.1.5/bin:/Users/rsefer/.rvm/gems/ruby-2.0.0-p353/bin:/Users/rsefer/.rvm/gems/ruby-2.0.0-p353@global/bin:/Users/rsefer/.rvm/rubies/ruby-2.0.0-p353/bin:/Users/rsefer/.rvm/bin:/usr/bin:/bin:/usr/sbin:/sbin:/usr/local/bin:/opt/X11/bin:/opt/sm/bin:/opt/sm/pkg/active/bin:/opt/sm/pkg/active/sbin"
-
-#export PATH=$PATH:/usr/local/bin
-
-export GOPATH=~/go
-export PATH=$PATH:$GOPATH/bin
 PATH="/usr/local/opt/curl/bin:$PATH"
 
 eval "$(alias -s)"
