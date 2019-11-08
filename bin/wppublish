@@ -12,7 +12,7 @@
 # 	"remotethemespath": "/path/to/wp-content/themes"
 # }
 
-source $DOTFILES_ROOT/.setup/functions.sh
+source $DOTFILES_ROOT/setup/functions.sh
 
 set -e
 

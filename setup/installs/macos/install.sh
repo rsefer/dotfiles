@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $DOTFILES_ROOT/.setup/functions.sh
+source $DOTFILES_ROOT/setup/functions.sh
 
 if test "$(uname)" = "Darwin"
 then
@@ -53,7 +53,7 @@ tell application "Terminal"
 	local windowID
 	set themeName to "Tomorrow Night RSefer"
 	set initialOpenedWindows to id of every window
-	do shell script "open '$DOTFILES_ROOT/.setup/installs/macos/" & themeName & ".terminal'"
+	do shell script "open '$DOTFILES_ROOT/setup/installs/macos/" & themeName & ".terminal'"
 	delay 1
 	set default settings to settings set themeName
 	set allOpenedWindows to id of every window

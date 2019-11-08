@@ -2,7 +2,7 @@
 #
 # Logs time
 
-source $DOTFILES_ROOT/.setup/functions.sh
+source $DOTFILES_ROOT/setup/functions.sh
 
 set -e
 

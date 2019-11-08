@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $DOTFILES_ROOT/.setup/functions.sh
+source $DOTFILES_ROOT/setup/functions.sh
 
 info 'installing dotfiles'
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $DOTFILES_ROOT/.setup/functions.sh
+source $DOTFILES_ROOT/setup/functions.sh
 
 SCRIPTPATH="$( cd "$(dirname "$0")" ; pwd -P )"
 

@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-source $DOTFILES_ROOT/.setup/functions.sh
+source $DOTFILES_ROOT/setup/functions.sh
 
 install_homebrew () {
   if test ! $(which brew)
@@ -19,7 +19,7 @@ install_brews () {
   if test $(which brew)
   then
     info 'installing Homebrew brews Brewfile'
-  	cd "$DOTFILES_ROOT/.setup/installs/homebrew"
+  	cd "$DOTFILES_ROOT/setup/installs/homebrew"
   	brew bundle --file='Brewfile'
   fi
 }
@@ -28,7 +28,7 @@ install_casks () {
   if test $(which brew)
   then
     info 'installing Homebrew casks from Caskfile'
-  	cd "$DOTFILES_ROOT/.setup/installs/homebrew"
+  	cd "$DOTFILES_ROOT/setup/installs/homebrew"
   	brew bundle --file='Caskfile'
   fi
 }

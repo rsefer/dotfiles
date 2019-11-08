@@ -9,5 +9,5 @@ Based heavily on [Zach Holman's dotfiles](https://github.com/holman/dotfiles). H
 git config --global user.name "First Last"
 git config --global user.email "me@example.com"
 ```
-2. `cd ~/ && git clone https://github.com/rsefer/dotfiles.git && source dotfiles/.setup/initial`
+2. `cd ~/ && git clone https://github.com/rsefer/dotfiles.git && source dotfiles/setup/initial`
 3. Add necessary config files in all `util` repositories
