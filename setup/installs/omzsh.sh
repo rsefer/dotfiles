@@ -14,6 +14,7 @@ link_file "$DOTFILES_ROOT/zsh/rsefer.zsh-theme" "$HOME/.oh-my-zsh/themes/rsefer.
 
 info 'installing oh my zsh plugins'
 
-cd ${$ZSH_CUSTOM:~/.oh-my-zsh}/custom/plugins/
-git clone https://github.com/zsh-users/zsh-autosuggestions
+cd $HOME/.oh-my-zsh/custom/plugins/
+git clone https://github.com/zsh-users/zsh-completions.git
+git clone https://github.com/zsh-users/zsh-autosuggestions.git
 git clone https://github.com/zsh-users/zsh-syntax-highlighting.git

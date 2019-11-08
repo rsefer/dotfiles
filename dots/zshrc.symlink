@@ -7,10 +7,12 @@ export EDITOR="code -w"
 ZSH_THEME="rsefer"
 
 source $ZSH/oh-my-zsh.sh
+source $ZSH_CUSTOM/plugins/zsh-autosuggestions
+source $ZSH_CUSTOM/plugins/zsh-syntax-highlighting
 source $DOTFILES_ROOT/zsh/keybindings.sh
 
-fpath=(/usr/local/share/zsh-completions $fpath)
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+autoload -U compinit && compinit
 
 # User configuration
 
