@@ -1,26 +1,85 @@
-#!/bin/sh
+#!/usr/bin/env python3
 #
-# Logs time
+# Time logging
 
-source $DOTFILES_ROOT/setup/functions.sh
+import time, sys, os, csv
 
-set -e
+hours_file = os.getenv('HOME') + "/Google Drive/Work/hours.csv"
+delimiter = ','
 
-if [ $# == 2 ] || [ $# == 3 ]; then
-	if [ $# == 3 ]; then
-		CLIENTID=$1
-		CLIENTNAME=$2
-		MINUTES=$3
-	else
-		CLIENTID=''
-		CLIENTNAME=$1
-		MINUTES=$2
-	fi
-	plus "Logging time:"
-	echo $CLIENTID,$CLIENTNAME,$MINUTES,$(date +"%T"),$(date +"%F") >> ~/Google\ Drive/Work/hours.csv
-else
-	fail 'Wrong arguments'
-	exit 1
-fi
+def summarize():
+	with open(hours_file, 'rt') as file:
+		reader = csv.reader(file, delimiter = delimiter)
+		clients = {}
+		raw_table = ''
+		line = 0
+		for row in reader:
+			if line > 0:
+				if row[0] not in clients:
+					clients[row[0]] = {
+						'name' : row[1],
+						'minutes' : 0
+					}
+				clients[row[0]]['minutes'] += int(row[2])
+			raw_table += row[1] + "\t" + row[2] + "\t" + row[3] + "\t" + row[4] + "\n"
+			line += 1
 
-exit 0
+		print()
+		print('=======')
+		print('SUMMARY')
+		print('=======')
+		for k, client in clients.items():
+			hours = round(client['minutes'] / 60, 2)
+			print(k + "\t" + client['name'] + "\t" + str(hours) + ' hours')
+		print()
+
+		if len(sys.argv) >= 3 and sys.argv[2] == 'raw':
+			print()
+			print('====')
+			print('DATA')
+			print('====')
+			print(raw_table)
+
+def addRow(clientID, clientName, minutes):
+	with open(hours_file, 'a') as file:
+		file.write("\n")
+		file.write(clientID + delimiter + clientName + delimiter + minutes + delimiter + time.strftime('%H:%M:%S') + delimiter + time.strftime('%Y-%m-%d'))
+
+def clearClient(clientID):
+	keep_lines = list()
+	remove_lines_count = 0
+	with open(hours_file, 'rt') as file:
+		reader = csv.reader(file, delimiter = delimiter)
+		for row in reader:
+			if row[0] == clientID:
+				if remove_lines_count == 0:
+					print()
+					print('Clearing client #' + clientID + ' - ' + row[1])
+					print()
+				print(row[4] + ' ' + row[3] + ' ' + row[2] + ' minutes')
+				remove_lines_count += 1
+			else:
+				keep_lines.append(row)
+
+		if remove_lines_count == 0:
+			print('Client #' + clientID + ' not found')
+			sys.exit(1)
+
+	with open(hours_file, 'w') as file:
+		writer = csv.writer(file)
+		writer.writerows(keep_lines)
+
+	summarize()
+
+if len(sys.argv) < 2:
+	summarize()
+else:
+	if sys.argv[1] == 'sum' or sys.argv[1] == 's':
+		summarize()
+	elif (sys.argv[1] == 'add' or sys.argv[1] == 'a') and len(sys.argv) >= 5:
+		addRow(sys.argv[2], sys.argv[3], sys.argv[4])
+	elif (sys.argv[1] == 'clear' or sys.argv[1] == 'c') and len(sys.argv) >= 3:
+		clearClient(sys.argv[2])
+	else:
+		print('Wrong arguments')
+		sys.exit(1)
