@@ -14,7 +14,7 @@ module.exports = {
 		cursorShape: 'BLOCK',
 		cursorBlink: false,
 		foregroundColor: '#fff',
-		backgroundColor: '#000',
+		backgroundColor: '#1D1D1D',
 		selectionColor: 'rgba(248,28,229,0.3)',
 		borderColor: '#333',
 		css: '',
