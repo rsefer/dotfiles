@@ -1,5 +1,6 @@
 dots/.vscode/globalStorage
 dots/.vscode/workspaceStorage
 dots/.vscode/extensions
+dots/.vscode/argv.json
 dots/.hammerspoon
 mac-scripts/ipaddress.txt
