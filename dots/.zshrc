@@ -1,13 +1,13 @@
-export ZSH=$HOME/.oh-my-zsh
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
+autoload -U compinit && compinit
 
 ZSH_THEME="rsefer"
+
+export ZSH=$HOME/.oh-my-zsh
 
 source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES_ROOT/zsh/keybindings.sh
-
-plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
-autoload -U compinit && compinit
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
