@@ -1,35 +1,13 @@
-export DOTFILES_ROOT=$HOME/dotfiles
-export UTILS_ROOT=$HOME/utils
 export ZSH=$HOME/.oh-my-zsh
-export PATH="$DOTFILES_ROOT/bin:$PATH"
-export EDITOR="code -w"
 
 ZSH_THEME="rsefer"
 
+source $HOME/.profile
 source $ZSH/oh-my-zsh.sh
 source $DOTFILES_ROOT/zsh/keybindings.sh
 
 plugins=(git zsh-autosuggestions zsh-syntax-highlighting zsh-completions)
 autoload -U compinit && compinit
-
-# User configuration
-
-if [ -r $HOME/.aliases ]; then
-  source $HOME/.aliases
-fi
-
-PATH="/usr/local/opt/curl/bin:$PATH"
-
-eval "$(alias -s)"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-export PATH="/usr/local/sbin:$PATH"
-
-export PATH=$PATH:/usr/local/bin
-
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # tabtab source for serverless package
 # uninstall by removing these lines or running `tabtab uninstall serverless`
