@@ -40,6 +40,7 @@ module.exports = {
 			lightCyan: '#68FDFE',
 			lightWhite: '#FFFFFF',
 		},
+		scrollbarOpacity: 0.5,
 		shell: '',
 		shellArgs: ['--login'],
 		env: {},
@@ -50,7 +51,13 @@ module.exports = {
 		macOptionSelectionMode: 'vertical',
 		webGLRenderer: true
 	},
-	plugins: ["hypercwd", "hyper-pane"],
+	plugins: [
+        "hypercwd",
+        "hyper-pane",
+        "hyper-filedrop",
+        "hyper-single-instance",
+        "hyper-fading-scrollbar"
+    ],
 	localPlugins: [],
 	keymaps: {},
 };
