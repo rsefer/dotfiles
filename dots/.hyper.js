@@ -49,14 +49,19 @@ module.exports = {
 		defaultSSHApp: true,
 		quickEdit: false,
 		macOptionSelectionMode: 'vertical',
-		webGLRenderer: true
+		webGLRenderer: true,
+		hyperTabs: {
+			border: true,
+			tabIconsColored: true
+		}
 	},
 	plugins: [
         "hypercwd",
         "hyper-pane",
         "hyper-filedrop",
         "hyper-single-instance",
-        "hyper-fading-scrollbar"
+        "hyper-fading-scrollbar",
+        "hyper-tabs-enhanced"
     ],
 	localPlugins: [],
 	keymaps: {},
