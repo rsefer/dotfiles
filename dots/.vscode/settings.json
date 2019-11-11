@@ -47,7 +47,10 @@
 		"terminal.background": "#27292c",
 		"terminal.foreground": "#B7BBB7",
 		"terminalCursor.background": "#B7BBB7",
-		"terminalCursor.foreground": "#B7BBB7"
+		"terminalCursor.foreground": "#B7BBB7",
+		"statusBar.background" : "#1A1A1A",
+		"statusBar.noFolderBackground" : "#1A1A1A",
+		"statusBar.debuggingBackground" : "#1A1A1A"
 	},
 	"workbench.colorTheme": "Tomorrow Night",
 	"workbench.sideBar.location": "right",
