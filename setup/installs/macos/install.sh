@@ -7,11 +7,10 @@ then
 info 'setting custom apple script services'
 
 # Apple Scripts - Services
-cd ~/Library/Services
 for f in $DOTFILES_ROOT/mac-scripts/services/*
 do
-	info "symlinking $f"
-	ln -s "$f"
+	dst="$HOME/Library/Services/$(basename "$f")"
+	link_file "$f" "$dst"
 done
 
 info 'setting macOS defaults'
