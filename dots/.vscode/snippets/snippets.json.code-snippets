@@ -15,9 +15,21 @@
 	// 	],
 	// 	"description": "Log output to console"
 	// }
-
+	"html": {
+		"prefix": "<html",
+		"body": [
+			"<!DOCTYPE html>",
+			"<head>",
+			"<title>$1</title>",
+			"</head>",
+			"<body>",
+			"$0"
+			"</body>",
+			"</html>"
+		],
+		"description": "<html> scaffold"
+	},
 	"jQuery(document).ready": {
-		"scope": "javascript",
 		"prefix": "jdr",
 		"body": [
 			"jQuery(document).ready(function($) {",
@@ -27,11 +39,11 @@
 		"description": "jQuery(document).ready"
 	},
 	"function": {
-		"scope": "javascript",
+		"scope": "javascript,html",
 		"prefix": "func",
 		"body": [
 			"function ${1:functionName}($2) {",
-			"\t$3",
+			"\t$0",
 			"}"
 		],
 		"description": "function"
