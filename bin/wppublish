@@ -1,16 +1,6 @@
 #!/bin/sh
 #
-# Publish wordpress theme folder
-#
-# _config/wppublish.json file should contain:
-# {
-# 	"url": "https://example.com", // if present, site will open upon completion
-# 	"host": "sftp.flywheelsites.com",
-# 	"port": "22",
-# 	"username": "",
-# 	"password": "",
-# 	"remotethemespath": "/path/to/wp-content/themes"
-# }
+# Publish wordpress theme/plugin folder
 
 source $DOTFILES_ROOT/setup/functions.sh
 
@@ -31,7 +21,18 @@ if test -f "$WPPUBLISHFILE"; then
 	MOUNTNAME=sftp-mount
 else
 	fail "ABORTING: _config/wppublish.json not found"
-	exit 1
+	readyn "Create _config/wppublish.json file (y/n)?"
+	if [[ $REPLY =~ ^[Yy]$ ]]; then
+		if [ ! -d "_config" ]; then
+			mkdir _config
+		fi
+		jq -n '{ "url": "https://example.com", "host": "sftp.flywheelsites.com", "port": "22", "username": "", "password": "", "remotethemespath": "/path/to/wp-content/themes" }' > _config/wppublish.json
+		success "_config/wppublish.json created. Fill out that file and run wpppublish again"
+		exit 0
+	else
+		exit 1
+	fi
+
 fi
 
 info "Script will update: $HOST:$REMOTETHEMESPATH/$FOLDERNAME"
