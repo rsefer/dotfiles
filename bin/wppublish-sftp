@@ -15,7 +15,7 @@ set REMOTETHEMESPATH [lindex $argv 8]
 set UNHOST "$USERNAME@$HOST"
 
 if { $ACTION == "mount-and-rm" } {
-	spawn -ignore HUP sshfs -o volname=$MOUNTNAME $UNHOST:$REMOTETHEMESPATH $LOCALUPLOADDIR/$MOUNTNAME
+	spawn -ignore HUP sshfs -o volname=$MOUNTNAME $UNHOST:$REMOTETHEMESPATH $LOCALUPLOADDIR/$MOUNTNAME -p $PORT
 	expect {
 		"$UNHOST's password: " { send -- "$PASSWORD\r" }
 		"password: " { send -- "$PASSWORD\r" }
