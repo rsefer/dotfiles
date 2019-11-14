@@ -14,6 +14,7 @@ def summarize():
 		clients = {}
 		raw_table = ''
 		line = 0
+		lastDate = None
 		for row in reader:
 			if len(row) == 0:
 				continue
@@ -25,7 +26,14 @@ def summarize():
 						'minutes' : 0
 					}
 				clients[row[0]]['minutes'] += int(row[2])
+
 				workingDate = datetime.strftime(datetime.strptime(row[4], '%Y-%m-%d'), '%Y-%m-%d %a')
+				if lastDate == workingDate:
+					workingDate = '              '
+				else:
+					raw_table += "\t\t\t\t\t--------------\n"
+					lastDate = workingDate
+
 			raw_table += row[1] + "\t" + row[2] + "\t" + row[3] + "\t" + workingDate + "\n"
 			line += 1
 
