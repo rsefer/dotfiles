@@ -3,6 +3,7 @@
 # Time logging
 
 import time, sys, os, csv
+from datetime import datetime
 
 hours_file = os.getenv('HOME') + "/Google Drive/Work/hours.csv"
 delimiter = ','
@@ -16,6 +17,7 @@ def summarize():
 		for row in reader:
 			if len(row) == 0:
 				continue
+			workingDate = row[4]
 			if line > 0:
 				if row[0] not in clients:
 					clients[row[0]] = {
@@ -23,7 +25,8 @@ def summarize():
 						'minutes' : 0
 					}
 				clients[row[0]]['minutes'] += int(row[2])
-			raw_table += row[1] + "\t" + row[2] + "\t" + row[3] + "\t" + row[4] + "\n"
+				workingDate = datetime.strftime(datetime.strptime(row[4], '%Y-%m-%d'), '%Y-%m-%d %a')
+			raw_table += row[1] + "\t" + row[2] + "\t" + row[3] + "\t" + workingDate + "\n"
 			line += 1
 
 		print()
