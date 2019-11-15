@@ -31,6 +31,8 @@ defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool TRUE # p
 killall Finder
 
 # Misc.
+defaults write com.apple.TextEdit.plist RichText -int 0 # TextEdit default format plain text
+defaults write com.apple.TextEdit.plist NSFixedPitchFontSize -string 18 # TextEdit default text size
 defaults write com.apple.finder CreateDesktop false # hide all desktop icons
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # disable quarantine dialog
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool FALSE # disable smart dashes
