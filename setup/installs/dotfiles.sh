@@ -9,3 +9,10 @@ do
 	dst="$HOME/$(basename "${src}")"
 	link_file "$src" "$dst"
 done
+
+info 'installing Vim plugins'
+if [[ ! -d $DOTFILES_ROOT/dots/.vim/bundle/Vundle.vim ]]; then
+	git clone https://github.com/VundleVim/Vundle.vim.git $DOTFILES_ROOT/dots/.vim/bundle/Vundle.vim
+fi
+
+vim +PluginInstall +qall
