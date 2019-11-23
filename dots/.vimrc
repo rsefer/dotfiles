@@ -1,4 +1,4 @@
-filetype indent on
+filetype plugin indent on
 
 syntax on
 
@@ -39,6 +39,9 @@ set foldmethod=indent
 set backupdir=/tmp//
 set directory=/tmp//
 set undodir=/tmp//
+
+:iabbrev <// </<C-X><C-O>
+:imap <C-Space> <C-X><C-O>
 
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("printf '\033]2;%s\033\\' '" . expand("%") ."'")
 " autocmd BufReadPost,FileReadPost,BufNewFile * call system("tmux rename-window " . expand("%"))
