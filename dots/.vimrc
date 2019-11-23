@@ -5,6 +5,7 @@ set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
 Plugin 'VundleVim/Vundle.vim'
+Plugin 'editorconfig/editorconfig-vim'
 Plugin 'tpope/vim-surround'
 Plugin 'airblade/vim-gitgutter'
 Plugin 'scrooloose/nerdcommenter'
@@ -99,6 +100,13 @@ set statusline+=%1*%5l%*
 set statusline+=%1*/%L%*
 " (virtual) column #
 set statusline+=%1*%4v\ %*
+
+" highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
+
+hi CursorLineNR cterm=bold ctermfg=White ctermbg=DarkGrey
+augroup CLNRSet
+	autocmd! ColorScheme * hi CursorLineNR cterm=bold
+augroup END
 
 hi User1 ctermfg=white ctermbg=8
 hi User2 ctermfg=white ctermbg=green
