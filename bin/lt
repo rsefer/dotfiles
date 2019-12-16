@@ -28,6 +28,7 @@ def summarize():
 				clients[row[0]]['minutes'] += int(row[2])
 
 				workingDate = datetime.strftime(datetime.strptime(row[4], '%Y-%m-%d'), '%Y-%m-%d %a')
+				clients[row[0]]['last_tracked'] = workingDate
 				if lastDate == workingDate:
 					workingDate = '              '
 				else:
@@ -41,9 +42,18 @@ def summarize():
 		print('=======')
 		print('SUMMARY')
 		print('=======')
+		print("id\tname\t\t\ttime\t\tlast tracked")
+		print("--\t----\t\t\t----\t\t------------")
 		for k, client in clients.items():
 			hours = round(client['minutes'] / 60, 2)
-			print(k + "\t" + client['name'] + "\t" + str(hours) + ' hours')
+			workingLastTrackedRelative = (datetime.now() - datetime.strptime(client['last_tracked'], '%Y-%m-%d %a')).days
+			if workingLastTrackedRelative == 0:
+				workingLastTrackedRelative = 'today'
+			elif workingLastTrackedRelative == 1:
+				workingLastTrackedRelative = '1 day ago'
+			else:
+				workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
+			print(k + "\t" + client['name'] + "\t\t" + str(hours) + ' hours' + "\t" + workingLastTrackedRelative)
 		print()
 
 		if len(sys.argv) >= 3 and sys.argv[2] == 'raw':
