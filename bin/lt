@@ -53,7 +53,7 @@ def summarize():
 				workingLastTrackedRelative = '1 day ago'
 			else:
 				workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
-			print(k + "\t" + client['name'] + "\t\t" + str(hours) + ' hours' + "\t" + workingLastTrackedRelative)
+			print(k + "\t" + client['name'] + "\t\t" + '{:.2f}'.format(hours) + ' hours' + "\t" + workingLastTrackedRelative)
 		print()
 
 		if len(sys.argv) >= 3 and sys.argv[2] == 'raw':
