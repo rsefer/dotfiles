@@ -55,5 +55,10 @@
 	"workbench.colorTheme": "Tomorrow Night",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
-	"workbench.statusBar.visible": true
+	"workbench.statusBar.visible": true,
+	"editor.codeLens": false,
+	"editor.parameterHints.enabled": false,
+	"editor.renderLineHighlight": "all",
+	"editor.renderWhitespace": "selection",
+	"editor.scrollBeyondLastLine": false
 }
