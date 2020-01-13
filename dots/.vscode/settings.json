@@ -60,5 +60,6 @@
 	"editor.parameterHints.enabled": false,
 	"editor.renderLineHighlight": "all",
 	"editor.renderWhitespace": "selection",
-	"editor.scrollBeyondLastLine": false
+	"editor.scrollBeyondLastLine": false,
+	"editor.minimap.enabled": false
 }
