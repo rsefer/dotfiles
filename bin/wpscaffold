@@ -22,6 +22,7 @@ sed -i '' "s/\"name\": \"example\"/\"name\": \"$REPLY\"/g" package.json
 user "Local development domain name (\"example\" in \"https://example.local\")?"
 read -r
 sed -i '' "s/example.local/$REPLY.local/g" _config/webpack.config.js
+sed -i '' "s/example.local/$REPLY.local/g" functions.php
 
 readyn "Run npm install (y/n)? "
 if [[ $REPLY =~ ^[Yy]$ ]]
