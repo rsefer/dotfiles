@@ -8,4 +8,5 @@ HookyQR.beautify
 Janne252.fontawesome-autocomplete
 ms-python.python
 ms-vscode.Theme-TomorrowKit
+neilding.language-liquid
 Tyriar.lorem-ipsum
