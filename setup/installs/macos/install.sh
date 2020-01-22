@@ -23,9 +23,11 @@ defaults write com.apple.dock tilesize -int 30 # icon size
 defaults write com.apple.dock orientation -string left # position
 defaults write com.apple.dock autohide-time-modifier -float 0 # no hide/show delay
 defaults write com.apple.dock autohide-delay -float 0 # no hide delay
+defaults write com.apple.dock show-process-indicators -bool true # show indicators for open applications
 killall Dock
 
 # Finder
+defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME" # open new windows in home directory
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" # list view in Finder
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool TRUE # prevent Photos from opening automatically when devices are plugged in
 killall Finder
@@ -36,38 +38,23 @@ defaults write com.apple.TextEdit.plist NSFixedPitchFontSize -string 18 # TextEd
 defaults write com.apple.finder CreateDesktop false # hide all desktop icons
 defaults write com.apple.LaunchServices LSQuarantine -bool FALSE # disable quarantine dialog
 defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool FALSE # disable smart dashes
+defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool false # disable feedback sound when changing volume
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
 
 # # Install SF Mono font
 # cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
 
-# Terminal
+# Terminal - adapted from https://github.com/ymendel/dotfiles/blob/master/osx/terminal.defaults
+TERMINAL_THEME_NAME="Tomorrow Night RSefer"
+open $DOTFILES_ROOT/setup/installs/macos/$TERMINAL_THEME_NAME.terminal
+sleep 1
+defaults write com.apple.Terminal "Default Window Settings" -string "$TERMINAL_THEME_NAME"
+defaults write com.apple.Terminal "Startup Window Settings" -string "$TERMINAL_THEME_NAME"
 defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.terminal ShowLineMarks -int 0
 
-# set theme - adapted from https://github.com/mathiasbynens/dotfiles/blob/299b7dc6db8715a8b306267c14f62673286a19f3/.macos#L626
-osascript <<EOD
-tell application "Terminal"
-	local allOpenedWindows
-	local initialOpenedWindows
-	local windowID
-	set themeName to "Tomorrow Night RSefer"
-	set initialOpenedWindows to id of every window
-	do shell script "open '$DOTFILES_ROOT/setup/installs/macos/" & themeName & ".terminal'"
-	delay 1
-	set default settings to settings set themeName
-	set allOpenedWindows to id of every window
-	repeat with windowID in allOpenedWindows
-		if initialOpenedWindows does not contain windowID then
-			close (every window whose id is windowID)
-		else
-			set current settings of tabs of (every window whose id is windowID) to settings set themeName
-		end if
-	end repeat
-end tell
-EOD
-
+# localhost SSL
 LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 COMPANYNAME="Sefer Design Company LLC"
 COMPANYCOUNTRY="US"
