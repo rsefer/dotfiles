@@ -27,7 +27,6 @@ defaults write com.apple.dock show-process-indicators -bool true # show indicato
 killall Dock
 
 # Finder
-defaults write com.apple.finder NewWindowTargetPath -string "file://$HOME" # open new windows in home directory
 defaults write com.apple.finder FXPreferredViewStyle -string "Nlsv" # list view in Finder
 defaults -currentHost write com.apple.ImageCapture disableHotPlug -bool TRUE # prevent Photos from opening automatically when devices are plugged in
 killall Finder
