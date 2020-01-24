@@ -6,3 +6,4 @@ dots/.vim/bundle
 dots/.hammerspoon
 dots/.DS_Store
 mac-scripts/ipaddress.txt
+setup/installs/homebrew/Brewfile.lock.json

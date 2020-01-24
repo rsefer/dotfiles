@@ -1,0 +1,1 @@
+/Users/rsefer/dotfiles/mac-scripts/services/Launch Hammerspoon.workflow

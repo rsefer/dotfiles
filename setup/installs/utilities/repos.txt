@@ -1,1 +1,1 @@
-https://github.com/rsefer/server-scripts.git
+git@github.com:rsefer/server-scripts.git
