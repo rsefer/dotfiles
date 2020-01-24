@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>AMApplicationBuild</key>
-	<string>444.39</string>
+	<string>492</string>
 	<key>AMApplicationVersion</key>
-	<string>2.9</string>
+	<string>2.10</string>
 	<key>AMDocumentVersion</key>
 	<string>2</string>
 	<key>actions</key>
@@ -88,7 +88,7 @@
 					<key>0</key>
 					<dict>
 						<key>default value</key>
-						<string>/Applications/Contacts.app</string>
+						<string>/System/Applications/Contacts.app</string>
 						<key>name</key>
 						<string>appPath</string>
 						<key>required</key>
@@ -99,12 +99,10 @@
 						<string>0</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
-				<string>431.500000:225.000000</string>
+				<string>309.000000:225.000000</string>
 				<key>nibPath</key>
 				<string>/System/Library/Automator/Launch Application.action/Contents/Resources/Base.lproj/main.nib</string>
 			</dict>
