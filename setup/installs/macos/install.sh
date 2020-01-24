@@ -46,7 +46,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
 
 # Terminal - adapted from https://github.com/ymendel/dotfiles/blob/master/osx/terminal.defaults
 TERMINAL_THEME_NAME="Tomorrow Night RSefer"
-open $DOTFILES_ROOT/setup/installs/macos/$TERMINAL_THEME_NAME.terminal
+open "$DOTFILES_ROOT/setup/installs/macos/$TERMINAL_THEME_NAME.terminal"
 sleep 1
 defaults write com.apple.Terminal "Default Window Settings" -string "$TERMINAL_THEME_NAME"
 defaults write com.apple.Terminal "Startup Window Settings" -string "$TERMINAL_THEME_NAME"
