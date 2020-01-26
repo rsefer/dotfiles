@@ -33,6 +33,7 @@ cask 'visual-studio-code'
 
 # get list of installed apps from the appstore: mas list
 mas '1Password 7', id: 1333542190
+mas 'Battery Indicator', id: 1206020918
 mas 'GIPHY Capture', id: 668208984
 mas 'Slack', id: 803453959
 mas 'Tweetbot', id: 1384080005
