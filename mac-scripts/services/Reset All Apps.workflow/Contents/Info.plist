@@ -8,11 +8,11 @@
 			<key>NSBackgroundColorName</key>
 			<string>background</string>
 			<key>NSIconName</key>
-			<string>NSTouchBarClose</string>
+			<string>NSTouchBarDocuments</string>
 			<key>NSMenuItem</key>
 			<dict>
 				<key>default</key>
-				<string>Force Quit Hammerspoon</string>
+				<string>Reset All Apps</string>
 			</dict>
 			<key>NSMessage</key>
 			<string>runWorkflowAsService</string>
