@@ -19,5 +19,9 @@
 	{
 		"key": "shift+cmd+g",
 		"command": "git.push"
+	},
+	{
+		"key": "shift+cmd+n",
+		"command": "workbench.action.newWindowTab"
 	}
 ]
