@@ -22,7 +22,6 @@
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
-	"search.location": "sidebar",
 	"terminal.integrated.shell.osx": "/bin/zsh",
 	"window.closeWhenEmpty": true,
 	"window.nativeTabs": true,
