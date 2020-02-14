@@ -1,6 +1,11 @@
 cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
+tap 'homebrew/cask'
+tap 'homebrew/cask-fonts'
+tap 'homebrew/cask-versions'
+tap 'homebrew/core'
+tap 'homebrew/services'
 
 cask '1password'
 cask '1password-cli'
@@ -24,15 +29,38 @@ cask 'ngrok'
 cask 'openoffice'
 cask 'osxfuse'
 cask 'postman'
+cask 'qlcolorcode'
+cask 'qlimagesize'
+cask 'qlmarkdown'
+cask 'qlstephen'
+cask 'qlvideo'
+cask 'quicklook-json'
+cask 'quicklookase'
 cask 'sketch'
 cask 'spotify'
 cask 'vagrant'
 cask 'virtualbox'
 cask 'visual-studio-code'
+cask 'zoomus'
+
+cask 'font-bree-serif'
+cask 'font-fira-mono'
+cask 'font-fira-sans'
+cask 'font-fontawesome'
+cask 'font-montserrat'
+cask 'font-open-sans'
+cask 'font-playfair-display'
+cask 'font-roboto'
+cask 'font-source-sans-pro'
 
 # get list of installed apps from the appstore: mas list
 mas '1Password 7', id: 1333542190
 mas 'Battery Indicator', id: 1206020918
+mas 'GarageBand', id: 682658836
 mas 'GIPHY Capture', id: 668208984
+mas 'iMovie', id: 408981434
+mas 'Keynote', id: 409183694
+mas 'Numbers', id: 409203825
+mas 'Pages', id: 409201541
 mas 'Slack', id: 803453959
 mas 'Tweetbot', id: 1384080005
