@@ -5,5 +5,5 @@ Based on the work of many. Originally inspired by [Zach Holman](https://github.c
 ## Initial Setup
 
 1. Authenticate locally with [GitHub](https://help.github.com/articles/connecting-to-github-with-ssh/).
-2. `cd ~/ && git clone https://github.com/rsefer/dotfiles.git && source dotfiles/setup/initial`
+2. `cd ~/ && export DOTFILES_ROOT=~/dotfiles && git clone https://github.com/rsefer/dotfiles.git && source dotfiles/setup/initial`
 3. Add necessary config files in all `util` repositories
