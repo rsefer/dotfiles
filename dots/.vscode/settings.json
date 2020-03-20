@@ -61,5 +61,6 @@
 	"editor.renderWhitespace": "selection",
 	"editor.scrollBeyondLastLine": false,
 	"editor.minimap.enabled": false,
-	"diffEditor.renderSideBySide": false
+	"diffEditor.renderSideBySide": false,
+	"explorer.confirmDragAndDrop": false
 }
