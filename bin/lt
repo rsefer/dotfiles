@@ -8,7 +8,7 @@ from datetime import datetime
 hours_file = os.getenv('HOME') + "/Google Drive/Work/hours.csv"
 delimiter = ','
 
-def summarize():
+def summarize(clientID = None):
 	with open(hours_file, 'rt') as file:
 		reader = csv.reader(file, delimiter = delimiter)
 		clients = {}
@@ -17,6 +17,8 @@ def summarize():
 		lastDate = None
 		for row in reader:
 			if len(row) == 0:
+				continue
+			if clientID != None and row[0] != clientID:
 				continue
 			workingDate = row[4]
 			if line > 0:
@@ -56,7 +58,7 @@ def summarize():
 			print(k + "\t" + client['name'] + "\t\t" + '{:.2f}'.format(hours) + ' hours' + "\t" + workingLastTrackedRelative)
 		print()
 
-		if len(sys.argv) >= 3 and sys.argv[2] == 'raw':
+		if len(sys.argv) >= 3 and (sys.argv[2] == 'raw' or sys.argv[2].isnumeric()):
 			print('====')
 			print('DATA')
 			print('====')
@@ -99,7 +101,10 @@ if len(sys.argv) < 2:
 	summarize()
 else:
 	if sys.argv[1] == 'sum' or sys.argv[1] == 's':
-		summarize()
+		if len(sys.argv) >= 3 and sys.argv[2].isnumeric():
+			summarize(sys.argv[2])
+		else:
+			summarize()
 	elif (sys.argv[1] == 'add' or sys.argv[1] == 'a') and len(sys.argv) >= 5:
 		addRow(sys.argv[2], sys.argv[3], sys.argv[4])
 	elif (sys.argv[1] == 'clear' or sys.argv[1] == 'c') and len(sys.argv) >= 3:
