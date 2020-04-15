@@ -1,0 +1,24 @@
+#!/usr/bin/env python3
+#
+# Time logging
+#
+# pip3 install git+https://github.com/vrachieru/tplink-smartplug-api.git
+
+import sys
+from tplink_smartplug import SmartPlug
+
+if len(sys.argv) < 3:
+	sys.exit(1)
+
+plugHost = sys.argv[1]
+plug = SmartPlug(plugHost)
+
+try:
+	plug.name
+	print(plug.name)
+	if sys.argv[2] == 'off':
+		plug.turn_off()
+	elif sys.argv[2] == 'on':
+		plug.turn_on()
+except:
+	sys.exit(1)
