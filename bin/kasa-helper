@@ -15,10 +15,11 @@ plug = SmartPlug(plugHost)
 
 try:
 	plug.name
-	print(plug.name)
 	if sys.argv[2] == 'off':
 		plug.turn_off()
+		print(plug.name + ' turning OFF')
 	elif sys.argv[2] == 'on':
 		plug.turn_on()
+		print(plug.name + ' turning ON')
 except:
 	sys.exit(1)
