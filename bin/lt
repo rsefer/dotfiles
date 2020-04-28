@@ -72,6 +72,7 @@ def addRow(clientID, clientName, minutes):
 def clearClient(clientID):
 	keep_lines = list()
 	remove_lines_count = 0
+	summarize(clientID)
 	with open(hours_file, 'rt') as file:
 		reader = csv.reader(file, delimiter = delimiter)
 		for row in reader:
@@ -94,8 +95,6 @@ def clearClient(clientID):
 	with open(hours_file, 'w') as file:
 		writer = csv.writer(file)
 		writer.writerows(keep_lines)
-
-	summarize()
 
 if len(sys.argv) < 2:
 	summarize()
