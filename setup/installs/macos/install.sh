@@ -20,7 +20,7 @@ sudo -v
 
 # Dock
 defaults write com.apple.dock tilesize -int 30 # icon size
-defaults write com.apple.dock orientation -string left # position
+defaults write com.apple.dock orientation -string right # position
 defaults write com.apple.dock autohide-time-modifier -float 0 # no hide/show delay
 defaults write com.apple.dock autohide-delay -float 0 # no hide delay
 defaults write com.apple.dock show-process-indicators -bool true # show indicators for open applications
