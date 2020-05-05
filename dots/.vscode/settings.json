@@ -3,6 +3,8 @@
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
 	"editor.fontSize": 13,
+	"editor.hover.delay": 2500,
+	"editor.hover.enabled": true,
 	"editor.minimap.maxColumn": 60,
 	"editor.minimap.renderCharacters": false,
 	"editor.minimap.showSlider": "always",
@@ -62,5 +64,6 @@
 	"editor.scrollBeyondLastLine": false,
 	"editor.minimap.enabled": false,
 	"diffEditor.renderSideBySide": false,
-	"explorer.confirmDragAndDrop": false
+	"explorer.confirmDragAndDrop": false,
+	"window.zoomLevel": 0
 }
