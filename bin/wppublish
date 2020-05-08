@@ -35,7 +35,7 @@ else
 
 fi
 
-info "Script will update: $HOST:$REMOTETHEMESPATH/$FOLDERNAME"
+info "Script will update: $HOST$REMOTETHEMESPATH$FOLDERNAME"
 
 GITFTPACTION=push
 
@@ -53,7 +53,7 @@ fi
 
 if git rev-parse --git-dir > /dev/null 2>&1; then
 
-	git ftp $GITFTPACTION -u $USERNAME -p $PASSWORD sftp://$HOST$REMOTETHEMESPATH/$FOLDERNAME
+	git ftp $GITFTPACTION -u $USERNAME -p $PASSWORD sftp://$HOST$REMOTETHEMESPATH$FOLDERNAME
 
 	# info "Generating git archive and unzipping"
 	# git archive --worktree-attributes -o $LOCALUPLOADDIR/$FOLDERNAME.zip HEAD
