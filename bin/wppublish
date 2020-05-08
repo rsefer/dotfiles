@@ -26,7 +26,7 @@ else
 		if [ ! -d "_config" ]; then
 			mkdir _config
 		fi
-		jq -n '{ "url": "https://example.com", "host": "sftp.flywheelsites.com", "port": "22", "username": "", "password": "", "remotethemespath": "/path/to/wp-content/themes" }' > _config/wppublish.json
+		jq -n '{ "url": "", "host": "sftp.flywheelsites.com", "port": "22", "username": "", "password": "", "remotethemespath": "/path/to/wp-content/themes" }' > _config/wppublish.json
 		success "_config/wppublish.json created. Fill out that file and run wpppublish again"
 		exit 0
 	else
