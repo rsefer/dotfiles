@@ -64,6 +64,20 @@ def summarize(clientID = None):
 			print('====')
 			print(raw_table)
 
+def clientTime(clientID = None):
+	if clientID != None:
+		with open(hours_file, 'rt') as file:
+			reader = csv.reader(file, delimiter = delimiter)
+			minutes = 0
+			for row in reader:
+				# print(row)
+				if len(row) == 0:
+					continue
+				if row[0] != clientID:
+					continue
+				minutes += int(row[2])
+			print(minutes)
+
 def addRow(clientID, clientName, minutes):
 	with open(hours_file, 'a') as file:
 		file.write("\n")
@@ -104,6 +118,8 @@ else:
 			summarize(sys.argv[2])
 		else:
 			summarize()
+	elif sys.argv[1] == 'ct' and len(sys.argv) >= 3:
+		clientTime(sys.argv[2])
 	elif (sys.argv[1] == 'add' or sys.argv[1] == 'a') and len(sys.argv) >= 5:
 		addRow(sys.argv[2], sys.argv[3], sys.argv[4])
 	elif (sys.argv[1] == 'clear' or sys.argv[1] == 'c') and len(sys.argv) >= 3:
