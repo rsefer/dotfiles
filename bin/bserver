@@ -6,4 +6,4 @@ set -e
 
 echo "Starting browser-sync session"
 
-browser-sync start -s -w --no-open
+browser-sync start --config $DOTFILES_ROOT/mac-scripts/bs-config.js $@
