@@ -3,6 +3,7 @@
 # Time logging
 
 import time, sys, os, csv
+from csv import writer
 from datetime import datetime
 
 hours_file = os.getenv('HOME') + "/Google Drive/Work/hours.csv"
@@ -79,9 +80,9 @@ def clientTime(clientID = None):
 			print(minutes)
 
 def addRow(clientID, clientName, minutes):
-	with open(hours_file, 'a') as file:
-		file.write("\n")
-		file.write(clientID + delimiter + clientName + delimiter + minutes + delimiter + time.strftime('%H:%M:%S') + delimiter + time.strftime('%Y-%m-%d'))
+	with open(hours_file, 'a+', newline='') as file:
+		csv_writer = writer(file)
+		csv_writer.writerow([clientID, clientName, minutes, time.strftime('%H:%M:%S'), time.strftime('%Y-%m-%d')])
 
 def clearClient(clientID):
 	keep_lines = list()
