@@ -3,15 +3,10 @@ export UTILS_ROOT=$HOME/utils
 export PATH="$DOTFILES_ROOT/bin:$PATH"
 export EDITOR="code -w"
 
-if [ -r $HOME/.aliases ]; then
-  source $HOME/.aliases
-fi
+eval "$(alias -s)"
 
 PATH="/usr/local/opt/curl/bin:$PATH"
 
-eval "$(alias -s)"
-
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
 export PATH="/usr/local/sbin:$PATH"
 
 export PATH=$PATH:/usr/local/bin
@@ -28,3 +23,7 @@ fi
 
 # Add RVM to PATH for scripting. Make sure this is the last PATH variable change.
 export PATH="$PATH:$HOME/.rvm/bin"
+
+if [ -r $HOME/.aliases ]; then
+  source $HOME/.aliases
+fi
