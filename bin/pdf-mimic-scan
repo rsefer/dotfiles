@@ -1,0 +1,11 @@
+#!/bin/sh
+#
+# convert pdf to appear as if it was scanned
+#
+# adapted from https://gist.github.com/andyrbell/25c8632e15d17c83a54602f6acde2724
+
+
+OUT=$(basename "$1" .pdf)
+convert -density 150 "$1" -rotate "$([ $((RANDOM % 2)) -eq 1 ] && echo -)0.$(($RANDOM % 4 + 5))" \
+	-attenuate 0.4 +noise Multiplicative -attenuate 0.03 +noise Multiplicative -sharpen 0x1.0 \
+	-colorspace Gray "$OUT"_scanned.pdf
