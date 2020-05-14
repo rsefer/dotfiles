@@ -3,7 +3,9 @@ alias reload!=". $HOME/.zshrc"
 alias python=/usr/local/bin/python3
 alias pip=/usr/local/bin/pip3
 
-# Flush DNS on (High) Sierra
+alias grep="grep --exclude-dir=.git --exclude=.git --recursive --ignore-case --text --line-number --color=auto"
+
+# Flush DNS
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
 # Copy working directory to clipboard
