@@ -7,7 +7,11 @@ alias pip=/usr/local/bin/pip3
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
 # Copy working directory to clipboard
-alias pwdcp="pwd | pbcopy && echo \"$(pwd) copied to clipboard\""
+pwdcpfunc() {
+	pwd | pbcopy;
+	echo "$(pbpaste) copied to clipboard";
+}
+alias pwdcp="pwdcpfunc"
 
 # Copy ¯\_(ツ)_/¯ to clipboard
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
