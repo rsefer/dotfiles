@@ -13,7 +13,7 @@ def summarize(clientID = None):
 	with open(hours_file, 'rt') as file:
 		reader = csv.reader(file, delimiter = delimiter)
 		clients = {}
-		raw_table = ''
+		raw_table = []
 		line = 0
 		lastDate = None
 		for row in reader:
@@ -35,18 +35,19 @@ def summarize(clientID = None):
 				if lastDate == workingDate:
 					workingDate = '              '
 				else:
-					raw_table += "\t\t\t\t\t--------------\n"
+					raw_table.append(['', '', '', '--------------'])
 					lastDate = workingDate
-
-			raw_table += row[1] + "\t" + row[2] + "\t" + row[3] + "\t" + workingDate + "\n"
+			raw_table.append([row[1], row[2], row[3], workingDate])
 			line += 1
 
 		print()
 		print('=======')
 		print('SUMMARY')
 		print('=======')
-		print("id\tname\t\t\ttime\t\tlast tracked")
-		print("--\t----\t\t\t----\t\t------------")
+		summary_table = [
+			['id', 'name', 'time', 'last tracked'],
+			['--', '----', '----', '------------']
+		]
 		for k, client in clients.items():
 			hours = round(client['minutes'] / 60, 2)
 			workingLastTrackedRelative = (datetime.now() - datetime.strptime(client['last_tracked'], '%Y-%m-%d %a')).days
@@ -56,14 +57,20 @@ def summarize(clientID = None):
 				workingLastTrackedRelative = '1 day ago'
 			else:
 				workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
-			print(k + "\t" + client['name'] + "\t\t" + '{:.2f}'.format(hours) + ' hours' + "\t" + workingLastTrackedRelative)
+			summary_table.append([k, client['name'], '{:.2f}'.format(hours) + ' hours', workingLastTrackedRelative])
+		print()
+		for row in summary_table:
+			print('{:5} {: >25} {: >15} {: >14}'.format(*row))
 		print()
 
 		if len(sys.argv) >= 3 and (sys.argv[2] == 'raw' or sys.argv[2].isnumeric()):
 			print('====')
 			print('DATA')
 			print('====')
-			print(raw_table)
+			print()
+			for row in raw_table:
+				print('{:25} {: >7} {: >16} {: >18}'.format(*row))
+			print()
 
 def clientTime(clientID = None):
 	if clientID != None:
