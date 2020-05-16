@@ -13,14 +13,20 @@ def summarize(clientID = None):
 	with open(hours_file, 'rt') as file:
 		reader = csv.reader(file, delimiter = delimiter)
 		clients = {}
-		raw_table = []
+		raw_table = [
+			['id', 'name', 'minutes', 'timestamp', 'date'],
+			['--', '----', '-------', '---------', '--------------']
+		]
 		line = 0
+		lastClientID = None
 		lastDate = None
 		for row in reader:
 			if len(row) == 0:
 				continue
 			if clientID != None and row[0] != clientID:
 				continue
+			workingClientID = row[0]
+			workingClientName = row[1]
 			workingDate = row[4]
 			if line > 0:
 				if row[0] not in clients:
@@ -30,14 +36,22 @@ def summarize(clientID = None):
 					}
 				clients[row[0]]['minutes'] += int(row[2])
 
+				if lastClientID == workingClientID:
+					workingClientID = ''
+					workingClientName = '|'
+				else:
+					lastClientID = workingClientID
+
 				workingDate = datetime.strftime(datetime.strptime(row[4], '%Y-%m-%d'), '%Y-%m-%d %a')
+
 				clients[row[0]]['last_tracked'] = workingDate
 				if lastDate == workingDate:
-					workingDate = '              '
+					workingDate = ''
 				else:
-					raw_table.append(['', '', '', '--------------'])
+					if line > 1:
+						raw_table.append(['', '', '', '', '--------------'])
 					lastDate = workingDate
-			raw_table.append([row[1], row[2], row[3], workingDate])
+				raw_table.append([workingClientID, workingClientName, row[2], row[3], workingDate])
 			line += 1
 
 		print()
@@ -69,7 +83,7 @@ def summarize(clientID = None):
 			print('====')
 			print()
 			for row in raw_table:
-				print('{:25} {: >7} {: >16} {: >18}'.format(*row))
+				print('{:5} {: >25} {: >15} {: >14} {: >16}'.format(*row))
 			print()
 
 def clientTime(clientID = None):
