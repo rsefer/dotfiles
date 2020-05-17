@@ -59,7 +59,7 @@
 				<key>ActionParameters</key>
 				<dict>
 					<key>COMMAND_STRING</key>
-					<string>kill -9 $(pgrep Hammerspoon)
+					<string>killall Hammerspoon
 sleep 1
 open -a Hammerspoon</string>
 					<key>CheckedForUserDefaultShell</key>
@@ -171,8 +171,6 @@ open -a Hammerspoon</string>
 						<string>4</string>
 					</dict>
 				</dict>
-				<key>conversionLabel</key>
-				<integer>0</integer>
 				<key>isViewVisible</key>
 				<true/>
 				<key>location</key>
