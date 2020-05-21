@@ -24,6 +24,7 @@ defaults write com.apple.dock orientation -string right # position
 defaults write com.apple.dock autohide-time-modifier -float 0 # no hide/show delay
 defaults write com.apple.dock autohide-delay -float 0 # no hide delay
 defaults write com.apple.dock show-process-indicators -bool true # show indicators for open applications
+defaults write com.apple.sock show-recents -bool false # don't show recently used applications
 
 dockutil --no-restart --add "/Applications/System Preferences.app"
 dockutil --no-restart --add "/Applications/Reminders.app"
@@ -42,7 +43,7 @@ dockutil --no-restart --add "/Applications/GitHub Desktop.app"
 dockutil --no-restart --add "/Applications/Local.app"
 dockutil --no-restart --add "/Applications/TextEdit.app"
 dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
-dockutil --no-restart --add "~/Downloads"
+dockutil --no-restart --add "~/Downloads"å
 
 killall Dock
 
@@ -61,6 +62,7 @@ defaults write NSGlobalDomain com.apple.sound.beep.feedback -bool false # disabl
 defaults write com.apple.desktopservices DSDontWriteNetworkStores -bool TRUE
 defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
 defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true # disable "open this link in [application]" permission dialog
+defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false # save to file system by default, not iCloud
 
 # # Install SF Mono font
 # cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/

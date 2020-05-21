@@ -5,6 +5,8 @@ alias pip=/usr/local/bin/pip3
 
 alias grep="grep --color=auto --line-number --ignore-case --recursive --exclude-dir={\*git,dist\*}"
 
+alias hosts="sudo vim /etc/hosts"
+
 # Flush DNS
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
@@ -31,3 +33,11 @@ alias oln="open http://localhost:3000"
 
 # Forces VS Code to reuse window
 alias code="open -a Visual\ Studio\ Code && code -r"
+
+transfer() {
+  tmpfile=$( mktemp -t transferXXX )
+  curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) >> $tmpfile;
+  cat $tmpfile | pbcopy;
+	echo "$(pbpaste) copied to clipboard";
+  rm -f $tmpfile;
+}
