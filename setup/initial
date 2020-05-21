@@ -12,10 +12,10 @@ setup/installs/omzsh.sh
 
 if test "$(uname)" = "Darwin"
 then
-	setup/installs/macos/install.sh
 	setup/installs/hammerspoon.sh
 	setup/installs/homebrew/install.sh
 	setup/installs/vscode/install.sh
+	setup/installs/macos/install.sh
 fi
 
 setup/installs/dotfiles.sh

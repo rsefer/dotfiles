@@ -24,6 +24,26 @@ defaults write com.apple.dock orientation -string right # position
 defaults write com.apple.dock autohide-time-modifier -float 0 # no hide/show delay
 defaults write com.apple.dock autohide-delay -float 0 # no hide delay
 defaults write com.apple.dock show-process-indicators -bool true # show indicators for open applications
+
+dockutil --no-restart --add "/Applications/System Preferences.app"
+dockutil --no-restart --add "/Applications/Reminders.app"
+dockutil --no-restart --add "/Applications/Messages.app"
+dockutil --no-restart --add "/Applications/Photos.app"
+dockutil --no-restart --add "/Applications/Tweetbot.app"
+dockutil --no-restart --add "/Applications/Spotify.app"
+dockutil --no-restart --add "/Applications/Google Chrome.app"
+dockutil --no-restart --add "/Applications/Safari.app"
+dockutil --no-restart --add "/Applications/Slack.app"
+dockutil --no-restart --add "/Applications/Adobe Photoshop 2020/Adobe Photoshop 2020.app"
+dockutil --no-restart --add "/Applications/Adobe Illustrator 2020/Adobe Illustrator 2020.app"
+dockutil --no-restart --add "/Applications/Visual Studio Code.app"
+dockutil --no-restart --add "/Applications/Coda 2.app"
+dockutil --no-restart --add "/Applications/GitHub Desktop.app"
+dockutil --no-restart --add "/Applications/Local.app"
+dockutil --no-restart --add "/Applications/TextEdit.app"
+dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
+dockutil --no-restart --add "~/Downloads"
+
 killall Dock
 
 # Finder

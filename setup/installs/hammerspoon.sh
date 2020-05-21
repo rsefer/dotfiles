@@ -12,3 +12,6 @@ then
 else
 	success 'skipped hammerspoon config install'
 fi
+
+defaults write org.hammerspoon.Hammerspoon MJShowDockIconKey -bool FALSE
+osascript -e 'tell application "System Events" to make login item at end with properties { path: "/Applications/Hammerspoon.app", hidden: true }' > /dev/null
