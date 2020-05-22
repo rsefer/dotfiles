@@ -8,8 +8,6 @@ source $DOTFILES_ROOT/setup/functions.sh
 
 plus 'initial setup'
 
-setup/installs/omzsh.sh
-
 if test "$(uname)" = "Darwin"
 then
 	setup/installs/hammerspoon.sh

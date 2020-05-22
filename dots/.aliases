@@ -7,7 +7,6 @@ alias grep="grep --color=auto --line-number --ignore-case --recursive --exclude-
 
 alias hosts="sudo vim /etc/hosts"
 
-# Flush DNS
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
 
 # Copy working directory to clipboard
@@ -17,21 +16,11 @@ pwdcpfunc() {
 }
 alias pwdcp="pwdcpfunc"
 
-# Copy ¯\_(ツ)_/¯ to clipboard
 alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
 
-# always list when changing directories
-# cdls() {
-# 	cd $1;
-# 	ls;
-# }
-# alias cd="cdls"
-
-# Open localhost:3000
 alias ol="open https://localhost:3000"
 alias oln="open http://localhost:3000"
 
-# Forces VS Code to reuse window
 alias code="open -a Visual\ Studio\ Code && code -r"
 
 transfer() {
