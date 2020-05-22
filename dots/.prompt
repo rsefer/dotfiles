@@ -6,14 +6,6 @@ setopt PROMPT_SUBST
 
 set_prompt() {
 
-	# PS1=''
-	# PS1+='%F{white}[' # [
-	# PS1+="%F{cyan}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}" # current directory
-	# PS1+='%F{white}]' # ]
-	# PS1+=$'\n'
-	# PS1+='%F{white}❯ '
-
-
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
 	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
