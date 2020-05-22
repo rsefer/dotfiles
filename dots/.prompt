@@ -2,40 +2,56 @@
 
 autoload -U colors && colors
 
-PS1="%{$fg[white]%}[%{$reset_color%}"
+setopt PROMPT_SUBST
 
-PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
-PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
+set_prompt() {
 
-# Git
-if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
-	PS1+=', '
-	PS1+="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
-	if [ $(git status --short | wc -l) -gt 0 ]; then
-		PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
-	fi
-fi
+	# PS1=''
+	# PS1+='%F{white}[' # [
+	# PS1+="%F{cyan}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}" # current directory
+	# PS1+='%F{white}]' # ]
+	# PS1+=$'\n'
+	# PS1+='%F{white}❯ '
 
-# PID
-if [[ $! -ne 0 ]]; then
-	PS1+=', '
-	PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
-fi
 
-# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
-if [[ "$OSTYPE" == darwin* ]]; then
-	# do nothing for macOS
-else
-	CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
-	if [ ${CAN_I_RUN_SUDO} -gt 0 ]
-	then
+	PS1="%{$fg[white]%}[%{$reset_color%}"
+
+	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
+	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
+
+	# Git
+	if git rev-parse --is-inside-work-tree 2> /dev/null | grep -q 'true' ; then
 		PS1+=', '
-		PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
+		PS1+="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
+		if [ $(git status --short | wc -l) -gt 0 ]; then
+			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
+		fi
 	fi
-fi
 
-PS1+="%{$fg[white]%}]"
-PS1+=$'\n'
-PS1+="❯ %{$reset_color%}% "
+	# PID
+	if [[ $! -ne 0 ]]; then
+		PS1+=', '
+		PS1+="%{$fg[yellow]%}PID:$!%{$reset_color%}"
+	fi
 
-RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"
+	# Sudo: https://superuser.com/questions/195781/sudo-is-there-a-command-to-check-if-i-have-sudo-and-or-how-much-time-is-left
+	if [[ "$OSTYPE" == darwin* ]]; then
+		# do nothing for macOS
+	else
+		CAN_I_RUN_SUDO=$(sudo -n uptime 2>&1|grep "load"|wc -l)
+		if [ ${CAN_I_RUN_SUDO} -gt 0 ]
+		then
+			PS1+=', '
+			PS1+="%{$fg_bold[red]%}SUDO%{$reset_color%}"
+		fi
+	fi
+
+	PS1+="%{$fg[white]%}]"
+	PS1+=$'\n'
+	PS1+="❯ %{$reset_color%}% "
+
+	RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"
+
+}
+
+precmd_functions+=set_prompt
