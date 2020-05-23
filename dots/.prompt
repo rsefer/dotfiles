@@ -46,4 +46,6 @@ set_prompt() {
 
 }
 
+set_prompt # fixes prompt issue in VS Code
+
 precmd_functions+=set_prompt

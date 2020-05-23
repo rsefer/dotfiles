@@ -24,6 +24,8 @@
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
+	"terminal.integrated.experimentalLinkProvider": true,
+	"terminal.integrated.experimentalUseTitleEvent": true,
 	"terminal.integrated.shell.osx": "/bin/zsh",
 	"window.closeWhenEmpty": true,
 	"window.nativeTabs": true,
