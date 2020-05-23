@@ -13,8 +13,8 @@ alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say
 
 # Copy working directory to clipboard
 pwdcpfunc() {
-	pwd | pbcopy;
-	echo "$(pbpaste) copied to clipboard";
+	pwd | copy;
+	echo "$(cpaste) copied to clipboard";
 }
 alias pwdcp="pwdcpfunc"
 
@@ -28,7 +28,7 @@ alias code="open -a Visual\ Studio\ Code && code -r"
 transfer() {
   tmpfile=$( mktemp -t transferXXX )
   curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) >> $tmpfile;
-  cat $tmpfile | pbcopy;
-	echo "$(pbpaste) copied to clipboard";
+  cat $tmpfile | copy;
+	echo "$(cpaste) copied to clipboard";
   rm -f $tmpfile;
 }

@@ -1,0 +1,14 @@
+#!/bin/sh
+#
+# Copy to clipboard
+
+if [[ $OSTYPE == darwin* ]]; then
+	pbcopy
+else
+  if (( $+commands[xclip] )); then
+    xclip -in -selection clipboard
+  else
+    print "clipcopy: Platform $OSTYPE not supported or xclip/xsel not installed" >&2
+    return 1
+  fi
+fi
