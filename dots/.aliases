@@ -3,6 +3,8 @@ alias reload!=". $HOME/.zshrc"
 alias python=/usr/local/bin/python3
 alias pip=/usr/local/bin/pip3
 
+alias ls="/usr/local/opt/coreutils/libexec/gnubin/ls --color=auto"
+
 alias grep="grep --color=auto --line-number --ignore-case --recursive --exclude-dir={\*git,dist\*}"
 
 alias hosts="sudo vim /etc/hosts"
