@@ -2,13 +2,13 @@
 #
 # Paste from clipboard
 
-if [[ $OSTYPE == darwin* ]]; then
+if test "$(uname)" = "Darwin"; then
 	pbpaste
 else
   if (( $+commands[xclip] )); then
     xclip -selection clipboard -o
   else
-    print "clipcopy: Platform $OSTYPE not supported or xclip not installed" >&2
+    echo "clipcopy: Platform $OSTYPE not supported or xclip not installed"
     return 1
   fi
 fi
