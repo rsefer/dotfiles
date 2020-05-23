@@ -46,6 +46,8 @@ set_prompt() {
 
 }
 
-set_prompt # fixes prompt issue in VS Code
+if [ -z "$SSH_TTY" ]; then
+	set_prompt # fixes prompt issue in VS Code
+fi
 
 precmd_functions+=set_prompt
