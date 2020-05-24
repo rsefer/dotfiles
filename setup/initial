@@ -8,26 +8,23 @@ source $DOTFILES_ROOT/setup/functions.sh
 
 plus 'initial setup'
 
-if test "$(uname)" = "Darwin"
-then
-	setup/installs/hammerspoon.sh
+if test "$(uname)" = "Darwin"; then
 	setup/installs/homebrew/install.sh
+	setup/installs/hammerspoon.sh
 	setup/installs/vscode/install.sh
 	setup/installs/macos/install.sh
 fi
 
 setup/installs/dotfiles.sh
+setup/installs/utilities/install.sh
 
-. $HOME/.zshrc
-
-if test "$(uname)" = "Darwin"
-then
+if test "$(uname)" = "Darwin"; then
 	info 'launching Hammerspoon'
 	open -a Hammerspoon
 fi
 
-setup/installs/utilities/install.sh
-
 minus 'setup finished'
+
+. $HOME/.zshrc
 
 exit 0
