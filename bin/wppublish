@@ -39,11 +39,17 @@ info "Script will update: $HOST:$REMOTETHEMESPATH$FOLDERNAME"
 
 if [ $PUBLISHMETHOD = "rsync" ]; then
 
+	readyn "What would you like continue?"
+	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
+		minus "ABORTING"
+		exit 1
+	fi
+
 	info "Generating git archive and unzipping"
 	git archive --worktree-attributes -o $LOCALUPLOADDIR/$FOLDERNAME.zip HEAD
 	cd $LOCALUPLOADDIR && unzip $FOLDERNAME.zip -d $FOLDERNAME &> /dev/null && rm $FOLDERNAME.zip
 	info "rsyncing to $HOST:$REMOTETHEMESPATH"
-	rsync -azP --delete $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
+	rsync --archive --compress --delete --partial --progress $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
 	rm -r $FOLDERNAME
 
 else
