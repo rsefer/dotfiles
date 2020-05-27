@@ -19,7 +19,6 @@ if test -f "$WPPUBLISHFILE"; then
 	USERNAME=$(cat $WPPUBLISHFILE | jq -r '.username')
 	PASSWORD=$(cat $WPPUBLISHFILE | jq -r '.password')
 	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
-	MOUNTNAME=sftp-mount
 else
 	fail "ABORTING: _config/wppublish.json not found"
 	readyn "Create _config/wppublish.json file (y/n)?"
@@ -36,13 +35,14 @@ else
 
 fi
 
-info "Script will update: $HOST$REMOTETHEMESPATH$FOLDERNAME"
+info "Script will update: $HOST:$REMOTETHEMESPATH$FOLDERNAME"
 
 if [ $PUBLISHMETHOD = "rsync" ]; then
 
 	info "Generating git archive and unzipping"
 	git archive --worktree-attributes -o $LOCALUPLOADDIR/$FOLDERNAME.zip HEAD
 	cd $LOCALUPLOADDIR && unzip $FOLDERNAME.zip -d $FOLDERNAME &> /dev/null && rm $FOLDERNAME.zip
+	info "rsyncing to $HOST:$REMOTETHEMESPATH"
 	rsync -azP --delete $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
 	rm -r $FOLDERNAME
 
@@ -67,23 +67,6 @@ else
 	fi
 
 fi
-
-# info "Mounting SFTP volume:\n$USERNAME@$HOST:$REMOTETHEMESPATH\nto $LOCALUPLOADDIR/$MOUNTNAME"
-# wppublish-sftp "mount-and-rm" $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
-# echo "\r\r"
-# sleep 3
-# cd $LOCALUPLOADDIR/$MOUNTNAME && rm -rf $FOLDERNAME
-# sleep 3
-
-# info "Unmounting."
-# diskutil umount force $LOCALUPLOADDIR/$MOUNTNAME
-# cd $LOCALUPLOADDIR && rm -r $MOUNTNAME
-
-# info "Uploading to SFTP"
-# wppublish-sftp "put" $HOST $PORT $USERNAME $PASSWORD $FOLDERNAME $MOUNTNAME $LOCALUPLOADDIR $REMOTETHEMESPATH
-# info "Closed SFTP"
-
-# cd $LOCALUPLOADDIR && rm -r $FOLDERNAME
 
 URL=$(cat $WPPUBLISHFILE | jq -r '.url')
 
