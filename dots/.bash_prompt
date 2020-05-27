@@ -1,0 +1,5 @@
+# For use on remote servers
+# To install, run:
+# cd ~/ && wget https://raw.githubusercontent.com/rsefer/dotfiles/dots/.bash_prompt && cat .bash_prompt >> .bashrc && source .bashrc
+
+PS1='[\u@\h:\w]\$ '
