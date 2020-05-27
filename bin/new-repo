@@ -4,17 +4,12 @@
 
 set -e
 
-workingPath=$(pwd)
-if [ -n "$1" ]; then
-  workingPath=$1
-fi
-
 if git rev-parse --git-dir > /dev/null 2>&1; then
 	echo "Repository exists"
 else
 	git init
 fi
 
-hub create -p
+gh repo create
 
 exit 0
