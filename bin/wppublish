@@ -49,7 +49,7 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	git archive --worktree-attributes -o $LOCALUPLOADDIR/$FOLDERNAME.zip HEAD
 	cd $LOCALUPLOADDIR && unzip $FOLDERNAME.zip -d $FOLDERNAME &> /dev/null && rm $FOLDERNAME.zip
 	info "rsyncing to $HOST:$REMOTETHEMESPATH"
-	rsync --archive --compress --delete --partial --progress $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
+	rsync --verbose --archive --compress --delete --partial --progress $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
 	rm -r $FOLDERNAME
 
 else
