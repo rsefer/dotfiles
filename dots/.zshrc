@@ -1,5 +1,4 @@
 source $HOME/.profile
-source $HOME/.prompt
 source $DOTFILES_ROOT/zsh/keybindings.sh
 
 if type brew &>/dev/null; then
@@ -16,3 +15,5 @@ if type brew &>/dev/null; then
 	autoload -Uz compinit && compinit
 
 fi
+
+source $HOME/.prompt
