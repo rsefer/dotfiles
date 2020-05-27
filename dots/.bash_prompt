@@ -1,6 +1,6 @@
 # For use on remote servers
 # To install, run:
-# cd ~/ && wget https://raw.githubusercontent.com/rsefer/dotfiles/master/dots/.bash_prompt && echo 'source .bash_prompt' >> .bashrc && source .bashrc
+# cd ~/ && wget https://raw.githubusercontent.com/rsefer/dotfiles/master/dots/.bash_prompt && echo 'source .bash_prompt' >> .bash_profile && source .bashrc
 
 # [user@host:currentworkingdirectory]$
 PS1='[\u@\h:\w]\$ '
