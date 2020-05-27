@@ -35,7 +35,7 @@ else
 
 fi
 
-info "Script will update: $HOST:$REMOTETHEMESPATH$FOLDERNAME"
+info "Script will update: $HOST:$REMOTETHEMESPATH/$FOLDERNAME"
 
 if [ $PUBLISHMETHOD = "rsync" ]; then
 
