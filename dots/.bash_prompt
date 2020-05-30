@@ -3,4 +3,4 @@
 # cd ~/ && wget https://raw.githubusercontent.com/rsefer/dotfiles/master/dots/.bash_prompt && echo 'source .bash_prompt' >> .bash_profile && source .bash_profile
 
 # [user@host:currentworkingdirectory]$
-PS1='[\u@\h:\w]\$ '
+PS1='[\u@\h:\w]\n→ '
