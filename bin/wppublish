@@ -69,7 +69,7 @@ else
 	fi
 
 	if git rev-parse --git-dir > /dev/null 2>&1; then
-		git ftp $GITFTPACTION -u $USERNAME -p $PASSWORD sftp://$HOST$REMOTETHEMESPATH$FOLDERNAME
+		git ftp $GITFTPACTION -u $USERNAME -p $PASSWORD sftp://$HOST:$PORT$REMOTETHEMESPATH/$FOLDERNAME
 	fi
 
 fi
