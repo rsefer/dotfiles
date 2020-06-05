@@ -30,7 +30,7 @@ set_prompt() {
 	PS1+=$'\n'
 	PS1+="→ %{$reset_color%}% "
 
-	RPROMPT="%F{8}${SSH_TTY:+%n@%m}%f"
+	RPROMPT="%{$fg[white]%}${SSH_TTY:+%n@%m}%{$reset_color%}%"
 
 }
 
