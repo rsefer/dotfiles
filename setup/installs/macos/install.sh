@@ -64,6 +64,7 @@ defaults write com.apple.desktopservices DSDontWriteUSBStores -bool TRUE
 defaults write com.google.Chrome ExternalProtocolDialogShowAlwaysOpenCheckbox -bool true # disable "open this link in [application]" permission dialog
 defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false # save to file system by default, not iCloud
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 # Increase sound quality for Bluetooth headphones/headsets
+defaults write com.apple.screenscapture location ~/Downloads # screen capture location
 
 sudo systemsetup -setrestartfreeze on # restart on freeze
 
