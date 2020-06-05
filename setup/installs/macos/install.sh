@@ -43,7 +43,7 @@ dockutil --no-restart --add "/Applications/GitHub Desktop.app"
 dockutil --no-restart --add "/Applications/Local.app"
 dockutil --no-restart --add "/Applications/TextEdit.app"
 dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
-dockutil --no-restart --add "~/Downloads"å
+dockutil --no-restart --add "~/Downloads"
 
 killall Dock
 
