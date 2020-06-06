@@ -31,6 +31,8 @@ let g:netrw_liststyle=3
 
 autocmd FileType markdown setlocal spell
 
+set splitbelow splitright
+
 set noruler
 set number
 set showcmd
