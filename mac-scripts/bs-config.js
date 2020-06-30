@@ -5,5 +5,12 @@ module.exports = {
 	},
 	open: false,
 	server: true,
-	watch: true
+	watch: true,
+	notify: {
+		styles: {
+			top: 'auto',
+			bottom: '0',
+			borderRadius: '5px 0px 0px'
+		}
+	}
 };
