@@ -39,7 +39,7 @@ info "Script will update: $HOST:$REMOTETHEMESPATH/$FOLDERNAME"
 
 if [ $PUBLISHMETHOD = "rsync" ]; then
 
-	readyn "What would you like continue?"
+	readyn "What would you like continue? [y]es or [n]o"
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 		minus "ABORTING"
 		exit 1
