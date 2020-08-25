@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Time logging
+# Kasa (TP-Link) Switcher
 #
 # pip3 install git+https://github.com/vrachieru/tplink-smartplug-api.git
 
