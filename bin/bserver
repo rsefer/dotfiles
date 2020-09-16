@@ -6,4 +6,9 @@ set -e
 
 echo "Starting browser-sync session"
 
-browser-sync start --config $DOTFILES_ROOT/mac-scripts/bs-config.js $@
+DEFAULTARGS="--server"
+if [[ $@ == *"--proxy"* ]]; then
+  DEFAULTARGS=""
+fi
+
+browser-sync start --config $DOTFILES_ROOT/mac-scripts/bs-config.js $DEFAULTARGS $@

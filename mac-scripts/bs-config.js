@@ -4,7 +4,7 @@ module.exports = {
 		cert: '/Users/rsefer/.localhost-ssl/server.crt'
 	},
 	open: false,
-	server: true,
+	// server: true, // now handled via the shell script
 	watch: true,
 	notify: {
 		styles: {
