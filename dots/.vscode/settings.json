@@ -67,5 +67,6 @@
 	"editor.minimap.enabled": false,
 	"diffEditor.renderSideBySide": false,
 	"explorer.confirmDragAndDrop": false,
-	"window.zoomLevel": 0
+	"window.zoomLevel": 0,
+	"diffEditor.ignoreTrimWhitespace": false
 }

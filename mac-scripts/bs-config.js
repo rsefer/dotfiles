@@ -3,6 +3,7 @@ module.exports = {
 		key: '/Users/rsefer/.localhost-ssl/server.key',
 		cert: '/Users/rsefer/.localhost-ssl/server.crt'
 	},
+	files: '**/*',
 	open: false,
 	// server: true, // now handled via the shell script
 	watch: true,
