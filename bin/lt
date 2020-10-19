@@ -62,6 +62,7 @@ def summarize(clientID = None):
 			['id', 'name', 'time', 'last tracked'],
 			['--', '----', '----', '------------']
 		]
+		combined_hours = 0
 		for k, client in clients.items():
 			hours = round(client['minutes'] / 60, 2)
 			workingLastTrackedRelative = (datetime.now() - datetime.strptime(client['last_tracked'], '%Y-%m-%d %a')).days
@@ -72,6 +73,9 @@ def summarize(clientID = None):
 			else:
 				workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
 			summary_table.append([k, client['name'], '{:.2f}'.format(hours) + ' hours', workingLastTrackedRelative])
+			combined_hours += hours
+		print()
+		print('Total hours: ' + '{:.2f}'.format(combined_hours))
 		print()
 		for row in summary_table:
 			print('{:5} {: >25} {: >15} {: >14}'.format(*row))
