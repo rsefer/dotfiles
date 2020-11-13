@@ -68,5 +68,7 @@
 	"diffEditor.renderSideBySide": false,
 	"explorer.confirmDragAndDrop": false,
 	"window.zoomLevel": 0,
-	"diffEditor.ignoreTrimWhitespace": false
+	"diffEditor.ignoreTrimWhitespace": false,
+	"explorer.confirmDelete": false,
+	"python.showStartPage": false
 }
