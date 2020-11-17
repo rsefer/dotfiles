@@ -6,6 +6,15 @@ source $DOTFILES_ROOT/setup/functions.sh
 
 set -e
 
+promptFlushCache () {
+	if [ ! -z "$FLUSHADDRESS" ]; then
+		readyn "Flush the site cache? (y/n)"
+		if [[ $REPLY =~ ^[Yy]$ ]]; then
+			wpflushcache $FLUSHADDRESS
+		fi
+	fi
+}
+
 plus "STARTING wppublish"
 
 FOLDERNAME=$(basename "$PWD")
@@ -19,6 +28,7 @@ if test -f "$WPPUBLISHFILE"; then
 	USERNAME=$(cat $WPPUBLISHFILE | jq -r '.username')
 	PASSWORD=$(cat $WPPUBLISHFILE | jq -r '.password')
 	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
+	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress')
 else
 	fail "ABORTING: _config/wppublish.json not found"
 	readyn "Create _config/wppublish.json file (y/n)?"
@@ -26,7 +36,7 @@ else
 		if [ ! -d "_config" ]; then
 			mkdir _config
 		fi
-		jq -n '{ "url": "", "method": "git-ftp", "host": "", "port": "22", "username": "", "password": "", "remotethemespath": "/path/to/wp-content/themes" }' > _config/wppublish.json
+		jq -n '{ "url": "", "method": "git-ftp", "host": "", "port": "22", "username": "", "password": "", "remotethemespath": "/path/to/wp-content/themes", "flushaddress": "" }' > _config/wppublish.json
 		success "_config/wppublish.json created. Fill out that file and run wpppublish again"
 		exit 0
 	else
@@ -42,6 +52,7 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	readyn "What would you like continue? [y]es or [n]o"
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 		minus "ABORTING"
+		promptFlushCache
 		exit 1
 	fi
 
@@ -59,6 +70,7 @@ else
 	readyn "What would you like to do? [p]ush, [i]nit, or [e]xit?"
 	if [[ ! $REPLY =~ ^[PpIi]$ ]]; then
 		minus "ABORTING"
+		promptFlushCache
 		exit 1
 	else
 		if [[ $REPLY =~ ^[Ii]$ ]]; then
@@ -73,6 +85,8 @@ else
 	fi
 
 fi
+
+promptFlushCache
 
 URL=$(cat $WPPUBLISHFILE | jq -r '.url')
 

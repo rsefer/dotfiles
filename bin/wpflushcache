@@ -1,0 +1,12 @@
+#!/usr/bin/expect -f
+
+set timeout -1
+
+set ADDRESS [lindex $argv 0]
+
+spawn ssh $ADDRESS
+expect "*> "
+send -- "wp cache flush\r"
+expect "*> "
+send -- "exit\r"
+expect eof
