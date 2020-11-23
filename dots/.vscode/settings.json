@@ -70,5 +70,8 @@
 	"window.zoomLevel": 0,
 	"diffEditor.ignoreTrimWhitespace": false,
 	"explorer.confirmDelete": false,
-	"python.showStartPage": false
+	"python.showStartPage": false,
+	"files.associations": {
+		"*.njk": "html"
+	}
 }
