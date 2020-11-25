@@ -100,4 +100,7 @@ openssl x509 -req -extfile <(printf "subjectAltName=DNS:$COMMONNAME") -days 3650
 
 sudo security add-trusted-cert -d -r trustAsRoot -k /Library/Keychains/System.keychain $LOCALHOSTSSLDIR/server.crt
 
+export SSL_KEY_PATH="$LOCALHOSTSSLDIR/server.key"
+export SSL_CRT_PATH="$LOCALHOSTSSLDIR/server.crt"
+
 fi
