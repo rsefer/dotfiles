@@ -82,7 +82,6 @@ defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.terminal ShowLineMarks -int 0
 
 # localhost SSL
-LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 COMPANYNAME="Sefer Design Company LLC"
 COMPANYCOUNTRY="US"
 COMPANYSTATE="IL"
@@ -99,8 +98,5 @@ openssl req -newkey rsa:2048 -nodes -keyout server.key -subj "/C=$COMPANYCOUNTRY
 openssl x509 -req -extfile <(printf "subjectAltName=DNS:$COMMONNAME") -days 3650 -in server.csr -CA ca.crt -CAkey ca.key -CAcreateserial -out server.crt
 
 sudo security add-trusted-cert -d -r trustAsRoot -k /Library/Keychains/System.keychain $LOCALHOSTSSLDIR/server.crt
-
-export SSL_KEY_PATH="$LOCALHOSTSSLDIR/server.key"
-export SSL_CRT_PATH="$LOCALHOSTSSLDIR/server.crt"
 
 fi
