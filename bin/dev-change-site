@@ -1,8 +1,0 @@
-#!/bin/sh
-#
-# Change dev site
-
-set -e
-
-cd "$UTILS_ROOT/server-scripts"
-ruby dev-change-site.rb
