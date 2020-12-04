@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# New todo/reminder in Reminders.app
+
+source $DOTFILES_ROOT/setup/functions.sh
+
+set -e
+
+if [ -n "$1" ]; then
+	TODO=$1
+	info "To-do: $1"
+else
+	user "To-do:"
+	read -r
+	TODO=$REPLY
+fi
+
+user "Days from now (0 is today):"
+read -r
+DATE=$(date --date="+$REPLY day" +"%m/%d/%Y")
+
+user "Time (HH:MMpm):"
+read -r
+TIME=$REPLY
+
+ASRUN=$(osascript -e "tell application \"Reminders\" to tell list \"To-Do\" to make new reminder at end with properties {name:\"$TODO\", due date: date(\"$DATE $TIME\") }" 2>/dev/null)
+
+success "Reminder added"
+echo ''
+
+exit 0
