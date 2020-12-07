@@ -17,6 +17,9 @@ fi
 
 user "Days from now (0 is today):"
 read -r
+if [ -z "$REPLY" ]; then
+REPLY=0
+fi
 DATE=$(date --date="+$REPLY day" +"%m/%d/%Y")
 
 user "Time (HH:MMpm):"
