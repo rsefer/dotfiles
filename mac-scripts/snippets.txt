@@ -1,2 +1,0 @@
-0 * * * * curl ipecho.net/plain > ~/dotfiles/mac-scripts/ipaddress.txt
-# cron for grabbing external IP address and writing to file every hour
