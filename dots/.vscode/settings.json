@@ -51,9 +51,9 @@
 		"terminal.foreground": "#B7BBB7",
 		"terminalCursor.background": "#B7BBB7",
 		"terminalCursor.foreground": "#B7BBB7",
-		"statusBar.background" : "#1A1A1A",
-		"statusBar.noFolderBackground" : "#1A1A1A",
-		"statusBar.debuggingBackground" : "#1A1A1A"
+		"statusBar.background": "#1A1A1A",
+		"statusBar.noFolderBackground": "#1A1A1A",
+		"statusBar.debuggingBackground": "#1A1A1A"
 	},
 	"workbench.colorTheme": "Tomorrow Night",
 	"workbench.sideBar.location": "right",
@@ -68,6 +68,7 @@
 	"diffEditor.renderSideBySide": false,
 	"explorer.confirmDragAndDrop": false,
 	"window.zoomLevel": 0,
+	"window.restoreWindows": "preserve",
 	"diffEditor.ignoreTrimWhitespace": false,
 	"explorer.confirmDelete": false,
 	"python.showStartPage": false,
