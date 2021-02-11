@@ -10,10 +10,10 @@ promptFlushCache () {
 	if [ ! -z "$FLUSHADDRESS" ]; then
 		readyn "Flush the site cache? (y/n)"
 		if [[ $REPLY =~ ^[Yy]$ ]]; then
-			if [ ! -z "$FLUSHCOMMANDS" ]; then
-				ssh $FLUSHADDRESS "$FLUSHCOMMANDS"
-			else
+			if [[ ! -z "$FLUSHCOMMANDS" && $FLUSHCOMMANDS != '' ]]; then
 				wpflushcache $FLUSHADDRESS
+			else
+				ssh $FLUSHADDRESS "$FLUSHCOMMANDS"
 			fi
 		fi
 	fi
@@ -34,6 +34,8 @@ if test -f "$WPPUBLISHFILE"; then
 	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
 	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress')
 	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands')
+	echo "TEST"
+	echo $FLUSHCOMMANDS
 else
 	fail "ABORTING: _config/wppublish.json not found"
 	readyn "Create _config/wppublish.json file (y/n)?"
