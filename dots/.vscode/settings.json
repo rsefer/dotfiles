@@ -77,5 +77,6 @@
 	"python.showStartPage": false,
 	"files.associations": {
 		"*.njk": "html"
-	}
+	},
+	"editor.linkedEditing": true
 }
