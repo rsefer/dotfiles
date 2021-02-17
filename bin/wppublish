@@ -34,8 +34,6 @@ if test -f "$WPPUBLISHFILE"; then
 	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
 	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress')
 	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands')
-	echo "TEST"
-	echo $FLUSHCOMMANDS
 else
 	fail "ABORTING: _config/wppublish.json not found"
 	readyn "Create _config/wppublish.json file (y/n)?"
