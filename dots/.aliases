@@ -38,3 +38,7 @@ transfer() {
 	echo "$(pbpaste) copied to clipboard";
   rm -f $tmpfile;
 }
+
+function take() {
+	mkdir $@ && cd ${@:$#}
+}
