@@ -42,3 +42,7 @@ transfer() {
 function take() {
 	mkdir $@ && cd ${@:$#}
 }
+
+zcalc() {
+	zsh -c 'autoload zcalc && zcalc "$@"' zcalc "$@"
+}
