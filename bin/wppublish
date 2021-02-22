@@ -10,8 +10,8 @@ promptFlushCache () {
 	if [ ! -z "$FLUSHADDRESS" ]; then
 		readyn "Flush the site cache? (y/n)"
 		if [[ $REPLY =~ ^[Yy]$ ]]; then
-			if [[ ! -z "$FLUSHCOMMANDS" && $FLUSHCOMMANDS != '' ]]; then
-				wpflushcache $FLUSHADDRESS
+			if [[ ! -z "$FLUSHCOMMANDS" && $FLUSHCOMMANDS != '' && $1 != 'rsync' ]]; then
+				wpflushcache "$FLUSHADDRESS"
 			else
 				ssh $FLUSHADDRESS "$FLUSHCOMMANDS"
 			fi
@@ -57,7 +57,7 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	readyn "What would you like continue? [y]es or [n]o"
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 		minus "ABORTING"
-		promptFlushCache
+		promptFlushCache "rsync"
 		exit 1
 	fi
 
@@ -91,7 +91,7 @@ else
 
 fi
 
-promptFlushCache
+promptFlushCache "$PUBLISHMETHOD"
 
 URL=$(cat $WPPUBLISHFILE | jq -r '.url')
 
