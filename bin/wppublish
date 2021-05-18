@@ -7,9 +7,13 @@ source $DOTFILES_ROOT/setup/functions.sh
 set -e
 
 promptFlushCache () {
+	# $1 = connection type
+	# $2 = skip prompt
 	if [ ! -z "$FLUSHADDRESS" ]; then
-		readyn "Flush the site cache? (y/n)"
-		if [[ $REPLY =~ ^[Yy]$ ]]; then
+		if [ -z "$2" ]; then
+			readyn "Flush the site cache? (y/n)"
+		fi
+		if [[ $2 == "y" || $REPLY =~ ^[Yy]$ ]]; then
 			if [[ ! -z "$FLUSHCOMMANDS" && $FLUSHCOMMANDS != '' && $1 != 'rsync' ]]; then
 				wpflywheelflushcache "$FLUSHADDRESS"
 			else
@@ -57,7 +61,7 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	readyn "What would you like continue? [y]es or [n]o"
 	if [[ ! $REPLY =~ ^[Yy]$ ]]; then
 		minus "ABORTING"
-		promptFlushCache "rsync"
+		promptFlushCache "$PUBLISHMETHOD"
 		exit 1
 	fi
 
@@ -72,16 +76,18 @@ else
 
 	GITFTPACTION=push
 
-	readyn "What would you like to do? [p]ush, [i]nit, or [e]xit?"
-	if [[ ! $REPLY =~ ^[PpIi]$ ]]; then
+	readyn "What would you like to do? [p]ush, [i]nit, [f]lush cache, or [e]xit?"
+	if [[ ! $REPLY =~ ^[PpIiFf]$ ]]; then
 		minus "ABORTING"
-		promptFlushCache
 		exit 1
 	else
 		if [[ $REPLY =~ ^[Ii]$ ]]; then
 			GITFTPACTION=init
 		elif [[ $REPLY =~ ^[Pp]$ ]]; then
 			GITFTPACTION=push
+		elif [[ $REPLY =~ ^[Ff]$ ]]; then
+			promptFlushCache "$PUBLISHMETHOD" y
+			exit 1
 		fi
 	fi
 
