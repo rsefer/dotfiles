@@ -78,5 +78,6 @@
 	"files.associations": {
 		"*.njk": "html"
 	},
-	"editor.linkedEditing": true
+	"editor.linkedEditing": true,
+	"workbench.editor.untitled.hint": "hidden"
 }
