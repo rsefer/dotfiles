@@ -23,5 +23,10 @@
 	{
 		"key": "shift+cmd+n",
 		"command": "workbench.action.newWindowTab"
+	},
+	{
+		"key": "ctrl+alt+right",
+		"command": "workbench.action.terminal.split",
+		"when": "terminalFocus && terminalProcessSupported"
 	}
 ]
