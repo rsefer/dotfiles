@@ -28,6 +28,8 @@ alias code="open -a Visual\ Studio\ Code && code -r"
 alias wttr="curl wttr.in/\?2nFQ"
 alias weather="wttr"
 
+alias wpp="wppublish"
+
 transfer() {
   tmpfile=$( mktemp -t transferXXX )
   curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) >> $tmpfile;
