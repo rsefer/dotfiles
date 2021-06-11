@@ -79,5 +79,6 @@
 		"*.njk": "html"
 	},
 	"editor.linkedEditing": true,
-	"workbench.editor.untitled.hint": "hidden"
+	"workbench.editor.untitled.hint": "hidden",
+	"terminal.integrated.tabs.enabled": false
 }
