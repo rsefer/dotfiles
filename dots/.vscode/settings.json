@@ -70,7 +70,6 @@
 	"editor.minimap.enabled": false,
 	"diffEditor.renderSideBySide": false,
 	"explorer.confirmDragAndDrop": false,
-	"window.zoomLevel": 0,
 	"window.restoreWindows": "preserve",
 	"diffEditor.ignoreTrimWhitespace": false,
 	"explorer.confirmDelete": false,
