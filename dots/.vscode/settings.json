@@ -1,7 +1,7 @@
 {
-	"beautify.config": "~/.jsbeautifyrc",
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
+	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fontSize": 13,
 	"editor.hover.delay": 2500,
 	"editor.hover.enabled": true,
@@ -81,5 +81,6 @@
 	"workbench.editor.untitled.hint": "hidden",
 	"terminal.integrated.tabs.enabled": false,
 	"editor.inlineSuggest.enabled": true,
-	"colorHelper.resident": true
+	"colorHelper.resident": true,
+	"prettier.useTabs": true
 }
