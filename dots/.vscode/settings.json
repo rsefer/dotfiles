@@ -1,6 +1,7 @@
 {
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
+	"editor.bracketPairColorization.enabled": true,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fontSize": 13,
 	"editor.hover.delay": 2500,

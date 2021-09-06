@@ -1,6 +1,5 @@
 anseki.vscode-color
 bradlc.vscode-tailwindcss
-CoenraadS.bracket-pair-colorizer-2
 donjayamanne.githistory
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
@@ -13,6 +12,7 @@ liximomo.sftp
 ms-python.python
 ms-python.vscode-pylance
 ms-toolsai.jupyter
+ms-toolsai.jupyter-keymap
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode.Theme-TomorrowKit
