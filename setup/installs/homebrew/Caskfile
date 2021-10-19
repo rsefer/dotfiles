@@ -7,61 +7,77 @@ tap 'homebrew/cask-versions'
 tap 'homebrew/core'
 tap 'homebrew/services'
 
-cask '1password'
-cask '1password-cli'
-cask 'adobe-creative-cloud'
-cask 'backblaze'
-cask 'bartender'
+cask '1password-cli', args: { appdir: '/Applications' }
+cask '1password', args: { appdir: '/Applications' }
+cask 'adobe-creative-cloud', args: { appdir: '/Applications' }
+cask 'atom', args: { appdir: '/Applications' }
+cask 'backblaze', args: { appdir: '/Applications' }
+cask 'balenaetcher'
+cask 'bartender', args: { appdir: '/Applications' }
 cask 'basecamp'
-cask 'brave-browser'
-cask 'chrome-remote-desktop-host'
-cask 'coda'
-cask 'cyberduck'
-cask 'firefox'
-cask 'github'
-cask 'google-backup-and-sync'
+cask 'basictex'
+cask 'coda', args: { appdir: '/Applications' }
+cask 'cyberduck', args: { appdir: '/Applications' }
+cask 'firefox', args: { appdir: '/Applications' }
+cask 'forticlient'
+cask 'github', args: { appdir: '/Applications' }
+cask 'google-backup-and-sync', args: { appdir: '/Applications' }
+cask 'google-chrome'
 cask 'hammerspoon'
+cask 'handbrake'
 cask 'home-assistant'
-cask 'hyper'
-cask 'imagealpha'
-cask 'imageoptim'
-cask 'local'
-cask 'livereload'
-cask 'ngrok'
-cask 'openoffice'
-cask 'postman'
+cask 'imagealpha', args: { appdir: '/Applications' }
+cask 'imageoptim', args: { appdir: '/Applications' }
+cask 'livereload', args: { appdir: '/Applications' }
+cask 'local', args: { appdir: '/Applications' }
+cask 'microsoft-edge'
+cask 'mockoon'
+cask 'ngrok', args: { appdir: '/Applications' }
+cask 'openoffice', args: { appdir: '/Applications' }
+cask 'osxfuse'
+cask 'postman', args: { appdir: '/Applications' }
 cask 'qlimagesize'
 cask 'qlmarkdown'
 cask 'qlvideo'
 cask 'quicklook-json'
 cask 'quicklookase'
-cask 'sketch'
+cask 'sf-symbols'
+cask 'sketch', args: { appdir: '/Applications' }
 cask 'slack'
 cask 'spotify'
-cask 'vagrant'
-cask 'virtualbox'
-cask 'visual-studio-code'
+cask 'suspicious-package'
+cask 'vagrant', args: { appdir: '/Applications' }
+cask 'virtualbox', args: { appdir: '/Applications' }
+cask 'visual-studio-code', args: { appdir: '/Applications' }
+cask 'vnc-viewer'
+cask 'xquartz', args: { appdir: '/Applications' }
 cask 'zoom'
 
 cask 'font-bree-serif'
 cask 'font-fira-mono'
 cask 'font-fira-sans'
 cask 'font-fontawesome'
+cask 'font-hind'
+cask 'font-karla'
 cask 'font-montserrat'
 cask 'font-open-sans'
 cask 'font-playfair-display'
+cask 'font-playfair-display'
 cask 'font-roboto'
 cask 'font-source-sans-pro'
+cask 'font-titillium'
 
 # get list of installed apps from the appstore: mas list
-mas '1Password 7', id: 1333542190
-mas 'Battery Indicator', id: 1206020918
 mas 'GarageBand', id: 682658836
-mas 'GIPHY Capture', id: 668208984
 mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
+mas 'Playgrounds', id: 1496833156
+mas 'Pocket', id: 568494494
+mas 'Save to Pocket', id: 1477385213
+mas 'Shareful', id: 1522267256
 mas 'Tailscale', id: 1475387142
 mas 'Tweetbot', id: 1384080005
-mas 'Shareful', id: 1522267256
+mas 'Twitter', id: 1482454543
+mas 'Xcode', id: 497799835
