@@ -1,5 +1,4 @@
 anseki.vscode-color
-bradlc.vscode-tailwindcss
 donjayamanne.githistory
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
@@ -9,10 +8,6 @@ GitHub.copilot
 henoc.svgeditor
 Janne252.fontawesome-autocomplete
 liximomo.sftp
-ms-python.python
-ms-python.vscode-pylance
-ms-toolsai.jupyter
-ms-toolsai.jupyter-keymap
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode.Theme-TomorrowKit
