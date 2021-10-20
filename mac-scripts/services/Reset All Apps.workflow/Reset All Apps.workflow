@@ -1,1 +1,0 @@
-/Users/rsefer/dotfiles/mac-scripts/services/Reset All Apps.workflow
