@@ -83,5 +83,7 @@
 	"terminal.integrated.tabs.enabled": false,
 	"editor.inlineSuggest.enabled": true,
 	"colorHelper.resident": true,
-	"prettier.useTabs": true
+	"prettier.useTabs": true,
+	"prettier.singleQuote": true,
+	"prettier.jsxSingleQuote": true
 }
