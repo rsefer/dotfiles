@@ -86,5 +86,6 @@
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
-	"terminal.integrated.scrollback": 2000
+	"terminal.integrated.scrollback": 2000,
+	"security.workspace.trust.untrustedFiles": "open"
 }
