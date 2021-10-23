@@ -16,7 +16,6 @@ cask 'balenaetcher'
 cask 'bartender', args: { appdir: '/Applications' }
 cask 'basecamp'
 cask 'basictex'
-cask 'coda', args: { appdir: '/Applications' }
 cask 'cyberduck', args: { appdir: '/Applications' }
 cask 'firefox', args: { appdir: '/Applications' }
 cask 'forticlient'
