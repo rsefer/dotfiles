@@ -1,8 +1,8 @@
 module.exports = {
-	https: {
-		key: '/Users/rsefer/.localhost-ssl/server.key',
-		cert: '/Users/rsefer/.localhost-ssl/server.crt'
-	},
+	https: (process.env.SSL_KEY_PATH && process.env.SSL_CRT_PATH ? {
+		key: process.env.SSL_KEY_PATH,
+		cert: process.env.SSL_CRT_PATH
+	} : null),
 	files: '**/*',
 	open: false,
 	// server: true, // now handled via the shell script
