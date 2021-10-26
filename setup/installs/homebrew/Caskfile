@@ -19,7 +19,7 @@ cask 'cyberduck', args: { appdir: '/Applications' }
 cask 'firefox', args: { appdir: '/Applications' }
 cask 'forticlient'
 cask 'github', args: { appdir: '/Applications' }
-cask 'google-backup-and-sync', args: { appdir: '/Applications' }
+cask 'google-drive', args: { appdir: '/Applications' }
 cask 'google-chrome'
 cask 'hammerspoon'
 cask 'handbrake'
