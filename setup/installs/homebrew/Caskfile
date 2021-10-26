@@ -26,13 +26,12 @@ cask 'handbrake'
 cask 'home-assistant'
 cask 'imagealpha', args: { appdir: '/Applications' }
 cask 'imageoptim', args: { appdir: '/Applications' }
-cask 'livereload', args: { appdir: '/Applications' }
 cask 'local', args: { appdir: '/Applications' }
+cask 'macfuse'
 cask 'microsoft-edge'
 cask 'mockoon'
 cask 'ngrok', args: { appdir: '/Applications' }
 cask 'openoffice', args: { appdir: '/Applications' }
-cask 'osxfuse'
 cask 'postman', args: { appdir: '/Applications' }
 cask 'qlimagesize'
 cask 'qlmarkdown'
