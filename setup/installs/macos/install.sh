@@ -4,15 +4,6 @@ source $DOTFILES_ROOT/setup/functions.sh
 if test "$(uname)" = "Darwin"
 then
 
-info 'setting custom apple script services'
-
-# Apple Scripts - Services
-for f in $DOTFILES_ROOT/mac-scripts/services/*
-do
-	dst="$HOME/Library/Services/$(basename "$f")"
-	link_file "$f" "$dst"
-done
-
 info 'setting macOS defaults'
 
 osascript -e 'tell application "System Preferences" to quit'
