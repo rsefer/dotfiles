@@ -2,7 +2,6 @@ cask_args appdir: '/Applications'
 
 tap 'homebrew/bundle'
 tap 'homebrew/cask'
-tap 'homebrew/cask-fonts'
 tap 'homebrew/cask-versions'
 tap 'homebrew/core'
 tap 'homebrew/services'
@@ -51,19 +50,6 @@ cask 'visual-studio-code', args: { appdir: '/Applications' }
 cask 'vnc-viewer'
 cask 'xquartz', args: { appdir: '/Applications' }
 cask 'zoom'
-
-cask 'font-bree-serif'
-cask 'font-fira-mono'
-cask 'font-fira-sans'
-cask 'font-fontawesome'
-cask 'font-hind'
-cask 'font-karla'
-cask 'font-montserrat'
-cask 'font-open-sans'
-cask 'font-playfair-display'
-cask 'font-roboto'
-cask 'font-source-sans-pro'
-cask 'font-titillium'
 
 # get list of installed apps from the appstore: mas list
 mas 'GarageBand', id: 682658836
