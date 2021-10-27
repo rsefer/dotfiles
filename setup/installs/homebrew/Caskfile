@@ -29,6 +29,7 @@ cask 'imageoptim', args: { appdir: '/Applications' }
 cask 'local', args: { appdir: '/Applications' }
 cask 'macfuse'
 cask 'microsoft-edge'
+cask 'mirosoft-teams'
 cask 'mockoon'
 cask 'ngrok', args: { appdir: '/Applications' }
 cask 'openoffice', args: { appdir: '/Applications' }
