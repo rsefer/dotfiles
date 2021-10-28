@@ -35,7 +35,6 @@ cask 'ngrok', args: { appdir: '/Applications' }
 cask 'openoffice', args: { appdir: '/Applications' }
 cask 'postman', args: { appdir: '/Applications' }
 cask 'qlimagesize'
-cask 'qlmarkdown'
 cask 'qlvideo'
 cask 'quicklook-json'
 cask 'quicklookase'
