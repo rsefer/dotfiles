@@ -9,7 +9,6 @@ tap 'homebrew/services'
 cask '1password-cli', args: { appdir: '/Applications' }
 cask '1password', args: { appdir: '/Applications' }
 cask 'adobe-creative-cloud', args: { appdir: '/Applications' }
-cask 'atom', args: { appdir: '/Applications' }
 cask 'backblaze', args: { appdir: '/Applications' }
 cask 'balenaetcher'
 cask 'bartender', args: { appdir: '/Applications' }
@@ -31,6 +30,7 @@ cask 'macfuse'
 cask 'microsoft-edge'
 cask 'mirosoft-teams'
 cask 'mockoon'
+cask 'mongodb-compass'
 cask 'ngrok', args: { appdir: '/Applications' }
 cask 'openoffice', args: { appdir: '/Applications' }
 cask 'postman', args: { appdir: '/Applications' }
