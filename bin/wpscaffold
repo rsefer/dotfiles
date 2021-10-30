@@ -32,6 +32,14 @@ else
 	info "Skipping npm install"
 fi
 
+readyn "Create new repo (y/n)? "
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	new-repo
+else
+	info "Skipping repo creation"
+fi
+
 success "FINISHED wpscaffold"
 
 exit 0
