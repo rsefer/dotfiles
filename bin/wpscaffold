@@ -27,7 +27,7 @@ sed -i '' "s/example.local/$REPLY.local/g" functions.php
 readyn "Run npm install (y/n)? "
 if [[ $REPLY =~ ^[Yy]$ ]]
 then
-	npm install
+	npm install && npm update && npm install sdc-build-wp@latest
 else
 	info "Skipping npm install"
 fi
