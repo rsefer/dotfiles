@@ -6,7 +6,8 @@ import time, sys, os, csv
 from csv import writer
 from datetime import datetime
 
-hours_file = os.getenv('HOME') + "/Google Drive/My Drive/Work/hours.csv"
+hours_file = os.getenv('HOME') + "/Google Drive/Work/hours.csv"
+# if Google Drive is "streaming" use os.getenv('HOME') + "/Google Drive/My Drive/Work/hours.csv"
 delimiter = ','
 
 def summarize(clientID = None):
