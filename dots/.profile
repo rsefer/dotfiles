@@ -5,7 +5,7 @@ export LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 export SSL_KEY_PATH="$LOCALHOSTSSLDIR/key.pem"
 export SSL_CRT_PATH="$LOCALHOSTSSLDIR/cert.pem"
 
-export PATH="/usr/local/opt/python/libexec/bin:/usr/local/opt/curl/bin:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
+export PATH="$HOME/.pyenv/shims:/usr/local/opt/curl/bin:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -14,7 +14,7 @@ export NVM_DIR="$HOME/.nvm"
 # [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
 
 if command -v pyenv 1>/dev/null 2>&1; then
-  eval "$(pyenv init -)"
+	eval "$(pyenv init -)"
 fi
 
 source $HOME/.aliases
