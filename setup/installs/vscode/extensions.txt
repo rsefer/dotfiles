@@ -1,4 +1,3 @@
-anseki.vscode-color
 donjayamanne.githistory
 EditorConfig.EditorConfig
 esbenp.prettier-vscode

@@ -9,7 +9,9 @@ export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
 export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
-export PATH="/opt/homebrew/opt/curl/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
+export NODE_PATH="$(which node)"
+
+export PATH="/opt/homebrew/opt/curl/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$NODE_PATH:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
