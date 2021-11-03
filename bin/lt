@@ -110,6 +110,7 @@ def addRow(clientID, clientName, minutes):
 	with open(hours_file, 'a+', newline='') as file:
 		csv_writer = writer(file)
 		csv_writer.writerow([clientID, clientName, re.sub("[^-\d]", "", minutes), time.strftime('%H:%M:%S'), time.strftime('%Y-%m-%d')])
+		print('Added ' + minutes + ' minutes to ' + clientName)
 
 def clearClient(clientID):
 	keep_lines = list()
