@@ -8,6 +8,7 @@
 	"editor.codeLens": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fontSize": 13,
+	"editor.guides.bracketPairs": true,
 	"editor.hover.delay": 2500,
 	"editor.hover.enabled": true,
 	"editor.inlineSuggest.enabled": true,
