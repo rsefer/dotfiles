@@ -5,8 +5,8 @@ source $DOTFILES_ROOT/zsh/nvmrc-autoswitch.sh
 if type brew &>/dev/null; then
 
 	HOMEBREW_PREFIX=$(brew --prefix)
-  for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do export PATH=$d:$PATH; done
-
+	for d in ${HOMEBREW_PREFIX}/opt/*/libexec/gnubin; do export PATH=$d:$PATH; done
+	
 	export ZSH_HIGHLIGHT_HIGHLIGHTERS_DIR=${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/highlighters
 
 	FPATH=${HOMEBREW_PREFIX}/share/zsh-completions:$FPATH
