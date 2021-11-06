@@ -1,7 +1,9 @@
 alias reload!=". $HOME/.zshrc"
 
+alias mv="mv -iv"
+alias mkdir="mkdir -vp"
+alias cp="cp -riv"
 alias rm="rm -I"
-alias cp="cp -r"
 
 alias ls="ls --color=auto"
 
