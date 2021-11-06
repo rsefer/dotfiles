@@ -4,25 +4,21 @@ autoload -U colors && colors
 
 setopt PROMPT_SUBST
 
-parse_git_branch() {
-	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
-}
-
 set_prompt() {
 
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
 	# Current working directory
 	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
-	PS1+='%(?.., %{$fg[red]%}%?%{$reset_color%})'
+	PS1+='%(?.., %{$fg_bold[red]%}%?%{$reset_color%})'
 
 	# Git
-	GITBRANCH=$(parse_git_branch)
+	GITBRANCH=$(git rev-parse --abbrev-ref HEAD 2> /dev/null)
 	if [ ! -z "$GITBRANCH" ]; then
 		PS1+=', '
-		PS1+="%{$fg[blue]%}$(git rev-parse --abbrev-ref HEAD 2> /dev/null)%{$reset_color%}"
+		PS1+="%{$fg[blue]%}$GITBRANCH%{$reset_color%}"
 		if [ $(git status --short | wc -l) -gt 0 ]; then
-			PS1+="%{$fg[red]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
+			PS1+="%{$fg_bold[white]%}+$(git status --short | wc -l | awk '{$1=$1};1')%{$reset_color%}"
 		fi
 	fi
 
