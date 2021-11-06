@@ -10,6 +10,7 @@ set_prompt() {
 
 	# Current working directory
 	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
+	# Error code, if any
 	PS1+='%(?.., %{$fg_bold[red]%}%?%{$reset_color%})'
 
 	# Git
