@@ -24,3 +24,7 @@ if command -v pyenv 1>/dev/null 2>&1; then
 fi
 
 source $HOME/.aliases
+
+echo -e "=================="
+echo -e " Sefer Design Co. "
+echo -e "=================="
