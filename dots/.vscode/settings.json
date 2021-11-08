@@ -2,6 +2,7 @@
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
 	"colorHelper.resident": true,
+	"debug.javascript.autoAttachFilter": "smart",
 	"diffEditor.ignoreTrimWhitespace": false,
 	"diffEditor.renderSideBySide": false,
 	"editor.bracketPairColorization.enabled": true,
@@ -27,6 +28,7 @@
 	"editor.wordWrapColumn": 120,
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
+	"extensions.ignoreRecommendations": true,
 	"files.associations": {
 		"*.njk": "html"
 	},
@@ -46,11 +48,14 @@
 	"prettier.singleQuote": true,
 	"prettier.useTabs": true,
 	"python.showStartPage": false,
+	"security.workspace.trust.enabled": false,
+	"security.workspace.trust.untrustedFiles": "open",
 	"terminal.integrated.allowChords": false,
 	"terminal.integrated.drawBoldTextInBrightColors": false,
 	"terminal.integrated.experimentalLinkProvider": false,
 	"terminal.integrated.experimentalUseTitleEvent": true,
 	"terminal.integrated.rendererType": "auto",
+	"terminal.integrated.scrollback": 2000,
 	"terminal.integrated.shell.osx": "/bin/zsh",
 	"terminal.integrated.tabs.enabled": false,
 	"window.closeWhenEmpty": true,
@@ -86,9 +91,5 @@
 	"workbench.editor.untitled.hint": "hidden",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
-	"workbench.statusBar.visible": true,
-	"terminal.integrated.scrollback": 2000,
-	"security.workspace.trust.enabled": false,
-	"security.workspace.trust.untrustedFiles": "open",
-	"extensions.ignoreRecommendations": true
+	"workbench.statusBar.visible": true
 }
