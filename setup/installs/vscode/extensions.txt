@@ -1,9 +1,11 @@
+bmewburn.vscode-intelephense-client
 donjayamanne.githistory
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
 formulahendry.auto-close-tag
 formulahendry.auto-rename-tag
 GitHub.copilot
+GitHub.vscode-pull-request-github
 henoc.svgeditor
 Janne252.fontawesome-autocomplete
 liximomo.sftp

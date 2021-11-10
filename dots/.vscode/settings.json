@@ -43,6 +43,12 @@
 	"git.autofetch": true,
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
+	"githubIssues.queries": [
+		{
+			"label": "Open Issues",
+			"query": "repo:${owner}/${repository} state:open"
+		}
+	],
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"prettier.jsxSingleQuote": true,
 	"prettier.singleQuote": true,
