@@ -8,6 +8,8 @@ alias rm="rm -I"
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
 
+alias gl="git log --all --decorate --oneline --graph"
+
 alias grep="grep --color=auto --line-number --ignore-case --recursive --exclude-dir={\*git,dist\*}"
 
 alias hosts="sudo vim /etc/hosts"
