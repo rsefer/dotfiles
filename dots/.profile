@@ -1,6 +1,7 @@
 export DOTFILES_ROOT=$HOME/dotfiles
 export UTILS_ROOT=$HOME/utils
 export EDITOR="code -w"
+export NOTES_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
 export LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 export SSL_KEY_PATH="$LOCALHOSTSSLDIR/key.pem"
 export SSL_CRT_PATH="$LOCALHOSTSSLDIR/cert.pem"
