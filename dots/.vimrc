@@ -88,21 +88,33 @@ let g:currentmode={
     \}
 
 set laststatus=2
+
+function! GitBranch()
+	return system("git rev-parse --abbrev-ref HEAD 2>/dev/null | tr -d '\n'")
+endfunction
+
+function! StatuslineGit()
+	let l:branchname = GitBranch()
+	return strlen(l:branchname) > 0?'  '.l:branchname.' ':''
+endfunction
+
 set statusline=
-" mode
-set statusline+=%1*\ [%{toupper(g:currentmode[mode()])}]
-" left/right divider
-set statusline+=%1*\ %=
+" git
+set statusline+=%{StatuslineGit()}
 " modified flag
 set statusline+=%2*%m%*
 " path (f for relative, F for full)
 set statusline+=%1*\ %<%f%*
+" left/right divider
+set statusline+=%1*\ %=
 " current line #
 set statusline+=%1*%5l%*
 " total lines
 set statusline+=%1*/%L%*
 " (virtual) column #
 set statusline+=%1*%4v\ %*
+" mode
+set statusline+=%1*\ [%{toupper(g:currentmode[mode()])}]
 
 " highlight LineNr term=bold cterm=NONE ctermfg=DarkGrey ctermbg=NONE gui=NONE guifg=DarkGrey guibg=NONE
 
