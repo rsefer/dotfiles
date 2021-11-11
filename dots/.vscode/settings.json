@@ -49,6 +49,7 @@
 			"query": "repo:${owner}/${repository} state:open"
 		}
 	],
+	"githubPullRequests.queries": [],
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"prettier.jsxSingleQuote": true,
 	"prettier.singleQuote": true,
