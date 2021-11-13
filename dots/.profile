@@ -5,6 +5,7 @@ export NOTES_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
 export LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 export SSL_KEY_PATH="$LOCALHOSTSSLDIR/key.pem"
 export SSL_CRT_PATH="$LOCALHOSTSSLDIR/cert.pem"
+export HISTCONTROL=ignoredups
 
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"
