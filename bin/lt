@@ -24,6 +24,10 @@ def summarize(clientID = None):
 		lastClientID = None
 		lastDate = None
 		for row in reader:
+			if line == 0: # skip first row of headers
+				line += 1
+				continue
+			line += 1
 			if len(row) == 0:
 				continue
 			if clientID != None and row[0] != clientID:
@@ -38,7 +42,6 @@ def summarize(clientID = None):
 						'minutes' : 0
 					}
 				clients[row[0]]['minutes'] += int(row[2])
-
 				if lastClientID == workingClientID:
 					workingClientID = ''
 					workingClientName = '|'
@@ -55,7 +58,6 @@ def summarize(clientID = None):
 						raw_table.append(['', '', '', '', '--------------'])
 					lastDate = workingDate
 				raw_table.append([workingClientID, workingClientName, row[2], row[3], workingDate])
-			line += 1
 
 		print()
 		print('=======')
