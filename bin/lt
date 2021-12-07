@@ -7,93 +7,97 @@ import re
 from csv import writer
 from datetime import datetime
 
-hours_file = os.getenv('HOME') + "/Google Drive/Work/hours.csv"
-# if Google Drive is "streaming" use os.getenv('HOME') + "/Google Drive/My Drive/Work/hours.csv"
+hours_file = "/Users/rsefer/Google Drive/Work/hours.csv"
+# if Google Drive is "streaming" "/Users/rsefer/Google Drive/My Drive/Work/hours.csv"
 hours_file_with_spaces = hours_file.replace(' ', '\ ')
 delimiter = ','
 
 def summarize(clientID = None):
-	with open(hours_file, 'rt') as file:
-		reader = csv.reader(file, delimiter = delimiter)
-		clients = {}
-		raw_table = [
-			['id', 'name', 'minutes', 'timestamp', 'date'],
-			['--', '----', '-------', '---------', '--------------']
-		]
-		line = 0
-		lastClientID = None
-		lastDate = None
-		for row in reader:
-			if line == 0: # skip first row of headers
+	try:
+		with open(hours_file, 'rt') as file:
+			reader = csv.reader(file, delimiter = delimiter)
+			clients = {}
+			raw_table = [
+				['id', 'name', 'minutes', 'timestamp', 'date'],
+				['--', '----', '-------', '---------', '--------------']
+			]
+			line = 0
+			lastClientID = None
+			lastDate = None
+			for row in reader:
+				if line == 0: # skip first row of headers
+					line += 1
+					continue
 				line += 1
-				continue
-			line += 1
-			if len(row) == 0:
-				continue
-			if clientID != None and row[0] != clientID:
-				continue
-			workingClientID = row[0]
-			workingClientName = row[1]
-			workingDate = row[4]
-			if line > 0:
-				if row[0] not in clients:
-					clients[row[0]] = {
-						'name' : row[1],
-						'minutes' : 0
-					}
-				clients[row[0]]['minutes'] += int(row[2])
-				if lastClientID == workingClientID:
-					workingClientID = ''
-					workingClientName = '|'
-				else:
-					lastClientID = workingClientID
+				if len(row) == 0:
+					continue
+				if clientID != None and row[0] != clientID:
+					continue
+				workingClientID = row[0]
+				workingClientName = row[1]
+				workingDate = row[4]
+				if line > 0:
+					if row[0] not in clients:
+						clients[row[0]] = {
+							'name' : row[1],
+							'minutes' : 0
+						}
+					clients[row[0]]['minutes'] += int(row[2])
+					if lastClientID == workingClientID:
+						workingClientID = ''
+						workingClientName = '|'
+					else:
+						lastClientID = workingClientID
 
-				workingDate = datetime.strftime(datetime.strptime(row[4], '%Y-%m-%d'), '%Y-%m-%d %a')
+					workingDate = datetime.strftime(datetime.strptime(row[4], '%Y-%m-%d'), '%Y-%m-%d %a')
 
-				clients[row[0]]['last_tracked'] = workingDate
-				if lastDate == workingDate:
-					workingDate = ''
-				else:
-					if line > 1:
-						raw_table.append(['', '', '', '', '--------------'])
-					lastDate = workingDate
-				raw_table.append([workingClientID, workingClientName, row[2], row[3], workingDate])
+					clients[row[0]]['last_tracked'] = workingDate
+					if lastDate == workingDate:
+						workingDate = ''
+					else:
+						if line > 1:
+							raw_table.append(['', '', '', '', '--------------'])
+						lastDate = workingDate
+					raw_table.append([workingClientID, workingClientName, row[2], row[3], workingDate])
 
-		print()
-		print('=======')
-		print('SUMMARY')
-		print('=======')
-		summary_table = [
-			['id', 'name', 'time', 'last tracked'],
-			['--', '----', '----', '------------']
-		]
-		combined_hours = 0
-		for k, client in clients.items():
-			hours = round(client['minutes'] / 60, 2)
-			workingLastTrackedRelative = (datetime.now() - datetime.strptime(client['last_tracked'], '%Y-%m-%d %a')).days
-			if workingLastTrackedRelative == 0:
-				workingLastTrackedRelative = 'today'
-			elif workingLastTrackedRelative == 1:
-				workingLastTrackedRelative = '1 day ago'
-			else:
-				workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
-			summary_table.append([k, client['name'], '{:.2f}'.format(hours) + ' hours', workingLastTrackedRelative])
-			combined_hours += hours
-		print()
-		print('Total hours: ' + '{:.2f}'.format(combined_hours))
-		print()
-		for row in summary_table:
-			print('{:5} {: >25} {: >15} {: >14}'.format(*row))
-		print()
-
-		if len(sys.argv) >= 3 and (sys.argv[2] == 'raw' or sys.argv[2].isnumeric()):
-			print('====')
-			print('DATA')
-			print('====')
 			print()
-			for row in raw_table:
-				print('{:5} {: >25} {: >15} {: >14} {: >16}'.format(*row))
+			print('=======')
+			print('SUMMARY')
+			print('=======')
+			summary_table = [
+				['id', 'name', 'time', 'last tracked'],
+				['--', '----', '----', '------------']
+			]
+			combined_hours = 0
+			for k, client in clients.items():
+				hours = round(client['minutes'] / 60, 2)
+				workingLastTrackedRelative = (datetime.now() - datetime.strptime(client['last_tracked'], '%Y-%m-%d %a')).days
+				if workingLastTrackedRelative == 0:
+					workingLastTrackedRelative = 'today'
+				elif workingLastTrackedRelative == 1:
+					workingLastTrackedRelative = '1 day ago'
+				else:
+					workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
+				summary_table.append([k, client['name'], '{:.2f}'.format(hours) + ' hours', workingLastTrackedRelative])
+				combined_hours += hours
 			print()
+			print('Total hours: ' + '{:.2f}'.format(combined_hours))
+			print()
+			for row in summary_table:
+				print('{:5} {: >25} {: >15} {: >14}'.format(*row))
+			print()
+
+			if len(sys.argv) >= 3 and (sys.argv[2] == 'raw' or sys.argv[2].isnumeric()):
+				print('====')
+				print('DATA')
+				print('====')
+				print()
+				for row in raw_table:
+					print('{:5} {: >25} {: >15} {: >14} {: >16}'.format(*row))
+				print()
+	except:
+		print('Summary failed to open hours file')
+		sys.exit(1)
 
 def clientTime(clientID = None):
 	if clientID != None:
@@ -163,3 +167,5 @@ else:
 	else:
 		print('Wrong arguments')
 		sys.exit(1)
+
+sys.exit(0)
