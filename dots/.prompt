@@ -9,7 +9,7 @@ set_prompt() {
 	PS1="%{$fg[white]%}[%{$reset_color%}"
 
 	# Current working directory
-	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 80 ))<...<%~%<<%}%{$reset_color%}"
+	PS1+="%{$fg_bold[cyan]%}%{%$(( $COLUMNS - 50 ))<...<%~%<<%}%{$reset_color%}"
 	# Error code, if any
 	PS1+='%(?.., %{$fg_bold[red]%}%?%{$reset_color%})'
 
