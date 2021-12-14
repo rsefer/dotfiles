@@ -35,7 +35,7 @@ dockutil --no-restart --add "/Applications/Visual Studio Code.app"
 dockutil --no-restart --add "/Applications/GitHub Desktop.app"
 dockutil --no-restart --add "/Applications/Basecamp.app"
 dockutil --no-restart --add "/Applications/TextEdit.app"
-dockutil --no-restart --add "/Applications/Utilities/Terminal.app"
+dockutil --no-restart --add "/Applications/iTerm.app"
 dockutil --no-restart --add "~/Downloads"
 
 killall Dock
@@ -73,6 +73,10 @@ defaults write com.apple.Terminal "Default Window Settings" -string "$TERMINAL_T
 defaults write com.apple.Terminal "Startup Window Settings" -string "$TERMINAL_THEME_NAME"
 defaults write com.apple.terminal StringEncodings -array 4
 defaults write com.apple.terminal ShowLineMarks -int 0
+
+# iTerm2
+defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_ROOT/setup/installs/macos/iterm"
+defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
 # localhost SSL
 info "creating local ssl"
