@@ -63,7 +63,6 @@
 	"terminal.integrated.experimentalUseTitleEvent": true,
 	"terminal.integrated.rendererType": "auto",
 	"terminal.integrated.scrollback": 2000,
-	"terminal.integrated.shell.osx": "/bin/zsh",
 	"terminal.integrated.tabs.enabled": false,
 	"window.closeWhenEmpty": true,
 	"window.nativeTabs": true,
