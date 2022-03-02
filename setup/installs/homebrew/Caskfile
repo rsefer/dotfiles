@@ -15,6 +15,7 @@ cask 'bartender', args: { appdir: '/Applications' }
 cask 'basecamp'
 cask 'basictex'
 cask 'cyberduck', args: { appdir: '/Applications' }
+cask 'fantastical', args: { appdir: '/Applications' }
 cask 'firefox', args: { appdir: '/Applications' }
 cask 'forticlient-vpn'
 cask 'github', args: { appdir: '/Applications' }
