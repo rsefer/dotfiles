@@ -5,7 +5,6 @@ alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
 alias mv="mv -iv"
 alias mkdir="mkdir -vp"
 alias cp="cp -riv"
-alias rm="rm -I"
 
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
