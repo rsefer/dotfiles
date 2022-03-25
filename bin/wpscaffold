@@ -41,6 +41,12 @@ else
 	info "Skipping repo creation"
 fi
 
+readyn "Does this site exist already (y/n)? "
+if [[ $REPLY =~ ^[Yy]$ ]]
+then
+	info "Be sure to obtain any existing analytics information!"
+fi
+
 success "FINISHED wpscaffold"
 
 exit 0
