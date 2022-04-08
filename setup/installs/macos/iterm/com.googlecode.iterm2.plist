@@ -1583,7 +1583,7 @@
 				</dict>
 			</dict>
 			<key>Mouse Reporting</key>
-			<true/>
+			<false/>
 			<key>Name</key>
 			<string>Robert</string>
 			<key>Non Ascii Font</key>
