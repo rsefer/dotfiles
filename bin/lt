@@ -77,11 +77,12 @@ def summarize(clientID = None):
 				elif workingLastTrackedRelative == 1:
 					workingLastTrackedRelative = '1 day ago'
 				else:
-					workingLastTrackedRelative = str(workingLastTrackedRelative) + ' days ago'
+					workingLastTrackedRelative = f'{workingLastTrackedRelative} days ago'
 				summary_table.append([k, client['name'], '{:.2f}'.format(hours) + ' hours', workingLastTrackedRelative])
 				combined_hours += hours
 			print()
-			print('Total hours: ' + '{:.2f}'.format(combined_hours))
+			combined_hours = '{:.2f}'.format(combined_hours)
+			print(f'Total hours: {combined_hours}')
 			print()
 			for row in summary_table:
 				print('{:5} {: >25} {: >15} {: >14}'.format(*row))
@@ -117,7 +118,7 @@ def addRow(clientID, clientName, minutes):
 	with open(hours_file, 'a+', newline='') as file:
 		csv_writer = writer(file)
 		csv_writer.writerow([clientID, clientName, re.sub("[^-\d]", "", minutes), time.strftime('%H:%M:%S'), time.strftime('%Y-%m-%d')])
-		print('Added ' + minutes + ' minutes to ' + clientName)
+		print(f'Added {minutes} minutes to {clientName}')
 
 def clearClient(clientID):
 	keep_lines = list()
@@ -131,15 +132,15 @@ def clearClient(clientID):
 			if row[0] == clientID:
 				if remove_lines_count == 0:
 					print()
-					print('Clearing client #' + clientID + ' - ' + row[1])
+					print(f'Clearing client #{clientID} - {row[1]}')
 					print()
-				print(row[4] + ' ' + row[3] + ' ' + row[2] + ' minutes')
+				print(f'{row[4]} {row[3]} {row[2]} minutes')
 				remove_lines_count += 1
 			else:
 				keep_lines.append(row)
 
 		if remove_lines_count == 0:
-			print('Client #' + clientID + ' not found')
+			print(f'Client #{clientID} not found')
 			sys.exit(1)
 
 	with open(hours_file, 'w') as file:
@@ -150,9 +151,9 @@ if len(sys.argv) < 2:
 	summarize()
 else:
 	if sys.argv[1] == 'open':
-		os.system('open -e ' + hours_file_with_spaces)
+		os.system(f'open -e {hours_file_with_spaces}')
 	elif sys.argv[1] == 'view':
-		os.system('cat ' + hours_file_with_spaces)
+		os.system(f'cat {hours_file_with_spaces}')
 	elif sys.argv[1] == 'sum' or sys.argv[1] == 's':
 		if len(sys.argv) >= 3 and sys.argv[2].isnumeric():
 			summarize(sys.argv[2])
