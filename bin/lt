@@ -4,7 +4,6 @@
 
 import time, sys, os, csv
 import re
-from csv import writer
 from datetime import datetime
 
 hours_file = "/Users/rsefer/Google Drive/Work/hours.csv"
@@ -116,8 +115,8 @@ def clientTime(clientID = None):
 
 def addRow(clientID, clientName, minutes):
 	with open(hours_file, 'a+', newline='') as file:
-		csv_writer = writer(file)
-		csv_writer.writerow([clientID, clientName, re.sub("[^-\d]", "", minutes), time.strftime('%H:%M:%S'), time.strftime('%Y-%m-%d')])
+		writer = csv.writer(file)
+		writer.writerow([clientID, clientName, re.sub("[^-\d]", "", minutes), time.strftime('%H:%M:%S'), time.strftime('%Y-%m-%d')])
 		print(f'Added {minutes} minutes to {clientName}')
 
 def clearClient(clientID):
