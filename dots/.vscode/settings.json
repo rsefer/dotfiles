@@ -98,5 +98,6 @@
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
-	"githubPullRequests.createOnPublishBranch": "never"
+	"githubPullRequests.createOnPublishBranch": "never",
+	"editor.accessibilitySupport": "off"
 }
