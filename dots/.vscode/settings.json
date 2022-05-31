@@ -99,5 +99,6 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"githubPullRequests.createOnPublishBranch": "never",
-	"editor.accessibilitySupport": "off"
+	"editor.accessibilitySupport": "off",
+	"typescript.updateImportsOnFileMove.enabled": "never"
 }
