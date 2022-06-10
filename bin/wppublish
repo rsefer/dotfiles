@@ -56,6 +56,8 @@ fi
 
 info "Script will update: $HOST:$REMOTETHEMESPATH/$FOLDERNAME"
 
+SHOULDFLUSH=true
+
 if [ $PUBLISHMETHOD = "rsync" ]; then
 
 	readyn "What would you like continue? [y]es or [n]o"
@@ -76,15 +78,18 @@ else
 
 	GITFTPACTION=push
 
-	readyn "What would you like to do? [p]ush, [i]nit, [f]lush cache, or [e]xit?"
-	if [[ ! $REPLY =~ ^[PpIiFf]$ ]]; then
+	readyn "What would you like to do? [p]ush and flush cache, [o]nly push, no flush, [i]nit, [f]lush cache, or [e]xit?"
+	if [[ ! $REPLY =~ ^[PpOoIiFf]$ ]]; then
 		minus "ABORTING"
 		exit 1
 	else
 		if [[ $REPLY =~ ^[Ii]$ ]]; then
 			GITFTPACTION=init
-		elif [[ $REPLY =~ ^[Pp]$ ]]; then
+		elif [[ $REPLY =~ ^[PpOo]$ ]]; then
 			GITFTPACTION=push
+			if [[ $REPLY =~ ^[Oo]$ ]]; then
+				SHOULDFLUSH=false
+			fi
 		elif [[ $REPLY =~ ^[Ff]$ ]]; then
 			promptFlushCache "$PUBLISHMETHOD" y
 			exit 1
@@ -98,7 +103,9 @@ else
 
 fi
 
-promptFlushCache "$PUBLISHMETHOD"
+if [[ $SHOULDFLUSH != 'false' ]]; then
+	promptFlushCache "$PUBLISHMETHOD" y
+fi
 
 URL=$(cat $WPPUBLISHFILE | jq -r '.url')
 
