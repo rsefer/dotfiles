@@ -63,6 +63,7 @@
 	"terminal.integrated.experimentalUseTitleEvent": true,
 	"terminal.integrated.rendererType": "auto",
 	"terminal.integrated.scrollback": 2000,
+	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.tabs.enabled": false,
 	"window.closeWhenEmpty": true,
 	"window.nativeTabs": true,
