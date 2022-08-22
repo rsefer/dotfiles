@@ -3,12 +3,15 @@
   "global-search",
   "switcher",
   "graph",
-  "backlink",
+  "tag-pane",
   "page-preview",
+  "templates",
   "note-composer",
   "command-palette",
+  "slash-command",
   "editor-status",
   "markdown-importer",
-  "word-count",
+  "outline",
+  "workspaces",
   "file-recovery"
 ]
