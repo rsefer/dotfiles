@@ -35,7 +35,7 @@ dockutil --no-restart --add "/Applications/Visual Studio Code.app"
 dockutil --no-restart --add "/Applications/Local.app"
 dockutil --no-restart --add "/Applications/GitHub Desktop.app"
 dockutil --no-restart --add "/Applications/iTerm.app"
-dockutil --no-restart --add "/Applications/TextEdit.app"
+dockutil --no-restart --add "/Applications/Obsidian.app"
 dockutil --no-restart --add "~/Downloads"
 
 killall Dock
