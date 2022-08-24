@@ -100,5 +100,6 @@
 	"editor.accessibilitySupport": "off",
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"editor.minimap.renderCharacters": false,
-	"editor.minimap.showSlider": "always"
+	"editor.minimap.showSlider": "always",
+	"githubPullRequests.pullBranch": "never"
 }
