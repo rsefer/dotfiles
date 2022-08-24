@@ -5,5 +5,8 @@
   "translucency": false,
   "textFontFamily": "SF Mono,Courier",
   "monospaceFontFamily": "SF Mono,Courier",
-  "interfaceFontFamily": ""
+  "interfaceFontFamily": "",
+  "enabledCssSnippets": [
+    "sdc"
+  ]
 }
