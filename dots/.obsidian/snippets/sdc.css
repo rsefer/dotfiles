@@ -4,6 +4,9 @@
 
 @media (max-width: 700px) {
 
+	.view-header .view-actions,
+	.status-bar-item.plugin-editor-status,
+	.status-bar-item.plugin-better-word-count,
 	.workspace-ribbon.side-dock-ribbon {
 		display: none !important;
 	}
