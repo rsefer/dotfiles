@@ -56,10 +56,8 @@ mas 'Keynote', id: 409183694
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Playgrounds', id: 1496833156
-mas 'Pocket', id: 568494494
-mas 'Save to Pocket', id: 1477385213
 mas 'Shareful', id: 1522267256
-mas 'SPark', id: 1176895641
+mas 'Spark', id: 1176895641
 mas 'Tailscale', id: 1475387142
 mas 'Tweetbot', id: 1384080005
 mas 'Twitter', id: 1482454543
