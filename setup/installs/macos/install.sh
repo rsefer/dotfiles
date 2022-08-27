@@ -78,6 +78,9 @@ defaults write com.apple.terminal ShowLineMarks -int 0
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_ROOT/setup/installs/macos/iterm"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
 
+# 1Password symlink
+mkdir -p ~/.1password && ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock
+
 # localhost SSL
 info "creating local ssl"
 
