@@ -9,5 +9,7 @@
   "newFileLocation": "current",
   "showUnsupportedFiles": true,
   "attachmentFolderPath": "./",
-  "spellcheck": true
+  "spellcheck": true,
+  "accentColor": "",
+  "communityThemeSortOrder": "download"
 }
