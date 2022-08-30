@@ -2,8 +2,20 @@
 	padding-top: 0px !important;
 }
 
-.workspace .markdown-source-view.mod-cm6.is-readable-line-width .inline-title {
+.workspace .markdown-source-view .inline-title {
 	transition: all 150ms ease-in-out;
+}
+
+@media (min-width: 701px) {
+
+	.markdown-source-view .inline-title {
+		display: none;
+	}
+
+	.markdown-source-view .cm-contentContainer {
+		padding-top: 12px;
+	}
+
 }
 
 @media (max-width: 700px) {
@@ -16,7 +28,7 @@
 		display: none !important;
 	}
 
-	.workspace:not(.is-left-sidedock-open) .markdown-source-view.mod-cm6.is-readable-line-width .inline-title {
+	.workspace:not(.is-left-sidedock-open) .markdown-source-view .inline-title {
 		margin-left: 90px !important;
 		padding-top: 12px;
 	}

@@ -12,5 +12,7 @@
   "spellcheck": true,
   "accentColor": "",
   "communityThemeSortOrder": "download",
-  "showInlineTitle": true
+  "showInlineTitle": true,
+  "showViewHeader": false,
+  "nativeMenus": true
 }
