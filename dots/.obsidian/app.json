@@ -11,5 +11,6 @@
   "attachmentFolderPath": "./",
   "spellcheck": true,
   "accentColor": "",
-  "communityThemeSortOrder": "download"
+  "communityThemeSortOrder": "download",
+  "showInlineTitle": true
 }

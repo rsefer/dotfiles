@@ -2,13 +2,23 @@
 	padding-top: 0px !important;
 }
 
+.workspace .markdown-source-view.mod-cm6.is-readable-line-width .inline-title {
+	transition: all 150ms ease-in-out;
+}
+
 @media (max-width: 700px) {
 
+	.workspace-tab-header-container,
 	.view-header .view-actions,
 	.status-bar-item.plugin-editor-status,
 	.status-bar-item.plugin-better-word-count,
 	.workspace-ribbon.side-dock-ribbon {
 		display: none !important;
+	}
+
+	.workspace:not(.is-left-sidedock-open) .markdown-source-view.mod-cm6.is-readable-line-width .inline-title {
+		margin-left: 90px !important;
+		padding-top: 12px;
 	}
 
 }
