@@ -6,7 +6,7 @@
   "showFrontmatter": true,
   "showLineNumber": true,
   "alwaysUpdateLinks": true,
-  "newFileLocation": "current",
+  "newFileLocation": "root",
   "showUnsupportedFiles": true,
   "attachmentFolderPath": "./",
   "spellcheck": true,
