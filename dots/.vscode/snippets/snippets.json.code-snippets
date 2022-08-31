@@ -33,11 +33,11 @@
 	"jQuery(document).ready": {
 		"prefix": "jdr",
 		"body": [
-			"jQuery(document).ready(function($) {",
+			"(function($) {",
 			"\t$0",
-			"});"
+			"})(jQuery);"
 		],
-		"description": "jQuery(document).ready"
+		"description": "jQuery wrapper"
 	},
 	"function": {
 		"scope": "javascript,html",
@@ -48,17 +48,5 @@
 			"}"
 		],
 		"description": "function"
-	},
-	"sectionWithWrapper": {
-		"prefix": "<sect",
-		"body": [
-			"<section>",
-			"\t<div class=\"wrapper\">",
-			"\t\t$0",
-			"\t</div>",
-			"</section>"
-		],
-		"description": "Section with wrapper"
 	}
-
 }
