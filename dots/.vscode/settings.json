@@ -101,5 +101,6 @@
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"editor.minimap.renderCharacters": false,
 	"editor.minimap.showSlider": "always",
-	"githubPullRequests.pullBranch": "never"
+	"githubPullRequests.pullBranch": "never",
+	"editor.stickyScroll.enabled": true
 }
