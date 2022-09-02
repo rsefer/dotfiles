@@ -10,9 +10,6 @@
   "showUnsupportedFiles": true,
   "attachmentFolderPath": "./",
   "spellcheck": true,
-  "accentColor": "",
   "communityThemeSortOrder": "download",
-  "showInlineTitle": true,
-  "showViewHeader": false,
-  "nativeMenus": true
+  "showInlineTitle": true
 }

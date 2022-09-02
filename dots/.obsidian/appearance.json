@@ -8,5 +8,8 @@
   "interfaceFontFamily": "",
   "enabledCssSnippets": [
     "sdc"
-  ]
+  ],
+  "accentColor": "",
+  "showViewHeader": false,
+  "nativeMenus": true
 }
