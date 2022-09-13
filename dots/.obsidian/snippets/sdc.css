@@ -20,7 +20,7 @@
 
 @media (max-width: 700px) {
 
-	.workspace-tab-header-container,
+	.mod-root .workspace-tab-header-container,
 	.view-header .view-actions,
 	.status-bar-item.plugin-editor-status,
 	.status-bar-item.plugin-better-word-count,
