@@ -1,6 +1,7 @@
 #!/bin/bash
 #
 # Split CSV ($1) into ($2) lines, including headers
+
 FILENAME=$1
 
 if [ ! -z "$2" ]; then
@@ -9,14 +10,14 @@ else
   LINES=1000
 fi
 
-HDR=$(head -1 "$FILENAME")
-split -l $LINES "$FILENAME" xyz
-n=1
-for f in xyz*; do
-	if [ "$n" != 1 ]; then
-		echo $HDR > Part${n}.csv
+HEADER=$(head -1 "$FILENAME")
+split -l $LINES "$FILENAME" chunks
+i=1
+for chunk in chunks*; do
+	if [ "$i" != 1 ]; then
+		echo $HEADER > Part${i}.csv
 	fi
-	cat $f >> Part${n}.csv
-	rm $f
-	((n++))
+	cat $chunk >> Part${i}.csv
+	rm $chunk
+	((i++))
 done
