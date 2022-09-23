@@ -99,8 +99,8 @@
 	"githubPullRequests.createOnPublishBranch": "never",
 	"editor.accessibilitySupport": "off",
 	"typescript.updateImportsOnFileMove.enabled": "never",
-	"editor.minimap.renderCharacters": false,
-	"editor.minimap.showSlider": "always",
 	"githubPullRequests.pullBranch": "never",
-	"editor.stickyScroll.enabled": true
+	"editor.stickyScroll.enabled": true,
+	"editor.minimap.renderCharacters": false,
+	"editor.minimap.size": "fit"
 }
