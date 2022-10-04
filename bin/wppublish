@@ -26,7 +26,10 @@ promptFlushCache () {
 plus "STARTING wppublish"
 
 FOLDERNAME=$(basename "$PWD")
-WPPUBLISHFILE=$PWD/_config/wppublish.json
+WPPUBLISHFILE=$PWD/.wppublish.json
+if ! test -f "$WPPUBLISHFILE"; then
+	WPPUBLISHFILE=$PWD/_config/wppublish.json
+fi
 LOCALUPLOADDIR=~/Downloads
 
 if test -f "$WPPUBLISHFILE"; then
@@ -39,19 +42,21 @@ if test -f "$WPPUBLISHFILE"; then
 	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress')
 	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands')
 
-	# if host == sftp.flywheelsites.com or contains flywheel and $flywheelusername exists and $flywheelpassword exists
-	# 	USERNAME=$flywheelusername
-	# 	PASSWORD=$flywheelpassword
-	# fi
+	if [ $HOST = "sftp.flywheelsites.com" ]; then
+		PUBLISHMETHOD=git-ftp
+		USERNAME=rsefer
+		PASSWORD=$(op item get "Flywheel" --fields password)
+		PORT=22
+	fi
+
 else
-	fail "ABORTING: _config/wppublish.json not found"
-	readyn "Create _config/wppublish.json file (y/n)?"
+	fail "ABORTING: .wppublish.json not found"
+	readyn "Create .wppublish.json file (y/n)?"
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
-		if [ ! -d "_config" ]; then
-			mkdir _config
-		fi
-		jq -n '{ "url": "", "method": "git-ftp", "host": "", "port": "22", "username": "", "password": "", "remotethemespath": "/path/to/wp-content/themes", "flushaddress": "" }' > _config/wppublish.json
-		success "_config/wppublish.json created. Fill out that file and run wpppublish again"
+		jq -n '{ "host": "sftp.flywheelsites.com",
+	"remotethemespath": "/path/to/wp-content/themes",
+	"flushaddress": "user@ssh.getflywheel.com" }' > .wppublish.json
+		success ".wppublish.json created. Fill out that file and run wpppublish again"
 		exit 0
 	else
 		exit 1
