@@ -102,5 +102,6 @@
 	"githubPullRequests.pullBranch": "never",
 	"editor.stickyScroll.enabled": true,
 	"editor.minimap.renderCharacters": false,
-	"editor.minimap.size": "fit"
+	"editor.minimap.size": "fit",
+	"terminal.integrated.enableMultiLinePasteWarning": false
 }
