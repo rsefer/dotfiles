@@ -1,4 +1,5 @@
 {
+	"bookmarks.useWorkaroundForFormatters": true,
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
 	"colorHelper.resident": true,
