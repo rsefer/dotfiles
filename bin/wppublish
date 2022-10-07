@@ -119,7 +119,7 @@ fi
 
 URL=$(cat $WPPUBLISHFILE | jq -r '.url')
 
-if [ ! -z "$URL" ]; then
+if [[ ! -z "$URL" && $URL != 'null' ]]; then
 	info "Opening $URL..."
 	sleep 2
 	open $URL
