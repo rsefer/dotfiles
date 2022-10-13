@@ -1,4 +1,7 @@
 1Password.op-vscode
+alefragnani.Bookmarks
+bmewburn.vscode-intelephense-client
+christian-kohler.npm-intellisense
 donjayamanne.githistory
 EditorConfig.EditorConfig
 esbenp.prettier-vscode
@@ -8,6 +11,8 @@ GitHub.vscode-pull-request-github
 GrapeCity.gc-excelviewer
 henoc.svgeditor
 Janne252.fontawesome-autocomplete
+kisstkondoros.vscode-gutter-preview
+mongodb.mongodb-vscode
 ms-vscode-remote.remote-ssh
 ms-vscode-remote.remote-ssh-edit
 ms-vscode.Theme-TomorrowKit
@@ -16,6 +21,7 @@ ms-vsliveshare.vsliveshare-audio
 ms-vsliveshare.vsliveshare-pack
 Natizyskunk.sftp
 neilding.language-liquid
+Shopify.theme-check-vscode
 sissel.shopify-liquid
-Tyriar.lorem-ipsum
 usernamehw.errorlens
+xdebug.php-debug
