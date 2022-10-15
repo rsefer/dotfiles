@@ -4,7 +4,7 @@
   "promptDelete": false,
   "tabSize": 2,
   "showFrontmatter": true,
-  "showLineNumber": true,
+  "showLineNumber": false,
   "alwaysUpdateLinks": true,
   "newFileLocation": "root",
   "showUnsupportedFiles": true,
