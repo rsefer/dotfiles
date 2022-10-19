@@ -1,11 +1,9 @@
 dots/.obsidian/workspace
 dots/.obsidian/workspace.json
-dots/.vscode/globalStorage
-dots/.vscode/workspaceStorage
-dots/.vscode/extensions
-dots/.vscode/History
-dots/.vscode/sync
-dots/.vscode/argv.json
+dots/.vscode/*
+!dots/.vscode/keybindings.json
+!dots/.vscode/settings.json
+!dots/.vscode/snippets
 dots/.vim/bundle
 dots/.hammerspoon
 dots/.DS_Store
