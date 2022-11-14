@@ -98,8 +98,6 @@
 		"terminalCursor.foreground": "#B7BBB7"
 	},
 	"workbench.colorTheme": "Tomorrow Night",
-	"workbench.preferredDarkColorTheme": "Tomorrow Night",
-	"workbench.preferredLightColorTheme": "Tomorrow",
 	"workbench.editor.untitled.hint": "hidden",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
