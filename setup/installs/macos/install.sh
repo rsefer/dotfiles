@@ -59,6 +59,7 @@ defaults write NSGlobalDomain NSDocumentSaveNewDocumentsToCloud -bool false # sa
 defaults write com.apple.BluetoothAudioAgent "Apple Bitpool Min (editable)" -int 40 # Increase sound quality for Bluetooth headphones/headsets
 defaults write com.apple.screenscapture location ~/Downloads # screen capture location
 defaults write -g AppleFontSmoothing -int 0 # Disable font smoothing
+defaults write com.apple.dt.Xcode XcodeCloudUpsellPromptEnabled -bool false # disable XCode ad prompts
 
 sudo systemsetup -setrestartfreeze on # restart on freeze
 
