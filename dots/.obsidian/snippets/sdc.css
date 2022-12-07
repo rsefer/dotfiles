@@ -2,6 +2,10 @@
 	padding-top: 0px !important;
 }
 
+.cm-sizer {
+	overflow-x: hidden;
+}
+
 .workspace .markdown-source-view .inline-title {
 	transition: all 150ms ease-in-out;
 }
