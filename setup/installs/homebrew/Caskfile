@@ -59,6 +59,5 @@ mas 'Pages', id: 409201541
 mas 'Playgrounds', id: 1496833156
 mas 'Shareful', id: 1522267256
 mas 'Tailscale', id: 1475387142
-mas 'Tweetbot', id: 1384080005
 mas 'Twitter', id: 1482454543
 # mas 'Xcode', id: 497799835 # exclude Xcode because the installation takes so long

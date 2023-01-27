@@ -101,5 +101,8 @@
 	"workbench.editor.untitled.hint": "hidden",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
-	"workbench.statusBar.visible": true
+	"workbench.statusBar.visible": true,
+	"[php]": {
+		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
+	}
 }
