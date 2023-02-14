@@ -104,5 +104,6 @@
 	"workbench.statusBar.visible": true,
 	"[php]": {
 		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
-	}
+	},
+	"aws.telemetry": false
 }
