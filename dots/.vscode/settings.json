@@ -105,5 +105,6 @@
 	"[php]": {
 		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
 	},
-	"aws.telemetry": false
+	"aws.telemetry": false,
+	"terminal.external.osxExec": "iTerm.app"
 }
