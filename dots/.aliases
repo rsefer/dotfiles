@@ -9,7 +9,17 @@ alias cp="cp -riv"
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
 
-alias gom="git checkout master"
+# Copy working directory to clipboard
+gcmfunc() {
+	if [ `git rev-parse --verify master 2>/dev/null` ]; then
+		git checkout master
+	elif [ `git rev-parse --verify main 2>/dev/null` ]; then
+		git checkout main
+	else
+		echo "Neither master or main branches exist."
+	fi
+}
+alias gcm="gcmfunc"
 alias gpu="git pull"
 alias gl="git log --all --decorate --oneline --graph"
 
