@@ -23,6 +23,11 @@ promptFlushCache () {
 	fi
 }
 
+runComposerInstall () {
+	info "Running composer install"
+	ssh $FLUSHADDRESS "cd $REMOTETHEMESPATH/$FOLDERNAME && composer install"
+}
+
 plus "STARTING wppublish"
 
 FOLDERNAME=$(basename "$PWD")
@@ -41,6 +46,7 @@ if test -f "$WPPUBLISHFILE"; then
 	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
 	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress')
 	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands')
+	COMPOSERINSTALL=$(cat $WPPUBLISHFILE | jq -r '.composerInstall')
 
 	if [ $HOST = "sftp.flywheelsites.com" ]; then
 		PUBLISHMETHOD=git-ftp
@@ -83,6 +89,9 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	info "rsyncing to $HOST:$REMOTETHEMESPATH"
 	rsync --verbose --archive --compress --delete --partial --progress $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
 	rm -r $FOLDERNAME
+	if [[ ! -z "$COMPOSERINSTALL" && $COMPOSERINSTALL != 'null' ]]; then
+		runComposerInstall
+	fi
 
 else
 
@@ -109,6 +118,10 @@ else
 	if git rev-parse --git-dir > /dev/null 2>&1; then
 		info "Connecting as $USERNAME to sftp://$HOST:$PORT$REMOTETHEMESPATH/$FOLDERNAME ..."
 		git ftp $GITFTPACTION -u $USERNAME -p $PASSWORD sftp://$HOST:$PORT$REMOTETHEMESPATH/$FOLDERNAME
+	fi
+
+	if [[ ! -z "$COMPOSERINSTALL" && $COMPOSERINSTALL != 'null' ]]; then
+		runComposerInstall
 	fi
 
 fi
