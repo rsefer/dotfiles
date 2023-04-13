@@ -106,5 +106,6 @@
 		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
 	},
 	"aws.telemetry": false,
-	"terminal.external.osxExec": "iTerm.app"
+	"terminal.external.osxExec": "iTerm.app",
+	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false
 }
