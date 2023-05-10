@@ -41,7 +41,7 @@ alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to c
 alias ol="open https://localhost:3000"
 alias oln="open http://localhost:3000"
 
-alias osascriptdebug="AEDebugSends=1 AEDebugReceives=1 osascript"
+alias osascriptdebug="AEDebug=1 AEDebugSends=1 AEDebugReceives=1 osascript"
 
 alias code="open -a Visual\ Studio\ Code && code -r"
 
