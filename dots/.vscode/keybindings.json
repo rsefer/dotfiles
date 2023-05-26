@@ -28,5 +28,25 @@
 		"key": "ctrl+alt+right",
 		"command": "workbench.action.terminal.split",
 		"when": "terminalFocus && terminalProcessSupported"
+	},
+	{
+		"key": "cmd+r",
+		"command": "workbench.action.debug.start",
+		"when": "debuggersAvailable && debugState == 'inactive'"
+	},
+	{
+		"key": "f5",
+		"command": "-workbench.action.debug.start",
+		"when": "debuggersAvailable && debugState == 'inactive'"
+	},
+	{
+		"key": "shift+cmd+r",
+		"command": "workbench.action.debug.restart",
+		"when": "inDebugMode"
+	},
+	{
+		"key": "shift+cmd+f5",
+		"command": "-workbench.action.debug.restart",
+		"when": "inDebugMode"
 	}
 ]
