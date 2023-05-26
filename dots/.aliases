@@ -9,7 +9,7 @@ alias cp="cp -riv"
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
 
-# Copy working directory to clipboard
+# Checkout primary branch
 gcmfunc() {
 	PRIMARYBRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
 	git checkout $PRIMARYBRANCH
