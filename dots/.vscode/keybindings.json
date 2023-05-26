@@ -48,5 +48,15 @@
 		"key": "shift+cmd+f5",
 		"command": "-workbench.action.debug.restart",
 		"when": "inDebugMode"
+	},
+	{
+		"key": "shift+cmd+t",
+		"command": "workbench.action.debug.stop",
+		"when": "inDebugMode && !focusedSessionIsAttach"
+	},
+	{
+		"key": "shift+f5",
+		"command": "-workbench.action.debug.stop",
+		"when": "inDebugMode && !focusedSessionIsAttach"
 	}
 ]
