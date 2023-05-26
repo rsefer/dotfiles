@@ -51,6 +51,20 @@
 	"githubPullRequests.pullBranch": "never",
 	"githubPullRequests.queries": [],
 	"javascript.updateImportsOnFileMove.enabled": "always",
+	"launch": {
+		"version": "0.2.0",
+		"configurations": [
+			{
+				"name": "Debug - Node - npm start",
+				"request": "launch",
+				"runtimeArgs": ["run-script", "start"],
+				"runtimeExecutable": "npm",
+				"console": "integratedTerminal",
+				"skipFiles": ["<node_internals>/**"],
+				"type": "node"
+			}
+		]
+	},
 	"prettier.jsxSingleQuote": true,
 	"prettier.singleQuote": true,
 	"prettier.useTabs": true,
