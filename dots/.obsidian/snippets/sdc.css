@@ -10,6 +10,10 @@
 	transition: all 150ms ease-in-out;
 }
 
+.markdown-source-view .cm-content > iframe.external-embed {
+	margin: 0px auto !important;
+}
+
 @media (min-width: 701px) {
 
 	.markdown-source-view .inline-title {
