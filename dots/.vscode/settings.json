@@ -121,5 +121,8 @@
 	},
 	"aws.telemetry": false,
 	"terminal.external.osxExec": "iTerm.app",
-	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false
+	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.python"
+	}
 }
