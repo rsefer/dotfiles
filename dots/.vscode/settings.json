@@ -124,5 +124,8 @@
 	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
 	"[python]": {
 		"editor.defaultFormatter": "ms-python.python"
+	},
+	"aws.suppressPrompts": {
+		"codeWhispererConnectionExpired": true
 	}
 }
