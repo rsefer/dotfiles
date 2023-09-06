@@ -23,7 +23,6 @@
 	"editor.renderLineHighlight": "all",
 	"editor.renderWhitespace": "selection",
 	"editor.scrollBeyondLastLine": false,
-	"editor.stickyScroll.enabled": true,
 	"editor.tabCompletion": "on",
 	"editor.tabSize": 2,
 	"editor.wordWrap": "on",
@@ -79,7 +78,6 @@
 	"terminal.integrated.rendererType": "auto",
 	"terminal.integrated.scrollback": 2000,
 	"terminal.integrated.shellIntegration.enabled": true,
-	"terminal.integrated.tabs.enabled": false,
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"window.autoDetectColorScheme": true,
 	"window.closeWhenEmpty": true,
@@ -127,5 +125,10 @@
 	},
 	"aws.suppressPrompts": {
 		"codeWhispererConnectionExpired": true
-	}
+	},
+	"terminal.integrated.tabs.enabled": false,
+	"rainbow_csv.enable_context_menu_head": true,
+	"rainbow_csv.enable_context_menu_tail": true,
+	"rainbow_csv.rbql_with_headers_by_default": true,
+	"editor.stickyScroll.enabled": true
 }
