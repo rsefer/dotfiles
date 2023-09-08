@@ -114,6 +114,8 @@
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
+	"workbench.tree.indent": 12,
+	"workbench.tree.renderIndentGuides": "onHover",
 	"[php]": {
 		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
 	},
