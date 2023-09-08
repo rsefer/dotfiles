@@ -1,4 +1,15 @@
 {
+	"[php]": {
+		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
+	},
+	"[python]": {
+		"editor.defaultFormatter": "ms-python.python"
+	},
+	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
+	"aws.suppressPrompts": {
+		"codeWhispererConnectionExpired": true
+	},
+	"aws.telemetry": false,
 	"bookmarks.useWorkaroundForFormatters": true,
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
@@ -23,6 +34,7 @@
 	"editor.renderLineHighlight": "all",
 	"editor.renderWhitespace": "selection",
 	"editor.scrollBeyondLastLine": false,
+	"editor.stickyScroll.enabled": true,
 	"editor.tabCompletion": "on",
 	"editor.tabSize": 2,
 	"editor.wordWrap": "on",
@@ -35,8 +47,12 @@
 	},
 	"files.hotExit": "onExitAndWindowClose",
 	"files.insertFinalNewline": true,
-	"fontAwesomeAutocomplete.disableTriggerWordAutoClearPatterns": ["**/*"],
-	"fontAwesomeAutocomplete.patterns": ["**/*"],
+	"fontAwesomeAutocomplete.disableTriggerWordAutoClearPatterns": [
+		"**/*"
+	],
+	"fontAwesomeAutocomplete.patterns": [
+		"**/*"
+	],
 	"git.autofetch": true,
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
@@ -51,25 +67,34 @@
 	"githubPullRequests.queries": [],
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"launch": {
-		"version": "0.2.0",
 		"configurations": [
 			{
+				"console": "integratedTerminal",
 				"name": "Debug - Node - npm start",
 				"request": "launch",
-				"runtimeArgs": ["run-script", "start"],
+				"runtimeArgs": [
+					"run-script",
+					"start"
+				],
 				"runtimeExecutable": "npm",
-				"console": "integratedTerminal",
-				"skipFiles": ["<node_internals>/**"],
+				"skipFiles": [
+					"<node_internals>/**"
+				],
 				"type": "node"
 			}
-		]
+		],
+		"version": "0.2.0"
 	},
 	"prettier.jsxSingleQuote": true,
 	"prettier.singleQuote": true,
 	"prettier.useTabs": true,
 	"python.showStartPage": false,
+	"rainbow_csv.enable_context_menu_head": true,
+	"rainbow_csv.enable_context_menu_tail": true,
+	"rainbow_csv.rbql_with_headers_by_default": true,
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
+	"terminal.external.osxExec": "iTerm.app",
 	"terminal.integrated.allowChords": false,
 	"terminal.integrated.drawBoldTextInBrightColors": false,
 	"terminal.integrated.enableMultiLinePasteWarning": false,
@@ -78,6 +103,7 @@
 	"terminal.integrated.rendererType": "auto",
 	"terminal.integrated.scrollback": 2000,
 	"terminal.integrated.shellIntegration.enabled": true,
+	"terminal.integrated.tabs.enabled": false,
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"window.autoDetectColorScheme": true,
 	"window.closeWhenEmpty": true,
@@ -115,22 +141,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"[php]": {
-		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
-	},
-	"aws.telemetry": false,
-	"terminal.external.osxExec": "iTerm.app",
-	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
-	"[python]": {
-		"editor.defaultFormatter": "ms-python.python"
-	},
-	"aws.suppressPrompts": {
-		"codeWhispererConnectionExpired": true
-	},
-	"terminal.integrated.tabs.enabled": false,
-	"rainbow_csv.enable_context_menu_head": true,
-	"rainbow_csv.enable_context_menu_tail": true,
-	"rainbow_csv.rbql_with_headers_by_default": true,
-	"editor.stickyScroll.enabled": true
+	"workbench.tree.renderIndentGuides": "onHover"
 }
