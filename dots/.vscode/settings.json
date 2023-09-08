@@ -15,6 +15,7 @@
 	"breadcrumbs.symbolSortOrder": "type",
 	"colorHelper.resident": true,
 	"debug.javascript.autoAttachFilter": "smart",
+	"diffEditor.hideUnchangedRegions.enabled": true,
 	"diffEditor.ignoreTrimWhitespace": false,
 	"diffEditor.renderSideBySide": false,
 	"editor.accessibilitySupport": "off",
