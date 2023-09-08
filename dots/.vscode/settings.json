@@ -85,7 +85,9 @@
 		],
 		"version": "0.2.0"
 	},
+	"prettier.bracketSameLine": true,
 	"prettier.jsxSingleQuote": true,
+	"prettier.printWidth": 120,
 	"prettier.singleQuote": true,
 	"prettier.useTabs": true,
 	"python.showStartPage": false,
