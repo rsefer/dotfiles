@@ -163,6 +163,7 @@
 	"workbench.editor.limit.perEditorGroup": true,
 	"workbench.editor.pinnedTabSizing": "shrink",
 	"workbench.editor.untitled.hint": "hidden",
+	"workbench.fontAliasing": "auto",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
