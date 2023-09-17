@@ -97,6 +97,12 @@
 		],
 		"version": "0.2.0"
 	},
+	"macros": {
+		"collapseAndClose": [
+			"workbench.files.action.collapseExplorerFolders",
+			"workbench.action.closeAllEditors"
+		]
+	},
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"prettier.bracketSameLine": true,
 	"prettier.jsxSingleQuote": true,
