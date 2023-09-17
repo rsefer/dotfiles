@@ -5,6 +5,7 @@
 	"[python]": {
 		"editor.defaultFormatter": "ms-python.python"
 	},
+	"aws.codeWhisperer.importRecommendation": false,
 	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
 	"aws.suppressPrompts": {
 		"codeWhispererConnectionExpired": true
@@ -20,9 +21,10 @@
 	"css.lint.duplicateProperties": "warning",
 	"css.lint.float": "warning",
 	"css.lint.hexColorLength": "warning",
+	"csv-preview.capitalizeHeaders": false,
 	"debug.javascript.autoAttachFilter": "smart",
+	"diffEditor.experimental.showMoves": true,
 	"diffEditor.hideUnchangedRegions.enabled": true,
-	"diffEditor.ignoreTrimWhitespace": false,
 	"diffEditor.renderSideBySide": false,
 	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.enabled": true,
@@ -34,7 +36,7 @@
 	"editor.hover.enabled": true,
 	"editor.inlineSuggest.enabled": true,
 	"editor.linkedEditing": true,
-	"editor.minimap.maxColumn": 60,
+	"editor.minimap.maxColumn": 25,
 	"editor.minimap.renderCharacters": false,
 	"editor.minimap.size": "fit",
 	"editor.parameterHints.enabled": false,
@@ -49,6 +51,7 @@
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
 	"extensions.ignoreRecommendations": true,
+	"figma.autocompleteProperties": false,
 	"files.associations": {
 		"*.njk": "html"
 	},
@@ -93,6 +96,7 @@
 		],
 		"version": "0.2.0"
 	},
+	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"prettier.bracketSameLine": true,
 	"prettier.jsxSingleQuote": true,
 	"prettier.printWidth": 120,
@@ -102,12 +106,14 @@
 	"rainbow_csv.enable_context_menu_head": true,
 	"rainbow_csv.enable_context_menu_tail": true,
 	"rainbow_csv.rbql_with_headers_by_default": true,
+	"scm.diffDecorationsIgnoreTrimWhitespace": "true",
 	"scss.format.preserveNewLines": false,
 	"scss.format.spaceAroundSelectorSeparator": true,
 	"scss.lint.compatibleVendorPrefixes": "warning",
 	"scss.lint.duplicateProperties": "warning",
 	"scss.lint.float": "warning",
 	"scss.lint.hexColorLength": "warning",
+	"search.showLineNumbers": true,
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"terminal.external.osxExec": "iTerm.app",
@@ -152,6 +158,10 @@
 		"terminalCursor.foreground": "#B7BBB7"
 	},
 	"workbench.colorTheme": "Tomorrow Night",
+	"workbench.editor.limit.enabled": true,
+	"workbench.editor.limit.excludeDirty": true,
+	"workbench.editor.limit.perEditorGroup": true,
+	"workbench.editor.pinnedTabSizing": "shrink",
 	"workbench.editor.untitled.hint": "hidden",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
