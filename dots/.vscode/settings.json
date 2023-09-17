@@ -57,6 +57,7 @@
 	},
 	"files.hotExit": "onExitAndWindowClose",
 	"files.insertFinalNewline": true,
+	"files.trimFinalNewlines": true,
 	"fontAwesomeAutocomplete.disableTriggerWordAutoClearPatterns": [
 		"**/*"
 	],
