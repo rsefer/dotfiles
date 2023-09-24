@@ -56,5 +56,9 @@
 	{
 		"key": "alt+w",
 		"command": "macros.collapseAndClose"
+	},
+	{
+		"key": "shift+alt+cmd+m",
+		"command": "editor.emmet.action.evaluateMathExpression"
 	}
 ]
