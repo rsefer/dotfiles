@@ -6,6 +6,7 @@ module.exports = {
 	files: '**/*',
 	open: false,
 	// server: true, // now handled via the shell script
+	watchEvents: ['add', 'change', 'unlink', 'addDir', 'unlinkDir'],
 	watch: true,
 	notify: {
 		styles: {

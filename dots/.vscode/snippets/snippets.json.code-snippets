@@ -20,12 +20,13 @@
 	},
 	"display-flex": {
 		"scope": "css,scss",
-		"prefix": "display: f",
+		"prefix": "dflex",
 		"body": [
 			"display: flex;",
-			"flex-wrap: wrap;",
-			"justify-content: ${1:space-between};",
-			"align-items: ${2:center};"
+			"flex-flow: ${1:row} wrap;",
+			"justify-content: ${2:space-between};",
+			"align-items: ${3:center};"
+			"gap: ${4:0.5rem};"
 		],
 		"description": "CSS Flexbox base"
 	}
