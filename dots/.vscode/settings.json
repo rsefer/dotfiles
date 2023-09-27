@@ -62,6 +62,7 @@
 	"files.associations": {
 		"*.njk": "html"
 	},
+	"files.defaultLanguage": "markdown",
 	"files.hotExit": "onExitAndWindowClose",
 	"files.insertFinalNewline": true,
 	"files.trimFinalNewlines": true,
