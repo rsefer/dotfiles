@@ -6,9 +6,9 @@
 		"editor.defaultFormatter": "ms-python.python"
 	},
 	"aws.codeWhisperer.importRecommendation": false,
-	"aws.codeWhisperer.shareCodeWhispererContentWithAWS": false,
 	"aws.suppressPrompts": {
-		"codeWhispererConnectionExpired": true
+		"codeWhispererConnectionExpired": true,
+		"codeWhispererNewWelcomeMessage": true
 	},
 	"aws.telemetry": false,
 	"bookmarks.useWorkaroundForFormatters": true,
@@ -180,5 +180,6 @@
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
-	"editor.colorDecorators": false
+	"editor.colorDecorators": false,
+	"workbench.editor.empty.hint": "hidden"
 }
