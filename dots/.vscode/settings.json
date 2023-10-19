@@ -24,10 +24,12 @@
 	"debug.javascript.autoAttachFilter": "smart",
 	"diffEditor.experimental.showMoves": true,
 	"diffEditor.hideUnchangedRegions.enabled": true,
+	"diffEditor.ignoreTrimWhitespace": false,
 	"diffEditor.renderSideBySide": false,
 	"editor.accessibilitySupport": "off",
 	"editor.bracketPairColorization.enabled": true,
 	"editor.codeLens": false,
+	"editor.colorDecorators": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
 	"editor.fontSize": 13,
 	"editor.guides.bracketPairs": true,
@@ -168,6 +170,7 @@
 		"terminalCursor.foreground": "#B7BBB7"
 	},
 	"workbench.colorTheme": "Tomorrow Night",
+	"workbench.editor.empty.hint": "hidden",
 	"workbench.editor.limit.enabled": true,
 	"workbench.editor.limit.excludeDirty": true,
 	"workbench.editor.limit.perEditorGroup": true,
@@ -179,7 +182,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"editor.colorDecorators": false,
-	"workbench.editor.empty.hint": "hidden"
+	"workbench.tree.renderIndentGuides": "onHover"
 }
