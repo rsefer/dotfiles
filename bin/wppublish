@@ -92,6 +92,10 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	if [[ ! -z "$COMPOSERINSTALL" && $COMPOSERINSTALL != 'null' ]]; then
 		runComposerInstall
 	fi
+	if [[ $REPLY =~ ^[Ff]$ ]]; then
+		promptFlushCache "$PUBLISHMETHOD" y
+		exit 1
+	fi
 
 else
 
