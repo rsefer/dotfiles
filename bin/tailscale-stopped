@@ -1,0 +1,10 @@
+#!/bin/sh
+#
+# Is Tailscale stopped?
+
+OUTPUT=$(/Applications/Tailscale.app/Contents/MacOS/Tailscale status)
+if [[ $OUTPUT == *"stopped"* ]]; then
+	echo 1
+else
+	echo 0
+fi

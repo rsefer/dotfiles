@@ -176,11 +176,11 @@
 	"workbench.editor.limit.perEditorGroup": true,
 	"workbench.editor.pinnedTabSizing": "shrink",
 	"workbench.editor.tabCloseButton": "off",
-	"workbench.editor.untitled.hint": "hidden",
 	"workbench.fontAliasing": "auto",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover"
+	"workbench.tree.renderIndentGuides": "onHover",
+	"workbench.editor.tabActionCloseVisibility": false
 }
