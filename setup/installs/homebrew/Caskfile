@@ -10,6 +10,7 @@ cask '1password-cli', args: { appdir: '/Applications' }
 cask '1password', args: { appdir: '/Applications' }
 cask 'adobe-creative-cloud', args: { appdir: '/Applications' }
 cask 'authy'
+cask 'autodesk-fusion360'
 cask 'backblaze', args: { appdir: '/Applications' }
 cask 'balenaetcher'
 cask 'bartender', args: { appdir: '/Applications' }
@@ -42,6 +43,7 @@ cask 'sketch', args: { appdir: '/Applications' }
 cask 'slack'
 cask 'spotify'
 cask 'suspicious-package'
+cask 'ultimaker-cura'
 cask 'vagrant', args: { appdir: '/Applications' }
 cask 'virtualbox', args: { appdir: '/Applications' }
 cask 'visual-studio-code', args: { appdir: '/Applications' }
