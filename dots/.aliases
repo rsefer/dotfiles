@@ -6,6 +6,8 @@ alias mv="mv -iv"
 alias mkdir="mkdir -vp"
 alias cp="cp -riv"
 
+alias npms="npm start"
+
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
 
