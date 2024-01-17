@@ -36,6 +36,10 @@
 		display: none !important;
 	}
 
+	.markdown-source-view.mod-cm6.is-readable-line-width .cm-sizer>.inline-title {
+		margin-left: 80px !important;
+	}
+
 	.workspace:not(.is-left-sidedock-open) .markdown-source-view .inline-title {
 		margin-left: 90px !important;
 		padding-top: 12px;

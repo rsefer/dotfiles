@@ -2,9 +2,6 @@
 	"[php]": {
 		"editor.defaultFormatter": "kokororin.vscode-phpfmt"
 	},
-	"[python]": {
-		"editor.defaultFormatter": "ms-python.python"
-	},
 	"aws.codeWhisperer.importRecommendation": false,
 	"aws.suppressPrompts": {
 		"codeWhispererConnectionExpired": true,
@@ -182,5 +179,7 @@
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
-	"workbench.editor.tabActionCloseVisibility": false
+	"workbench.editor.tabActionCloseVisibility": false,
+	"chatgpt.lang": "en",
+	"chatgpt.model": "gpt-4"
 }
