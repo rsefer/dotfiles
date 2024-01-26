@@ -181,5 +181,7 @@
 	"workbench.tree.renderIndentGuides": "onHover",
 	"workbench.editor.tabActionCloseVisibility": false,
 	"chatgpt.lang": "en",
-	"chatgpt.model": "gpt-4"
+	"chatgpt.model": "gpt-4",
+	"workbench.list.smoothScrolling": true,
+	"editor.smoothScrolling": true
 }
