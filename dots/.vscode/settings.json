@@ -41,6 +41,7 @@
 	"editor.renderLineHighlight": "all",
 	"editor.renderWhitespace": "selection",
 	"editor.scrollBeyondLastLine": false,
+	"editor.smoothScrolling": true,
 	"editor.stickyScroll.enabled": true,
 	"editor.tabCompletion": "on",
 	"editor.tabSize": 2,
@@ -124,6 +125,9 @@
 	"search.showLineNumbers": true,
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
+	"task.problemMatchers.neverPrompt": {
+		"npm": true
+	},
 	"terminal.external.osxExec": "iTerm.app",
 	"terminal.integrated.allowChords": false,
 	"terminal.integrated.drawBoldTextInBrightColors": false,
@@ -134,8 +138,10 @@
 	"typescript.updateImportsOnFileMove.enabled": "never",
 	"window.autoDetectColorScheme": true,
 	"window.closeWhenEmpty": true,
+	"window.commandCenter": false,
 	"window.nativeTabs": true,
 	"window.restoreWindows": "preserve",
+	"window.systemColorTheme": "auto",
 	"window.titleBarStyle": "native",
 	"workbench.colorCustomizations": {
 		"statusBar.background": "#1A1A1A",
@@ -168,18 +174,16 @@
 	"workbench.editor.limit.excludeDirty": true,
 	"workbench.editor.limit.perEditorGroup": true,
 	"workbench.editor.pinnedTabSizing": "shrink",
+	"workbench.editor.tabActionCloseVisibility": false,
 	"workbench.fontAliasing": "auto",
+	"workbench.layoutControl.enabled": false,
+	"workbench.list.smoothScrolling": true,
+	"workbench.preferredDarkColorTheme": "Tomorrow Night",
+	"workbench.preferredHighContrastLightColorTheme": "Tomorrow Night",
+	"workbench.preferredLightColorTheme": "Tomorrow Night",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"workbench.editor.tabActionCloseVisibility": false,
-	"workbench.list.smoothScrolling": true,
-	"editor.smoothScrolling": true,
-	"window.commandCenter": false,
-	"workbench.layoutControl.enabled": false,
-	"task.problemMatchers.neverPrompt": {
-		"npm": true
-	}
+	"workbench.tree.renderIndentGuides": "onHover"
 }
