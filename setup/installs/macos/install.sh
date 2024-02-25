@@ -18,6 +18,7 @@ defaults write com.apple.dock show-process-indicators -bool true # show indicato
 defaults write com.apple.sock show-recents -bool false # don't show recently used applications
 
 dockutil --no-restart --add "/Applications/System Preferences.app"
+dockutil --no-restart --add "/Applications/1Password.app"
 dockutil --no-restart --add "/Applications/Fantastical.app"
 dockutil --no-restart --add "/Applications/Mimestream.app"
 dockutil --no-restart --add "/Applications/Messages.app"
