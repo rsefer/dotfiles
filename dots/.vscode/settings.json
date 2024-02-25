@@ -178,5 +178,8 @@
 	"workbench.list.smoothScrolling": true,
 	"editor.smoothScrolling": true,
 	"window.commandCenter": false,
-	"workbench.layoutControl.enabled": false
+	"workbench.layoutControl.enabled": false,
+	"task.problemMatchers.neverPrompt": {
+		"npm": true
+	}
 }

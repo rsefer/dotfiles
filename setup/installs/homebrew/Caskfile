@@ -9,12 +9,10 @@ tap 'homebrew/services'
 cask '1password-cli', args: { appdir: '/Applications' }
 cask '1password', args: { appdir: '/Applications' }
 cask 'adobe-creative-cloud', args: { appdir: '/Applications' }
-cask 'authy'
-cask 'autodesk-fusion360'
+cask 'autodesk-fusion', args: { appdir: '/Applications' }
 cask 'backblaze', args: { appdir: '/Applications' }
 cask 'balenaetcher'
 cask 'bartender', args: { appdir: '/Applications' }
-cask 'basecamp'
 cask 'basictex'
 cask 'cyberduck', args: { appdir: '/Applications' }
 cask 'fantastical', args: { appdir: '/Applications' }
@@ -29,17 +27,14 @@ cask 'home-assistant'
 cask 'imageoptim', args: { appdir: '/Applications' }
 cask 'iterm2', args: { appdir: '/Applications' }
 cask 'local', args: { appdir: '/Applications' }
+cask 'lunar', args: { appdir: '/Applications' }
 cask 'macfuse'
 cask 'microsoft-edge'
-cask 'microsoft-teams'
-cask 'mockoon'
 cask 'mongodb-compass'
 cask 'ngrok', args: { appdir: '/Applications' }
-cask 'openoffice', args: { appdir: '/Applications' }
 cask 'obsidian', args: { appdir: '/Applications' }
 cask 'postman', args: { appdir: '/Applications' }
 cask 'sf-symbols'
-cask 'sketch', args: { appdir: '/Applications' }
 cask 'slack'
 cask 'spotify'
 cask 'suspicious-package'
