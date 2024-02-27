@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# Tail error logs in Local
+
+cd ../../../../../logs/php && tail -f error.log
