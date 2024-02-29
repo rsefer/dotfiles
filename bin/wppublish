@@ -38,15 +38,15 @@ fi
 LOCALUPLOADDIR=~/Downloads
 
 if test -f "$WPPUBLISHFILE"; then
-	PUBLISHMETHOD=$(cat $WPPUBLISHFILE | jq -r '.method')
-	HOST=$(cat $WPPUBLISHFILE | jq -r '.host')
-	PORT=$(cat $WPPUBLISHFILE | jq -r '.port')
-	USERNAME=$(cat $WPPUBLISHFILE | jq -r '.username')
-	PASSWORD=$(cat $WPPUBLISHFILE | jq -r '.password')
-	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath')
-	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress')
-	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands')
-	COMPOSERINSTALL=$(cat $WPPUBLISHFILE | jq -r '.composerInstall')
+	PUBLISHMETHOD=$(cat $WPPUBLISHFILE | jq -r '.method | select( . != null )')
+	HOST=$(cat $WPPUBLISHFILE | jq -r '.host | select( . != null )')
+	PORT=$(cat $WPPUBLISHFILE | jq -r '.port | select( . != null )')
+	USERNAME=$(cat $WPPUBLISHFILE | jq -r '.username | select( . != null )')
+	PASSWORD=$(cat $WPPUBLISHFILE | jq -r '.password | select( . != null )')
+	REMOTETHEMESPATH=$(cat $WPPUBLISHFILE | jq -r '.remotethemespath | select( . != null )')
+	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress | select( . != null )')
+	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands | select( . != null )')
+	COMPOSERINSTALL=$(cat $WPPUBLISHFILE | jq -r '.composerInstall | select( . != null )')
 
 	if [ $HOST = "sftp.flywheelsites.com" ]; then
 		PUBLISHMETHOD=git-ftp
