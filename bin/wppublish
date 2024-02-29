@@ -87,7 +87,11 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	git archive --worktree-attributes -o $LOCALUPLOADDIR/$FOLDERNAME.zip HEAD
 	cd $LOCALUPLOADDIR && unzip $FOLDERNAME.zip -d $FOLDERNAME &> /dev/null && rm $FOLDERNAME.zip
 	info "rsyncing to $HOST:$REMOTETHEMESPATH"
-	rsync --verbose --archive --compress --delete --partial --progress $FOLDERNAME $USERNAME@$HOST:$REMOTETHEMESPATH
+	USERNAMEHOSTSTRING="$HOST"
+	if [[ ! -z "$USERNAME" && $USERNAME != 'null' ]]; then
+		USERNAMEHOSTSTRING="$USERNAME@$USERNAMEHOSTSTRING"
+	fi
+	rsync --verbose --archive --compress --delete --partial --progress $FOLDERNAME $USERNAMEHOSTSTRING:$REMOTETHEMESPATH
 	rm -r $FOLDERNAME
 	if [[ ! -z "$COMPOSERINSTALL" && $COMPOSERINSTALL != 'null' ]]; then
 		runComposerInstall
