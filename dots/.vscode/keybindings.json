@@ -63,10 +63,6 @@
 	},
 	{
 		"key": "shift+cmd+c",
-		"command": "chatgpt.sidebar.focus"
-	},
-	{
-		"key": "shift+cmd+c",
 		"command": "-workbench.action.terminal.openNativeConsole",
 		"when": "!terminalFocus"
 	}
