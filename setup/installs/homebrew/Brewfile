@@ -55,6 +55,7 @@ brew 'nss'
 brew 'nvm'
 brew 'openldap'
 brew 'pandoc'
+brew 'pantheon-systems/external/terminus'
 brew 'php', restart_service: true
 brew 'pidof'
 brew 'pngquant'

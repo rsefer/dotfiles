@@ -18,14 +18,28 @@
 		],
 		"description": "function"
 	},
+	"php": {
+		"scope": "php",
+		"prefix": [
+			"<?p",
+			"<?",
+			"<?php"
+		],
+		"body": [
+			"<?php",
+			"$1",
+			"?>"
+		],
+		"description": "PHP tags"
+	},
 	"display-flex": {
-		"scope": "css,scss",
+		"scope": "css,scss,html",
 		"prefix": "dflex",
 		"body": [
 			"display: flex;",
 			"flex-flow: ${1:row} wrap;",
 			"justify-content: ${2:space-between};",
-			"align-items: ${3:center};"
+			"align-items: ${3:center};",
 			"gap: ${4:0.5rem};"
 		],
 		"description": "CSS Flexbox base"
