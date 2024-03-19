@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# kill processes using a specific port
+
+set -e
+
+if [ ! -z "$1" ]; then
+  PORT="$1"
+else
+  PORT=3000
+fi
+
+echo "Killing processes on port $PORT"
+
+kill -9 $(lsof -t -i:$PORT)
