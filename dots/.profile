@@ -13,7 +13,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
 export NODE_PATH="$(which node)"
 
-export PATH="/opt/homebrew/opt/curl/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$NODE_PATH:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
+export PATH="/opt/homebrew/opt/curl/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$NODE_PATH:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
