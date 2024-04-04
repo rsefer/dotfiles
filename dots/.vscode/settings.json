@@ -86,14 +86,9 @@
 				"console": "integratedTerminal",
 				"name": "Debug - Node - npm start",
 				"request": "launch",
-				"runtimeArgs": [
-					"run-script",
-					"start"
-				],
+				"runtimeArgs": ["run-script", "start"],
 				"runtimeExecutable": "npm",
-				"skipFiles": [
-					"<node_internals>/**"
-				],
+				"skipFiles": ["<node_internals>/**"],
 				"type": "node"
 			}
 		],
@@ -115,6 +110,7 @@
 	"rainbow_csv.enable_context_menu_head": true,
 	"rainbow_csv.enable_context_menu_tail": true,
 	"rainbow_csv.rbql_with_headers_by_default": true,
+	"redhat.telemetry.enabled": false,
 	"scm.diffDecorationsIgnoreTrimWhitespace": "true",
 	"scss.format.preserveNewLines": false,
 	"scss.format.spaceAroundSelectorSeparator": true,
@@ -169,6 +165,9 @@
 		"terminalCursor.foreground": "#B7BBB7"
 	},
 	"workbench.colorTheme": "Tomorrow Night",
+	"workbench.editor.customLabels.patterns": {
+		"**/*": "${dirname}/${filename}.${extname}"
+	},
 	"workbench.editor.empty.hint": "hidden",
 	"workbench.editor.limit.enabled": true,
 	"workbench.editor.limit.excludeDirty": true,
