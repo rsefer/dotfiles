@@ -8,6 +8,7 @@ dots/.vim/bundle
 dots/.hammerspoon
 dots/.DS_Store
 dots/.composer/auth.json
+dots/.composer/cache
 dots/.composer/.htaccess
 dots/.composer/vendor
 mac-scripts/ipaddress.txt
