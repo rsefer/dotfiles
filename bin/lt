@@ -6,8 +6,7 @@ import time, sys, os, csv
 import re
 from datetime import datetime
 
-hours_file = "/Users/rsefer/Google Drive/Work/hours.csv"
-# if Google Drive is "streaming" "/Users/rsefer/Google Drive/My Drive/Work/hours.csv"
+hours_file = "/Users/rsefer/Documents/hours.csv"
 hours_file_with_spaces = hours_file.replace(' ', '\ ')
 delimiter = ','
 
