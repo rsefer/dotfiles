@@ -1,0 +1,15 @@
+#!/bin/sh
+#
+# find processes using a specific port
+
+set -e
+
+if [ ! -z "$1" ]; then
+  PORT="$1"
+else
+  PORT=3000
+fi
+
+echo "Finding processes on port $PORT"
+
+sudo lsof -i:$PORT
