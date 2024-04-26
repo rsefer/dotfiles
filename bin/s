@@ -1,0 +1,47 @@
+#!/usr/bin/env python
+#
+# Ollama LLM chat search
+# Adapted from https://gist.github.com/Sh4yy/3941bf5014bc8c980fad797d85149b65
+
+import sys, platform
+import ollama
+
+query = sys.argv
+query.pop(0)
+query = ' '.join(query)
+
+model = 'llama3'
+
+try:
+	stream = ollama.chat(
+		model=model,
+		messages=[
+			{
+				'role': 'system',
+				'content': f"""
+					You are a CLI code generator. Respond with the CLI command to generate the code with only one short sentence description in first line.
+					If the user asks for a specific language, respond with the CLI command to generate the code in that language.
+					If CLI command is multiple lines, separate each line with a newline character.
+					Do not write any markdown. Do not write any code.
+					System Info: OS: {platform.platform()}
+					First line is the description in one sentence.
+					Example output:
+					Installing a node package
+
+					npm install browser-sync
+				"""
+			},
+			{
+				'role': 'user',
+				'content': query
+			}
+		],
+		stream=True
+	)
+	for chunk in stream:
+		print(chunk['message']['content'], end='', flush=True)
+	print('\n')
+except ollama.ResponseError as e:
+	print('Error:', e.error)
+	if e.status_code == 404:
+		print(f'try: ollama pull {model}')
