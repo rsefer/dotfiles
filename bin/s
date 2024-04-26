@@ -3,10 +3,11 @@
 # Ollama LLM chat search
 # Adapted from https://gist.github.com/Sh4yy/3941bf5014bc8c980fad797d85149b65
 
-import sys, platform
+import os, argparse, asyncio, sys, platform
 import ollama
-
-workingModelName = 'llama3:latest'
+from ollama import AsyncClient
+ollamaClient = AsyncClient(host=os.getenv('OLLAMA_HOST', 'http://localhost:11434'))
+defaultModelName = os.getenv('OLLAMA_DEFAULT_MODEL', 'llama3:latest')
 
 def getInput(message, includeCarriageReturn=False):
 	carriageReturn = '\n\n'
@@ -15,18 +16,40 @@ def getInput(message, includeCarriageReturn=False):
 def getCommand():
 	return getInput('Please provide a command', True)
 
-args = sys.argv
+async def chat(modelName, query):
+	print(f'\nUsing {modelName}...\n')
+	messages = []
+	messages.append({
+		'role': 'system',
+		'content': f"""
+			You are a CLI code generator. Respond with the CLI command to generate the code with only one short sentence description in first line.
+			If the user asks for a specific language, respond with the CLI command to generate the code in that language.
+			If CLI command is multiple lines, separate each line with a newline character.
+			Do not write any markdown. Do not write any code.
+			System Info: OS: {platform.platform()}
+			First line is the description in one sentence.
+			Example output:
+			Installing a node package
 
-if len(args) == 1:
-	query = getCommand()
-elif len(args) >= 2 and args[1] == '-m':
-	availableModels = ollama.list()['models']
+			npm install browser-sync
+		"""
+	})
+	messages.append({
+		'role': 'user',
+		'content': query
+	})
+	async for part in await ollamaClient.chat(model=modelName, messages=messages, stream=True):
+		print(part['message']['content'], end='', flush=True)
+	print('\n')
+
+async def getModelName():
+	availableModels = (await ollamaClient.list())['models']
 	raw_table = [
 		['', '#', 'model', 'params'],
 		['', '-', '-----', '------']
 	]
 	for i, model in enumerate(availableModels):
-		raw_table.append(['*' if model['name'] == workingModelName else '', i + 1, model['name'], model['details']['parameter_size']])
+		raw_table.append(['*' if model['name'] == defaultModelName else '', i + 1, model['name'], model['details']['parameter_size']])
 	tableString = ''
 	for row in raw_table:
 		tableString += '{:1} {:1} {: >15} {: >6}'.format(*row) + '\n'
@@ -34,42 +57,34 @@ elif len(args) >= 2 and args[1] == '-m':
 	modelInput = getInput('Choose a model')
 	if len(modelInput) > 0:
 		modelIndex = int(modelInput) - 1
-		workingModelName = availableModels[modelIndex]['name']
-	print(f'\nUsing {workingModelName}\n')
-	query = getCommand()
-else:
-	query = ' '.join(args[1:])
+		return availableModels[modelIndex]['name']
+	else:
+		return None
 
+async def main():
+	parser = argparse.ArgumentParser(description='Ollama LLM chat search')
+	parser.add_argument('-m', '--model', action='store_true', help='choose a model')
+	args, unknownArgs = parser.parse_known_args()
+	workingModelName = defaultModelName
+	try:
+		await ollamaClient.show(workingModelName)
+		if args.model:
+			workingModelName = await getModelName()
+			command = getCommand()
+		elif len(unknownArgs) == 0:
+			parser.print_help(sys.stderr)
+			sys.exit(0)
+		else:
+			command = unknownArgs
+		query = ' '.join(command)
+		await chat(workingModelName, query)
+	except ollama.ResponseError as e:
+		print('Error:', e.error)
+		if e.status_code == 404:
+			print(f'Try running: ollama pull {workingModelName}')
+			exit(1)
 try:
-	stream = ollama.chat(
-		model=workingModelName,
-		messages=[
-			{
-				'role': 'system',
-				'content': f"""
-					You are a CLI code generator. Respond with the CLI command to generate the code with only one short sentence description in first line.
-					If the user asks for a specific language, respond with the CLI command to generate the code in that language.
-					If CLI command is multiple lines, separate each line with a newline character.
-					Do not write any markdown. Do not write any code.
-					System Info: OS: {platform.platform()}
-					First line is the description in one sentence.
-					Example output:
-					Installing a node package
-
-					npm install browser-sync
-				"""
-			},
-			{
-				'role': 'user',
-				'content': query
-			}
-		],
-		stream=True
-	)
-	for chunk in stream:
-		print(chunk['message']['content'], end='', flush=True)
-	print('\n')
-except ollama.ResponseError as e:
-	print('Error:', e.error)
-	if e.status_code == 404:
-		print(f'try: ollama pull {workingModelName}')
+	asyncio.run(main())
+except (KeyboardInterrupt, EOFError):
+	print('\nForce exited')
+	exit(1)
