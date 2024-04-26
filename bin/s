@@ -7,7 +7,11 @@ import sys, platform
 import ollama
 
 query = sys.argv
-query.pop(0)
+
+if len(sys.argv) == 1:
+	query = input('Please provide a command:\n')
+else:
+	query.pop(0)
 query = ' '.join(query)
 
 model = 'llama3'
