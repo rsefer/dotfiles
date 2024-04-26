@@ -52,7 +52,7 @@ async def getModelName():
 		raw_table.append(['*' if model['name'] == defaultModelName else '', i + 1, model['name'], model['details']['parameter_size']])
 	tableString = ''
 	for row in raw_table:
-		tableString += '{:1} {:1} {: >15} {: >6}'.format(*row) + '\n'
+		tableString += '{:1} {:1} {: <20} {:>}'.format(*row) + '\n'
 	print(tableString)
 	modelInput = getInput('Choose a model')
 	if len(modelInput) > 0:
