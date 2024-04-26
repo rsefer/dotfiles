@@ -6,19 +6,43 @@
 import sys, platform
 import ollama
 
-query = sys.argv
+workingModelName = 'llama3:latest'
 
-if len(sys.argv) == 1:
-	query = input('Please provide a command:\n')
+def getInput(message, includeCarriageReturn=False):
+	carriageReturn = '\n\n'
+	return input(f"{message}:{carriageReturn if includeCarriageReturn else ' '}")
+
+def getCommand():
+	return getInput('Please provide a command', True)
+
+args = sys.argv
+
+if len(args) == 1:
+	query = getCommand()
+elif len(args) >= 2 and args[1] == '-m':
+	availableModels = ollama.list()['models']
+	raw_table = [
+		['', '#', 'model', 'params'],
+		['', '-', '-----', '------']
+	]
+	for i, model in enumerate(availableModels):
+		raw_table.append(['*' if model['name'] == workingModelName else '', i + 1, model['name'], model['details']['parameter_size']])
+	tableString = ''
+	for row in raw_table:
+		tableString += '{:1} {:1} {: >15} {: >6}'.format(*row) + '\n'
+	print(tableString)
+	modelInput = getInput('Choose a model')
+	if len(modelInput) > 0:
+		modelIndex = int(modelInput) - 1
+		workingModelName = availableModels[modelIndex]['name']
+	print(f'\nUsing {workingModelName}\n')
+	query = getCommand()
 else:
-	query.pop(0)
-query = ' '.join(query)
-
-model = 'llama3'
+	query = ' '.join(args[1:])
 
 try:
 	stream = ollama.chat(
-		model=model,
+		model=workingModelName,
 		messages=[
 			{
 				'role': 'system',
@@ -48,4 +72,4 @@ try:
 except ollama.ResponseError as e:
 	print('Error:', e.error)
 	if e.status_code == 404:
-		print(f'try: ollama pull {model}')
+		print(f'try: ollama pull {workingModelName}')
