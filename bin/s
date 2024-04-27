@@ -42,18 +42,19 @@ async def chat(modelName, query):
 		print(part['message']['content'], end='', flush=True)
 	print('\n')
 
-async def getModelName():
+async def listModels():
 	availableModels = (await ollamaClient.list())['models']
-	raw_table = [
-		['', '#', 'model', 'params'],
-		['', '-', '-----', '------']
-	]
+	raw_table = [['', '#', 'model', 'params', 'size']]
+	raw_table.append(list(map(lambda cell: ''.join(['-'] * len(cell)), raw_table[0])))
 	for i, model in enumerate(availableModels):
-		raw_table.append(['*' if model['name'] == defaultModelName else '', i + 1, model['name'], model['details']['parameter_size']])
+		raw_table.append(['*' if model['name'] == defaultModelName else '', i + 1, model['name'], model['details']['parameter_size'], f"{'{:.1f}'.format(float(model['size']) / 10**9)}gb"])
 	tableString = ''
 	for row in raw_table:
-		tableString += '{:1} {:1} {: <20} {:>}'.format(*row) + '\n'
+		tableString += '{:1} {:1} {: <25} {:<10} {:<5}'.format(*row) + '\n'
 	print(tableString)
+
+async def getModelName():
+	await listModels()
 	modelInput = getInput('Choose a model')
 	if len(modelInput) > 0:
 		modelIndex = int(modelInput) - 1
@@ -63,14 +64,18 @@ async def getModelName():
 
 async def main():
 	parser = argparse.ArgumentParser(description='Ollama LLM chat search')
+	parser.add_argument('-l', '--list', action='store_true', help='list models')
 	parser.add_argument('-m', '--model', action='store_true', help='choose a model')
 	args, unknownArgs = parser.parse_known_args()
 	workingModelName = defaultModelName
 	try:
-		await ollamaClient.show(workingModelName)
+		await ollamaClient.show(workingModelName) # checks for default model
 		if args.model:
 			workingModelName = await getModelName()
 			command = getCommand()
+		elif args.list:
+			await listModels()
+			sys.exit(0)
 		elif len(unknownArgs) == 0:
 			parser.print_help(sys.stderr)
 			sys.exit(0)
