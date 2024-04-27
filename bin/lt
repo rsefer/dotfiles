@@ -2,7 +2,7 @@
 #
 # Time logging
 
-import time, sys, os, csv
+import time, sys, os, argparse, csv
 import re
 from datetime import datetime
 
@@ -15,10 +15,8 @@ def summarize(clientID = None):
 		with open(hours_file, 'rt') as file:
 			reader = csv.reader(file, delimiter = delimiter)
 			clients = {}
-			raw_table = [
-				['id', 'name', 'minutes', 'timestamp', 'date'],
-				['--', '----', '-------', '---------', '--------------']
-			]
+			raw_table = [['id', 'name', 'minutes', 'timestamp', 'date']]
+			raw_table.append(list(map(lambda cell: ''.join(['-'] * len(cell)), raw_table[0])))
 			line = 0
 			lastClientID = None
 			lastDate = None
@@ -58,14 +56,9 @@ def summarize(clientID = None):
 						lastDate = workingDate
 					raw_table.append([workingClientID, workingClientName, row[2], row[3], workingDate])
 
-			print()
-			print('=======')
-			print('SUMMARY')
-			print('=======')
-			summary_table = [
-				['id', 'name', 'time', 'last tracked'],
-				['--', '----', '----', '------------']
-			]
+			print('\n======= SUMMARY =======')
+			summary_table = [['id', 'name', 'time', 'last tracked']]
+			summary_table.append(list(map(lambda cell: ''.join(['-'] * len(cell)), summary_table[0])))
 			combined_hours = 0
 			for k, client in clients.items():
 				hours = round(client['minutes'] / 60, 2)
@@ -83,17 +76,8 @@ def summarize(clientID = None):
 			print(f'Total hours: {combined_hours}')
 			print()
 			for row in summary_table:
-				print('{:5} {: >25} {: >15} {: >14}'.format(*row))
+				print('{:5} {: <25} {: >15} {: >14}'.format(*row))
 			print()
-
-			if len(sys.argv) >= 3 and (sys.argv[2] == 'raw' or sys.argv[2].isnumeric()):
-				print('====')
-				print('DATA')
-				print('====')
-				print()
-				for row in raw_table:
-					print('{:5} {: >25} {: >15} {: >14} {: >16}'.format(*row))
-				print()
 	except:
 		print('Summary failed to open hours file')
 		sys.exit(1)
@@ -104,7 +88,6 @@ def clientTime(clientID = None):
 			reader = csv.reader(file, delimiter = delimiter)
 			minutes = 0
 			for row in reader:
-				# print(row)
 				if len(row) == 0:
 					continue
 				if row[0] != clientID:
@@ -145,26 +128,46 @@ def clearClient(clientID):
 		writer = csv.writer(file)
 		writer.writerows(keep_lines)
 
-if len(sys.argv) < 2:
-	summarize()
-else:
-	if sys.argv[1] == 'open':
+def main():
+	parser = argparse.ArgumentParser(description='SDC Log time')
+	sub_parsers = parser.add_subparsers(dest='command', help='sub-command help')
+
+	parser_open = sub_parsers.add_parser('o', help='open')
+	parser_view = sub_parsers.add_parser('v', help='view')
+
+	parser_summarize = sub_parsers.add_parser('s', help='summarize')
+	parser_summarize.add_argument('-i', '--id', nargs=1, type=str, help='client id')
+
+	parser_clientTime = sub_parsers.add_parser('ct', help='client time')
+	parser_clientTime.add_argument('-i', '--id', nargs=1, required=True, type=str, help='client id')
+
+	parser_add = sub_parsers.add_parser('add', help='add time')
+	parser_add.add_argument('-i', '--id', nargs=1, required=True, type=str, help='client id')
+	parser_add.add_argument('-n', '--name', nargs=1, required=True, type=str, help='client name')
+	parser_add.add_argument('-t', '--time', nargs=1, required=True, type=str, help='time in minutes')
+
+	parser_clientTime = sub_parsers.add_parser('clear', help='clear client')
+	parser_clientTime.add_argument('-i', '--id', nargs=1, required=True, type=str, help='client id')
+
+	args, unknownArgs = parser.parse_known_args()
+
+	if args.command == 'o':
 		os.system(f'open -e {hours_file_with_spaces}')
-	elif sys.argv[1] == 'view':
+	elif args.command == 'v':
 		os.system(f'cat {hours_file_with_spaces}')
-	elif sys.argv[1] == 'sum' or sys.argv[1] == 's':
-		if len(sys.argv) >= 3 and sys.argv[2].isnumeric():
-			summarize(sys.argv[2])
+	elif args.command == 's':
+		if args.id:
+			summarize(args.id[0])
 		else:
 			summarize()
-	elif sys.argv[1] == 'ct' and len(sys.argv) >= 3:
-		clientTime(sys.argv[2])
-	elif (sys.argv[1] == 'add' or sys.argv[1] == 'a') and len(sys.argv) >= 5:
-		addRow(sys.argv[2], sys.argv[3], sys.argv[4])
-	elif (sys.argv[1] == 'clear' or sys.argv[1] == 'c') and len(sys.argv) >= 3:
-		clearClient(sys.argv[2])
+	elif args.command == 'ct':
+		clientTime(args.id[0])
+	elif args.command == 'add':
+		addRow(args.id[0], args.name[0], args.time[0])
+	elif args.command == 'clear':
+		clearClient(args.id[0])
 	else:
-		print('Wrong arguments')
-		sys.exit(1)
+		summarize()
 
+main()
 sys.exit(0)
