@@ -2,4 +2,5 @@
 #
 # Tail error logs in Local
 
-cd ../../../../../logs/php && tail -f error.log
+PWD_PARTS=(${PWD//app\/public/ })
+cd ${PWD_PARTS[0]}/logs/php && tail -f error.log
