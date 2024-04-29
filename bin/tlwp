@@ -2,5 +2,12 @@
 #
 # Tail error logs in Local
 
-PWD_PARTS=(${PWD//app\/public/ })
+REAL_PWD=$(pwd -P)
+
+if [[ "$REAL_PWD" != *"$HOME/local"* ]]; then
+  echo "Not local"
+  exit 1
+fi
+
+PWD_PARTS=(${REAL_PWD//app\/public/ })
 cd ${PWD_PARTS[0]}/logs/php && tail -f error.log
