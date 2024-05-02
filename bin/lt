@@ -7,7 +7,6 @@ import re
 from datetime import datetime
 
 hours_file = "/Users/rsefer/Documents/hours.csv"
-hours_file_with_spaces = hours_file.replace(' ', '\ ')
 delimiter = ','
 
 def summarize(clientID = None):
@@ -130,7 +129,7 @@ def clearClient(clientID):
 
 def main():
 	parser = argparse.ArgumentParser(description='SDC Log time')
-	sub_parsers = parser.add_subparsers(dest='command', help='sub-command help')
+	sub_parsers = parser.add_subparsers(dest='command', title='commands')
 
 	parser_open = sub_parsers.add_parser('o', help='open')
 	parser_view = sub_parsers.add_parser('v', help='view')
@@ -152,9 +151,9 @@ def main():
 	args, unknownArgs = parser.parse_known_args()
 
 	if args.command == 'o':
-		os.system(f'open -e {hours_file_with_spaces}')
+		os.system(f'open -e {hours_file}')
 	elif args.command == 'v':
-		os.system(f'cat {hours_file_with_spaces}')
+		os.system(f'cat {hours_file}')
 	elif args.command == 's':
 		if args.id:
 			summarize(args.id[0])
