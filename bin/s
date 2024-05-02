@@ -12,7 +12,7 @@ if os.getenv('OLLAMA_HOST') is None:
 	exit(1)
 
 ollamaClient = AsyncClient(host=os.getenv('OLLAMA_HOST'))
-defaultModelName = os.getenv('OLLAMA_DEFAULT_MODEL', 'codeqwen:latest')
+defaultModelName = os.getenv('OLLAMA_DEFAULT_MODEL', 'llama3:latest')
 
 def getInput(message, includeCarriageReturn=False):
 	carriageReturn = '\n\n'
@@ -57,9 +57,10 @@ async def listModels():
 	for row in raw_table:
 		tableString += '{:1} {:1} {: <25} {:<10} {:<5}'.format(*row) + '\n'
 	print(tableString)
+	return availableModels
 
 async def getModelName():
-	await listModels()
+	availableModels = await listModels()
 	modelInput = getInput('Choose a model')
 	if len(modelInput) > 0:
 		modelIndex = int(modelInput) - 1
