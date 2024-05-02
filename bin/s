@@ -18,27 +18,28 @@ def getInput(message, includeCarriageReturn=False):
 	carriageReturn = '\n\n'
 	return input(f"{message}:{carriageReturn if includeCarriageReturn else ' '}")
 
-def getCommand():
-	return getInput('Please provide a command', True)
+def getQuery():
+	return getInput('Please provide a query', True)
 
-async def chat(modelName, query):
+async def chat(modelName, query, skip_prompt = False):
 	print(f'\nUsing {modelName}...\n')
 	messages = []
-	messages.append({
-		'role': 'system',
-		'content': f"""
-			You are a CLI code generator. Respond with the CLI command to generate the code with only one short sentence description in first line.
-			If the user asks for a specific language, respond with the CLI command to generate the code in that language.
-			If CLI command is multiple lines, separate each line with a newline character.
-			Do not write any markdown. Do not write any code.
-			System Info: OS: {platform.platform()}
-			First line is the description in one sentence.
-			Example output:
-			Installing a node package
+	if not skip_prompt:
+		messages.append({
+			'role': 'system',
+			'content': f"""
+				You are a CLI code generator. Respond with the CLI query to generate the code with only one short sentence description in first line.
+				If the user asks for a specific language, respond with the CLI query to generate the code in that language.
+				If CLI query is multiple lines, separate each line with a newline character.
+				Do not write any markdown. Do not write any code.
+				System Info: OS: {platform.platform()}
+				First line is the description in one sentence.
+				Example output:
+				Installing a node package
 
-			npm install browser-sync
-		"""
-	})
+				npm install browser-sync
+			"""
+		})
 	messages.append({
 		'role': 'user',
 		'content': query
@@ -72,13 +73,14 @@ async def main():
 	parser = argparse.ArgumentParser(description='Ollama LLM chat search')
 	parser.add_argument('-l', '--list', action='store_true', help='list models')
 	parser.add_argument('-m', '--model', action='store_true', help='choose a model')
+	parser.add_argument('-np', '--no-prompt', action='store_true', help='no prompt')
 	args, unknownArgs = parser.parse_known_args()
 	workingModelName = defaultModelName
 	try:
 		await ollamaClient.show(workingModelName) # checks for default model
 		if args.model:
 			workingModelName = await getModelName()
-			command = getCommand()
+			query = getQuery()
 		elif args.list:
 			await listModels()
 			sys.exit(0)
@@ -86,9 +88,9 @@ async def main():
 			parser.print_help(sys.stderr)
 			sys.exit(0)
 		else:
-			command = unknownArgs
-		query = ' '.join(command)
-		await chat(workingModelName, query)
+			query = unknownArgs
+		query = ' '.join(query)
+		await chat(workingModelName, query, args.no_prompt)
 	except ollama.ResponseError as e:
 		print('Error:', e.error)
 		if e.status_code == 404:
