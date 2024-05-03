@@ -71,26 +71,34 @@ async def getModelName():
 
 async def main():
 	parser = argparse.ArgumentParser(description='Ollama LLM chat search')
-	parser.add_argument('-l', '--list', action='store_true', help='list models')
-	parser.add_argument('-m', '--model', action='store_true', help='choose a model')
-	parser.add_argument('-np', '--no-prompt', action='store_true', help='no prompt')
+	sub_parsers = parser.add_subparsers(dest='command', title='commands')
+
+	parser_chat = sub_parsers.add_parser('c', help='chat', description='Provide a search query')
+	parser_chat.add_argument('-m', '--model', action='store_true', help='choose a model')
+	parser_chat.add_argument('-np', '--no-prompt', action='store_true', help='no prompt')
+
+	parser_list = sub_parsers.add_parser('list', help='list models')
+
 	args, unknownArgs = parser.parse_known_args()
-	workingModelName = defaultModelName
+
 	try:
+		workingModelName = defaultModelName
 		await ollamaClient.show(workingModelName) # checks for default model
-		if args.model:
-			workingModelName = await getModelName()
-			query = getQuery()
-		elif args.list:
+
+		if args.command == 'list':
 			await listModels()
 			sys.exit(0)
-		elif len(unknownArgs) == 0:
+		elif args.command == 'c':
+			if args.model:
+				workingModelName = await getModelName()
+			if len(unknownArgs) > 0:
+				query = ' '.join(unknownArgs)
+			else:
+				query = getQuery()
+			await chat(workingModelName, query, args.no_prompt)
+		else:
 			parser.print_help(sys.stderr)
 			sys.exit(0)
-		else:
-			query = unknownArgs
-		query = ' '.join(query)
-		await chat(workingModelName, query, args.no_prompt)
 	except ollama.ResponseError as e:
 		print('Error:', e.error)
 		if e.status_code == 404:
