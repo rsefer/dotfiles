@@ -14,8 +14,8 @@ promptFlushCache () {
 			readyn "Flush the site cache? (y/n)"
 		fi
 		if [[ $2 == "y" || $REPLY =~ ^[Yy]$ ]]; then
-			if [[ ! -z "$FLUSHCOMMANDS" && $FLUSHCOMMANDS != '' && $1 != 'rsync' && $FLUSHADDRESS != *"wpengine"* ]]; then
-				wpflywheelflushcache "$FLUSHADDRESS"
+			if [[ -z "$FLUSHCOMMANDS" && $1 != 'rsync' && $FLUSHADDRESS != *"wpengine"* ]]; then
+				ssh -t $FLUSHADDRESS 'wp cache flush'
 			else
 				ssh $FLUSHADDRESS "$FLUSHCOMMANDS"
 			fi
