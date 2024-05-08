@@ -69,7 +69,7 @@ then
 				fail 'cask installation had errors'
 			fi
 			info 'launching 1Password'
-			open -a "1Password 7"
+			open -a "1Password"
 		else
 			success 'skipped Homebrew casks and apps install'
 		fi

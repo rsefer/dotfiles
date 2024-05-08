@@ -47,6 +47,7 @@ cask 'xquartz', args: { appdir: '/Applications' }
 cask 'zoom'
 
 # get list of installed apps from the appstore: mas list
+mas '1Password for Safari', id: 1569813296
 mas 'GarageBand', id: 682658836
 mas 'iMovie', id: 408981434
 mas 'Keynote', id: 409183694
@@ -54,6 +55,7 @@ mas 'Music Menu Bar', id: 6444139978
 mas 'Numbers', id: 409203825
 mas 'Pages', id: 409201541
 mas 'Playgrounds', id: 1496833156
+mas 'PrettyJSON for Safari', id: 1445328303
 mas 'Shareful', id: 1522267256
 mas 'Tailscale', id: 1475387142
 mas 'Twitter', id: 1482454543

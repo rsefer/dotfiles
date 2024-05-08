@@ -33,7 +33,7 @@ alias grep="grep --color=auto --line-number --ignore-case --recursive --exclude-
 
 alias hosts="sudo vim /etc/hosts"
 
-alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;say flushed"
+alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo 'Flushed'"
 
 # Copy working directory to clipboard
 pwdcpfunc() {
@@ -41,8 +41,6 @@ pwdcpfunc() {
 	echo "$(pbpaste) copied to clipboard";
 }
 alias pwdcp="pwdcpfunc"
-
-alias idk="printf \"¯\_(ツ)_/¯\" | pbcopy && echo \"¯\_(ツ)_/¯ copied to clipboard\""
 
 alias ol="open https://localhost:3000"
 alias oln="open http://localhost:3000"
