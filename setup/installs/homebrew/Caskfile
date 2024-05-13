@@ -34,6 +34,7 @@ cask 'mongodb-compass'
 cask 'ngrok', args: { appdir: '/Applications' }
 cask 'obsidian', args: { appdir: '/Applications' }
 cask 'postman', args: { appdir: '/Applications' }
+cask 'raycast', args: { appdir: '/Applications' }
 cask 'sf-symbols'
 cask 'slack'
 cask 'spotify'
