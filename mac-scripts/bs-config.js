@@ -3,6 +3,7 @@ module.exports = {
 		key: process.env.SSL_KEY_PATH,
 		cert: process.env.SSL_CRT_PATH
 	} : null),
+	files: '**/*',
 	open: false,
 	ui: false,
 	// server: true, // now handled via the shell script
