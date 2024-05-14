@@ -1,6 +1,6 @@
 import { Icon, Color, MenuBarExtra, launchCommand, LaunchType } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
-import { runningTimer } from "./Timer";
+import { runningTimer, stopTimer } from "./Timer";
 import moment from 'moment';
 
 export default function Command() {
@@ -13,12 +13,19 @@ export default function Command() {
 			tooltip="Timer"
 		>
 			{ currentTimer ?
+				<>
+				<MenuBarExtra.Item
+					title={currentTimer.name||""}
+				/>
 				<MenuBarExtra.Item
 					title="Stop"
-					onAction={() => launchCommand({ name: "stop-timer", type: LaunchType.UserInitiated }) }
+					icon={{ source: Icon.Stop, tintColor: Color.Red }}
+					onAction={() => stopTimer() }
 				/>
+				</>
 			: <MenuBarExtra.Item
 					title="Start"
+					icon={{ source: Icon.Stopwatch, tintColor: Color.Green }}
 					onAction={() => launchCommand({ name: "choose-client", type: LaunchType.UserInitiated }) }
 				/>
 			}
