@@ -1,0 +1,88 @@
+{
+  "$schema": "https://www.raycast.com/schemas/extension.json",
+  "name": "sdc-timer",
+  "title": "SDC Timer",
+  "description": "Sefer Design Co. client time tracking",
+  "icon": "command-icon.png",
+  "author": "rsefer",
+  "owner": "sefer-design-co",
+  "categories": [
+    "Data"
+  ],
+  "license": "MIT",
+  "preferences": [
+    {
+      "name": "endpoint",
+      "title": "Endpoint",
+      "description": "Domain and endpoint for API",
+      "type": "textfield",
+      "placeholder": "https://example.com/api/v1/clients",
+      "required": true
+    },
+    {
+      "name": "accessToken",
+      "title": "Access Token",
+      "description": "Grants access to the API",
+      "type": "password",
+      "default": "",
+      "required": true
+    },
+		{
+      "name": "hoursFile",
+      "title": "Hours File",
+      "description": "Location of hours file",
+      "type": "file",
+      "default": "",
+      "required": true
+    }
+  ],
+  "commands": [
+    {
+      "name": "choose-client",
+      "title": "Choose Client",
+      "description": "",
+      "mode": "view"
+    },
+    {
+      "name": "start-timer",
+      "title": "Start Timer",
+      "description": "",
+      "mode": "no-view"
+    },
+    {
+      "name": "stop-timer",
+      "title": "Stop Timer",
+      "description": "",
+      "mode": "no-view"
+    },
+    {
+      "name": "timer-menu-bar",
+      "title": "Menu Bar",
+      "subtitle": "Timer",
+      "description": "See the current timer",
+      "mode": "menu-bar",
+      "interval": "10s"
+    }
+  ],
+  "dependencies": {
+    "@raycast/api": "^1.73.3",
+    "@raycast/utils": "^1.15.0",
+    "axios": "^1.6.8",
+    "moment": "^2.30.1"
+  },
+  "devDependencies": {
+    "@raycast/eslint-config": "^1.0.6",
+    "@types/node": "20.8.10",
+    "@types/react": "18.2.27",
+    "eslint": "^8.51.0",
+    "prettier": "^3.0.3",
+    "typescript": "^5.2.2"
+  },
+  "scripts": {
+    "build": "ray build -e dist",
+    "dev": "ray develop",
+    "fix-lint": "ray lint --fix",
+    "lint": "ray lint",
+    "publish": "npx @raycast/api@latest publish"
+  }
+}
