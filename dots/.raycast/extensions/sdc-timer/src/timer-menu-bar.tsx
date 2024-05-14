@@ -1,6 +1,6 @@
 import { Icon, Color, MenuBarExtra, launchCommand, LaunchType } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
-import { runningTimer } from "./Timers";
+import { runningTimer } from "./Timer";
 import moment from 'moment';
 
 export default function Command() {

@@ -1,0 +1,31 @@
+import { LaunchProps, Form, popToRoot, ActionPanel, Action } from "@raycast/api";
+import { logTime } from "./Timer";
+
+export default function Command(context: LaunchProps) {
+	let client = context.launchContext?.client;
+  return (
+		<Form
+			actions={
+				<ActionPanel>
+					<Action.SubmitForm
+						onSubmit={(values) => {
+							logTime(client.id, client.name, +values.minutes);
+							popToRoot();
+						}}
+					/>
+				</ActionPanel>
+			}
+		>
+			<Form.Description
+				title="Client"
+				text={ client.name }
+			/>
+			<Form.TextField
+				id="minutes"
+				title="Minutes"
+				placeholder="60"
+				autoFocus={true}
+			/>
+		</Form>
+  );
+}

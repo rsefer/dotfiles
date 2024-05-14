@@ -1,9 +1,9 @@
 import { launchCommand, LaunchType } from "@raycast/api";
-import { runningTimer } from "./Timers";
+import { runningTimer, stopTimer } from "./Timer";
 
 export default async function Command() {
 	if (await runningTimer()) {
-		return launchCommand({ name: "stop-timer", type: LaunchType.Background });
+		return await stopTimer();
 	}
 	return launchCommand({ name: "choose-client", type: LaunchType.UserInitiated, context: { timerType: "running" } });
 }

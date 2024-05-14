@@ -2,7 +2,7 @@ import { LaunchProps, Action, ActionPanel, List, launchCommand, LaunchType, Icon
 import { usePromise } from "@raycast/utils";
 import { Client } from "./types";
 import { getClients } from "./get-clients";
-import { startTimer } from "./Timers";
+import { startTimer } from "./Timer";
 
 export default function Command(context: LaunchProps) {
 	let workingTimerType = 'running';
@@ -42,7 +42,7 @@ function Actions(props: { item: Client, timerType: String }) {
 					<Action
 						title="Enter Time"
 						icon={{ source: Icon.Stopwatch, tintColor: Color.Green }}
-						onAction={() => console.log('entering time') }
+						onAction={() => launchCommand({ name: "enter-timer-form", type: LaunchType.UserInitiated, context: { client: props.item } }) }
 					/>
 				)}
       </ActionPanel.Section>

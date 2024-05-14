@@ -49,15 +49,15 @@
       "description": "",
       "mode": "no-view"
     },
+		{
+      "name": "enter-timer-form",
+      "title": "Enter Timer Form",
+      "description": "",
+      "mode": "view"
+    },
     {
       "name": "start-timer",
       "title": "Start Timer",
-      "description": "",
-      "mode": "no-view"
-    },
-    {
-      "name": "stop-timer",
-      "title": "Stop Timer",
       "description": "",
       "mode": "no-view"
     },
