@@ -57,8 +57,3 @@ export function formatDuration(duration: number): string {
   const hours = Math.floor(minutes / 60);
   return `${hours > 0 ? `${hours} hour${hours != 1 ? 's' : ''} ` : ''}${minutes} minute${minutes != 1 ? 's' : ''}`;
 }
-
-export async function isRunning(): Promise<Boolean> {
-	const timer = await runningTimer();
-	return timer ? true : false;
-}

@@ -3,7 +3,7 @@
   "name": "sdc-timer",
   "title": "SDC Timer",
   "description": "Sefer Design Co. client time tracking",
-  "icon": "extension_icon@1024.png",
+  "icon": "extension_icon.svg",
   "author": "rsefer",
   "owner": "sefer-design-co",
   "categories": [
@@ -37,6 +37,12 @@
     }
   ],
   "commands": [
+		{
+      "name": "toggle-timer",
+      "title": "Toggle Timer",
+      "description": "",
+      "mode": "no-view"
+    },
 		{
       "name": "enter-timer",
       "title": "Enter Time",
