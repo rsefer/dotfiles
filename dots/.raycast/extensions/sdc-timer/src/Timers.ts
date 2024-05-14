@@ -55,7 +55,7 @@ export function formatDuration(duration: number): string {
   const seconds = Math.floor(duration / 1000);
   const minutes = Math.ceil(seconds / 60);
   const hours = Math.floor(minutes / 60);
-  return `${hours > 0 ? `${hours} hours ` : ''}${minutes} minutes:`;
+  return `${hours > 0 ? `${hours} hour${hours != 1 ? 's' : ''} ` : ''}${minutes} minute${minutes != 1 ? 's' : ''}`;
 }
 
 export async function isRunning(): Promise<Boolean> {
