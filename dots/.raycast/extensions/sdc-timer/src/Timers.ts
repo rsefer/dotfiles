@@ -1,4 +1,4 @@
-import { LocalStorage } from "@raycast/api";
+import { LocalStorage, showHUD } from "@raycast/api";
 
 export type Timer = {
   id: number;
@@ -11,16 +11,16 @@ export type TimerList = {
   [key: string]: Timer;
 };
 
-export async function startTimer(id: number, name: string | null = null): Promise<Timer> {
+export async function startTimer(id: number | string, name: string | null = null): Promise<Timer> {
   await stopTimer();
   const timer: Timer = {
-    id: id,
+    id: +id,
     name: name,
     start: new Date().getTime(),
     end: null
   };
   await LocalStorage.setItem("runningTimer", JSON.stringify(timer));
-
+	await showHUD(`Started ${timer.name}`);
   return timer;
 }
 

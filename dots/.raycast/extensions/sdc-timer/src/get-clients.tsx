@@ -2,7 +2,6 @@ import { Cache, getPreferenceValues } from "@raycast/api";
 import { Preferences, CacheClients } from "./types";
 import axios from 'axios';
 
-const CACHE_DURATION_IN_MS = 12 * 60 * 60 * 1_000;
 const cache = new Cache();
 
 export async function getClients(forceRefresh: Boolean = false) {
@@ -11,8 +10,7 @@ export async function getClients(forceRefresh: Boolean = false) {
   if (cachedResponse && !forceRefresh) {
     const parsed: CacheClients = JSON.parse(cachedResponse);
     const elapsed = Date.now() - parsed.timestamp;
-    if (elapsed <= CACHE_DURATION_IN_MS) {
-			console.log('grabbing cached');
+    if (elapsed <= 12 * 60 * 60 * 1_000) {
       return parsed.clients;
     } else {
       console.log(`Cache expired for ${cacheKey}`);

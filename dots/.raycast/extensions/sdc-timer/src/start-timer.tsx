@@ -1,17 +1,5 @@
-import { LaunchProps, showHUD } from "@raycast/api";
-import { startTimer } from "./Timers";
+import { launchCommand, LaunchType } from "@raycast/api";
 
-export default async function Command(options: LaunchProps) {
-  let name = options.arguments.name;
-  if (name?.trim().length === 0) {
-    name = "Unnamed timer";
-  }
-  const timer = await startTimer(+options.arguments.id, name);
-
-  if (timer === null) {
-    await showHUD("Starting timer...");
-    return;
-  }
-
-  await showHUD(`Started ${timer.name}`);
+export default function Command() {
+  return launchCommand({ name: "choose-client", type: LaunchType.UserInitiated, context: { timerType: "running" } });
 }

@@ -37,11 +37,11 @@
     }
   ],
   "commands": [
-    {
-      "name": "choose-client",
-      "title": "Choose Client",
+		{
+      "name": "enter-timer",
+      "title": "Enter Time",
       "description": "",
-      "mode": "view"
+      "mode": "no-view"
     },
     {
       "name": "start-timer",
@@ -54,6 +54,12 @@
       "title": "Stop Timer",
       "description": "",
       "mode": "no-view"
+    },
+		{
+      "name": "choose-client",
+      "title": "Choose Client",
+      "description": "",
+      "mode": "view"
     },
     {
       "name": "timer-menu-bar",
