@@ -1,4 +1,4 @@
-import { Action, ActionPanel, List, launchCommand, LaunchType } from "@raycast/api";
+import { Action, ActionPanel, List, launchCommand, LaunchType, Icon, Color } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { Client } from "./types";
 import { getClients } from "./get-clients";
@@ -28,15 +28,27 @@ function Actions(props: { item: Client }) {
     <ActionPanel title={props.item.name}>
       <ActionPanel.Section>
 				{props.item.id && (
-					<Action title="Start Timer" onAction={() => launchCommand({
-						name: "start-timer",
-						type: LaunchType.UserInitiated,
-						arguments: {
-							id: props.item.id.toString(),
-							name: props.item.name
-						}
-					}) } />
+					<Action
+						title="Start Timer"
+						icon={{ source: Icon.Stopwatch, tintColor: Color.Green }}
+						onAction={() => launchCommand({
+							name: "start-timer",
+							type: LaunchType.UserInitiated,
+							arguments: {
+								id: props.item.id.toString(),
+								name: props.item.name
+							}
+						}) }
+					/>
 				)}
+      </ActionPanel.Section>
+			<ActionPanel.Section>
+				<Action
+					title="Refresh Clients List"
+					icon={{ source: Icon.RotateClockwise }}
+					shortcut={{ modifiers: ["cmd"], key: "r" }}
+					onAction={() => getClients(true) }
+				/>
       </ActionPanel.Section>
     </ActionPanel>
   );

@@ -1,4 +1,4 @@
-import { Icon, MenuBarExtra, launchCommand, LaunchType } from "@raycast/api";
+import { Icon, Color, MenuBarExtra, launchCommand, LaunchType } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { runningTimer } from "./Timers";
 import moment from 'moment';
@@ -8,7 +8,7 @@ export default function Command() {
   return (
     <MenuBarExtra
 			isLoading={isLoading}
-			icon={currentTimer ? Icon.AddPerson : Icon.Clock}
+			icon={{ source: Icon.Stopwatch, tintColor: currentTimer ? Color.Green : null }}
 			title={currentTimer ? `${currentTimer.name?.substring(0, 3)} ${moment().diff(moment(currentTimer.start), 'minutes')}m` : undefined}
 			tooltip="Timer"
 		>
