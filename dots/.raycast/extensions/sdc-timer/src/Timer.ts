@@ -96,12 +96,11 @@ export async function getDuration(): Promise<number>{
 }
 
 export function formatDuration(duration: number, format: string = 'long'): string {
-	if (!duration) {
-		return "-";
-	}
+	if (!duration) { return "--"; }
 	const seconds = Math.floor(duration / 1000);
-	const minutes = Math.floor(seconds / 60);
-	const hours = Math.floor(minutes / 60);
+	let minutesWorking = Math.floor(seconds / 60);
+	let hours = Math.floor(minutesWorking / 60);
+	const minutes = minutesWorking - (hours * 60);
 	let hoursString = `${hours > 0 ? `${hours} hour${hours != 1 ? "s" : ""} ` : ""}`;
 	let minutesString = `${minutes} minute${minutes != 1 ? "s" : ""}`;
 	if (format == 'short') {
