@@ -25,7 +25,7 @@ export async function getClients(forceRefresh: Boolean = false) {
 	let response = { data: [] };
 	try {
 		const preferences = getPreferenceValues<Preferences>();
-		response = await axios.get(`${preferences.endpoint}?access_token=${preferences.accessToken}&sortBy=recentActivityDate`);
+		response = await axios.get(`${preferences.domain}${preferences.endpoint}?access_token=${preferences.accessToken}&sortBy=recentActivityDate`);
 		cache.set(cacheKey, JSON.stringify({ timestamp: Date.now(), clients: response.data }));
 		await showToast({
 			title: "Client list updated",

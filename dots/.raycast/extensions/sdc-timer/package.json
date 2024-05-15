@@ -11,12 +11,20 @@
   ],
   "license": "MIT",
   "preferences": [
+		{
+      "name": "domain",
+      "title": "Domain",
+      "description": "Domain for API",
+      "type": "textfield",
+      "placeholder": "https://example.com",
+      "required": true
+    },
     {
       "name": "endpoint",
       "title": "Endpoint",
-      "description": "Domain and endpoint for API",
+      "description": "Endpoint for API",
       "type": "textfield",
-      "placeholder": "https://example.com/api/v1/clients",
+      "placeholder": "/api/v1/clients",
       "required": true
     },
     {
@@ -58,6 +66,12 @@
     {
       "name": "start-timer",
       "title": "Start Timer",
+      "description": "",
+      "mode": "no-view"
+    },
+		{
+      "name": "new-invoice",
+      "title": "New Invoice",
       "description": "",
       "mode": "no-view"
     },

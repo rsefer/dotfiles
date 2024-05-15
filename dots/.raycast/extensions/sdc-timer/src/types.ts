@@ -1,8 +1,9 @@
 export type Preferences = {
-  endpoint: string;
-  accessToken: string;
+	domain: string;
+	endpoint: string;
+	accessToken: string;
 	hoursFile: string;
-}
+};
 
 export type Client = {
 	id: number;
@@ -11,16 +12,16 @@ export type Client = {
 	logo: string;
 	currentrate: number;
 	site_url: string;
-}
+};
 
 export type CacheClients = {
-  timestamp: number;
-  clients: Array<Client>;
+	timestamp: number;
+	clients: Array<Client>;
 };
 
 export type Timer = {
-  id: number;
-  name: string | null;
-  start: number;
-  end: number | null;
+	id: number;
+	name: string | null;
+	start: number;
+	end: number | null;
 };

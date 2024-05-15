@@ -1,8 +1,10 @@
-import { LaunchProps, Action, ActionPanel, List, launchCommand, LaunchType, Icon, Color } from "@raycast/api";
+import { LaunchProps, Action, ActionPanel, List, launchCommand, LaunchType, Icon, Color, getPreferenceValues } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
-import { Client } from "./types";
+import { Preferences, Client } from "./types";
 import { getClients } from "./get-clients";
 import { startTimer } from "./Timer";
+
+const preferences = getPreferenceValues<Preferences>();
 
 export default function Command(context: LaunchProps) {
 	let workingTimerType = 'running';
@@ -41,10 +43,19 @@ function Actions(props: { item: Client, timerType: String }) {
 					<>
 					<StartTimer item={props.item} />
 					<EnterTime item={props.item} />
+					<NewInvoice item={props.item} />
 					</>
 				)}
 				{props.item.id && props.timerType == 'enter' && (
 					<>
+					<EnterTime item={props.item} />
+					<StartTimer item={props.item} />
+					<NewInvoice item={props.item} />
+					</>
+				)}
+				{props.item.id && props.timerType == 'new-invoice' && (
+					<>
+					<NewInvoice item={props.item} />
 					<EnterTime item={props.item} />
 					<StartTimer item={props.item} />
 					</>
@@ -53,7 +64,7 @@ function Actions(props: { item: Client, timerType: String }) {
 					title="Open on Biz"
 					icon={{ source: Icon.Globe }}
 					shortcut={{ modifiers: ["cmd"], key: "o" }}
-					url={`https://biz.seferdesign.com/clients/${props.item.id}`}
+					url={`${preferences.domain}/clients/${props.item.id}`}
 				/>
       </ActionPanel.Section>
 			<ActionPanel.Section>
@@ -84,6 +95,17 @@ function EnterTime(props: { item: Client }) {
 			title="Enter Time"
 			icon={{ source: Icon.Pencil, tintColor: Color.Blue }}
 			onAction={() => launchCommand({ name: "enter-timer-form", type: LaunchType.UserInitiated, context: { client: props.item } }) }
+		/>
+	);
+}
+
+function NewInvoice(props: { item: Client }) {
+	return (
+		<Action.OpenInBrowser
+			title="New Invoice"
+			icon={{ source: Icon.BankNote, tintColor: Color.Yellow }}
+			shortcut={{ modifiers: ["cmd"], key: "i" }}
+			url={`${preferences.domain}/invoices/new?client_id=${props.item.id}`}
 		/>
 	);
 }
