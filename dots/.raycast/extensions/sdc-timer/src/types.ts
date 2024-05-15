@@ -24,4 +24,10 @@ export type Timer = {
 	name: string | null;
 	start: number;
 	end: number | null;
+	diff: number | null;
+	diffMinutes: number | null;
+	diffFormatted: {
+		short: string | null,
+		long: string | null
+	};
 };
