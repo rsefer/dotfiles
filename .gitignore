@@ -4,6 +4,7 @@ dots/.vscode/*
 !dots/.vscode/keybindings.json
 !dots/.vscode/settings.json
 !dots/.vscode/snippets
+!dots/.vscode/globalStorage/alefragnani.project-manager/projects.json
 dots/.vim/bundle
 dots/.hammerspoon
 dots/.DS_Store

@@ -1,0 +1,29 @@
+[
+	{
+		"name": "cnmealplans",
+		"rootPath": "/Users/rsefer/local/rachel-paul/app/public/wp-content/themes/cnmealplans",
+		"paths": [],
+		"tags": [
+			"Work"
+		],
+		"enabled": true
+	},
+	{
+		"name": "ftq",
+		"rootPath": "/Users/rsefer/sites/clients/ftq-local-dev",
+		"paths": [],
+		"tags": [
+			"Work"
+		],
+		"enabled": true
+	},
+	{
+		"name": "dotfiles",
+		"rootPath": "/Users/rsefer/dotfiles",
+		"paths": [],
+		"tags": [
+			"Personal"
+		],
+		"enabled": true
+	}
+]
