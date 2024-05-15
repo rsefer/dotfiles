@@ -15,5 +15,13 @@ module.exports = {
 			bottom: '0',
 			borderRadius: '5px 0px 0px'
 		}
+	},
+	snippetOptions: {
+		rule: {
+			match: /<\/body>/i,
+			fn: function (snippet, match) {
+				return snippet + match;
+			}
+		}
 	}
 };
