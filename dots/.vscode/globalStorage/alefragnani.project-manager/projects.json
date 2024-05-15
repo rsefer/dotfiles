@@ -25,5 +25,14 @@
 			"Personal"
 		],
 		"enabled": true
+	},
+	{
+		"name": "raycast",
+		"rootPath": "/Users/rsefer/dotfiles/dots/.raycast",
+		"paths": [],
+		"tags": [
+			"Personal"
+		],
+		"enabled": true
 	}
 ]
