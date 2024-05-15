@@ -9,6 +9,8 @@ export type Client = {
 	name: string;
 	contact: string;
 	logo: string;
+	currentrate: number;
+	site_url: string;
 }
 
 export type CacheClients = {

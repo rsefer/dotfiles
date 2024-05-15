@@ -18,13 +18,13 @@ export default function Command() {
 					title={currentTimer.name||""}
 				/>
 				<MenuBarExtra.Item
-					title="Stop"
+					title="Stop Timer"
 					icon={{ source: Icon.Stop, tintColor: Color.Red }}
 					onAction={() => stopTimer() }
 				/>
 				</>
 			: <MenuBarExtra.Item
-					title="Start"
+					title="Start Timer"
 					icon={{ source: Icon.Stopwatch, tintColor: Color.Green }}
 					onAction={() => launchCommand({ name: "choose-client", type: LaunchType.UserInitiated }) }
 				/>
