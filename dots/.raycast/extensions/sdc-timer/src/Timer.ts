@@ -34,7 +34,7 @@ export async function logTime(id: number, name: string | null, durationMinutes: 
 	const preferences = getPreferenceValues<Preferences>();
 	await fs.appendFile(
 		preferences.hoursFile,
-		`${id},${durationMinutes},${name?.replace(/[^a-z0-9]/gi, "").substring(0, 15)},${moment().format("HH:mm:ss")},${moment().format("YYYY-MM-DD")}\r\n`,
+		`${id},${name?.replace(/[^a-z0-9]/gi, "").substring(0, 15)},${durationMinutes},${moment().format("HH:mm:ss")},${moment().format("YYYY-MM-DD")}\r\n`,
 		"utf8",
 	);
 	await showHUD(`Logged ${name}: ${durationMinutes} minutes`);
