@@ -58,7 +58,6 @@ export async function updateTimer(): Promise<Timer | null> {
 export async function stopTimer(): Promise<Timer | null> {
 	const timer = await updateTimer();
 	if (!timer) {
-		await showHUD("No timer running");
 		return null;
 	}
 	timer.end = new Date().getTime();
@@ -96,7 +95,7 @@ export async function getDuration(): Promise<number>{
 }
 
 export function formatDuration(duration: number, format: string = 'long'): string {
-	if (!duration) { return "--"; }
+	if (!duration) { duration = 0; }
 	const seconds = Math.floor(duration / 1000);
 	let minutesWorking = Math.floor(seconds / 60);
 	let hours = Math.floor(minutesWorking / 60);

@@ -70,8 +70,8 @@
       "mode": "no-view"
     },
     {
-      "name": "new-invoice",
-      "title": "New Invoice",
+      "name": "invoice",
+      "title": "Invoice",
       "description": "",
       "mode": "no-view"
     },

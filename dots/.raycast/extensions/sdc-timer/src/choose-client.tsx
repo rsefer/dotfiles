@@ -1,4 +1,4 @@
-import { LaunchProps, Action, ActionPanel, List, launchCommand, LaunchType, Icon, Color, getPreferenceValues } from "@raycast/api";
+import { LaunchProps, Action, ActionPanel, List, launchCommand, LaunchType, Icon, Color, getPreferenceValues, open, popToRoot } from "@raycast/api";
 import { usePromise } from "@raycast/utils";
 import { Preferences, Client } from "./types";
 import { getClients } from "./get-clients";
@@ -23,7 +23,7 @@ export default function Command(context: LaunchProps) {
 					}
 				});
 			}
-			if (workingTimerType == 'new-invoice') {
+			if (workingTimerType == 'invoice') {
 				client.accessories.push({
 					tag: {
 						value: client.currentrate ? `$${client.currentrate}` : '----',
@@ -71,7 +71,7 @@ function Actions(props: { item: Client, timerType: String }) {
 					<NewInvoice item={props.item} />
 					</>
 				)}
-				{props.item.id && props.timerType == 'new-invoice' && (
+				{props.item.id && props.timerType == 'invoice' && (
 					<>
 					<NewInvoice item={props.item} />
 					<EnterTime item={props.item} />
@@ -102,7 +102,11 @@ function StartTimer(props: { item: Client }) {
 		<Action
 			title="Start Timer"
 			icon={{ source: Icon.Stopwatch, tintColor: Color.Green }}
-			onAction={() => startTimer(props.item.id, props.item.name) }
+			shortcut={{ modifiers: ["cmd"], key: "s" }}
+			onAction={() => {
+				startTimer(props.item.id, props.item.name);
+				popToRoot();
+			}}
 		/>
 	);
 }
@@ -112,6 +116,7 @@ function EnterTime(props: { item: Client }) {
 		<Action
 			title="Enter Time"
 			icon={{ source: Icon.Pencil, tintColor: Color.Blue }}
+			shortcut={{ modifiers: ["cmd"], key: "e" }}
 			onAction={() => launchCommand({ name: "enter-timer-form", type: LaunchType.UserInitiated, context: { client: props.item } }) }
 		/>
 	);
@@ -119,11 +124,14 @@ function EnterTime(props: { item: Client }) {
 
 function NewInvoice(props: { item: Client }) {
 	return (
-		<Action.OpenInBrowser
-			title="New Invoice"
+		<Action
+			title="Invoice"
 			icon={{ source: Icon.BankNote, tintColor: Color.Yellow }}
 			shortcut={{ modifiers: ["cmd"], key: "i" }}
-			url={`${preferences.domain}/invoices/new?client_id=${props.item.id}`}
+			onAction={() => {
+				open(`${preferences.domain}/invoices/new?client_id=${props.item.id}`);
+				popToRoot();
+			}}
 		/>
 	);
 }
