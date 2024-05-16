@@ -14,6 +14,7 @@ export type Client = {
 	site_url: string;
 	minutes: number;
 	timeFormatted: string;
+	accessories: Array<any>;
 };
 
 export type CacheClients = {

@@ -11,7 +11,28 @@ export default function Command(context: LaunchProps) {
 	if (context.launchContext?.timerType) {
 		workingTimerType = context.launchContext.timerType;
 	}
-  const { data, isLoading } = usePromise(getClients);
+  let { data, isLoading } = usePromise(getClients);
+	if (data) {
+		for (var client of data) {
+			client.accessories = [];
+			if (client.minutes) {
+				client.accessories.push({
+					tag: {
+						value: client.timeFormatted,
+						color: Color.Blue
+					}
+				});
+			}
+			if (workingTimerType == 'new-invoice') {
+				client.accessories.push({
+					tag: {
+						value: client.currentrate ? `$${client.currentrate}` : '----',
+						color: Color.Green
+					}
+				});
+			}
+		}
+	}
   return (
     <List
       isLoading={isLoading}
@@ -21,13 +42,10 @@ export default function Command(context: LaunchProps) {
         <List.Item
 					key={item.id}
 					title={item.name}
-					subtitle={item.timeFormatted || ''}
+					subtitle={item.contact}
 					keywords={[item.contact]}
 					icon={item.logo}
-					accessories={[
-						{ tag: { value: `ID: ${item.id}`, color: Color.Magenta } },
-						{ tag: { value: item.currentrate ? `$${item.currentrate}` : '----', color: Color.Green } }
-					]}
+					accessories={item.accessories}
 					actions={<Actions item={item} timerType={workingTimerType} />}
 				/>
       ))}

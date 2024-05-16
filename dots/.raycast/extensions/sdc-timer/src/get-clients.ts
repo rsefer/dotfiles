@@ -45,8 +45,8 @@ export async function getClients(forceRefresh: Boolean = false) {
   return response.data;
 }
 
-export async function readCSV(filePath) {
-	let rows = [];
+export async function readCSV(filePath:string) {
+	let rows: Array<any> = [];
 	await pipeline(
     await fs.readFile(filePath, "utf8"),
     parse({
