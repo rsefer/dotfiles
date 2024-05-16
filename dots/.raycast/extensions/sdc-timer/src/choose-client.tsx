@@ -21,7 +21,7 @@ export default function Command(context: LaunchProps) {
         <List.Item
 					key={item.id}
 					title={item.name}
-					subtitle={item.contact}
+					subtitle={item.timeFormatted || ''}
 					keywords={[item.contact]}
 					icon={item.logo}
 					accessories={[

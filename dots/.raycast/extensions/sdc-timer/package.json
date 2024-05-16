@@ -11,7 +11,7 @@
   ],
   "license": "MIT",
   "preferences": [
-		{
+    {
       "name": "domain",
       "title": "Domain",
       "description": "Domain for API",
@@ -35,7 +35,7 @@
       "default": "",
       "required": true
     },
-		{
+    {
       "name": "hoursFile",
       "title": "Hours File",
       "description": "Location of hours file",
@@ -45,19 +45,19 @@
     }
   ],
   "commands": [
-		{
+    {
       "name": "toggle-timer",
       "title": "Toggle Timer",
       "description": "",
       "mode": "no-view"
     },
-		{
+    {
       "name": "enter-timer",
       "title": "Enter Time",
       "description": "",
       "mode": "no-view"
     },
-		{
+    {
       "name": "enter-timer-form",
       "title": "Enter Timer Form",
       "description": "",
@@ -69,13 +69,13 @@
       "description": "",
       "mode": "no-view"
     },
-		{
+    {
       "name": "new-invoice",
       "title": "New Invoice",
       "description": "",
       "mode": "no-view"
     },
-		{
+    {
       "name": "choose-client",
       "title": "Choose Client",
       "description": "",
@@ -94,6 +94,7 @@
     "@raycast/api": "^1.73.3",
     "@raycast/utils": "^1.15.0",
     "axios": "^1.6.8",
+    "csv-parse": "^5.5.6",
     "moment": "^2.30.1"
   },
   "devDependencies": {

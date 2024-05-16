@@ -12,6 +12,8 @@ export type Client = {
 	logo: string;
 	currentrate: number;
 	site_url: string;
+	minutes: number;
+	timeFormatted: string;
 };
 
 export type CacheClients = {
