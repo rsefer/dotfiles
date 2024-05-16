@@ -67,6 +67,7 @@
 	"git.autofetch": true,
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
+	"git.openRepositoryInParentFolders": "always",
 	"githubIssues.queries": [
 		{
 			"label": "Open Issues",
@@ -110,6 +111,9 @@
 	"prettier.singleQuote": true,
 	"prettier.trailingComma": "none",
 	"prettier.useTabs": true,
+	"projectManager.confirmSwitchOnActiveWindow": "always",
+	"projectManager.showParentFolderInfoOnDuplicates": true,
+	"projectManager.supportSymlinksOnBaseFolders": true,
 	"rainbow_csv.enable_context_menu_head": true,
 	"rainbow_csv.enable_context_menu_tail": true,
 	"rainbow_csv.rbql_with_headers_by_default": true,
@@ -138,6 +142,7 @@
 	"window.autoDetectColorScheme": true,
 	"window.closeWhenEmpty": true,
 	"window.commandCenter": false,
+	"window.confirmBeforeClose": "keyboardOnly",
 	"window.customTitleBarVisibility": "never",
 	"window.nativeTabs": true,
 	"window.restoreWindows": "preserve",
@@ -189,9 +194,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"window.confirmBeforeClose": "keyboardOnly",
-	"projectManager.confirmSwitchOnActiveWindow": "always",
-	"projectManager.showParentFolderInfoOnDuplicates": true,
-	"projectManager.supportSymlinksOnBaseFolders": true
+	"workbench.tree.renderIndentGuides": "onHover"
 }
