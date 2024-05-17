@@ -34,5 +34,12 @@
 			"Personal"
 		],
 		"enabled": true
+	},
+	{
+		"name": "frontline2018",
+		"rootPath": "/Users/rsefer/local/frontline-insurance/app/public/wp-content/themes/frontline2018",
+		"paths": [],
+		"tags": [],
+		"enabled": true
 	}
 ]
