@@ -24,7 +24,7 @@ export async function startTimer(id: number | string, name: string | null = null
 	};
 	await LocalStorage.setItem(storageKeys.timer, JSON.stringify(timer));
 	await LocalStorage.setItem(storageKeys.notifications, JSON.stringify([]));
-	await showHUD(`Started ${timer.name}`);
+	await showHUD(`🕐 Started ${timer.name}`);
 	return timer;
 }
 
@@ -50,7 +50,7 @@ export async function updateTimer(): Promise<Timer | null> {
 	}
 	await LocalStorage.setItem(storageKeys.timer, JSON.stringify(timer));
 	if (shouldNotify) {
-		await showHUD(`${timer.name}: ${timer.diffFormatted.long}`);
+		await showHUD(`🕐 ${timer.name}: ${timer.diffFormatted.long}`);
 	}
 	return timer;
 }
@@ -74,7 +74,7 @@ export async function logTime(id: number, name: string | null, durationMinutes: 
 		`${id},${name?.replace(/[^a-z0-9]/gi, "").substring(0, 15)},${durationMinutes},${moment().format("HH:mm:ss")},${moment().format("YYYY-MM-DD")}\r\n`,
 		"utf8",
 	);
-	await showHUD(`Logged ${name}: ${durationMinutes} minutes`);
+	await showHUD(`✏️ Logged ${name}: ${durationMinutes} minutes`);
 	return true;
 }
 
