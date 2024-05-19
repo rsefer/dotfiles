@@ -4,6 +4,7 @@
 # @raycast.schemaVersion 1
 # @raycast.title Open Obsidian Note
 # @raycast.mode silent
+# @raycast.packageName Obsidian
 
 # Optional parameters:
 # @raycast.icon 📝

@@ -4,6 +4,7 @@
 # @raycast.schemaVersion 1
 # @raycast.title Tailscale Toggle
 # @raycast.mode silent
+# @raycast.packageName Tailscale
 
 # Optional parameters:
 # @raycast.icon assets/tailscale.png
