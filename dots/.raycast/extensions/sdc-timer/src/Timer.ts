@@ -1,4 +1,4 @@
-import { LocalStorage, showHUD, getPreferenceValues } from "@raycast/api";
+import { LocalStorage, showHUD, Toast, showToast, getPreferenceValues } from "@raycast/api";
 import { Timer, Preferences } from "./types";
 import { promises as fs } from "fs";
 import moment from "moment";
@@ -24,7 +24,7 @@ export async function startTimer(id: number | string, name: string | null = null
 	};
 	await LocalStorage.setItem(storageKeys.timer, JSON.stringify(timer));
 	await LocalStorage.setItem(storageKeys.notifications, JSON.stringify([]));
-	await showHUD(`🕐 Started ${timer.name}`);
+	await notify(`🕐 Started ${timer.name}`);
 	return timer;
 }
 
@@ -50,7 +50,7 @@ export async function updateTimer(): Promise<Timer | null> {
 	}
 	await LocalStorage.setItem(storageKeys.timer, JSON.stringify(timer));
 	if (shouldNotify) {
-		await showHUD(`🕐 ${timer.name}: ${timer.diffFormatted.long}`);
+		await notify(`🕐 ${timer.name}: ${timer.diffFormatted.long}`);
 	}
 	return timer;
 }
@@ -74,7 +74,7 @@ export async function logTime(id: number, name: string | null, durationMinutes: 
 		`${id},${name?.replace(/[^a-z0-9]/gi, "").substring(0, 15)},${durationMinutes},${moment().format("HH:mm:ss")},${moment().format("YYYY-MM-DD")}\r\n`,
 		"utf8",
 	);
-	await showHUD(`✏️ Logged ${name}: ${durationMinutes} minutes`);
+	await notify(`✏️ Logged ${name}: ${durationMinutes} minutes`);
 	return true;
 }
 
@@ -107,4 +107,9 @@ export function formatDuration(duration: number, format: string = 'long'): strin
 		minutesString = `${minutes}m`;
 	}
 	return `${hoursString}${minutesString}`;
+}
+
+export async function notify(message: string, style: Toast.Style | null) {
+	// await showToast(style || Toast.Style.Success, message);
+	await showHUD(message);
 }
