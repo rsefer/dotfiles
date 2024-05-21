@@ -17,28 +17,32 @@ defaults write com.apple.dock autohide-delay -float 0 # no hide delay
 defaults write com.apple.dock show-process-indicators -bool true # show indicators for open applications
 defaults write com.apple.sock show-recents -bool false # don't show recently used applications
 
-dockutil --no-restart --add "/Applications/System Preferences.app"
-dockutil --no-restart --add "/Applications/1Password.app"
-dockutil --no-restart --add "/Applications/Fantastical.app"
-dockutil --no-restart --add "/Applications/Mimestream.app"
-dockutil --no-restart --add "/Applications/Messages.app"
-dockutil --no-restart --add "/Applications/Home.app"
-dockutil --no-restart --add "/Applications/Home Assistant.app"
-dockutil --no-restart --add "/Applications/Spotify.app"
-dockutil --no-restart --add "/Applications/Photos.app"
-dockutil --no-restart --add "/Applications/Twitter.app"
-dockutil --no-restart --add "/Applications/Google Chrome.app"
-dockutil --no-restart --add "/Applications/Safari.app"
-dockutil --no-restart --add "/Applications/Slack.app"
-dockutil --no-restart --add "/Applications/Adobe Photoshop 2024/Adobe Photoshop 2024.app"
-dockutil --no-restart --add "/Applications/Adobe Illustrator 2024/Adobe Illustrator 2024.app"
-dockutil --no-restart --add "/Applications/Figma.app"
-dockutil --no-restart --add "/Applications/Visual Studio Code.app"
-dockutil --no-restart --add "/Applications/GitHub Desktop.app"
-dockutil --no-restart --add "/Applications/Local.app"
-dockutil --no-restart --add "/Applications/iTerm.app"
-dockutil --no-restart --add "/Applications/Obsidian.app"
-dockutil --no-restart --add "~/Downloads"
+APPS=(
+	"System Preferences"
+	"1Password"
+	"Fantastical"
+	"Mimestream"
+	"Messages"
+	"Home"
+	"Home Assistant"
+	"Spotify"
+	"Photos"
+	"Twitter"
+	"Arc"
+	"Safari"
+	"Adobe Photoshop 2024/Adobe Photoshop 2024"
+	"Adobe Illustrator 2024/Adobe Illustrator 2024"
+	"Figma"
+	"Visual Studio Code"
+	"GitHub Desktop"
+	"Local"
+	"iTerm"
+	"Obsidian"
+)
+for APP in "${APPS[@]}"; do
+  echo "dockutil --no-restart --add \"/Applications/$APP.app\""
+done
+echo "dockutil --no-restart --add \"~/Downloads\""
 
 killall Dock
 
