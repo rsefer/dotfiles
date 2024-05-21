@@ -4,6 +4,8 @@ module.exports = {
 		cert: process.env.SSL_CRT_PATH
 	} : null),
 	files: '**/*',
+	reloadDelay: 500,
+	reloadDebounce: 500,
 	open: false,
 	ui: false,
 	// server: true, // now handled via the shell script
@@ -11,6 +13,9 @@ module.exports = {
 	watch: true,
 	notify: {
 		styles: {
+			pointerEvents: 'none',
+			userSelect: 'none',
+			opacity: '0.5',
 			top: 'auto',
 			bottom: '0',
 			borderRadius: '5px 0px 0px'

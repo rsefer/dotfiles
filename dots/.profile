@@ -6,6 +6,8 @@ export OLLAMA_HOST="http://ollama.spaniel-dragon.ts.net:11434/"
 export LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 export SSL_KEY_PATH="$LOCALHOSTSSLDIR/key.pem"
 export SSL_CRT_PATH="$LOCALHOSTSSLDIR/cert.pem"
+export SSL_FTQ_KEY_PATH="$LOCALHOSTSSLDIR/ftq/key.pem"
+export SSL_FTQ_CRT_PATH="$LOCALHOSTSSLDIR/ftq/cert.pem"
 export HISTCONTROL=ignoredups
 
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
