@@ -133,6 +133,16 @@
 	},
 	"terminal.external.osxExec": "iTerm.app",
 	"terminal.integrated.allowChords": false,
+	"terminal.integrated.allowedLinkSchemes": [
+		"file",
+		"http",
+		"https",
+		"mailto",
+		"vscode",
+		"vscode-insiders",
+		"raycast",
+		"hammerspoon"
+	],
 	"terminal.integrated.drawBoldTextInBrightColors": false,
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
 	"terminal.integrated.scrollback": 2000,
