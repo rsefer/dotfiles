@@ -12,5 +12,7 @@ dots/.composer/auth.json
 dots/.composer/cache
 dots/.composer/.htaccess
 dots/.composer/vendor
+dots/.config/karabiner/*
+!dots/.config/karabiner/karabiner.json
 mac-scripts/ipaddress.txt
 setup/installs/homebrew/Brewfile.lock.json

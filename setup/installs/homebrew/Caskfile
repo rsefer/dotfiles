@@ -26,6 +26,7 @@ cask 'handbrake'
 cask 'home-assistant'
 cask 'imageoptim', args: { appdir: '/Applications' }
 cask 'iterm2', args: { appdir: '/Applications' }
+cask 'karabiner-elements', args: { appdir: '/Applications' }
 cask 'local', args: { appdir: '/Applications' }
 cask 'lunar', args: { appdir: '/Applications' }
 cask 'macfuse'
