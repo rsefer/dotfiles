@@ -126,7 +126,7 @@
                         ]
                     },
                     {
-                        "description": "✨ + F1/F2 adjust keyboard brightness",
+                        "description": "Fn + F1/F2 adjust keyboard brightness",
                         "manipulators": [
                             {
                                 "from": {
