@@ -20,7 +20,7 @@
                     {
                         "manipulators": [
                             {
-                                "description": "Change caps_lock to command+control+option+shift.",
+                                "description": "Set Hyper Key (✨) - Change caps_lock to ⌃⌥⇧⌘",
                                 "from": {
                                     "key_code": "caps_lock",
                                     "modifiers": {
@@ -31,6 +31,12 @@
                                 },
                                 "to": [
                                     {
+                                        "set_variable": {
+                                            "name": "hyper_key",
+                                            "value": true
+                                        }
+                                    },
+                                    {
                                         "key_code": "left_shift",
                                         "modifiers": [
                                             "left_command",
@@ -39,78 +45,123 @@
                                         ]
                                     }
                                 ],
+                                "to_after_key_up": [
+                                    {
+                                        "set_variable": {
+                                            "name": "hyper_key",
+                                            "value": false
+                                        }
+                                    }
+                                ],
                                 "type": "basic"
                             }
                         ]
                     },
-										{
-											"description": "Change double tap right ⇧ key to caps lock",
-											"manipulators": [
-												{
-													"conditions": [
-														{
-															"name": "right_shift pressed",
-															"type": "variable_if",
-															"value": 1
-														}
-													],
-													"from": {
-														"key_code": "right_shift",
-														"modifiers": {
-															"optional": [
-																"any"
-															]
-														}
-													},
-													"to": [
-														{
-															"key_code": "caps_lock"
-														}
-													],
-													"type": "basic"
-												},
-												{
-													"from": {
-														"key_code": "right_shift",
-														"modifiers": {
-															"optional": [
-																"any"
-															]
-														}
-													},
-													"to": [
-														{
-															"set_variable": {
-																"name": "right_shift pressed",
-																"value": 1
-															}
-														},
-														{
-															"key_code": "right_shift"
-														}
-													],
-													"to_delayed_action": {
-														"to_if_canceled": [
-															{
-																"set_variable": {
-																	"name": "right_shift pressed",
-																	"value": 0
-																}
-															}
-														],
-														"to_if_invoked": [
-															{
-																"set_variable": {
-																	"name": "right_shift pressed",
-																	"value": 0
-																}
-															}
-														]
-													},
-													"type": "basic"
-												}
-											]
-										}
+                    {
+                        "description": "Double Shift to Toggle Caps Lock",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "right_shift pressed",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "caps_lock"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+                                "from": {
+                                    "key_code": "right_shift",
+                                    "modifiers": {
+                                        "optional": [
+                                            "any"
+                                        ]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "set_variable": {
+                                            "name": "right_shift pressed",
+                                            "value": 1
+                                        }
+                                    },
+                                    {
+                                        "key_code": "right_shift"
+                                    }
+                                ],
+                                "to_delayed_action": {
+                                    "to_if_canceled": [
+                                        {
+                                            "set_variable": {
+                                                "name": "right_shift pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ],
+                                    "to_if_invoked": [
+                                        {
+                                            "set_variable": {
+                                                "name": "right_shift pressed",
+                                                "value": 0
+                                            }
+                                        }
+                                    ]
+                                },
+                                "type": "basic"
+                            }
+                        ]
+                    },
+                    {
+                        "description": "✨ + F1/F2 adjust keyboard brightness",
+                        "manipulators": [
+                            {
+                                "from": {
+																	"key_code": "f1",
+																	"modifiers": {
+																			"mandatory": [
+																					"fn"
+																			]
+																	}
+                                },
+                                "to": [
+                                    {
+                                        "apple_vendor_top_case_key_code": "illumination_down"
+                                    }
+                                ],
+                                "type": "basic"
+                            },
+                            {
+															"from": {
+																	"key_code": "f2",
+																	"modifiers": {
+																			"mandatory": [
+																					"fn"
+																			]
+																	}
+															},
+															"to": [
+																	{
+																			"apple_vendor_top_case_key_code": "illumination_up"
+																	}
+															],
+															"type": "basic"
+													}
+                        ]
+                    }
                 ]
             },
             "devices": [
@@ -308,7 +359,7 @@
                 "delay_milliseconds_before_open_device": 1000
             },
             "selected": true,
-            "simple_modifications": [],
+						"simple_modifications": [],
             "virtual_hid_keyboard": {
                 "country_code": 0,
                 "indicate_sticky_modifier_keys_state": true,
