@@ -22,6 +22,8 @@ setup/installs/utilities/install.sh
 if test "$(uname)" = "Darwin"; then
 	info 'launching Hammerspoon'
 	open -a Hammerspoon
+	info 'launching Raycast'
+	open -a Raycast
 fi
 
 minus 'setup finished'

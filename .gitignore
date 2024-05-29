@@ -7,6 +7,7 @@ dots/.vscode/*
 !dots/.vscode/globalStorage/alefragnani.project-manager/projects.json
 dots/.vim/bundle
 dots/.hammerspoon
+dots/.raycast
 dots/.DS_Store
 dots/.composer/auth.json
 dots/.composer/cache

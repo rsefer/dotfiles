@@ -1,6 +1,10 @@
 # Dotfiles
 
-Based on the work of many. Originally inspired by [Zach Holman](https://github.com/holman/dotfiles). Hammerspoon config used to be included here but is now in a [separate repository](https://github.com/rsefer/hammerspoon-config).
+Based on the work of many. Originally inspired by [Zach Holman](https://github.com/holman/dotfiles).
+
+Hammerspoon config used to be included here but is now in a [separate repository](https://github.com/rsefer/hammerspoon-config).
+
+Raycast config used to be included here but is now in a [separate repository](https://github.com/rsefer/raycast-config).
 
 ## Initial Setup
 
