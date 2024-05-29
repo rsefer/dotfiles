@@ -1,10 +1,18 @@
-import { LaunchProps, Form, popToRoot, ActionPanel, Action } from "@raycast/api";
+import { LaunchProps, Form, popToRoot, ActionPanel, Action, getPreferenceValues } from "@raycast/api";
 import { logTime } from "./Timer";
+
+const preferences = getPreferenceValues<Preferences>();
 
 export default function Command(context: LaunchProps) {
 	let client = context.launchContext?.client;
   return (
 		<Form
+			searchBarAccessory={
+				<Form.LinkAccessory
+					target={preferences.domain}
+					text="Go to Biz"
+				/>
+			}
 			actions={
 				<ActionPanel>
 					<Action.SubmitForm
