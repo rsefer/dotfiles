@@ -1,0 +1,45 @@
+{
+	"screens": [
+		{
+			"slug": "laptop",
+			"name": "Color LCD",
+			"aliases": ["Built-In Display", "Built-In Retina Display"]
+		},
+		{
+			"slug": "desk",
+			"name": "Studio Display"
+		},
+		{
+			"slug": "laptopWithSide",
+			"name": "RTKFHD"
+		}
+	],
+	"appGroups": [
+		{
+			"apps": ["com.google.Chrome", "company.thebrowser.Browser"],
+			"screenSetup": {
+				"desk": false,
+				"laptop": false,
+				"laptopWithSide": false
+			},
+			"sizes": {
+				"desk": "left-half",
+				"laptop": "maximize",
+				"laptopWithSide": "maximize"
+			}
+		},
+		{
+			"apps": ["com.microsoft.VSCode"],
+			"screenSetup": {
+				"desk": false,
+				"laptop": false,
+				"laptopWithSide": false
+			},
+			"sizes": {
+				"desk": "right-half",
+				"laptop": "maximize",
+				"laptopWithSide": "maximize"
+			}
+		}
+	]
+}
