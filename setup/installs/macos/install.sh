@@ -39,10 +39,15 @@ APPS=(
 	"iTerm"
 	"Obsidian"
 )
+DIRECTORIES=(
+	"~/Downloads"
+)
 for APP in "${APPS[@]}"; do
   echo "dockutil --no-restart --add \"/Applications/$APP.app\""
 done
-echo "dockutil --no-restart --add \"~/Downloads\""
+for DIRECTORY in "${DIRECTORIES[@]}"; do
+  echo "dockutil --no-restart --add \"$DIRECTORY\""
+done
 
 killall Dock
 
@@ -84,6 +89,7 @@ defaults write com.apple.terminal ShowLineMarks -int 0
 # iTerm2
 defaults write com.googlecode.iterm2.plist PrefsCustomFolder -string "$DOTFILES_ROOT/setup/installs/macos/iterm"
 defaults write com.googlecode.iterm2.plist LoadPrefsFromCustomFolder -bool true
+defaults write com.googlecode.iterm2 DisableWindowSizeSnap -integer 1
 
 # 1Password symlink
 mkdir -p ~/.1password && ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1password/t/agent.sock ~/.1password/agent.sock

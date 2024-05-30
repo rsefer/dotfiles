@@ -352,6 +352,8 @@
 	<string>4FA620B2-1A5C-41CB-8D0A-06625626FCDA</string>
 	<key>DisableFullscreenTransparency</key>
 	<true/>
+	<key>DisableWindowSizeSnap</key>
+	<integer>1</integer>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideTab</key>

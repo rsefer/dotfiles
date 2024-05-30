@@ -17,7 +17,6 @@ if test "$(uname)" = "Darwin"; then
 fi
 
 setup/installs/dotfiles.sh
-setup/installs/utilities/install.sh
 
 if test "$(uname)" = "Darwin"; then
 	info 'launching Hammerspoon'
