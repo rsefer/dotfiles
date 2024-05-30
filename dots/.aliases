@@ -1,7 +1,5 @@
 alias reload!=". $HOME/.zshrc"
 
-alias brew86="arch -x86_64 /usr/local/homebrew/bin/brew"
-
 alias mv="mv -iv"
 alias mkdir="mkdir -vp"
 alias cp="cp -riv"
@@ -48,9 +46,6 @@ alias oln="open http://localhost:3000"
 alias osascriptdebug="AEDebug=1 AEDebugSends=1 AEDebugReceives=1 osascript"
 
 alias code="open -a Visual\ Studio\ Code && code -r"
-
-alias wttr="curl wttr.in/\?2nFQ"
-alias weather="wttr"
 
 alias wpp="wppublish"
 
