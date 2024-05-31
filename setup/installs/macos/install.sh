@@ -78,7 +78,7 @@ sudo systemsetup -setrestartfreeze on # restart on freeze
 # # Install SF Mono font
 # cp -R /Applications/Utilities/Terminal.app/Contents/Resources/Fonts/. /Library/Fonts/
 
-# Terminal - adapted from https://github.com/ymendel/dotfiles/blob/master/osx/terminal.defaults
+# Terminal - adapted from https://github.com/ymendel/dotfiles/blob/main/macos/terminal/terminal.defaults
 TERMINAL_THEME_NAME="Tomorrow Night RSefer"
 open "$DOTFILES_ROOT/setup/installs/macos/$TERMINAL_THEME_NAME.terminal"
 sleep 1
