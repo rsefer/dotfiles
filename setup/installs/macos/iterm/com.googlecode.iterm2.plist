@@ -354,6 +354,8 @@
 	<true/>
 	<key>DisableWindowSizeSnap</key>
 	<integer>1</integer>
+	<key>FocusFollowsMouse</key>
+	<true/>
 	<key>HapticFeedbackForEsc</key>
 	<false/>
 	<key>HideTab</key>
@@ -362,6 +364,8 @@
 	<true/>
 	<key>IRMemory</key>
 	<integer>4</integer>
+	<key>NeverBlockSystemShutdown</key>
+	<true/>
 	<key>NeverWarnAboutShortLivedSessions_4FA620B2-1A5C-41CB-8D0A-06625626FCDA</key>
 	<true/>
 	<key>NeverWarnAboutShortLivedSessions_4FA620B2-1A5C-41CB-8D0A-06625626FCDA_selection</key>
@@ -1700,7 +1704,7 @@
 	<key>PreserveWindowSizeWhenTabBarVisibilityChanges</key>
 	<true/>
 	<key>PromptOnQuit</key>
-	<false/>
+	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
 	<key>SoundForEsc</key>

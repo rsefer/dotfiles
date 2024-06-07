@@ -43,5 +43,12 @@
 			"Work"
 		],
 		"enabled": true
+	},
+	{
+		"name": "collegenutritionist",
+		"rootPath": "/Users/rsefer/local/college-nutritionist/app/public/wp-content/themes/collegenutritionist",
+		"paths": [],
+		"tags": [],
+		"enabled": true
 	}
 ]
