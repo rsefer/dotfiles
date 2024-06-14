@@ -16,6 +16,7 @@
 	"css.lint.hexColorLength": "warning",
 	"csv-preview.capitalizeHeaders": false,
 	"debug.javascript.autoAttachFilter": "smart",
+	"debug.toolBarLocation": "docked",
 	"diffEditor.experimental.showMoves": true,
 	"diffEditor.hideUnchangedRegions.enabled": true,
 	"diffEditor.ignoreTrimWhitespace": false,
@@ -25,7 +26,7 @@
 	"editor.codeLens": false,
 	"editor.colorDecorators": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
-	"editor.fontSize": 13,
+	"editor.fontSize": 18,
 	"editor.guides.bracketPairs": true,
 	"editor.hover.delay": 2500,
 	"editor.hover.enabled": true,
@@ -76,6 +77,7 @@
 	],
 	"githubPullRequests.createOnPublishBranch": "never",
 	"githubPullRequests.pullBranch": "never",
+	"githubPullRequests.pushBranch": "always",
 	"githubPullRequests.queries": [],
 	"html.format.templating": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
@@ -145,6 +147,7 @@
 	],
 	"terminal.integrated.drawBoldTextInBrightColors": false,
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
+	"terminal.integrated.fontSize": 15,
 	"terminal.integrated.scrollback": 2000,
 	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.tabs.enabled": false,
@@ -158,6 +161,8 @@
 	"window.restoreWindows": "preserve",
 	"window.systemColorTheme": "auto",
 	"window.titleBarStyle": "native",
+	"window.zoomLevel": -3,
+	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.colorCustomizations": {
 		"statusBar.background": "#1A1A1A",
@@ -204,7 +209,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"debug.toolBarLocation": "docked",
-	"githubPullRequests.pushBranch": "always"
+	"workbench.tree.renderIndentGuides": "onHover"
 }
