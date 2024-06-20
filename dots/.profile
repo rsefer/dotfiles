@@ -35,7 +35,3 @@ chruby ruby-2.7.4
 source $HOME/.aliases
 
 source $HOME/.config/op/plugins.sh
-
-echo -e "=================="
-echo -e " Sefer Design Co. "
-echo -e "=================="
