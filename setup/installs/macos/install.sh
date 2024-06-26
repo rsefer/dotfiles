@@ -33,6 +33,8 @@ APPS=(
 	"Adobe Photoshop 2024/Adobe Photoshop 2024"
 	"Adobe Illustrator 2024/Adobe Illustrator 2024"
 	"Figma"
+	"ChatGPT"
+	"Enchanted"
 	"Visual Studio Code"
 	"GitHub Desktop"
 	"Local"
