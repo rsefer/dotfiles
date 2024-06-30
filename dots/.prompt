@@ -1,3 +1,4 @@
+# NOTE: deprecated in favor of starship https://starship.rs
 # from parth's prompt: https://github.com/Parth/dotfiles/blob/f5dfdf080ea0e167dfc767dcd1833638cff8c7bd/zsh/prompt.sh
 
 autoload -U colors && colors

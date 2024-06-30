@@ -26,4 +26,5 @@ zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
-source $HOME/.prompt
+# source $HOME/.prompt
+eval "$(starship init zsh)"
