@@ -33,7 +33,7 @@
 		"description": "PHP tags"
 	},
 	"display-flex": {
-		"scope": "css,scss,html",
+		"scope": "css,scss,less,html",
 		"prefix": "dflex",
 		"body": [
 			"display: flex;",
