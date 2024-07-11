@@ -65,5 +65,10 @@
 		"key": "shift+cmd+c",
 		"command": "-workbench.action.terminal.openNativeConsole",
 		"when": "!terminalFocus"
+	},
+	{
+		"key": "alt+cmd+/",
+		"command": "editor.action.blockComment",
+		"when": "editorTextFocus && !editorReadonly"
 	}
 ]
