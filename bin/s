@@ -12,7 +12,7 @@ if os.getenv('OLLAMA_HOST') is None:
 	exit(1)
 
 ollamaClient = AsyncClient(host=os.getenv('OLLAMA_HOST'))
-defaultModelName = os.getenv('OLLAMA_DEFAULT_MODEL', 'phi3:latest')
+defaultModelName = os.getenv('OLLAMA_DEFAULT_MODEL', 'llama3.1:latest')
 
 def getInput(message, includeCarriageReturn=False):
 	carriageReturn = '\n\n'
