@@ -9,10 +9,10 @@ dots/.vim/bundle
 dots/.hammerspoon
 dots/.raycast
 dots/.DS_Store
-dots/.composer/auth.json
-dots/.composer/cache
-dots/.composer/.htaccess
-dots/.composer/vendor
+dots/.composer/*
+!dots/.composer/config.json
+!dots/.composer/composer.json
+!dots/.composer/composer.lock
 dots/.config/karabiner/*
 !dots/.config/karabiner/karabiner.json
 mac-scripts/ipaddress.txt
