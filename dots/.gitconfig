@@ -13,6 +13,7 @@
 [color]
   ui = true
 [core]
+  pager = delta
   excludesfile = ~/.gitignore_global
 [filter "hawser"]
   clean = git hawser clean %f
@@ -25,3 +26,13 @@
 	required = true
 [init]
 	defaultBranch = main
+[interactive]
+  diffFilter = delta --color-only
+[delta]
+  side-by-side = false
+  navigate = true
+	line-numbers = true
+[merge]
+  conflictstyle = diff3
+[diff]
+  colorMoved = default
