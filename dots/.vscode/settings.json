@@ -163,7 +163,6 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
-	"window.zoomLevel": -3,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.colorCustomizations": {
@@ -211,5 +210,7 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover"
+	"workbench.tree.renderIndentGuides": "onHover",
+	"security.promptForLocalFileProtocolHandling": false,
+	"window.zoomLevel": -2
 }
