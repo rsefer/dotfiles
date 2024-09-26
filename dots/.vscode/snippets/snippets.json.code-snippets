@@ -32,6 +32,26 @@
 		],
 		"description": "PHP tags"
 	},
+	"echo var_dump": {
+		"scope": "php",
+		"prefix": [
+			"evd"
+		],
+		"body": [
+			"echo var_dump($1);"
+		],
+		"description": "echo var_dump"
+	},
+	"error_log json_encode": {
+		"scope": "php",
+		"prefix": [
+			"eje"
+		],
+		"body": [
+			"error_log(json_encode($1));"
+		],
+		"description": "error_log json_encode"
+	},
 	"display-flex": {
 		"scope": "css,scss,less,html",
 		"prefix": "dflex",

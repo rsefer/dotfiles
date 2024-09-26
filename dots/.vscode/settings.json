@@ -212,5 +212,6 @@
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
 	"security.promptForLocalFileProtocolHandling": false,
+	"gitlens.codeLens.enabled": false,
 	"window.zoomLevel": -2
 }
