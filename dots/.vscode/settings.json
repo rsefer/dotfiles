@@ -1,4 +1,9 @@
 {
+	"[go]": {
+		"editor.defaultFormatter": "golang.go",
+		"editor.formatOnSave": true,
+		"editor.insertSpaces": true
+	},
 	"aws.codeWhisperer.importRecommendation": false,
 	"aws.suppressPrompts": {
 		"codeWhispererConnectionExpired": true,
@@ -80,6 +85,8 @@
 	"githubPullRequests.pullBranch": "never",
 	"githubPullRequests.pushBranch": "always",
 	"githubPullRequests.queries": [],
+	"gitlens.codeLens.enabled": false,
+	"go.showWelcome": false,
 	"html.format.templating": true,
 	"javascript.updateImportsOnFileMove.enabled": "always",
 	"launch": {
@@ -129,6 +136,7 @@
 	"scss.lint.float": "warning",
 	"scss.lint.hexColorLength": "warning",
 	"search.showLineNumbers": true,
+	"security.promptForLocalFileProtocolHandling": false,
 	"security.workspace.trust.enabled": false,
 	"security.workspace.trust.untrustedFiles": "open",
 	"task.problemMatchers.neverPrompt": {
@@ -163,6 +171,7 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
+	"window.zoomLevel": -2,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.colorCustomizations": {
@@ -210,8 +219,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"security.promptForLocalFileProtocolHandling": false,
-	"gitlens.codeLens.enabled": false,
-	"window.zoomLevel": -2
+	"workbench.tree.renderIndentGuides": "onHover"
 }
