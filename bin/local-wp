@@ -1,0 +1,31 @@
+#!/bin/sh
+#
+# access Local WP site shell and wp-cli
+
+set -e
+
+PACKAGE_FILE_NAME="package.json"
+
+if [ ! -f $PACKAGE_FILE_NAME ]; then
+	echo "No $PACKAGE_FILE_NAME found."
+	exit 1
+fi
+
+DOMAIN=$(cat $PACKAGE_FILE_NAME | jq -r '.sdc.browsersync.localProxyURL')
+
+if [ -z "$DOMAIN" ] || [ $DOMAIN == "null" ]; then
+	echo "No localProxyURL domain found in $PACKAGE_FILE_NAME."
+	exit 1
+fi
+
+DOMAIN=${DOMAIN#"http://"}
+DOMAIN=${DOMAIN#"https://"}
+
+LOCAL_SITE_ID=$(cat /Users/"$USER"/Library/Application\ Support/Local/sites.json | jq -r ".[] | select(.domain == \"$DOMAIN\").id")
+
+if [ -z "$LOCAL_SITE_ID" ] || [ $LOCAL_SITE_ID == "null" ]; then
+	echo "No local site id found."
+	exit 1
+fi
+
+exec /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SITE_ID.sh
