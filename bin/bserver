@@ -4,6 +4,22 @@
 
 set -e
 
+CURRENT_PWD=$PWD
+
+for arg in "$@"; do
+	if [[ $arg == *"--proxy"* ]]; then
+		URI=$(echo "$arg" | sed "s/--proxy=//g")
+		DOMAIN_WITH_TLD=$(basename $URI)
+		DOMAIN=$(echo "$DOMAIN_WITH_TLD" | sed "s/.local$//")
+		if [ ! -f "$LOCALHOSTSSLDIR/domains/${DOMAIN_WITH_TLD}_cert.pem" ]; then
+			cd $LOCALHOSTSSLDIR/domains
+			mkcert -install -cert-file "${DOMAIN_WITH_TLD}_cert.pem" -key-file "${DOMAIN_WITH_TLD}_key.pem" $DOMAIN_WITH_TLD localhost 127.0.0.1
+			cd $CURRENT_PWD
+		fi
+		break
+	fi
+done
+
 echo "Starting browser-sync session"
 
 DEFAULTARGS="--server"

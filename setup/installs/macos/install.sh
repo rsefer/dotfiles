@@ -101,6 +101,7 @@ mkdir -p ~/.1password && ln -s ~/Library/Group\ Containers/2BUA8C4S2C.com.1passw
 info "creating local ssl"
 
 mkdir $LOCALHOSTSSLDIR
+mkdir $LOCALHOSTSSLDIR/domains
 cd $LOCALHOSTSSLDIR
 
 mkcert -install -cert-file cert.pem -key-file key.pem localhost 127.0.0.1 ::1
