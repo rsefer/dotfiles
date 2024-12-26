@@ -104,7 +104,6 @@ mkdir $LOCALHOSTSSLDIR
 mkdir $LOCALHOSTSSLDIR/domains
 cd $LOCALHOSTSSLDIR
 
-mkcert -install -cert-file cert.pem -key-file key.pem localhost 127.0.0.1 ::1
-# mkcert -install -cert-file cert.pem -key-file key.pem otherdomain.local yetanotherdomain.local localhost 127.0.0.1 ::1
+local-ssl
 
 fi

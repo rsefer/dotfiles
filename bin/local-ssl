@@ -1,0 +1,21 @@
+#!/bin/sh
+#
+# create localhost + site domains for Local SSL
+
+set -e
+
+DEFAULT_DOMAINS=(
+	"localhost"
+	"127.0.0.1"
+	"::1"
+)
+LOCAL_SITE_DOMAINS=$(cat /Users/"$USER"/Library/Application\ Support/Local/sites.json | jq -r ".[].domain")
+LOCAL_SITE_DOMAINS_STRING=$(IFS=" "; echo "${LOCAL_SITE_DOMAINS[*]}")
+# DOMAINS=("${DEFAULT_DOMAINS[@]}" "${LOCAL_SITE_DOMAINS[@]}")
+DOMAINS=$(echo "${DEFAULT_DOMAINS[@]}" $LOCAL_SITE_DOMAINS_STRING)
+
+cd $LOCALHOSTSSLDIR
+
+# mkcert -install -cert-file cert.pem -key-file key.pem otherdomain.local yetanotherdomain.local localhost 127.0.0.1 ::1
+
+mkcert -install -cert-file cert.pem -key-file key.pem $DOMAINS
