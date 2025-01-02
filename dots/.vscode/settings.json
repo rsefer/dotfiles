@@ -228,5 +228,8 @@
 	"gitlens.views.commits.pullRequests.enabled": false,
 	"gitlens.views.commits.avatars": false,
 	"go.toolsManagement.autoUpdate": true,
-	"window.zoomLevel": -2
+	"window.zoomLevel": -2,
+	"go.coverOnTestPackage": false,
+	"go.testExplorer.enable": false,
+	"go.tasks.provideDefault": false
 }
