@@ -8,7 +8,6 @@ tap 'homebrew/services'
 cask '1password-cli', args: { appdir: '/Applications' }
 cask '1password', args: { appdir: '/Applications' }
 cask 'adobe-creative-cloud', args: { appdir: '/Applications' }
-cask 'arc', args: { appdir: '/Applications' }
 cask 'autodesk-fusion', args: { appdir: '/Applications' }
 cask 'backblaze', args: { appdir: '/Applications' }
 cask 'balenaetcher'
@@ -36,6 +35,7 @@ cask 'mimestream', args: { appdir: '/Applications' }
 cask 'mongodb-compass'
 cask 'ngrok', args: { appdir: '/Applications' }
 cask 'obsidian', args: { appdir: '/Applications' }
+cask 'orion', args: { appdir: '/Applications' }
 cask 'postman', args: { appdir: '/Applications' }
 cask 'raycast', args: { appdir: '/Applications' }
 cask 'sf-symbols'

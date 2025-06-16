@@ -171,7 +171,8 @@
 		"vscode",
 		"vscode-insiders",
 		"raycast",
-		"hammerspoon"
+		"hammerspoon",
+		"docker-desktop"
 	],
 	"terminal.integrated.drawBoldTextInBrightColors": false,
 	"terminal.integrated.enableMultiLinePasteWarning": "never",
@@ -195,7 +196,6 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
-	"window.zoomLevel": -2,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.colorCustomizations": {
@@ -247,5 +247,10 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover"
+	"workbench.tree.renderIndentGuides": "onHover",
+	"window.zoomLevel": -2,
+	"github.copilot.nextEditSuggestions.enabled": true,
+	"github.copilot.chat.languageContext.fix.typescript.enabled": true,
+	"github.copilot.chat.languageContext.inline.typescript.enabled": true,
+	"github.copilot.chat.languageContext.typescript.enabled": true
 }

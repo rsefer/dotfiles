@@ -20,11 +20,15 @@ for arg in "$@"; do
 	fi
 done
 
-echo "Starting browser-sync session"
+DEFAULTARGS=()
 
-DEFAULTARGS="--server"
-if [[ $@ == *"--proxy"* ]]; then
-  DEFAULTARGS=""
+if [[ $@ != *"--proxy"* ]]; then
+	DEFAULTARGS+=("--server")
 fi
+if [[ $@ != *"--files"* ]]; then
+	DEFAULTARGS+=("--files=**/*")
+fi
+
+echo "Starting browser-sync session"
 
 browser-sync start --config $DOTFILES_ROOT/mac-scripts/bs-config.js $DEFAULTARGS $@

@@ -3,7 +3,7 @@ module.exports = {
 		key: process.env.SSL_KEY_PATH,
 		cert: process.env.SSL_CRT_PATH
 	} : null),
-	files: '**/*',
+	// files: '**/*', // now handled via the shell script
 	reloadDelay: 500,
 	reloadDebounce: 500,
 	open: false,
