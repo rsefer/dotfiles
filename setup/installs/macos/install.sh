@@ -28,6 +28,7 @@ APPS=(
 	"Photos"
 	"Twitter"
 	"Orion"
+	"Zen"
 	"Google Chrome"
 	"Slack"
 	"Figma"

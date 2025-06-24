@@ -25,6 +25,7 @@ gcmfunc() {
 }
 alias gcm="gcmfunc"
 alias gc="git checkout"
+alias gp="git pull"
 alias gpu="git pull"
 alias gl="git log --all --decorate --oneline --graph"
 

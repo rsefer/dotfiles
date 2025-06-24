@@ -48,6 +48,7 @@ cask 'virtualbox', args: { appdir: '/Applications' }
 cask 'visual-studio-code', args: { appdir: '/Applications' }
 cask 'vnc-viewer'
 cask 'xquartz', args: { appdir: '/Applications' }
+cask 'zen', args: { appdir: '/Applications' }
 cask 'zoom'
 
 # get list of installed apps from the appstore: mas list

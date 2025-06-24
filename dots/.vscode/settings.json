@@ -86,7 +86,16 @@
 	"githubPullRequests.createOnPublishBranch": "never",
 	"githubPullRequests.pullBranch": "never",
 	"githubPullRequests.pushBranch": "always",
-	"githubPullRequests.queries": [],
+	"githubPullRequests.queries": [
+		{
+			"label": "Local Pull Request Branches",
+			"query": "default"
+		},
+		{
+			"label": "All Open",
+			"query": "default"
+		}
+	],
 	"gitlens.codeLens.enabled": false,
 	"gitlens.currentLine.enabled": false,
 	"gitlens.hovers.currentLine.over": "line",
