@@ -1,5 +1,4 @@
 export DOTFILES_ROOT=$HOME/dotfiles
-export UTILS_ROOT=$HOME/utils
 export EDITOR="code -w"
 export NOTES_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
 export OLLAMA_HOST="http://ollama.spaniel-dragon.ts.net:11434/"
@@ -17,7 +16,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
 export NODE_PATH="$(which node)"
 
-export PATH="/opt/homebrew/opt/curl/bin:$(go env GOPATH)/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$NODE_PATH:$DOTFILES_ROOT/bin:$PATH:$HOME/.rvm/bin"
+export PATH="/opt/homebrew/opt/curl/bin:$(go env GOPATH)/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$NODE_PATH:$DOTFILES_ROOT/bin:$PATH"
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
