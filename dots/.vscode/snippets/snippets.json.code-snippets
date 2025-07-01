@@ -52,6 +52,16 @@
 		],
 		"description": "error_log json_encode"
 	},
+	"error_log json_encode json pretty": {
+		"scope": "php",
+		"prefix": [
+			"ejejs"
+		],
+		"body": [
+			"error_log(json_encode($1, JSON_PRETTY_PRINT | JSON_UNESCAPED_SLASHES));"
+		],
+		"description": "error_log json_encode"
+	},
 	"display-flex": {
 		"scope": "css,scss,less,html",
 		"prefix": "dflex",
