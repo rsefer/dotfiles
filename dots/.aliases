@@ -1,5 +1,7 @@
 alias reload!=". $HOME/.zshrc"
 
+alias nvm="echo 'Use fnm instead of nvm. See: https://github.com/Schniz/fnm/blob/master/docs/configuration.md'"
+
 alias mv="mv -iv"
 alias mkdir="mkdir -vp"
 alias cp="cp -riv"

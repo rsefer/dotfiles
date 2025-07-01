@@ -1,6 +1,5 @@
 source $HOME/.profile
 source $DOTFILES_ROOT/zsh/keybindings.sh
-source $DOTFILES_ROOT/zsh/nvmrc-autoswitch.sh
 
 if type brew &>/dev/null; then
 

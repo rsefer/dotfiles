@@ -18,9 +18,9 @@ export NODE_PATH="$(which node)"
 
 export PATH="/opt/homebrew/opt/curl/bin:$(go env GOPATH)/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$NODE_PATH:$DOTFILES_ROOT/bin:$PATH"
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+# manage node version and automatically switch to the correct version based on .nvmrc or .node-version files
+# see https://github.com/Schniz/fnm/blob/master/docs/configuration.md
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
 
 if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"

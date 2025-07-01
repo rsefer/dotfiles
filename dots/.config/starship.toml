@@ -10,6 +10,8 @@ $cmd_duration\
 $line_break\
 $character"""
 
+command_timeout = 1000
+
 [directory]
 style = "blue"
 truncation_length = 4

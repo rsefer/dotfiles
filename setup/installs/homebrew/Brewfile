@@ -18,6 +18,7 @@ brew 'docker'
 brew 'dockutil'
 brew 'expect'
 brew 'ffmpeg'
+brew 'fnm' # replaces nvm
 brew 'fx'
 brew 'gh'
 brew 'git-delta'
@@ -46,7 +47,6 @@ brew 'mysql', restart_service: true
 brew 'neofetch'
 brew 'node', link: false
 brew 'nss'
-brew 'nvm'
 brew 'openldap'
 brew 'pandoc'
 brew 'pantheon-systems/external/terminus'
