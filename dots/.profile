@@ -31,3 +31,10 @@ chruby ruby-2.7.4
 source $HOME/.aliases
 
 source $HOME/.config/op/plugins.sh
+
+# fnm: manages node versions and automatically switches to the correct version based on .nvmrc or .node-version files
+# see https://github.com/Schniz/fnm/blob/master/docs/configuration.md
+eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell $(basename $SHELL))"
+
+# starship: shell prompt
+eval "$(starship init $(basename $SHELL))"

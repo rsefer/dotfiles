@@ -24,10 +24,3 @@ zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
-
-# manage node version and automatically switch to the correct version based on .nvmrc or .node-version files
-# see https://github.com/Schniz/fnm/blob/master/docs/configuration.md
-eval "$(fnm env --use-on-cd --version-file-strategy=recursive --shell zsh)"
-
-# source $HOME/.prompt
-eval "$(starship init zsh)"
