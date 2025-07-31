@@ -1,6 +1,7 @@
 {
 	"jQuery(document).ready": {
 		"prefix": "jdr",
+		"scope": "javascript,typescript,html",
 		"body": [
 			"(function($) {",
 			"\t$0",
@@ -8,8 +9,18 @@
 		],
 		"description": "jQuery wrapper"
 	},
+	"jQuery(document).on('click')": {
+		"prefix": "jdoc",
+		"scope": "javascript,typescript,html",
+		"body": [
+			"jQuery(document).on('click', '${1:clickTarget}', function(e) {",
+			"\t$0",
+			"});"
+		],
+		"description": "jQuery on click"
+	},
 	"function": {
-		"scope": "javascript,html",
+		"scope": "javascript,typescript,html",
 		"prefix": "func",
 		"body": [
 			"function ${1:functionName}($2) {",
@@ -18,11 +29,21 @@
 		],
 		"description": "function"
 	},
+	"export function": {
+		"scope": "javascript,typescript,html",
+		"prefix": "efunc",
+		"body": [
+			"export function ${1:functionName}($2) {",
+			"\t$0",
+			"}"
+		],
+		"description": "export function"
+	},
 	"php": {
 		"scope": "php",
 		"prefix": [
-			"<?p",
 			"<?",
+			"<?p",
 			"<?php"
 		],
 		"body": [
@@ -63,7 +84,7 @@
 		"description": "error_log json_encode"
 	},
 	"display-flex": {
-		"scope": "css,scss,less,html",
+		"scope": "css,scss,html",
 		"prefix": "dflex",
 		"body": [
 			"display: flex;",

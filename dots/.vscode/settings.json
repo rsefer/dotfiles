@@ -80,7 +80,7 @@
 	"githubIssues.queries": [
 		{
 			"label": "Open Issues",
-			"query": "repo:${owner}/${repository} state:open"
+			"query": "repo:${owner}/${repository} state:open sort:created-desc"
 		}
 	],
 	"githubPullRequests.createOnPublishBranch": "never",
