@@ -44,22 +44,11 @@ pwdcpfunc() {
 }
 alias pwdcp="pwdcpfunc"
 
-alias ol="open https://localhost:3000"
-alias oln="open http://localhost:3000"
-
 alias osascriptdebug="AEDebug=1 AEDebugSends=1 AEDebugReceives=1 osascript"
 
 alias code="open -a Visual\ Studio\ Code && code -r"
 
 alias wpp="wppublish"
-
-transfer() {
-  tmpfile=$( mktemp -t transferXXX )
-  curl --progress-bar --upload-file "$1" https://transfer.sh/$(basename $1) >> $tmpfile;
-  cat $tmpfile | pbcopy;
-	echo "$(pbpaste) copied to clipboard";
-  rm -f $tmpfile;
-}
 
 function take() {
 	mkdir $@ && cd ${@:$#}
