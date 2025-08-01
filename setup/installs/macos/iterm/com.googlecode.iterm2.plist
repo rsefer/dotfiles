@@ -1149,6 +1149,8 @@
 	<true/>
 	<key>QuitWhenAllWindowsClosed</key>
 	<false/>
+	<key>ShowSecureKeyboardEntryIndicator</key>
+	<false/>
 	<key>SoundForEsc</key>
 	<false/>
 	<key>TabStyleWithAutomaticOption</key>
