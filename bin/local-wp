@@ -4,14 +4,22 @@
 
 set -e
 
-PACKAGE_FILE_NAME="package.json"
+WORKING_CONFIG_FILE_NAME=".sdc-build-wp/config.json"
 
-if [ ! -f $PACKAGE_FILE_NAME ]; then
-	echo "No $PACKAGE_FILE_NAME found."
-	exit 1
+if [ ! -f $WORKING_CONFIG_FILE_NAME ]; then
+	echo "No $WORKING_CONFIG_FILE_NAME found."
+	WORKING_CONFIG_FILE_NAME="package.json"
+	if [ ! -f $WORKING_CONFIG_FILE_NAME ]; then
+		echo "No $WORKING_CONFIG_FILE_NAME found."
+		exit 1
+	else
+		DOMAIN=$(cat $WORKING_CONFIG_FILE_NAME | jq -r '.sdc.browsersync.localProxyURL')
+	fi
+else
+	DOMAIN=$(cat $WORKING_CONFIG_FILE_NAME | jq -r '.browsersync.localProxyURL')
 fi
 
-DOMAIN=$(cat $PACKAGE_FILE_NAME | jq -r '.sdc.browsersync.localProxyURL')
+echo $DOMAIN
 
 if [ -z "$DOMAIN" ] || [ $DOMAIN == "null" ]; then
 	echo "No localProxyURL domain found in $PACKAGE_FILE_NAME."
