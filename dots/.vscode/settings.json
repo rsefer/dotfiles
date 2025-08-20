@@ -234,6 +234,7 @@
 	},
 	"workbench.colorTheme": "Tomorrow Night",
 	"workbench.editor.customLabels.patterns": {
+		"**/.*.*": "${dirname}/${filename}.${extname}",
 		"**/.*": "${dirname}/${filename}",
 		"**/*.*": "${dirname}/${filename}.${extname}"
 	},
