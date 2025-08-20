@@ -16,6 +16,4 @@ DOMAINS=$(echo "${DEFAULT_DOMAINS[@]}" $LOCAL_SITE_DOMAINS_STRING)
 
 cd $LOCALHOSTSSLDIR
 
-# mkcert -install -cert-file cert.pem -key-file key.pem otherdomain.local yetanotherdomain.local localhost 127.0.0.1 ::1
-
 mkcert -install -cert-file cert.pem -key-file key.pem $DOMAINS
