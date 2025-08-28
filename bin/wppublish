@@ -50,7 +50,7 @@ if test -f "$WPPUBLISHFILE"; then
 	if [ $HOST = "sftp.flywheelsites.com" ]; then
 		PUBLISHMETHOD=git-ftp
 		USERNAME=rsefer
-		PASSWORD=$(op item get "Flywheel" --fields password)
+		PASSWORD=$(op item get "Flywheel" --fields password --reveal)
 		PORT=22
 	fi
 

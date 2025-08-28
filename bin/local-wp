@@ -36,4 +36,9 @@ if [ -z "$LOCAL_SITE_ID" ] || [ $LOCAL_SITE_ID == "null" ]; then
 	exit 1
 fi
 
+if [ ! -e /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SITE_ID.sh ]; then
+	echo "No SSH entry script found for local site ID $LOCAL_SITE_ID."
+	exit 1
+fi
+
 exec /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SITE_ID.sh
