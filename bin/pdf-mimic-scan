@@ -7,10 +7,11 @@
 
 OUT=$(basename "$1" .pdf)
 magick \
-	-monitor \
-	-density 130 "$1" \
+	-density 130 \ # must be before input file
+	"$1" \
 	-rotate "$([ $((RANDOM % 2)) -eq 1 ] && echo -)0.$(($RANDOM % 4 + 5))" \
 	-attenuate 0.2 +noise Multiplicative \
 	-sharpen 0x1.0 \
 	-colorspace Gray \
+	-monitor \
 	"$OUT"_scanned.pdf
