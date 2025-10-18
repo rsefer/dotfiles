@@ -1,4 +1,13 @@
 {
+	"[dockercompose]": {
+		"editor.autoIndent": "advanced",
+		"editor.defaultFormatter": "redhat.vscode-yaml",
+		"editor.insertSpaces": true,
+		"editor.tabSize": 2
+	},
+	"[github-actions-workflow]": {
+		"editor.defaultFormatter": "redhat.vscode-yaml"
+	},
 	"[go]": {
 		"editor.defaultFormatter": "golang.go",
 		"editor.formatOnSave": true,
@@ -13,6 +22,9 @@
 	"bookmarks.useWorkaroundForFormatters": true,
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
+	"chat.tools.terminal.autoApprove": {
+		"npm test": true
+	},
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
 	"css.lint.compatibleVendorPrefixes": "warning",
@@ -27,16 +39,19 @@
 	"diffEditor.ignoreTrimWhitespace": false,
 	"diffEditor.renderSideBySide": false,
 	"editor.accessibilitySupport": "off",
+	"editor.autoIndentOnPaste": true,
 	"editor.bracketPairColorization.enabled": true,
 	"editor.codeLens": false,
 	"editor.colorDecorators": false,
 	"editor.defaultFormatter": "esbenp.prettier-vscode",
+	"editor.find.addExtraSpaceOnTop": false,
 	"editor.fontSize": 18,
 	"editor.guides.bracketPairs": true,
 	"editor.hover.delay": 2500,
 	"editor.hover.enabled": true,
 	"editor.inlineSuggest.enabled": true,
 	"editor.linkedEditing": true,
+	"editor.minimap.enabled": false,
 	"editor.minimap.maxColumn": 25,
 	"editor.minimap.renderCharacters": false,
 	"editor.minimap.size": "fit",
@@ -60,6 +75,7 @@
 	},
 	"explorer.confirmDelete": false,
 	"explorer.confirmDragAndDrop": false,
+	"explorer.confirmPasteNative": false,
 	"extensions.ignoreRecommendations": true,
 	"figma.autocompleteProperties": false,
 	"files.associations": {
@@ -75,6 +91,11 @@
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
+	"github.copilot.chat.customOAIModels": {},
+	"github.copilot.chat.languageContext.fix.typescript.enabled": true,
+	"github.copilot.chat.languageContext.inline.typescript.enabled": true,
+	"github.copilot.chat.languageContext.typescript.enabled": true,
+	"github.copilot.nextEditSuggestions.enabled": true,
 	"githubIssues.issueBranchTitle": "${user}/${issueNumber}-${sanitizedIssueTitle}",
 	"githubIssues.queries": [
 		{
@@ -122,9 +143,14 @@
 				"console": "integratedTerminal",
 				"name": "Debug - Node - npm start",
 				"request": "launch",
-				"runtimeArgs": ["run-script", "start"],
+				"runtimeArgs": [
+					"run-script",
+					"start"
+				],
 				"runtimeExecutable": "npm",
-				"skipFiles": ["<node_internals>/**"],
+				"skipFiles": [
+					"<node_internals>/**"
+				],
 				"type": "node"
 			}
 		],
@@ -136,6 +162,8 @@
 			"workbench.action.closeAllEditors"
 		]
 	},
+	"markdown.preview.typographer": true,
+	"mdb.mcp.server": "autoStartDisabled",
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
 	"prettier.bracketSameLine": true,
 	"prettier.jsxSingleQuote": true,
@@ -182,6 +210,7 @@
 	"terminal.integrated.fontSize": 15,
 	"terminal.integrated.scrollback": 2000,
 	"terminal.integrated.shellIntegration.enabled": true,
+	"terminal.integrated.stickyScroll.enabled": false,
 	"terminal.integrated.tabs.enabled": false,
 	"typescript.inlayHints.enumMemberValues.enabled": true,
 	"typescript.inlayHints.parameterNames.enabled": "all",
@@ -199,6 +228,7 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
+	"window.zoomLevel": -2,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.colorCustomizations": {
@@ -251,28 +281,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"window.zoomLevel": -2,
-	"github.copilot.nextEditSuggestions.enabled": true,
-	"github.copilot.chat.languageContext.fix.typescript.enabled": true,
-	"github.copilot.chat.languageContext.inline.typescript.enabled": true,
-	"github.copilot.chat.languageContext.typescript.enabled": true,
-	"markdown.preview.typographer": true,
-	"explorer.confirmPasteNative": false,
-	"terminal.integrated.stickyScroll.enabled": false,
-	"chat.tools.terminal.autoApprove": {
-		"npm test": true
-	},
-	"editor.minimap.enabled": false,
-	"mdb.mcp.server": "autoStartDisabled",
-	"[dockercompose]": {
-		"editor.insertSpaces": true,
-		"editor.tabSize": 2,
-		"editor.autoIndent": "advanced",
-		"editor.defaultFormatter": "redhat.vscode-yaml"
-	},
-	"[github-actions-workflow]": {
-		"editor.defaultFormatter": "redhat.vscode-yaml"
-	},
-	"github.copilot.chat.customOAIModels": {}
+	"workbench.tree.renderIndentGuides": "onHover"
 }
