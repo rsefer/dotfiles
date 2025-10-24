@@ -1,4 +1,7 @@
 #!/usr/bin/env bash
+#
+# see more here: https://macos-defaults.com
+
 source $DOTFILES_ROOT/setup/functions.sh
 
 if test "$(uname)" = "Darwin"
