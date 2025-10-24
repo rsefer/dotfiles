@@ -1,4 +1,5 @@
-alias reload!=". $HOME/.zshrc"
+alias reload=". $HOME/.zshrc"
+alias reload!="reload"
 
 alias nvm="echo 'Use fnm instead of nvm. See: https://github.com/Schniz/fnm/blob/master/docs/configuration.md'"
 
@@ -11,22 +12,8 @@ alias npms="npm start"
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
 
-alias tailscale="/Applications/Tailscale.app/Contents/MacOS/Tailscale"
-
-# Checkout primary branch
-gcmfunc() {
-	PRIMARYBRANCH=$(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')
-	git checkout $PRIMARYBRANCH
-	# if [ `git rev-parse --verify master 2>/dev/null` ]; then
-	# 	git checkout master
-	# elif [ `git rev-parse --verify main 2>/dev/null` ]; then
-	# 	git checkout main
-	# else
-	# 	echo "Neither master or main branches exist."
-	# fi
-}
-alias gcm="gcmfunc"
 alias gc="git checkout"
+alias gcn="git checkout -b"
 alias gp="git pull"
 alias gpu="git pull"
 alias gl="git log --all --decorate --oneline --graph"
@@ -37,23 +24,8 @@ alias hosts="sudo vim /etc/hosts"
 
 alias flushdns="sudo dscacheutil -flushcache;sudo killall -HUP mDNSResponder;echo 'Flushed'"
 
-# Copy working directory to clipboard
-pwdcpfunc() {
-	pwd | pbcopy;
-	echo "$(pbpaste) copied to clipboard";
-}
-alias pwdcp="pwdcpfunc"
-
 alias osascriptdebug="AEDebug=1 AEDebugSends=1 AEDebugReceives=1 osascript"
 
 alias code="open -a Visual\ Studio\ Code && code -r"
 
 alias wpp="wppublish"
-
-function take() {
-	mkdir $@ && cd ${@:$#}
-}
-
-zcalc() {
-	zsh -c 'autoload zcalc && zcalc "$@"' zcalc "$@"
-}

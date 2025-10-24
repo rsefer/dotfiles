@@ -1,0 +1,6 @@
+#!/bin/sh
+#
+# copy working directory to clipboard
+
+pwd | pbcopy;
+echo "$(pbpaste) copied to clipboard";

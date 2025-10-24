@@ -1,0 +1,5 @@
+#!/bin/sh
+#
+# make directory and cd into it
+
+mkdir -p "$1" && cd "$1"
