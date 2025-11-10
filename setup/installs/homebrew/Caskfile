@@ -8,8 +8,8 @@ tap 'homebrew/services'
 cask '1password-cli', args: { appdir: '/Applications' }
 cask '1password', args: { appdir: '/Applications' }
 cask 'adobe-creative-cloud', args: { appdir: '/Applications' }
+cask 'arq', args: { appdir: '/Applications' }
 cask 'autodesk-fusion', args: { appdir: '/Applications' }
-cask 'backblaze', args: { appdir: '/Applications' }
 cask 'balenaetcher'
 cask 'basictex'
 cask 'chatgpt', args: { appdir: '/Applications' }
