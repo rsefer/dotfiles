@@ -23,7 +23,9 @@
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
 	"chat.tools.terminal.autoApprove": {
-		"npm test": true
+		"curl": true,
+		"npm test": true,
+		"nslookup": true
 	},
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
@@ -281,5 +283,6 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover"
+	"workbench.tree.renderIndentGuides": "onHover",
+	"workbench.editor.preferHistoryBasedLanguageDetection": true
 }
