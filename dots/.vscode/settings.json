@@ -194,7 +194,7 @@
 	"task.problemMatchers.neverPrompt": {
 		"npm": true
 	},
-	"terminal.external.osxExec": "iTerm.app",
+	"terminal.external.osxExec": "Ghostty.app",
 	"terminal.integrated.allowChords": false,
 	"terminal.integrated.allowedLinkSchemes": [
 		"file",

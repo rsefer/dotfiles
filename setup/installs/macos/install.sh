@@ -39,7 +39,7 @@ APPS=(
 	"Visual Studio Code"
 	"GitHub Desktop"
 	"Local"
-	"iTerm"
+	"Ghostty"
 	"Obsidian"
 )
 DIRECTORIES=(
