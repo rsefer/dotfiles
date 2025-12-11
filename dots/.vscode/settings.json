@@ -25,7 +25,8 @@
 	"chat.tools.terminal.autoApprove": {
 		"curl": true,
 		"npm test": true,
-		"nslookup": true
+		"nslookup": true,
+		"vendor/bin/mago": true
 	},
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
@@ -284,5 +285,6 @@
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
-	"workbench.editor.preferHistoryBasedLanguageDetection": true
+	"workbench.editor.preferHistoryBasedLanguageDetection": true,
+	"terminal.integrated.suggest.insertTrailingSpace": true
 }
