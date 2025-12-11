@@ -41,4 +41,42 @@ if [ ! -e /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SIT
 	exit 1
 fi
 
+# Capture the current working directory so we return to it in the remote shell
+WP_CONTENT_PATH="$(pwd)"
+
+# Preserve the user's preferred shell (falls back to /bin/bash if unknown)
+USER_SHELL=${SHELL:-/bin/bash}
+REMOTE_SHELL=${REMOTE_SHELL:-$USER_SHELL}
+
+# Prepare shell initialization so we cd into wp-content without breaking tools that
+# expect $SHELL to be an actual shell binary (e.g., wp shell --shell).
+case "$REMOTE_SHELL" in
+	*/zsh)
+		ZDOTDIR_SHIM=$(mktemp -d /tmp/local-wp-zdotdir-XXXX)
+		cat > "$ZDOTDIR_SHIM/.zshrc" <<EOF
+cd "$WP_CONTENT_PATH"
+if [ -f "$HOME/.zshrc" ]; then
+	source "$HOME/.zshrc"
+fi
+EOF
+		export ZDOTDIR="$ZDOTDIR_SHIM"
+		export SHELL="/bin/zsh"
+		;;
+	*/bash)
+		# PROMPT_COMMAND runs before each prompt; use it once to cd, then unset to avoid repetition.
+		export PROMPT_COMMAND="cd '$WP_CONTENT_PATH'; unset PROMPT_COMMAND"
+		export SHELL="/bin/bash"
+		;;
+	*)
+		# Fallback: a tiny shim shell that cd's then starts a login shell.
+		SHELL_SHIM=$(mktemp /tmp/local-wp-shell-XXXX.sh)
+		cat > "$SHELL_SHIM" <<EOF
+#!/bin/sh
+cd "$WP_CONTENT_PATH" && exec "$REMOTE_SHELL" -l
+EOF
+		chmod +x "$SHELL_SHIM"
+		export SHELL="$SHELL_SHIM"
+		;;
+esac
+
 exec /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SITE_ID.sh
