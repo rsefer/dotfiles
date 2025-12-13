@@ -51,7 +51,7 @@
 	"editor.fontSize": 18,
 	"editor.guides.bracketPairs": true,
 	"editor.hover.delay": 2500,
-	"editor.hover.enabled": true,
+	"editor.hover.enabled": "on",
 	"editor.inlineSuggest.enabled": true,
 	"editor.linkedEditing": true,
 	"editor.minimap.enabled": false,
