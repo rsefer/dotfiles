@@ -22,6 +22,7 @@
 	"bookmarks.useWorkaroundForFormatters": true,
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
+	"chat.agent.thinkingStyle": "collapsedPreview",
 	"chat.tools.terminal.autoApprove": {
 		"curl": true,
 		"npm test": true,
@@ -168,6 +169,8 @@
 	"markdown.preview.typographer": true,
 	"mdb.mcp.server": "autoStartDisabled",
 	"merge-conflict.autoNavigateNextConflict.enabled": true,
+	"php.debug.executablePath": "/opt/homebrew/bin/php",
+	"php.executablePath": "/opt/homebrew/bin/php",
 	"prettier.bracketSameLine": true,
 	"prettier.jsxSingleQuote": true,
 	"prettier.printWidth": 120,
@@ -214,6 +217,7 @@
 	"terminal.integrated.scrollback": 2000,
 	"terminal.integrated.shellIntegration.enabled": true,
 	"terminal.integrated.stickyScroll.enabled": false,
+	"terminal.integrated.suggest.insertTrailingSpace": true,
 	"terminal.integrated.tabs.enabled": false,
 	"typescript.inlayHints.enumMemberValues.enabled": true,
 	"typescript.inlayHints.parameterNames.enabled": "all",
@@ -261,8 +265,8 @@
 	},
 	"workbench.colorTheme": "Tomorrow Night",
 	"workbench.editor.customLabels.patterns": {
-		"**/.*.*": "${dirname}/${filename}.${extname}",
 		"**/.*": "${dirname}/${filename}",
+		"**/.*.*": "${dirname}/${filename}.${extname}",
 		"**/*.*": "${dirname}/${filename}.${extname}"
 	},
 	"workbench.editor.empty.hint": "hidden",
@@ -270,6 +274,7 @@
 	"workbench.editor.limit.excludeDirty": true,
 	"workbench.editor.limit.perEditorGroup": true,
 	"workbench.editor.pinnedTabSizing": "shrink",
+	"workbench.editor.preferHistoryBasedLanguageDetection": true,
 	"workbench.editor.tabActionCloseVisibility": false,
 	"workbench.editorAssociations": {
 		"*.svg": "default"
@@ -284,7 +289,5 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"workbench.editor.preferHistoryBasedLanguageDetection": true,
-	"terminal.integrated.suggest.insertTrailingSpace": true
+	"workbench.tree.renderIndentGuides": "onHover"
 }
