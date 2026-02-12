@@ -290,5 +290,7 @@
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
-	"task.allowAutomaticTasks": "on"
+	"task.allowAutomaticTasks": "on",
+	"json.schemaDownload.enable": true,
+	"http.proxyStrictSSL": false
 }

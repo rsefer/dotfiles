@@ -22,15 +22,13 @@ if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
 fi
 
+source $HOME/.aliases
 source $HOME/.config/op/plugins.sh
 
 source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
 source /opt/homebrew/opt/chruby/share/chruby/auto.sh
 chruby ruby-2.7.4
 
-source $HOME/.aliases
-
-source $HOME/.config/op/plugins.sh
 
 # fnm: manages node versions and automatically switches to the correct version based on .nvmrc or .node-version files
 # see https://github.com/Schniz/fnm/blob/master/docs/configuration.md
