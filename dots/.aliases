@@ -14,7 +14,7 @@ alias tree="tree -I 'node_modules|cache|test_*'"
 
 alias gc="git checkout"
 alias gcn="git checkout -b"
-alias gcm="git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed 's@^refs/remotes/origin/@@')"
+alias gcm='git checkout $(git symbolic-ref refs/remotes/origin/HEAD | sed '\''s@^refs/remotes/origin/@@'\'')'
 alias gp="git pull"
 alias gpu="git pull"
 alias gl="git log --all --decorate --oneline --graph"
