@@ -44,6 +44,7 @@ cask 'sf-symbols'
 cask 'slack'
 cask 'spotify'
 cask 'suspicious-package'
+cask 'thaw', args: { appdir: '/Applications' }
 cask 'ultimaker-cura'
 cask 'vagrant', args: { appdir: '/Applications' }
 cask 'virtualbox', args: { appdir: '/Applications' }
