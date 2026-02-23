@@ -12,17 +12,17 @@ figma.figma-vscode-extension
 formulahendry.auto-close-tag
 formulahendry.auto-rename-tag
 geddski.macros
-github.copilot
 github.copilot-chat
+github.vscode-github-actions
 github.vscode-pull-request-github
 golang.go
 grapecity.gc-excelviewer
 henoc.svgeditor
-idleberg.applescript
 janisdd.vscode-edit-csv
 kisstkondoros.vscode-gutter-preview
 kokororin.vscode-phpfmt
 mechatroner.rainbow-csv
+mkxml.vscode-filesize
 mongodb.mongodb-vscode
 ms-ossdata.vscode-pgsql
 ms-python.black-formatter
@@ -37,7 +37,6 @@ ms-vscode.theme-tomorrowkit
 ms-vsliveshare.vsliveshare
 ms-vsliveshare.vsliveshare-pack
 natizyskunk.sftp
-neilding.language-liquid
 pejmannikram.vscode-auto-scroll
 rangav.vscode-thunder-client
 redhat.vscode-yaml
