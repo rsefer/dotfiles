@@ -57,5 +57,5 @@ style = "yellow"
 [time]
 disabled = false
 format = "[$time]($style)"
-time_format = "%m/%d %I:%M %p"
+time_format = "%m/%d %r"
 style = "bright-black"
