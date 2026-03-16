@@ -14,6 +14,8 @@ $cmd_duration\
 $line_break\
 $character"""
 
+right_format = "$time"
+
 [directory]
 style = "blue"
 truncation_length = 4
@@ -51,3 +53,9 @@ style = 'green'
 [cmd_duration]
 format = "[$duration]($style) "
 style = "yellow"
+
+[time]
+disabled = false
+format = "[$time]($style)"
+time_format = "%I:%M %p"
+style = "bright-black"
