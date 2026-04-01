@@ -1,0 +1,16 @@
+#!/bin/sh
+#
+# install latest version of npm
+
+CURRENT_VERSION=$(npm -v)
+LATEST_VERSION=$(npm view npm version)
+
+echo "Current version: $(npm -v)"
+
+if [ "$CURRENT_VERSION" = "$LATEST_VERSION" ]; then
+	echo "npm is already up to date."
+	exit 0
+fi
+
+echo "Installing version $(npm view npm version) of npm..."
+npm install -g npm@latest
