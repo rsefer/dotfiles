@@ -32,7 +32,6 @@
 		"read": true,
 		"vendor/bin/mago": true
 	},
-	"chat.viewSessions.orientation": "stacked",
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
 	"css.lint.compatibleVendorPrefixes": "warning",
@@ -375,5 +374,8 @@
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover"
+	"workbench.tree.renderIndentGuides": "onHover",
+	"[php]": {
+		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+	}
 }
