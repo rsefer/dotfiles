@@ -13,6 +13,9 @@
 		"editor.formatOnSave": true,
 		"editor.insertSpaces": true
 	},
+	"[php]": {
+		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
+	},
 	"application.shellEnvironmentResolutionTimeout": 20,
 	"aws.codeWhisperer.importRecommendation": false,
 	"aws.suppressPrompts": {
@@ -302,12 +305,6 @@
 	"terminal.integrated.suggest.insertTrailingSpace": true,
 	"terminal.integrated.tabs.enabled": false,
 	"ts.updateImportsOnFileMove.enabled": "always",
-	"typescript.inlayHints.enumMemberValues.enabled": true,
-	"typescript.inlayHints.parameterNames.enabled": "all",
-	"typescript.inlayHints.parameterTypes.enabled": true,
-	"typescript.inlayHints.propertyDeclarationTypes.enabled": true,
-	"typescript.inlayHints.variableTypes.enabled": true,
-	"typescript.updateImportsOnFileMove.enabled": "never",
 	"window.autoDetectColorScheme": true,
 	"window.closeWhenEmpty": true,
 	"window.commandCenter": false,
@@ -349,7 +346,6 @@
 		"terminalCursor.background": "#B7BBB7",
 		"terminalCursor.foreground": "#B7BBB7"
 	},
-	"workbench.colorTheme": "Visual Studio Dark",
 	"workbench.editor.customLabels.patterns": {
 		"**/.*": "${dirname}/${filename}",
 		"**/.*.*": "${dirname}/${filename}.${extname}",
@@ -368,14 +364,9 @@
 	"workbench.fontAliasing": "auto",
 	"workbench.layoutControl.enabled": false,
 	"workbench.list.smoothScrolling": true,
-	"workbench.preferredHighContrastLightColorTheme": "Tomorrow Night",
-	"workbench.preferredLightColorTheme": "VS Code Dark",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"[php]": {
-		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
-	}
+	"workbench.tree.renderIndentGuides": "onHover"
 }
