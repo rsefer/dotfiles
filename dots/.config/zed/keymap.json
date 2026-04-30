@@ -1,0 +1,55 @@
+[
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-right": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "cmd-\\": "pane::SplitRight"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-cmd-end": "editor::MoveToNextSubwordEnd"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "ctrl-alt-right": "editor::MoveToNextSubwordEnd"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "ctrl-alt-down": "pane::SplitDown"
+    }
+  },
+  {
+    "bindings": {
+      "cmd-shift-g": "git::Push"
+    }
+  },
+  {
+    "context": "GitPanel",
+    "unbind": {
+      "ctrl-g up": "git::Push"
+    }
+  },
+  {
+    "context": "Editor",
+    "bindings": {
+      "alt-cmd-/": "editor::ToggleBlockComments"
+    }
+  },
+  {
+    "context": "Editor",
+    "unbind": {
+      "alt-shift-a": "editor::ToggleBlockComments"
+    }
+  }
+]

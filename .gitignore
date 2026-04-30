@@ -5,6 +5,9 @@ dots/.vscode/*
 !dots/.vscode/settings.json
 !dots/.vscode/snippets
 !dots/.vscode/globalStorage/alefragnani.project-manager/projects.json
+dots/.config/zed/*
+!dots/.config/zed/keymap.json
+!dots/.config/zed/settings.json
 dots/.vim/bundle
 dots/.hammerspoon
 dots/.raycast
