@@ -7,6 +7,10 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "disable_ai": false,
+  "edit_predictions": {
+    "provider": "copilot"
+  },
   "icon_theme": {
     "mode": "system",
     "light": "Zed (Default)",
@@ -43,6 +47,7 @@
   "buffer_font_size": 16,
   "base_keymap": "VSCode",
   "agent": {
+    "sidebar_side": "left",
     "provider": null,
     "dock": "right",
     "favorite_models": [],
