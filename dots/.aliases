@@ -9,6 +9,8 @@ alias cp="cp -riv"
 
 alias npms="npm start"
 
+alias z="zellij"
+
 alias ls="ls --color=auto"
 alias tree="tree -I 'node_modules|cache|test_*'"
 

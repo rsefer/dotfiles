@@ -370,5 +370,6 @@
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
 	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast",
-	"workbench.preferredLightColorTheme": "VS Code Dark"
+	"workbench.preferredLightColorTheme": "Dark 2026",
+	"chat.viewSessions.orientation": "stacked"
 }
