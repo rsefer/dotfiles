@@ -18,5 +18,6 @@ dots/.composer/*
 !dots/.composer/composer.lock
 dots/.config/karabiner/*
 !dots/.config/karabiner/karabiner.json
+dots/.zcompdump
 mac-scripts/ipaddress.txt
 setup/installs/homebrew/Brewfile.lock.json
