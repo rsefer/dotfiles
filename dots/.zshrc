@@ -1,6 +1,12 @@
 source $HOME/.profile
 source $DOTFILES_ROOT/zsh/keybindings.sh
 
+autoload -Uz add-zsh-hook
+
+if (( ${chpwd_functions[(Ie)localwp_auto_select]} == 0 )); then
+	add-zsh-hook chpwd localwp_auto_select
+fi
+
 typeset -gU path fpath
 
 if [[ -z "$HOMEBREW_PREFIX" ]]; then

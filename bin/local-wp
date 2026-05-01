@@ -4,50 +4,227 @@
 
 set -e
 
-# Use first argument as DOMAIN if provided
-if [ -n "$1" ]; then
-	DOMAIN="$1"
-else
-	WORKING_CONFIG_FILE_NAME=".sdc-build-wp/config.json"
+SITES_JSON="$HOME/Library/Application Support/Local/sites.json"
+WP_CONTENT_PATH="$(pwd -P)"
+LOCAL_ROOT="$HOME/local"
+LOCAL_SSH_ENTRY_DIR="$HOME/Library/Application Support/Local/ssh-entry"
 
-	if [ ! -f $WORKING_CONFIG_FILE_NAME ]; then
-		echo "No $WORKING_CONFIG_FILE_NAME found."
+if ! command -v node >/dev/null 2>&1; then
+	echo "local-wp requires node to parse Local JSON metadata."
+	exit 1
+fi
+
+sanitize_domain() {
+	value="$1"
+	value=${value#"http://"}
+	value=${value#"https://"}
+	value=${value%"/"}
+	printf '%s' "$value"
+}
+
+get_site_slug_from_path() {
+	path="$1"
+	case "$path" in
+		"$LOCAL_ROOT"/*)
+			rel=${path#"$LOCAL_ROOT"/}
+			printf '%s' "${rel%%/*}"
+			return 0
+			;;
+	esac
+	return 1
+}
+
+get_sdc_domain_from_config() {
+	file="$1"
+	if [ ! -f "$file" ]; then
+		return 0
+	fi
+
+	FILE_PATH="$file" node -e 'const fs=require("fs"); const file=process.env.FILE_PATH; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); const value=((json||{}).browsersync||{}).localProxyURL||""; if (value) process.stdout.write(String(value)); } catch (_) {}'
+}
+
+get_sdc_domain_from_package_json() {
+	file="$1"
+	if [ ! -f "$file" ]; then
+		return 0
+	fi
+
+	FILE_PATH="$file" node -e 'const fs=require("fs"); const file=process.env.FILE_PATH; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); const value=((((json||{}).sdc||{}).browsersync||{}).localProxyURL)||""; if (value) process.stdout.write(String(value)); } catch (_) {}'
+}
+
+find_site_id_by_domain() {
+	domain="$1"
+	if [ ! -f "$SITES_JSON" ] || [ -z "$domain" ]; then
+		return 0
+	fi
+
+	SITES_JSON_PATH="$SITES_JSON" DOMAIN_VALUE="$domain" node -e 'const fs=require("fs"); const file=process.env.SITES_JSON_PATH; const domain=process.env.DOMAIN_VALUE; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); for (const site of Object.values(json||{})) { if (site && site.domain===domain) { process.stdout.write(String(site.id||"")); break; } } } catch (_) {}'
+}
+
+find_site_id_by_slug() {
+	slug="$1"
+	if [ ! -f "$SITES_JSON" ] || [ -z "$slug" ]; then
+		return 0
+	fi
+
+	SITES_JSON_PATH="$SITES_JSON" SITE_SLUG="$slug" node -e 'const fs=require("fs"); const file=process.env.SITES_JSON_PATH; const slug=process.env.SITE_SLUG; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); for (const site of Object.values(json||{})) { const p=String((site&&site.path)||""); if (p.endsWith("/"+slug) || p.includes("/"+slug+"/")) { process.stdout.write(String((site&&site.id)||"")); break; } } } catch (_) {}'
+}
+
+find_domain_by_site_id() {
+	id="$1"
+	if [ ! -f "$SITES_JSON" ] || [ -z "$id" ]; then
+		return 0
+	fi
+
+	SITES_JSON_PATH="$SITES_JSON" SITE_ID="$id" node -e 'const fs=require("fs"); const file=process.env.SITES_JSON_PATH; const id=process.env.SITE_ID; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); for (const site of Object.values(json||{})) { if (site && String(site.id||"")===id) { process.stdout.write(String(site.domain||"")); break; } } } catch (_) {}'
+}
+
+find_domain_by_slug_prefix() {
+	slug="$1"
+	if [ ! -f "$SITES_JSON" ] || [ -z "$slug" ]; then
+		return 0
+	fi
+
+	SITES_JSON_PATH="$SITES_JSON" SITE_SLUG="$slug" node -e 'const fs=require("fs"); const file=process.env.SITES_JSON_PATH; const slug=process.env.SITE_SLUG; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); for (const site of Object.values(json||{})) { const d=String((site&&site.domain)||""); if (d.startsWith(slug)) { process.stdout.write(d); break; } } } catch (_) {}'
+}
+
+find_site_path_by_site_id() {
+	id="$1"
+	if [ ! -f "$SITES_JSON" ] || [ -z "$id" ]; then
+		return 0
+	fi
+
+	SITES_JSON_PATH="$SITES_JSON" SITE_ID="$id" node -e 'const fs=require("fs"); const file=process.env.SITES_JSON_PATH; const id=process.env.SITE_ID; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); for (const site of Object.values(json||{})) { if (site && String(site.id||"")===id) { process.stdout.write(String(site.path||"")); break; } } } catch (_) {}'
+}
+
+find_site_path_by_domain() {
+	domain="$1"
+	if [ ! -f "$SITES_JSON" ] || [ -z "$domain" ]; then
+		return 0
+	fi
+
+	SITES_JSON_PATH="$SITES_JSON" DOMAIN_VALUE="$domain" node -e 'const fs=require("fs"); const file=process.env.SITES_JSON_PATH; const domain=process.env.DOMAIN_VALUE; try { const json=JSON.parse(fs.readFileSync(file, "utf8")); for (const site of Object.values(json||{})) { if (site && String(site.domain||"")===domain) { process.stdout.write(String(site.path||"")); break; } } } catch (_) {}'
+}
+
+find_ssh_entry_id_by_site_path() {
+	site_path="$1"
+	if [ -z "$site_path" ] || [ ! -d "$LOCAL_SSH_ENTRY_DIR" ]; then
+		return 0
+	fi
+
+	SSH_DIR_PATH="$LOCAL_SSH_ENTRY_DIR" SITE_PATH="$site_path" node -e 'const fs=require("fs"); const path=require("path"); const dir=process.env.SSH_DIR_PATH; const sitePath=process.env.SITE_PATH; const needle=`cd "${sitePath}/app/public"`; try { for (const name of fs.readdirSync(dir)) { if (!name.endsWith(".sh")) continue; const full=path.join(dir, name); let text=""; try { text=fs.readFileSync(full, "utf8"); } catch (_) { continue; } if (text.includes(needle)) { process.stdout.write(name.slice(0, -3)); break; } } } catch (_) {}'
+}
+
+run_dir_exists_for_site_id() {
+	id="$1"
+	if [ -z "$id" ]; then
+		return 1
+	fi
+	[ -d "$HOME/Library/Application Support/Local/run/$id" ]
+}
+
+create_ssh_entry_shim_from_template() {
+	template_script="$1"
+	target_site_id="$2"
+	target_site_path="$3"
+	if [ -z "$template_script" ] || [ -z "$target_site_id" ] || [ -z "$target_site_path" ] || [ ! -f "$template_script" ]; then
+		return 0
+	fi
+
+	out_script="$(mktemp "${TMPDIR:-/tmp}/local-wp-ssh-entry-shim.XXXXXX")"
+	TEMPLATE_SCRIPT="$template_script" TARGET_SITE_ID="$target_site_id" TARGET_SITE_PATH="$target_site_path" OUTPUT_SCRIPT="$out_script" node -e 'const fs=require("fs"); const input=process.env.TEMPLATE_SCRIPT; const out=process.env.OUTPUT_SCRIPT; const targetId=process.env.TARGET_SITE_ID; const targetPath=process.env.TARGET_SITE_PATH; try { let text=fs.readFileSync(input, "utf8"); text=text.replace(/run\/[^/]+\/conf\/mysql/g, `run/${targetId}/conf/mysql`); text=text.replace(/run\/[^/]+\/conf\/php/g, `run/${targetId}/conf/php`); text=text.replace(/cd\s+"[^"]+\/app\/public"/g, `cd "${targetPath}/app/public"`); fs.writeFileSync(out, text); fs.chmodSync(out, 0o700); process.stdout.write(out); } catch (_) {}'
+}
+
+DOMAIN=""
+LOCAL_SITE_ID=""
+
+# Use first argument as DOMAIN if provided.
+if [ -n "$1" ]; then
+	DOMAIN=$(sanitize_domain "$1")
+else
+	# Prefer .sdc-build-wp config when available.
+	WORKING_CONFIG_FILE_NAME=".sdc-build-wp/config.json"
+	if [ -f "$WORKING_CONFIG_FILE_NAME" ]; then
+		DOMAIN=$(get_sdc_domain_from_config "$WORKING_CONFIG_FILE_NAME")
+	fi
+
+	# Fallback to package.json config used by some themes.
+	if [ -z "$DOMAIN" ] || [ "$DOMAIN" = "null" ]; then
 		WORKING_CONFIG_FILE_NAME="package.json"
-		if [ ! -f $WORKING_CONFIG_FILE_NAME ]; then
-			echo "No $WORKING_CONFIG_FILE_NAME found."
-			exit 1
-		else
-			DOMAIN=$(cat $WORKING_CONFIG_FILE_NAME | jq -r '.sdc.browsersync.localProxyURL')
+		if [ -f "$WORKING_CONFIG_FILE_NAME" ]; then
+			DOMAIN=$(get_sdc_domain_from_package_json "$WORKING_CONFIG_FILE_NAME")
 		fi
-	else
-		DOMAIN=$(cat $WORKING_CONFIG_FILE_NAME | jq -r '.browsersync.localProxyURL')
+	fi
+
+	# Final fallback: infer site from Local path segment under ~/local.
+	if [ -z "$DOMAIN" ] || [ "$DOMAIN" = "null" ]; then
+		SITE_SLUG="$(get_site_slug_from_path "$WP_CONTENT_PATH" || true)"
+		if [ -n "$SITE_SLUG" ] && [ -f "$SITES_JSON" ]; then
+			LOCAL_SITE_ID=$(find_site_id_by_slug "$SITE_SLUG")
+			if [ -n "$LOCAL_SITE_ID" ] && [ "$LOCAL_SITE_ID" != "null" ]; then
+				DOMAIN=$(find_domain_by_site_id "$LOCAL_SITE_ID")
+			fi
+
+			if [ -z "$DOMAIN" ] || [ "$DOMAIN" = "null" ]; then
+				DOMAIN=$(find_domain_by_slug_prefix "$SITE_SLUG")
+			fi
+		fi
 	fi
 fi
 
-echo $DOMAIN
+DOMAIN=$(sanitize_domain "$DOMAIN")
 
-if [ -z "$DOMAIN" ] || [ $DOMAIN == "null" ]; then
-	echo "No localProxyURL domain found in $PACKAGE_FILE_NAME."
+if [ -z "$DOMAIN" ] || [ "$DOMAIN" = "null" ]; then
+	echo "Could not resolve a Local domain from config or path."
 	exit 1
 fi
 
-DOMAIN=${DOMAIN#"http://"}
-DOMAIN=${DOMAIN#"https://"}
+if [ -z "$LOCAL_SITE_ID" ] && [ -f "$SITES_JSON" ]; then
+	LOCAL_SITE_ID=$(find_site_id_by_domain "$DOMAIN")
+fi
 
-LOCAL_SITE_ID=$(cat /Users/"$USER"/Library/Application\ Support/Local/sites.json | jq -r ".[] | select(.domain == \"$DOMAIN\").id")
-
-if [ -z "$LOCAL_SITE_ID" ] || [ $LOCAL_SITE_ID == "null" ]; then
-	echo "No local site id found."
+if [ -z "$LOCAL_SITE_ID" ] || [ "$LOCAL_SITE_ID" = "null" ]; then
+	echo "No Local site id found for domain: $DOMAIN"
 	exit 1
 fi
 
-if [ ! -e /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SITE_ID.sh ]; then
+SSH_ENTRY_SCRIPT="$LOCAL_SSH_ENTRY_DIR/$LOCAL_SITE_ID.sh"
+
+if [ ! -e "$SSH_ENTRY_SCRIPT" ]; then
+	SITE_PATH="$(find_site_path_by_site_id "$LOCAL_SITE_ID")"
+	if [ -z "$SITE_PATH" ] || [ "$SITE_PATH" = "null" ]; then
+		SITE_PATH="$(find_site_path_by_domain "$DOMAIN")"
+	fi
+
+	if [ -n "$SITE_PATH" ] && [ "$SITE_PATH" != "null" ]; then
+		FALLBACK_SITE_ID="$(find_ssh_entry_id_by_site_path "$SITE_PATH")"
+		if [ -n "$FALLBACK_SITE_ID" ] && [ "$FALLBACK_SITE_ID" != "null" ]; then
+			FALLBACK_SCRIPT="$LOCAL_SSH_ENTRY_DIR/$FALLBACK_SITE_ID.sh"
+
+			# Prefer a shim against the current site id when its run dir exists.
+			if run_dir_exists_for_site_id "$LOCAL_SITE_ID"; then
+				SHIM_SCRIPT="$(create_ssh_entry_shim_from_template "$FALLBACK_SCRIPT" "$LOCAL_SITE_ID" "$SITE_PATH")"
+				if [ -n "$SHIM_SCRIPT" ] && [ -e "$SHIM_SCRIPT" ]; then
+					SSH_ENTRY_SCRIPT="$SHIM_SCRIPT"
+				fi
+			fi
+
+			# Last resort: use the fallback id script directly.
+			if [ ! -e "$SSH_ENTRY_SCRIPT" ]; then
+				LOCAL_SITE_ID="$FALLBACK_SITE_ID"
+				SSH_ENTRY_SCRIPT="$FALLBACK_SCRIPT"
+			fi
+		fi
+	fi
+fi
+
+if [ ! -e "$SSH_ENTRY_SCRIPT" ]; then
 	echo "No SSH entry script found for local site ID $LOCAL_SITE_ID."
 	exit 1
 fi
 
 # Capture the current working directory so we return to it in the remote shell
-WP_CONTENT_PATH="$(pwd)"
+WP_CONTENT_PATH="$(pwd -P)"
 
 # Preserve the user's preferred shell (falls back to /bin/bash if unknown)
 USER_SHELL=${SHELL:-/bin/bash}
@@ -57,7 +234,7 @@ REMOTE_SHELL=${REMOTE_SHELL:-$USER_SHELL}
 # expect $SHELL to be an actual shell binary (e.g., wp shell --shell).
 case "$REMOTE_SHELL" in
 	*/zsh)
-		ZDOTDIR_SHIM=$(mktemp -d /tmp/local-wp-zdotdir-XXXX)
+		ZDOTDIR_SHIM=$(mktemp -d "${TMPDIR:-/tmp}/local-wp-zdotdir.XXXXXX")
 		cat > "$ZDOTDIR_SHIM/.zshrc" <<EOF
 cd "$WP_CONTENT_PATH"
 if [ -f "$HOME/.zshrc" ]; then
@@ -74,7 +251,7 @@ EOF
 		;;
 	*)
 		# Fallback: a tiny shim shell that cd's then starts a login shell.
-		SHELL_SHIM=$(mktemp /tmp/local-wp-shell-XXXX.sh)
+		SHELL_SHIM=$(mktemp "${TMPDIR:-/tmp}/local-wp-shell.XXXXXX")
 		cat > "$SHELL_SHIM" <<EOF
 #!/bin/sh
 cd "$WP_CONTENT_PATH" && exec "$REMOTE_SHELL" -l
@@ -84,4 +261,5 @@ EOF
 		;;
 esac
 
-exec /Users/"$USER"/Library/Application\ Support/Local/ssh-entry/$LOCAL_SITE_ID.sh
+export LOCAL_WP_ACTIVE=1
+exec "$SSH_ENTRY_SCRIPT"
