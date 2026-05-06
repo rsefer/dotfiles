@@ -28,12 +28,13 @@
 	"breadcrumbs.symbolSortOrder": "type",
 	"chat.agent.thinkingStyle": "collapsedPreview",
 	"chat.tools.terminal.autoApprove": {
-		"curl": true,
+		"node --check": true,
 		"npm test": true,
 		"nslookup": true,
 		"php -l": true,
 		"read": true,
-		"vendor/bin/mago": true
+		"vendor/bin/mago": true,
+		"vendor/bin/phpunit": true
 	},
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
@@ -315,7 +316,6 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
-	"window.zoomLevel": -1,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.browser.enableChatTools": true,
@@ -371,5 +371,18 @@
 	"workbench.tree.renderIndentGuides": "onHover",
 	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast",
 	"workbench.preferredLightColorTheme": "Dark 2026",
-	"chat.viewSessions.orientation": "stacked"
+	"chat.viewSessions.orientation": "stacked",
+	"chat.tools.urls.autoApprove": {
+		"https://code.visualstudio.com": true,
+		"https://github.com/microsoft/vscode/wiki/*": true,
+		"https://developer.spotify.com": {
+			"approveRequest": false,
+			"approveResponse": true
+		}
+	},
+	"window.zoomLevel": -1,
+	"json.schemaDownload.trustedDomains": {
+		"https://schemas.wp.org": true,
+		"https://raw.githubusercontent.com/WordPress/": true
+	}
 }
