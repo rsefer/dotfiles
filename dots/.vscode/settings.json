@@ -36,6 +36,15 @@
 		"vendor/bin/mago": true,
 		"vendor/bin/phpunit": true
 	},
+	"chat.tools.urls.autoApprove": {
+		"https://code.visualstudio.com": true,
+		"https://developer.spotify.com": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://github.com/microsoft/vscode/wiki/*": true
+	},
+	"chat.viewSessions.orientation": "stacked",
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
 	"css.lint.compatibleVendorPrefixes": "warning",
@@ -224,15 +233,24 @@
 	"intelliphp.inlineSuggestionsEnabled": false,
 	"js.updateImportsOnFileMove.enabled": "always",
 	"json.schemaDownload.enable": true,
+	"json.schemaDownload.trustedDomains": {
+		"https://raw.githubusercontent.com/WordPress/": true,
+		"https://schemas.wp.org": true
+	},
 	"launch": {
 		"configurations": [
 			{
 				"console": "integratedTerminal",
 				"name": "Debug - Node - npm start",
 				"request": "launch",
-				"runtimeArgs": ["run-script", "start"],
+				"runtimeArgs": [
+					"run-script",
+					"start"
+				],
 				"runtimeExecutable": "npm",
-				"skipFiles": ["<node_internals>/**"],
+				"skipFiles": [
+					"<node_internals>/**"
+				],
 				"type": "node"
 			},
 			{
@@ -316,6 +334,7 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
+	"window.zoomLevel": -1,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.browser.enableChatTools": true,
@@ -364,25 +383,11 @@
 	"workbench.fontAliasing": "auto",
 	"workbench.layoutControl.enabled": false,
 	"workbench.list.smoothScrolling": true,
+	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast",
+	"workbench.preferredLightColorTheme": "Dark 2026",
 	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover",
-	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast",
-	"workbench.preferredLightColorTheme": "Dark 2026",
-	"chat.viewSessions.orientation": "stacked",
-	"chat.tools.urls.autoApprove": {
-		"https://code.visualstudio.com": true,
-		"https://github.com/microsoft/vscode/wiki/*": true,
-		"https://developer.spotify.com": {
-			"approveRequest": false,
-			"approveResponse": true
-		}
-	},
-	"window.zoomLevel": -1,
-	"json.schemaDownload.trustedDomains": {
-		"https://schemas.wp.org": true,
-		"https://raw.githubusercontent.com/WordPress/": true
-	}
+	"workbench.tree.renderIndentGuides": "onHover"
 }
