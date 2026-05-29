@@ -39,12 +39,22 @@
 		],
 		"description": "export function"
 	},
+	"php-broken-opening-tag": {
+		"scope": "php",
+		"prefix": [
+			"</php"
+		],
+		"body": [
+			"<?php"
+		],
+		"description": "PHP opening tag (broken)"
+	},
 	"php": {
 		"scope": "php",
 		"prefix": [
 			"<?",
 			"<?p",
-			"<?php"
+			"<?php",
 		],
 		"body": [
 			"<?php",

@@ -17,34 +17,35 @@
 		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
 	},
 	"application.shellEnvironmentResolutionTimeout": 20,
-	"aws.codeWhisperer.importRecommendation": false,
-	"aws.suppressPrompts": {
-		"codeWhispererConnectionExpired": true,
-		"codeWhispererNewWelcomeMessage": true
-	},
-	"aws.telemetry": false,
-	"bookmarks.useWorkaroundForFormatters": true,
 	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
 	"chat.agent.thinkingStyle": "collapsedPreview",
 	"chat.tools.terminal.autoApprove": {
+		"composer test": true,
+		"diff": true,
+		"grep": true,
 		"node --check": true,
 		"npm test": true,
 		"nslookup": true,
 		"php -l": true,
+		"php -v": true,
 		"read": true,
 		"vendor/bin/mago": true,
 		"vendor/bin/phpunit": true
 	},
 	"chat.tools.urls.autoApprove": {
 		"https://code.visualstudio.com": true,
+		"https://github.com/microsoft/vscode/wiki/*": true,
 		"https://developer.spotify.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
-		"https://github.com/microsoft/vscode/wiki/*": true
+		"https://developer.apple.com": true,
+		"https://schemas.wp.org": {
+			"approveRequest": false,
+			"approveResponse": true
+		}
 	},
-	"chat.viewSessions.orientation": "stacked",
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
 	"css.lint.compatibleVendorPrefixes": "warning",
@@ -97,7 +98,6 @@
 	"explorer.confirmDragAndDrop": false,
 	"explorer.confirmPasteNative": false,
 	"extensions.ignoreRecommendations": true,
-	"figma.autocompleteProperties": false,
 	"files.associations": {
 		"*.njk": "html"
 	},
@@ -136,13 +136,6 @@
 			"query": "default"
 		}
 	],
-	"gitlens.codeLens.enabled": false,
-	"gitlens.currentLine.enabled": false,
-	"gitlens.hovers.currentLine.over": "line",
-	"gitlens.statusBar.enabled": false,
-	"gitlens.views.commits.avatars": false,
-	"gitlens.views.commits.pullRequests.enabled": false,
-	"gitlens.views.commits.showBranchComparison": false,
 	"go.coverOnTestPackage": false,
 	"go.inlayHints.assignVariableTypes": true,
 	"go.inlayHints.compositeLiteralFields": true,
@@ -280,9 +273,6 @@
 	"prettier.singleQuote": true,
 	"prettier.trailingComma": "none",
 	"prettier.useTabs": true,
-	"projectManager.confirmSwitchOnActiveWindow": "always",
-	"projectManager.showParentFolderInfoOnDuplicates": true,
-	"projectManager.supportSymlinksOnBaseFolders": true,
 	"rainbow_csv.enable_context_menu_head": true,
 	"rainbow_csv.enable_context_menu_tail": true,
 	"rainbow_csv.rbql_with_headers_by_default": true,
@@ -334,7 +324,6 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
-	"window.zoomLevel": -1,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.browser.enableChatTools": true,
@@ -385,9 +374,10 @@
 	"workbench.list.smoothScrolling": true,
 	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast",
 	"workbench.preferredLightColorTheme": "Dark 2026",
-	"workbench.sideBar.location": "right",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
-	"workbench.tree.renderIndentGuides": "onHover"
+	"workbench.tree.renderIndentGuides": "onHover",
+	"window.zoomLevel": -1,
+	"chat.viewSessions.orientation": "stacked"
 }
