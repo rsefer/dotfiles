@@ -95,7 +95,10 @@
 	},
 	"display-flex": {
 		"scope": "css,scss,html",
-		"prefix": "dflex",
+		"prefix": [
+			"dfl",
+			"dflex"
+		],
 		"body": [
 			"display: flex;",
 			"flex-flow: ${1:row} wrap;",

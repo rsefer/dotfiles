@@ -25,6 +25,7 @@
 		"diff": true,
 		"grep": true,
 		"node --check": true,
+		"npm run build": true,
 		"npm test": true,
 		"nslookup": true,
 		"php -l": true,
@@ -380,4 +381,6 @@
 	"workbench.tree.renderIndentGuides": "onHover",
 	"window.zoomLevel": -1,
 	"chat.viewSessions.orientation": "stacked"
+	"chat.viewProgressBadge.enabled": true,
+	"window.customTitleBarVisibility": "never"
 }

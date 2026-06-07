@@ -7,6 +7,11 @@
 // custom settings, run the `open default settings` command
 // from the command palette or from `Zed` application menu.
 {
+  "agent_servers": {
+    "github-copilot-cli": {
+      "type": "registry"
+    }
+  },
   "disable_ai": false,
   "edit_predictions": {
     "provider": "copilot"
@@ -47,7 +52,21 @@
   "buffer_font_size": 16,
   "base_keymap": "VSCode",
   "agent": {
-    "sidebar_side": "left",
+    "tool_permissions": {
+      "default": "allow",
+      "tools": {
+        "edit_file": {
+          "default": "allow"
+        },
+        "delete_path": {
+          "default": "confirm"
+        },
+        "search_web": {
+          "default": "allow"
+        }
+      }
+    },
+    "sidebar_side": "right",
     "provider": null,
     "dock": "right",
     "favorite_models": [],
