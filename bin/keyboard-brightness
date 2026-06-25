@@ -38,4 +38,6 @@ else
 	TARGET_BRIGHTNESS=$(awk -v current="$CURRENT_BRIGHTNESS" 'BEGIN { target = current - 0.1; if (target < 0) target = 0; printf "%.2f", target }')
 fi
 
-mac-brightnessctl "$TARGET_BRIGHTNESS"
+OUTPUT=$(mac-brightnessctl "$TARGET_BRIGHTNESS")
+BRIGHTNESS_PERCENT=$(echo "$OUTPUT" | awk -F': ' '{print $2}' | awk '{printf "%.0f", $1 * 100}')
+echo "Keyboard Brightness ${BRIGHTNESS_PERCENT}%"
