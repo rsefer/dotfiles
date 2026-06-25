@@ -4,6 +4,7 @@
             "complex_modifications": {
                 "rules": [
                     {
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "description": "Set Hyper Key (✨) - Change caps_lock to ⌃⌥⇧⌘",
@@ -37,6 +38,7 @@
                     },
                     {
                         "description": "Double Shift to Toggle Caps Lock",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "conditions": [
@@ -91,6 +93,7 @@
                     },
                     {
                         "description": "Fn + F1/F2 adjust keyboard brightness",
+                        "enabled": false,
                         "manipulators": [
                             {
                                 "from": {

@@ -1,0 +1,41 @@
+#!/bin/sh
+#
+# changes keyboard brightness. requires https://github.com/rakalex/mac-brightnessctl
+
+set -e
+
+ACTION="${1:-up}"
+
+if ! command -v mac-brightnessctl >/dev/null 2>&1; then
+	echo "mac-brightnessctl not found in PATH"
+	exit 1
+fi
+
+case "$ACTION" in
+	up|down)
+		;;
+	*[!0-9.]* )
+		echo "Usage: brightness [up|down|number]"
+		exit 1
+		;;
+	*)
+		TARGET_BRIGHTNESS=$(awk -v value="$ACTION" 'BEGIN { target = value; if (target > 1) target = target / 100; if (target < 0) target = 0; if (target > 1) target = 1; printf "%.2f", target }')
+		mac-brightnessctl "$TARGET_BRIGHTNESS"
+		exit 0
+		;;
+esac
+
+CURRENT_BRIGHTNESS=$(mac-brightnessctl | awk '/Current brightness:/ {print $3; exit}')
+
+if [ -z "$CURRENT_BRIGHTNESS" ]; then
+	echo "Unable to read current keyboard brightness"
+	exit 1
+fi
+
+if [ "$ACTION" = "up" ]; then
+	TARGET_BRIGHTNESS=$(awk -v current="$CURRENT_BRIGHTNESS" 'BEGIN { target = current + 0.1; if (target > 1) target = 1; printf "%.2f", target }')
+else
+	TARGET_BRIGHTNESS=$(awk -v current="$CURRENT_BRIGHTNESS" 'BEGIN { target = current - 0.1; if (target < 0) target = 0; printf "%.2f", target }')
+fi
+
+mac-brightnessctl "$TARGET_BRIGHTNESS"
