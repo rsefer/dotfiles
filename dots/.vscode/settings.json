@@ -380,7 +380,14 @@
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
 	"window.zoomLevel": -1,
-	"chat.viewSessions.orientation": "stacked"
+	"chat.viewSessions.orientation": "stacked",
 	"chat.viewProgressBadge.enabled": true,
-	"window.customTitleBarVisibility": "never"
+	"github.copilot.enable": {
+		"*": true,
+		"plaintext": false,
+		"markdown": false,
+		"scminput": false,
+		"html": true,
+		"php": true
+	}
 }
