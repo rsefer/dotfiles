@@ -40,4 +40,14 @@ fi
 
 OUTPUT=$(mac-brightnessctl "$TARGET_BRIGHTNESS")
 BRIGHTNESS_PERCENT=$(echo "$OUTPUT" | awk -F': ' '{print $2}' | awk '{printf "%.0f", $1 * 100}')
-echo "Keyboard Brightness ${BRIGHTNESS_PERCENT}%"
+
+BRIGHTNESS_BAR=""
+for i in $(seq 0 9); do
+	if [ $((i * 10)) -lt "$BRIGHTNESS_PERCENT" ]; then
+		BRIGHTNESS_BAR="${BRIGHTNESS_BAR}■"
+	else
+		BRIGHTNESS_BAR="${BRIGHTNESS_BAR}□"
+	fi
+done
+
+echo "🔅 $BRIGHTNESS_BAR 🔆"
