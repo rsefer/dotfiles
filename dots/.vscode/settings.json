@@ -32,7 +32,8 @@
 		"php -v": true,
 		"read": true,
 		"vendor/bin/mago": true,
-		"vendor/bin/phpunit": true
+		"vendor/bin/phpunit": true,
+		"printf": true
 	},
 	"chat.tools.urls.autoApprove": {
 		"https://code.visualstudio.com": true,
@@ -45,7 +46,12 @@
 		"https://schemas.wp.org": {
 			"approveRequest": false,
 			"approveResponse": true
-		}
+		},
+		"https://developer.wordpress.org": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://developers.kit.com": true,
 	},
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
@@ -330,31 +336,6 @@
 	"workbench.browser.enableChatTools": true,
 	"workbench.browser.openLocalhostLinks": true,
 	"workbench.browser.pageZoom": "100%",
-	"workbench.colorCustomizations": {
-		"statusBar.background": "#1A1A1A",
-		"statusBar.debuggingBackground": "#1A1A1A",
-		"statusBar.noFolderBackground": "#1A1A1A",
-		"terminal.ansiBlack": "#2C2F33",
-		"terminal.ansiBlue": "#405F74",
-		"terminal.ansiBrightBlack": "#efefef",
-		"terminal.ansiBrightBlue": "#405F74",
-		"terminal.ansiBrightCyan": "#4E7D78",
-		"terminal.ansiBrightGreen": "#8F9547",
-		"terminal.ansiBrightMagenta": "#714E76",
-		"terminal.ansiBrightRed": "#802426",
-		"terminal.ansiBrightWhite": "#B7BBB7",
-		"terminal.ansiBrightYellow": "#D7A24D",
-		"terminal.ansiCyan": "#4E7D78",
-		"terminal.ansiGreen": "#01A252",
-		"terminal.ansiMagenta": "#714E76",
-		"terminal.ansiRed": "#802426",
-		"terminal.ansiWhite": "#B7BBB7",
-		"terminal.ansiYellow": "#D7A24D",
-		"terminal.background": "#27292c",
-		"terminal.foreground": "#B7BBB7",
-		"terminalCursor.background": "#B7BBB7",
-		"terminalCursor.foreground": "#B7BBB7"
-	},
 	"workbench.editor.customLabels.patterns": {
 		"**/.*": "${dirname}/${filename}",
 		"**/.*.*": "${dirname}/${filename}.${extname}",
@@ -373,8 +354,9 @@
 	"workbench.fontAliasing": "auto",
 	"workbench.layoutControl.enabled": false,
 	"workbench.list.smoothScrolling": true,
+	"workbench.preferredDarkColorTheme": "Dark 2026",
 	"workbench.preferredHighContrastLightColorTheme": "Default High Contrast",
-	"workbench.preferredLightColorTheme": "Dark 2026",
+	"workbench.preferredLightColorTheme": "Light 2026",
 	"workbench.startupEditor": "newUntitledFile",
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
@@ -389,5 +371,13 @@
 		"scminput": false,
 		"html": true,
 		"php": true
-	}
+	},
+	"yaml.disableSchemaDetection": [
+		"**/.github/workflows/*.yml",
+		"**/.github/workflows/*.yaml",
+		"**/.gitea/workflows/*.yml",
+		"**/.gitea/workflows/*.yaml",
+		"**/.forgejo/workflows/*.yml",
+		"**/.forgejo/workflows/*.yaml"
+	]
 }
