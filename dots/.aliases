@@ -9,7 +9,7 @@ alias cp="cp -riv"
 
 alias npms="npm start"
 
-alias sdci="npm install sdc-build-wp@latest"
+alias sdci="npm install --no-cache --prefer-offline=false sdc-build-wp@latest"
 alias sdcl="sdc-build-wp-local --watch"
 
 alias z="zellij"
