@@ -11,6 +11,7 @@ alias npms="npm start"
 
 alias sdci="npm install --no-cache --prefer-offline=false sdc-build-wp@latest"
 alias sdcl="sdc-build-wp-local --watch"
+alias sdclb="sdc-build-wp-local"
 
 alias z="zellij"
 
