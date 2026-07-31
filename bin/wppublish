@@ -27,6 +27,13 @@ runComposerInstall () {
 	ssh $FLUSHADDRESS "cd $REMOTETHEMESPATH/$FOLDERNAME && composer install"
 }
 
+runAcfJsonSync () {
+	if [[ $ACFJSONSYNC != 'false' && ! -z "$FLUSHADDRESS" ]]; then
+		info "Running wp acf json sync"
+		ssh $FLUSHADDRESS "wp acf json sync || true"
+	fi
+}
+
 plus "STARTING wppublish"
 
 FOLDERNAME=$(basename "$PWD")
@@ -35,6 +42,7 @@ if ! test -f "$WPPUBLISHFILE"; then
 	WPPUBLISHFILE=$PWD/_config/wppublish.json
 fi
 LOCALUPLOADDIR=~/Downloads
+ACFJSONSYNC=true
 
 if test -f "$WPPUBLISHFILE"; then
 	PUBLISHMETHOD=$(cat $WPPUBLISHFILE | jq -r '.method | select( . != null )')
@@ -46,6 +54,7 @@ if test -f "$WPPUBLISHFILE"; then
 	FLUSHADDRESS=$(cat $WPPUBLISHFILE | jq -r '.flushaddress | select( . != null )')
 	FLUSHCOMMANDS=$(cat $WPPUBLISHFILE | jq -r '.flushcommands | select( . != null )')
 	COMPOSERINSTALL=$(cat $WPPUBLISHFILE | jq -r '.composerInstall | select( . != null )')
+	ACFJSONSYNC=$(cat $WPPUBLISHFILE | jq -r '.acfJsonSync // true')
 
 	if [ $HOST = "sftp.flywheelsites.com" ]; then
 		PUBLISHMETHOD=git-ftp
@@ -60,7 +69,8 @@ else
 	if [[ $REPLY =~ ^[Yy]$ ]]; then
 		jq -n '{ "host": "sftp.flywheelsites.com",
 	"remotethemespath": "/path/to/wp-content/themes",
-	"flushaddress": "user@ssh.getflywheel.com" }' > .wppublish.json
+	"flushaddress": "user@ssh.getflywheel.com",
+	"acfJsonSync": true }' > .wppublish.json
 		success ".wppublish.json created. Fill out that file and run wpppublish again"
 		exit 0
 	else
@@ -92,6 +102,7 @@ if [ $PUBLISHMETHOD = "rsync" ]; then
 	fi
 	rsync --verbose --archive --compress --delete --partial --progress $FOLDERNAME $USERNAMEHOSTSTRING:$REMOTETHEMESPATH
 	rm -r $FOLDERNAME
+	runAcfJsonSync
 	if [[ ! -z "$COMPOSERINSTALL" && $COMPOSERINSTALL != 'null' ]]; then
 		runComposerInstall
 	fi
@@ -125,6 +136,7 @@ else
 	if git rev-parse --git-dir > /dev/null 2>&1; then
 		info "Connecting as $USERNAME to sftp://$HOST:$PORT$REMOTETHEMESPATH/$FOLDERNAME ..."
 		git ftp $GITFTPACTION -u $USERNAME -p $PASSWORD sftp://$HOST:$PORT$REMOTETHEMESPATH/$FOLDERNAME
+		runAcfJsonSync
 	fi
 
 	if [[ ! -z "$COMPOSERINSTALL" && $COMPOSERINSTALL != 'null' ]]; then
