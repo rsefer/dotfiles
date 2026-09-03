@@ -1,0 +1,121 @@
+# Template for providers.yaml
+#
+# You can add any OpenAI API compatible provider to the "providers" list.
+# For each provider you must also specify a list of models, along with model abilities.
+#
+# All fields are required unless marked as optional.
+#
+# Refer to your provider's API documentation for specific
+# details such as model identifiers, capabilities etc
+#
+# Note: Since the OpenAI API is not a standard we can't guarantee that all
+# providers will work correctly with Raycast AI.
+#
+# To use this template rename as `providers.yaml`
+#
+providers:
+  # OpenRouter gives one API key access to models from many vendors.
+  - id: openrouter
+    name: OpenRouter
+    base_url: https://openrouter.ai/api/v1
+    # Specify at least one api key if authentication is required.
+    # Optional if authentication is not required or is provided elsewhere.
+    # If individual models require separate api keys, then specify a separate `key` for each model's `provider`
+    api_keys:
+      openrouter: OPENROUTER_KEY
+    # Optional additional parameters sent to the `/chat/completions` endpoint
+    additional_parameters:
+      provider:
+        sort: throughput
+    # Specify all models to use with the current provider
+    models:
+      - id: anthropic/claude-sonnet-5 # `id` must match the identifier used by the provider
+        name: Claude Sonnet 5 # name visible in Raycast
+        provider: openrouter # Only required if mapping to a specific api key
+        description: Anthropic's balanced model via OpenRouter # optional
+        context: 200000 # refer to provider's API documentation
+        # Optional abilities - all child properties are also optional.
+        # If you specify abilities incorrectly the model may fail to work as expected in Raycast AI.
+        # Refer to provider's API documentation for model abilities.
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: false
+      - id: openai/gpt-5.6
+        name: GPT-5.6
+        description: OpenAI's flagship reasoning model via OpenRouter
+        context: 400000
+        abilities:
+          # Reasoning models often accept only the default temperature.
+          temperature:
+            supported: false
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: true
+  # Gateways route many vendors through one endpoint and one key.
+  - id: vercel_ai_gateway
+    name: Vercel AI Gateway
+    base_url: https://ai-gateway.vercel.sh/v1
+    api_keys:
+      vercel: VERCEL_AI_GATEWAY_KEY
+    models:
+      - id: anthropic/claude-sonnet-5
+        name: "Claude Sonnet 5"
+        context: 200000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+      - id: openai/gpt-5.6
+        name: "GPT-5.6"
+        context: 400000
+        abilities:
+          temperature:
+            supported: false
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
+          reasoning_effort:
+            supported: true
+  # Self-hosted proxies work too, e.g. a local LiteLLM instance.
+  - id: litellm
+    name: LiteLLM
+    base_url: http://localhost:4000
+    # Optionally send the signed-in Raycast user's email as an `X-User-Email`
+    # header with every request, e.g. for per-user attribution or quotas on a
+    # shared gateway. Off unless explicitly set to true.
+    # include_user_email: true
+    # No `api_keys` - authentication is provided by the LiteLLM config
+    models:
+      - id: anthropic/claude-sonnet-4-5-20250929
+        name: "Claude Sonnet 4.5"
+        context: 200000
+        abilities:
+          temperature:
+            supported: true
+          vision:
+            supported: true
+          system_message:
+            supported: true
+          tools:
+            supported: true
