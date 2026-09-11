@@ -14,6 +14,7 @@ if test "$(uname)" = "Darwin"; then
 	setup/installs/obsidian.sh
 	setup/installs/vscode/install.sh
 	setup/installs/macos/install.sh
+	setup/installs/cron.sh
 fi
 
 setup/installs/dotfiles.sh
