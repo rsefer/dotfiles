@@ -17,7 +17,6 @@
 		"editor.defaultFormatter": "bmewburn.vscode-intelephense-client"
 	},
 	"application.shellEnvironmentResolutionTimeout": 20,
-	"breadcrumbs.enabled": false,
 	"breadcrumbs.symbolSortOrder": "type",
 	"chat.agent.thinkingStyle": "collapsedPreview",
 	"chat.tools.terminal.autoApprove": {
@@ -57,6 +56,18 @@
 			"approveResponse": true
 		},
 		"https://cmsj.github.io": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://developers.raycast.com": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://searchwp.com": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://hub.docker.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		}
@@ -393,5 +404,6 @@
 		"~/.agents/instructions": true
 	},
 	"editor.unicodeHighlight.invisibleCharacters": false,
-	"editor.unicodeHighlight.ambiguousCharacters": false
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"git.replaceTagsWhenPull": true
 }
