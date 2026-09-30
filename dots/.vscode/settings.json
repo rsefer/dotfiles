@@ -70,6 +70,10 @@
 		"https://hub.docker.com": {
 			"approveRequest": false,
 			"approveResponse": true
+		},
+		"https://docs.aws.amazon.com": {
+			"approveRequest": false,
+			"approveResponse": true
 		}
 	},
 	"css.format.preserveNewLines": false,
