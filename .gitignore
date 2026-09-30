@@ -1,5 +1,9 @@
 dots/.obsidian/workspace
 dots/.obsidian/workspace.json
+dots/.colima/*
+!dots/.colima/default/
+dots/.colima/default/*
+!dots/.colima/default/colima.yaml
 dots/.vscode/*
 !dots/.vscode/keybindings.json
 !dots/.vscode/settings.json
