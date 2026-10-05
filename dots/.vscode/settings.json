@@ -32,7 +32,11 @@
 		"read": true,
 		"vendor/bin/mago": true,
 		"vendor/bin/phpunit": true,
-		"printf": true
+		"printf": true,
+		"/^git status --short; command -v sdclb; node --version; git log -3 --oneline$/": {
+			"approve": true,
+			"matchCommandLine": true
+		}
 	},
 	"chat.tools.urls.autoApprove": {
 		"https://code.visualstudio.com": true,
@@ -72,6 +76,10 @@
 			"approveResponse": true
 		},
 		"https://docs.aws.amazon.com": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://stripe.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		}
@@ -409,5 +417,6 @@
 	},
 	"editor.unicodeHighlight.invisibleCharacters": false,
 	"editor.unicodeHighlight.ambiguousCharacters": false,
-	"git.replaceTagsWhenPull": true
+	"git.replaceTagsWhenPull": true,
+	"githubPullRequests.autoRepositoryDetection": true
 }
