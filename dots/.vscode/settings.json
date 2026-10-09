@@ -19,7 +19,15 @@
 	"application.shellEnvironmentResolutionTimeout": 20,
 	"breadcrumbs.symbolSortOrder": "type",
 	"chat.agent.thinkingStyle": "collapsedPreview",
+	"chat.instructionsFilesLocations": {
+		"~/.agents/instructions": true
+	},
+	"chat.sessionSync.enabled": true,
 	"chat.tools.terminal.autoApprove": {
+		"/^git status --short; command -v sdclb; node --version; git log -3 --oneline$/": {
+			"approve": true,
+			"matchCommandLine": true
+		},
 		"composer test": true,
 		"diff": true,
 		"grep": true,
@@ -29,24 +37,23 @@
 		"nslookup": true,
 		"php -l": true,
 		"php -v": true,
+		"printf": true,
 		"read": true,
 		"vendor/bin/mago": true,
-		"vendor/bin/phpunit": true,
-		"printf": true,
-		"/^git status --short; command -v sdclb; node --version; git log -3 --oneline$/": {
-			"approve": true,
-			"matchCommandLine": true
-		}
+		"vendor/bin/phpunit": true
 	},
 	"chat.tools.urls.autoApprove": {
-		"https://code.visualstudio.com": true,
-		"https://github.com/microsoft/vscode/wiki/*": true,
-		"https://developer.spotify.com": {
+		"https://cmsj.github.io": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
+		"https://cmsj.github.io/Hammerspoon2/main/js/hs.osascript.html": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://code.visualstudio.com": true,
 		"https://developer.apple.com": true,
-		"https://schemas.wp.org": {
+		"https://developer.spotify.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
@@ -55,27 +62,24 @@
 			"approveResponse": true
 		},
 		"https://developers.kit.com": true,
-		"https://cmsj.github.io/Hammerspoon2/main/js/hs.osascript.html": {
-			"approveRequest": false,
-			"approveResponse": true
-		},
-		"https://cmsj.github.io": {
-			"approveRequest": false,
-			"approveResponse": true
-		},
 		"https://developers.raycast.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
-		"https://searchwp.com": {
+		"https://docs.aws.amazon.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
+		"https://github.com/microsoft/vscode/wiki/*": true,
 		"https://hub.docker.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
-		"https://docs.aws.amazon.com": {
+		"https://schemas.wp.org": {
+			"approveRequest": false,
+			"approveResponse": true
+		},
+		"https://searchwp.com": {
 			"approveRequest": false,
 			"approveResponse": true
 		},
@@ -84,6 +88,8 @@
 			"approveResponse": true
 		}
 	},
+	"chat.viewProgressBadge.enabled": true,
+	"chat.viewSessions.orientation": "stacked",
 	"css.format.preserveNewLines": false,
 	"css.format.spaceAroundSelectorSeparator": true,
 	"css.lint.compatibleVendorPrefixes": "warning",
@@ -122,6 +128,8 @@
 	"editor.stickyScroll.enabled": true,
 	"editor.tabCompletion": "on",
 	"editor.tabSize": 2,
+	"editor.unicodeHighlight.ambiguousCharacters": false,
+	"editor.unicodeHighlight.invisibleCharacters": false,
 	"editor.wordWrap": "on",
 	"editor.wordWrapColumn": 120,
 	"emmet.includeLanguages": {
@@ -149,10 +157,19 @@
 	"git.confirmSync": false,
 	"git.enableSmartCommit": true,
 	"git.openRepositoryInParentFolders": "always",
+	"git.replaceTagsWhenPull": true,
 	"github.copilot.chat.customOAIModels": {},
 	"github.copilot.chat.languageContext.fix.typescript.enabled": true,
 	"github.copilot.chat.languageContext.inline.typescript.enabled": true,
 	"github.copilot.chat.languageContext.typescript.enabled": true,
+	"github.copilot.enable": {
+		"*": true,
+		"html": true,
+		"markdown": true,
+		"php": true,
+		"plaintext": false,
+		"scminput": false
+	},
 	"github.copilot.nextEditSuggestions.enabled": true,
 	"githubIssues.issueBranchTitle": "${user}/${issueNumber}-${sanitizedIssueTitle}",
 	"githubIssues.queries": [
@@ -161,6 +178,7 @@
 			"query": "repo:${owner}/${repository} state:open sort:created-desc"
 		}
 	],
+	"githubPullRequests.autoRepositoryDetection": true,
 	"githubPullRequests.createOnPublishBranch": "never",
 	"githubPullRequests.pullBranch": "never",
 	"githubPullRequests.pushBranch": "always",
@@ -361,11 +379,15 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
+	"window.zoomLevel": -1,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
+	"workbench.browser.dataStorage": "global",
 	"workbench.browser.enableChatTools": true,
+	"workbench.browser.experimentalUserTools.enabled": true,
 	"workbench.browser.openLocalhostLinks": true,
 	"workbench.browser.pageZoom": "100%",
+	"workbench.browser.searchEngine": "duckduckgo",
 	"workbench.editor.customLabels.patterns": {
 		"**/.*": "${dirname}/${filename}",
 		"**/.*.*": "${dirname}/${filename}.${extname}",
@@ -391,16 +413,6 @@
 	"workbench.statusBar.visible": true,
 	"workbench.tree.indent": 12,
 	"workbench.tree.renderIndentGuides": "onHover",
-	"chat.viewSessions.orientation": "stacked",
-	"chat.viewProgressBadge.enabled": true,
-	"github.copilot.enable": {
-		"*": true,
-		"plaintext": false,
-		"markdown": true,
-		"scminput": false,
-		"html": true,
-		"php": true
-	},
 	"yaml.disableSchemaDetection": [
 		"**/.github/workflows/*.yml",
 		"**/.github/workflows/*.yaml",
@@ -408,15 +420,5 @@
 		"**/.gitea/workflows/*.yaml",
 		"**/.forgejo/workflows/*.yml",
 		"**/.forgejo/workflows/*.yaml"
-	],
-	"chat.sessionSync.enabled": true,
-	"window.zoomLevel": -1,
-	"workbench.browser.experimentalUserTools.enabled": true,
-	"chat.instructionsFilesLocations": {
-		"~/.agents/instructions": true
-	},
-	"editor.unicodeHighlight.invisibleCharacters": false,
-	"editor.unicodeHighlight.ambiguousCharacters": false,
-	"git.replaceTagsWhenPull": true,
-	"githubPullRequests.autoRepositoryDetection": true
+	]
 }
