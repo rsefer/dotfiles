@@ -2,4 +2,23 @@
 #
 # run local sdc-build-wp
 
-node ~/sites/sdc/sdc-build-wp/index.js $@
+builds=$(
+	node -e '
+		const fs = require("fs");
+		if (!fs.existsSync("package.json")) process.exit(0);
+
+		const pkg = JSON.parse(fs.readFileSync("package.json", "utf8"));
+		const start = pkg && pkg.scripts && pkg.scripts.start;
+		if (typeof start !== "string" || !/^sdc-build-wp(?:\s|$)/.test(start)) process.exit(0);
+
+		const match = start.match(/(?:^|\s)--builds(?:=|\s+)(?:"([^"]*)"|\x27([^\x27]*)\x27|([^\s"]+))/);
+		const value = match && (match[1] !== undefined ? match[1] : match[2] !== undefined ? match[2] : match[3]);
+		if (value) process.stdout.write(value);
+	'
+) || exit $?
+
+if [ -n "$builds" ]; then
+	set -- "$@" "--builds=$builds"
+fi
+
+node ~/sites/sdc/sdc-build-wp/index.js "$@"
