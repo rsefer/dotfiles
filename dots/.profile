@@ -49,42 +49,4 @@ if command -v starship 1>/dev/null 2>&1; then
 	eval "$(starship init "$SHELL_NAME")"
 fi
 
-wp() {
-	local site_name=""
-	local sites_json="$HOME/Library/Application Support/Local/sites.json"
-	local cwd site_path candidate_name match_length=0
-
-	if [ -f "$sites_json" ] && command -v jq >/dev/null 2>&1; then
-		cwd="$(pwd -P)" || return 1
-		site_name="$(
-			while IFS= read -r -d '' site_path && IFS= read -r -d '' candidate_name; do
-				case "$site_path" in
-					('~') site_path="$HOME" ;;
-					('~/'*) site_path="$HOME/${site_path#\~/}" ;;
-				esac
-				site_path="$(CDPATH= cd -- "$site_path" 2>/dev/null && pwd -P)" || continue
-				case "$cwd" in
-					("$site_path"|"$site_path"/*)
-						if [ "${#site_path}" -gt "$match_length" ]; then
-							site_name="$candidate_name"
-							match_length="${#site_path}"
-						fi
-						;;
-				esac
-			done < <(command jq -j '
-				.[] | objects
-				| select((.path | type) == "string" and (.name | type) == "string")
-				| select(.path != "" and .name != "")
-				| .path, "\u0000", .name, "\u0000"
-			' "$sites_json" 2>/dev/null)
-			printf '%s' "$site_name"
-		)"
-	fi
-
-	if [ -n "$site_name" ]; then
-		echo "localwp cli \"$site_name\" -- $@"
-		command env -u NODE_OPTIONS localwp cli "$site_name" -- "$@"
-	else
-		command wp "$@"
-	fi
-}
+source "$DOTFILES_ROOT/dots/.functions"
