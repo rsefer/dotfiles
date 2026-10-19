@@ -1,7 +1,7 @@
 export DOTFILES_ROOT=$HOME/dotfiles
 export EDITOR="code -w"
 export NOTES_DIR="$HOME/Library/Mobile\ Documents/com~apple~CloudDocs"
-export OLLAMA_HOST="http://ollama.spaniel-dragon.ts.net:11434/"
+# export OLLAMA_HOST="http://ollama.spaniel-dragon.ts.net:11434/"
 export LOCALHOSTSSLDIR=$HOME/.localhost-ssl
 export CAROOT="${CAROOT:-$HOME/Library/Application Support/mkcert}"
 if [ -f "$CAROOT/rootCA.pem" ]; then
