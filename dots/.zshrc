@@ -35,7 +35,6 @@ if [[ -n "$HOMEBREW_PREFIX" ]]; then
 
 	fpath=(${HOMEBREW_PREFIX}/share/zsh-completions $fpath)
 	source ${HOMEBREW_PREFIX}/share/zsh-autosuggestions/zsh-autosuggestions.zsh
-	source ${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh
 
 	autoload -Uz compinit
 	if [[ ! -f "$ZCOMPDUMP_PATH" || -n ${ZCOMPDUMP_PATH}(#qN.mh+24) ]]; then
@@ -54,3 +53,7 @@ zstyle ':completion:*:messages' format ' %F{purple} -- %d --%f'
 zstyle ':completion:*:warnings' format ' %F{red}-- no matches found --%f'
 
 # test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+if [[ -n "$HOMEBREW_PREFIX" ]]; then
+	source "${HOMEBREW_PREFIX}/share/zsh-syntax-highlighting/zsh-syntax-highlighting.zsh"
+fi

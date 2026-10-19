@@ -12,7 +12,14 @@ export SSL_CRT_PATH="$LOCALHOSTSSLDIR/cert.pem"
 export SSL_FTQ_KEY_PATH="$LOCALHOSTSSLDIR/ftq/key.pem"
 export SSL_FTQ_CRT_PATH="$LOCALHOSTSSLDIR/ftq/cert.pem"
 export HISTCONTROL=ignoredups
-export SHELL_NAME="${SHELL##*/}"
+if [ -n "${ZSH_VERSION:-}" ]; then
+	SHELL_NAME=zsh
+elif [ -n "${BASH_VERSION:-}" ]; then
+	SHELL_NAME=bash
+else
+	SHELL_NAME="${SHELL##*/}"
+fi
+export SHELL_NAME
 
 export LDFLAGS="-L/opt/homebrew/opt/curl/lib"
 export CPPFLAGS="-I/opt/homebrew/opt/curl/include"

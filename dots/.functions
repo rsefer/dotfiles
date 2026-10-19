@@ -31,7 +31,7 @@ wp() {
 	fi
 
 	if [ -n "$site_name" ]; then
-		echo "localwp cli \"$site_name\" -- $@"
+		echo "localwp cli \"$site_name\" -- $@" >&2
 		command env -u NODE_OPTIONS localwp cli "$site_name" -- "$@"
 	else
 		command wp "$@"
