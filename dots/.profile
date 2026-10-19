@@ -20,23 +20,12 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
 export GOPATH="${GOPATH:-$HOME/go}"
 
-export PATH="$HOME/Library/Application Support/Local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/curl/bin:$GOPATH/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin:$PATH"
-
-if command -v pyenv 1>/dev/null 2>&1; then
-	eval "$(pyenv init -)"
-fi
+export PATH="${PYENV_ROOT:-$HOME/.pyenv}/shims:$HOME/Library/Application Support/Local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/curl/bin:$GOPATH/bin:$HOME/.composer/vendor/bin:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin:$PATH"
 
 source $HOME/.aliases
 if [ -f "$HOME/.config/op/plugins.sh" ]; then
 	source $HOME/.config/op/plugins.sh
 fi
-
-if [ -f /opt/homebrew/opt/chruby/share/chruby/chruby.sh ] && [ -f /opt/homebrew/opt/chruby/share/chruby/auto.sh ]; then
-	source /opt/homebrew/opt/chruby/share/chruby/chruby.sh
-	source /opt/homebrew/opt/chruby/share/chruby/auto.sh
-	chruby ruby-2.7.4
-fi
-
 
 # fnm: manages node versions and automatically switches to the correct version based on .nvmrc or .node-version files
 # see https://github.com/Schniz/fnm/blob/master/docs/configuration.md

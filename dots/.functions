@@ -37,3 +37,13 @@ wp() {
 		command wp "$@"
 	fi
 }
+
+if command -v pyenv >/dev/null 2>&1; then
+	pyenv() {
+		local pyenv_init
+		pyenv_init="$(command pyenv init - "$SHELL_NAME")" || return
+		unset -f pyenv
+		eval "$pyenv_init" || return
+		pyenv "$@"
+	}
+fi
