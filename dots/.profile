@@ -20,15 +20,7 @@ export PKG_CONFIG_PATH="/opt/homebrew/opt/curl/lib/pkgconfig"
 
 export GOPATH="${GOPATH:-$HOME/go}"
 
-BASE_DEV_PATH="/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/curl/bin:$GOPATH/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin"
-
-# Local's shell entry script prepends site-specific PHP/WP-CLI paths before launching
-# the shell. Preserve that ordering to avoid loading Homebrew PHP against Local extensions.
-if [ -n "$WP_CLI_CONFIG_PATH" ]; then
-	export PATH="$PATH:$BASE_DEV_PATH"
-else
-	export PATH="$BASE_DEV_PATH:$PATH"
-fi
+export PATH="$HOME/Library/Application Support/Local/bin:/opt/homebrew/bin:/opt/homebrew/sbin:/opt/homebrew/opt/curl/bin:$GOPATH/bin:$HOME/.composer/vendor/bin:$HOME/.pyenv/shims:/usr/local/sbin:/usr/local/bin:$DOTFILES_ROOT/bin:$PATH"
 
 if command -v pyenv 1>/dev/null 2>&1; then
 	eval "$(pyenv init -)"
@@ -57,59 +49,42 @@ if command -v starship 1>/dev/null 2>&1; then
 	eval "$(starship init "$SHELL_NAME")"
 fi
 
-# LocalWP: auto-select site shell when cd-ing into a Local site directory
-LOCALWP_HOOK_RUNNING=0
-LOCALWP_LAST_WP_ROOT=""
-: ${LOCALWP_CLOSE_PARENT_SHELL_ON_EXIT:=1}
+wp() {
+	local site_name=""
+	local sites_json="$HOME/Library/Application Support/Local/sites.json"
+	local cwd site_path candidate_name match_length=0
 
-localwp_find_wp_root() {
-	local local_root="$HOME/local"
-	local p="$PWD"
-
-	case "$p" in
-		"$local_root"|"$local_root"/*) ;;
-		*) return 1 ;;
-	esac
-
-	while [ "$p" != "/" ]; do
-		if [ -f "$p/wp-config.php" ] || [ -d "$p/wp-content" ]; then
-			printf '%s\n' "$p"
-			return 0
-		fi
-		[ "$p" = "$local_root" ] && break
-		p="${p%/*}"
-	done
-
-	return 1
-}
-
-localwp_auto_select() {
-	local wp_root
-	local localwp_cmd="${DOTFILES_ROOT:-$HOME/dotfiles}/bin/local-wp"
-
-	# Prevent recursion when local-wp opens a nested shell.
-	[ -n "$LOCAL_WP_ACTIVE" ] && return 0
-	[ -n "$WP_CLI_CONFIG_PATH" ] && return 0
-	[ "$LOCALWP_HOOK_RUNNING" = "1" ] && return 0
-	[ -x "$localwp_cmd" ] || return 0
-
-	wp_root="$(localwp_find_wp_root)" || {
-		LOCALWP_LAST_WP_ROOT=""
-		return 0
-	}
-	[ -n "$wp_root" ] || return 0
-	[ "$wp_root" = "$LOCALWP_LAST_WP_ROOT" ] && return 0
-
-	LOCALWP_HOOK_RUNNING=1
-	if "$localwp_cmd"; then
-		LOCALWP_LAST_WP_ROOT="$wp_root"
-		LOCALWP_HOOK_RUNNING=0
-		if [ "${LOCALWP_CLOSE_PARENT_SHELL_ON_EXIT}" = "1" ]; then
-			exit
-		fi
-		return 0
+	if [ -f "$sites_json" ] && command -v jq >/dev/null 2>&1; then
+		cwd="$(pwd -P)" || return 1
+		site_name="$(
+			while IFS= read -r -d '' site_path && IFS= read -r -d '' candidate_name; do
+				case "$site_path" in
+					('~') site_path="$HOME" ;;
+					('~/'*) site_path="$HOME/${site_path#\~/}" ;;
+				esac
+				site_path="$(CDPATH= cd -- "$site_path" 2>/dev/null && pwd -P)" || continue
+				case "$cwd" in
+					("$site_path"|"$site_path"/*)
+						if [ "${#site_path}" -gt "$match_length" ]; then
+							site_name="$candidate_name"
+							match_length="${#site_path}"
+						fi
+						;;
+				esac
+			done < <(command jq -j '
+				.[] | objects
+				| select((.path | type) == "string" and (.name | type) == "string")
+				| select(.path != "" and .name != "")
+				| .path, "\u0000", .name, "\u0000"
+			' "$sites_json" 2>/dev/null)
+			printf '%s' "$site_name"
+		)"
 	fi
-	LOCALWP_HOOK_RUNNING=0
-}
 
-localwp_auto_select
+	if [ -n "$site_name" ]; then
+		echo "localwp cli \"$site_name\" -- $@"
+		command env -u NODE_OPTIONS localwp cli "$site_name" -- "$@"
+	else
+		command wp "$@"
+	fi
+}
