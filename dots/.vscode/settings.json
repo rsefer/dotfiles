@@ -43,6 +43,8 @@
 		"vendor/bin/phpunit": true
 	},
 	"chat.tools.urls.autoApprove": {
+		"https://code.visualstudio.com": true,
+		"https://github.com/microsoft/vscode/wiki/*": true,
 		"https://cmsj.github.io": {
 			"approveRequest": false,
 			"approveResponse": true
@@ -51,7 +53,6 @@
 			"approveRequest": false,
 			"approveResponse": true
 		},
-		"https://code.visualstudio.com": true,
 		"https://developer.apple.com": true,
 		"https://developer.spotify.com": {
 			"approveRequest": false,
@@ -70,7 +71,6 @@
 			"approveRequest": false,
 			"approveResponse": true
 		},
-		"https://github.com/microsoft/vscode/wiki/*": true,
 		"https://hub.docker.com": {
 			"approveRequest": false,
 			"approveResponse": true
@@ -86,6 +86,10 @@
 		"https://stripe.com": {
 			"approveRequest": false,
 			"approveResponse": true
+		},
+		"https://docs.npmjs.com": {
+			"approveRequest": true,
+			"approveResponse": false
 		}
 	},
 	"chat.viewProgressBadge.enabled": true,
@@ -379,7 +383,6 @@
 	"window.systemColorTheme": "auto",
 	"window.title": "${rootName}",
 	"window.titleBarStyle": "native",
-	"window.zoomLevel": -1,
 	"window.zoomPerWindow": false,
 	"workbench.activityBar.location": "top",
 	"workbench.browser.dataStorage": "global",
@@ -420,5 +423,6 @@
 		"**/.gitea/workflows/*.yaml",
 		"**/.forgejo/workflows/*.yml",
 		"**/.forgejo/workflows/*.yaml"
-	]
+	],
+	"window.zoomLevel": -1
 }
