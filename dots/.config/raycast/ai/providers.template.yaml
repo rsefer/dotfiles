@@ -119,3 +119,51 @@ providers:
             supported: true
           tools:
             supported: true
+
+# Optional Raycast tools for models that declare `tools: supported: true`.
+# Without this block, custom provider models get no Raycast tools.
+# Remove a line (or set it to `false`) to turn that tool off.
+#
+# Each tool names the service that runs it:
+#   raycast     Raycast's servers, no extra key needed (Raycast Pro).
+#   custom      Your own gateway; set `url` to its endpoint (see below).
+#   tavily, exa, firecrawl, brave, perplexity   web_search with your API key.
+#   tavily, exa, firecrawl, jina                read_page with your API key
+#                                               (jina works without one, rate limited).
+# search_images and chart are only available through raycast.
+tools:
+  web_search: raycast
+  read_page: raycast
+  search_images: raycast
+  chart: raycast
+
+# Examples - replace the entries above to use your own services instead:
+#
+# tools:
+#   # One vendor for both web tools, sharing the key through a YAML anchor.
+#   web_search: &tavily
+#     provider: tavily
+#     api_key: TAVILY_KEY
+#     max_results: 10 # optional, up to 20
+#   read_page: *tavily
+#
+# tools:
+#   # A company gateway. Requests are POSTed as JSON with
+#   # `Authorization: Bearer <api_key>` when a key is set:
+#   #   web_search: { "query", "max_results", "country"? }
+#   #     -> { "results": [{ "url", "title", "content" }] }
+#   #   read_page: { "urls": ["https://..."], "format": "markdown" }
+#   #     -> { "results": [{ "url", "raw_content", "title"? }], "failed_results"?: [{ "url", "error" }] }
+#   web_search:
+#     provider: custom
+#     url: https://ai.example.com/web/search
+#     api_key: GATEWAY_KEY # optional
+#     headers: # optional extra headers
+#       X-Team: platform
+#     include_user_email: true # optional, sends X-User-Email
+#   read_page:
+#     provider: custom
+#     url: https://ai.example.com/web/extract
+#     api_key: GATEWAY_KEY
+#
+# Vendors also accept `base_url` to route through a proxy in front of the vendor's API.
