@@ -424,5 +424,7 @@
 		"**/.forgejo/workflows/*.yml",
 		"**/.forgejo/workflows/*.yaml"
 	],
-	"window.zoomLevel": -1
+	"window.zoomLevel": -1,
+	"chat.agent.maxRequests": 100,
+	"chat.tips.enabled": false
 }
