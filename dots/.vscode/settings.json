@@ -40,7 +40,8 @@
 		"printf": true,
 		"read": true,
 		"vendor/bin/mago": true,
-		"vendor/bin/phpunit": true
+		"vendor/bin/phpunit": true,
+		"git check-ignore": true
 	},
 	"chat.tools.urls.autoApprove": {
 		"https://code.visualstudio.com": true,
@@ -58,10 +59,7 @@
 			"approveRequest": false,
 			"approveResponse": true
 		},
-		"https://developer.wordpress.org": {
-			"approveRequest": false,
-			"approveResponse": true
-		},
+		"https://developer.wordpress.org": true,
 		"https://developers.kit.com": true,
 		"https://developers.raycast.com": {
 			"approveRequest": false,
