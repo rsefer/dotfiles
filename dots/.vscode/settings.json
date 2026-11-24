@@ -19,9 +19,6 @@
 	"application.shellEnvironmentResolutionTimeout": 20,
 	"breadcrumbs.symbolSortOrder": "type",
 	"chat.agent.thinkingStyle": "collapsedPreview",
-	"chat.instructionsFilesLocations": {
-		"~/.agents/instructions": true
-	},
 	"chat.sessionSync.enabled": true,
 	"chat.tools.terminal.autoApprove": {
 		"/^git status --short; command -v sdclb; node --version; git log -3 --oneline$/": {
@@ -41,7 +38,10 @@
 		"read": true,
 		"vendor/bin/mago": true,
 		"vendor/bin/phpunit": true,
-		"git check-ignore": true
+		"git check-ignore": true,
+		"/^command -v wp$/": true,
+		"/^command -v php$/": true,
+		"xcodebuild": true
 	},
 	"chat.tools.urls.autoApprove": {
 		"https://code.visualstudio.com": true,
@@ -185,15 +185,15 @@
 	"githubPullRequests.pullBranch": "never",
 	"githubPullRequests.pushBranch": "always",
 	"githubPullRequests.queries": [
-		{
-			"label": "Local Pull Request Branches",
-			"query": "default"
-		},
-		{
-			"label": "All Open",
-			"query": "default"
-		}
-	],
+    {
+      "label": "Local Pull Request Branches",
+      "query": "default"
+    },
+    {
+      "label": "All Open",
+      "query": "default"
+    }
+  ],
 	"go.coverOnTestPackage": false,
 	"go.inlayHints.assignVariableTypes": true,
 	"go.inlayHints.compositeLiteralFields": true,
@@ -345,6 +345,7 @@
 	"search.showLineNumbers": true,
 	"security.promptForLocalFileProtocolHandling": false,
 	"security.workspace.trust.untrustedFiles": "open",
+	"sessions.chatWindows.enabled": true,
 	"task.allowAutomaticTasks": "on",
 	"task.problemMatchers.neverPrompt": {
 		"npm": true
@@ -424,5 +425,16 @@
 	],
 	"window.zoomLevel": -1,
 	"chat.agent.maxRequests": 100,
-	"chat.tips.enabled": false
+	"chat.tips.enabled": false,
+	"chat.agentHost.remoteConnections": "githubEnvironment",
+	"chat.checkpoints.showFileChanges": true,
+	"chat.mcp.gallery.enabled": true,
+	"inlineChat.notebookAgent": true,
+	"inlineChat.defaultModel": "Auto (copilot)",
+	"chat.planAgent.defaultModel": "Auto (copilot)",
+	"chat.exploreAgent.defaultModel": "Auto (copilot)",
+	"chat.agentHost.browserUse.enabled": true,
+	"workbench.browser.enableRemoteProxy": true,
+	"chat.permissions.assisted.instructions": "anything read-only should not require approval",
+	"editor.multiCursorModifier": "ctrlCmd"
 }

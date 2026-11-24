@@ -9,7 +9,7 @@ alias cp="cp -riv"
 
 alias npms="npm start"
 
-alias sdci="npm install --prefer-online --force sdc-build-wp@latest"
+alias sdci="npm install --prefer-online --force sdc-build-wp@latest && node -p \"'sdc-build-wp installed: ' + require('./node_modules/sdc-build-wp/package.json').version\""
 alias sdcl="sdc-build-wp-local --watch"
 alias sdclb="sdc-build-wp-local"
 

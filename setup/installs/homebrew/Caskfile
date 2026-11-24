@@ -22,7 +22,7 @@ cask 'ghostty', args: { appdir: '/Applications' }
 cask 'github', args: { appdir: '/Applications' }
 cask 'google-drive', args: { appdir: '/Applications' }
 cask 'google-chrome'
-cask 'hammerspoon'
+cask 'hammerspoon/tap/hammerspoon2'
 cask 'handbrake'
 cask 'home-assistant'
 cask 'imageoptim', args: { appdir: '/Applications' }
